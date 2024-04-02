@@ -221,22 +221,22 @@
     flex: 0 0 100%;
   }
 
-  .doubleColumn .column {
+  .footerColumns-2 .column {
     max-width: calc(100% / 2);
     flex: 0 0 calc(50% - var(--spacing-double));
   }
   
-  .tripleColumn .column {
+  .footerColumns-3 .column {
     max-width: calc(100% / 3);
     flex: 0 0 calc(33.333% - var(--spacing-double));
   }
   
-  .quadrupleColumn .column {
+  .footerColumns-4 .column {
     max-width: calc(100% / 4);
     flex: 0 0 calc(25% - var(--spacing-double));
   }
   
-  .quintupleColumn .column {
+  .footerColumns-5 .column {
     max-width: calc(100% / 5);
     flex: 0 0 calc(20% - var(--spacing-double));
   }

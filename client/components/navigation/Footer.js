@@ -5,33 +5,14 @@ import CustomLink from '@/partials/util/CustomLink'
 const Footer = ({ footer }) => {
   const global = footer && footer.data ? footer.data.attributes : {};
 
-  function getSupportClass(blocksLength) {
-    switch (blocksLength) {
-      case 1:
-        return 'singleColumn'; 
-      case 2:
-        return 'doubleColumn'; 
-      case 3:
-        return 'tripleColumn'; 
-      case 4:
-        return 'quadrupleColumn';
-      case 5:
-        return 'quintupleColumn';
-      default:
-        return ''; 
-    }
-  }
-
-  const blockContent = global.blocks ? (
-    <div className={`${styles.columnContainer} ${styles[getSupportClass(global.blocks.length)]}`}>
-      <Blocks blocks={global.blocks} />
-    </div>
-  ) : null;
-
   return (
     <>
       <footer className={styles.footer}>
-        {blockContent}
+        {global.blocks ? (
+          <div className={`${styles.columnContainer} ${styles['footerColumns-' + global.blocks.length]}`}>
+            <Blocks blocks={global.blocks} />
+          </div>
+        ) : null}
         {global.subFooter ? (
           <div className={styles.subFooter}>
             <div className={styles.subFooterContent}>

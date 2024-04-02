@@ -16,7 +16,7 @@ export default function Layout({ metadata, children }) {
         <main className={`container`}>
           {children}
         </main>
-      <Footer footer={footer} />1
+      <Footer footer={footer} />
       <MobileFooter navigation={navigation} />
     </>
   );
