@@ -164,7 +164,7 @@
     color: var(--text-900);
     position: relative;
     width: var(--spacing-quintuple);
-    height: var(--quadruple);
+    height: var(--spacing-quadruple);
     text-align: center;
     z-index: 10;
     cursor: pointer;

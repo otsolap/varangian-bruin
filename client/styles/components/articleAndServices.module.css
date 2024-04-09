@@ -181,7 +181,7 @@
     }
 
     .wrapper {
-        gap: var(--triple);
+        gap: var(--spacing-triple);
     }
 
     .item {

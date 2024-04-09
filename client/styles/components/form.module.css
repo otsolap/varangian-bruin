@@ -83,7 +83,7 @@
 .select,
 .option {
   display: flex;
-  height: var(--triple);
+  height: var(--spacing-triple);
   padding: var(--half) var(--spacing-single);
   align-items: center;
   align-self: stretch;

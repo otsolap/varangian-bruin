@@ -23,8 +23,8 @@
 
 .markdown article ul li,
 .markdown article ol li {
-  padding-top: var(--quarter);
-  padding-bottom: var(--quarter);
+  padding-top: var(--spacing-quarter);
+  padding-bottom: var(--spacing-quarter);
 }
 
 .markdown article li:has(strong) {
