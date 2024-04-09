@@ -97,10 +97,9 @@
     aspect-ratio: 16/9;
 }
 
-.title,
-.description,
+.itemContent,
 .footer {
-    padding: var(--half) var(--spacing-single);
+    padding: var(--spacing-half) var(--spacing-single);
 }
 
 .title {

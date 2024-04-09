@@ -20,12 +20,16 @@ const BlogItem = ({ image, title, description, slug, category, publishedAt }) =>
                 </Link>
             </figure>
         }
-        {title && 
-          <Link href={`/${config.blog.BLOG_PATH}/${slug}`}>
-              <h3 className={styles.title}>{title}</h3>
-          </Link>
+        {(title || description) && 
+          <div className={styles.itemContent}>
+            {title && 
+              <Link href={`/${config.blog.BLOG_PATH}/${slug}`}>
+                  <h3 className={styles.title}>{title}</h3>
+              </Link>
+            }
+            {description && <p className={styles.description}>{description}</p>}
+          </div>
         }
-        {description && <p className={styles.description}>{description}</p>}
         {category?.data || formattedDate ? (
        <footer className={`${styles.footer} ${styles.footerColumn}`}>
             {category &&
