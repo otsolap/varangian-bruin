@@ -1033,7 +1033,7 @@ export interface ApiContactContact extends Schema.CollectionType {
   info: {
     singularName: 'contact';
     pluralName: 'contacts';
-    displayName: 'Contacts';
+    displayName: 'Contacts (Form)';
     description: '';
   };
   options: {
