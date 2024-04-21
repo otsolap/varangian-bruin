@@ -29,7 +29,6 @@ async function fetchData(slug) {
   const res = await axios.get(data.data)
   const json = res.data
 
-
   if (!json.data.length) {
     console.error(`No page data found for slug: ${data.slug}`)
     return { notFound: true }
@@ -45,12 +44,10 @@ async function fetchData(slug) {
   }
 
   const blocks = pageDataObj.attributes.blocks
-  console.log(blocks)
   const pageData = blocks ? await getDataDependencies(blocks) : {}
 
   if (!pageData) notFound()
   return pageData 
-
 }
 
 export async function generateMetadata({ params }) {

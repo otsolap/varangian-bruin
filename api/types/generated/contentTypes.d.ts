@@ -1172,6 +1172,50 @@ export interface ApiFormForm extends Schema.CollectionType {
   };
 }
 
+export interface ApiHomeHome extends Schema.SingleType {
+  collectionName: 'homes';
+  info: {
+    singularName: 'home';
+    pluralName: 'homes';
+    displayName: 'Home';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blocks: Attribute.DynamicZone<
+      [
+        'blocks.accordion',
+        'blocks.article-text-block',
+        'blocks.banner',
+        'blocks.blogs',
+        'blocks.cards',
+        'blocks.form-embed',
+        'blocks.hero',
+        'blocks.image-block',
+        'blocks.image-gallery',
+        'blocks.media-mix',
+        'blocks.quote',
+        'blocks.services',
+        'blocks.text-area',
+        'blocks.video-embed'
+      ]
+    >;
+    title: Attribute.String;
+    showServicesBanner: Attribute.Boolean;
+    showSubscribeForm: Attribute.Boolean;
+    seo: Attribute.Component<'util.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNavigationNavigation extends Schema.SingleType {
   collectionName: 'navigations';
   info: {
@@ -1579,6 +1623,7 @@ declare module '@strapi/types' {
       'api::faq.faq': ApiFaqFaq;
       'api::footer.footer': ApiFooterFooter;
       'api::form.form': ApiFormForm;
+      'api::home.home': ApiHomeHome;
       'api::navigation.navigation': ApiNavigationNavigation;
       'api::newsletter-banner.newsletter-banner': ApiNewsletterBannerNewsletterBanner;
       'api::not-found.not-found': ApiNotFoundNotFound;

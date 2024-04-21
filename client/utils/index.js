@@ -150,7 +150,7 @@ import config from '@/utils/config'
     }
     
     return {
-      data: getStrapiURL(`/${config.global.API_PAGES_QUERY}?${config.global.API_CONTENT_QUERY}&filters[slug][$eq]=${slugToReturn}`),
+      data: getStrapiURL(`/${config.global.API_PAGES_QUERY}?${config.global.API_PAGES_CONTENT_QUERY}&filters[slug][$eq]=${slugToReturn}`),
       slug: slugToReturn,
     }
   }

@@ -1,7 +1,8 @@
 {
     "global": {
         "API_NAVIGATION_QUERY":"api/navigation?=&populate=blocks,blocks.icon,button",
-        "API_CONTENT_QUERY":"&populate=seo,seo.imageBlock.image,blocks,blocks.image,blocks.accordion,blocks.accordions,blocks.button,blocks.buttons,blocks.blogs,blocks.blogs.author,blocks.blogs.image,blocks.blogs.categories,blocks.link,blocks.cards,blocks.cards.image,blocks.form,blocks.form.inputs,blocks.form.inputs.options,blocks.form.image,blocks.form.button,blocks.images.image,blocks.mediaMixItems,blocks.mediaMixItems.image,blocks.services,blocks.services.image,blocks.services.service_type&filters[slug][$eq]=",
+        "API_HOME_CONTENT_QUERY":"api/home?=&populate=seo,seo.imageBlock.image,blocks,blocks.image,blocks.accordion,blocks.accordions,blocks.button,blocks.buttons,blocks.blogs,blocks.blogs.author,blocks.blogs.image,blocks.blogs.categories,blocks.link,blocks.cards,blocks.cards.image,blocks.form,blocks.form.inputs,blocks.form.inputs.options,blocks.form.image,blocks.form.button,blocks.images.image,blocks.mediaMixItems,blocks.mediaMixItems.image,blocks.services,blocks.services.image,blocks.services.service_type",
+        "API_PAGES_CONTENT_QUERY":"&populate=seo,seo.imageBlock.image,blocks,blocks.image,blocks.accordion,blocks.accordions,blocks.button,blocks.buttons,blocks.blogs,blocks.blogs.author,blocks.blogs.image,blocks.blogs.categories,blocks.link,blocks.cards,blocks.cards.image,blocks.form,blocks.form.inputs,blocks.form.inputs.options,blocks.form.image,blocks.form.button,blocks.images.image,blocks.mediaMixItems,blocks.mediaMixItems.image,blocks.services,blocks.services.image,blocks.services.service_type&filters[slug][$eq]=",
         "API_SERVICE_BANNER_QUERY":"api/services-banner?=&populate=banner,banner.button,banner.image,",
         "API_SUBSCRIBE_FORM_QUERY": "api/subscribe-form?=&populate=formID,email",
         "API_NEWSLETTER_BANNER_QUERY":"api/newsletter-banner?=&populate=button,image,",
