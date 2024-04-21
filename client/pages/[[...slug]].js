@@ -60,12 +60,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
-  const { nonPageSlugs } = config;
-
-  // Check if the slug is a non-page slug and return notFound if it is
-  if (nonPageSlugs.includes(slug?.[0])) {
-      return { notFound: true };
-  }
 
   try {
     const data = await getPageData(slug)

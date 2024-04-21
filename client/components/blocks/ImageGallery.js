@@ -1,3 +1,4 @@
+'use client'
 import useToggle from "@/hooks/useToggle"
 import { useLocalStorage }from "@/hooks/useStorage"
 import NextImage from 'partials/util/NextImage';

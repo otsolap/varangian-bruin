@@ -1,3 +1,4 @@
+'use client'
 import React, { useRef, useState } from 'react'
 import axios from 'axios'
 import styles from '@/styles/components/form.module.css'

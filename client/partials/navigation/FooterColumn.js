@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect, useRef } from "react"
 import useToggle from "@/hooks/useToggle"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"

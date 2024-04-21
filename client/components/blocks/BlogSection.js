@@ -1,3 +1,4 @@
+'use client'
 import { useState, useEffect } from "react";
 import styles from "@/styles/components/articleAndServices.module.css";
 import BlogItem from "@/partials/blocks/BlogItem";
