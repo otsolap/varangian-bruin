@@ -39,7 +39,7 @@ const FormEmbed = ({ form }) => {
     })
       
     const formattedDataString = Object.entries(formData)
-    .map(([key, value]) => `<br><strong>label:</strong> ${key}<br>value: ${value}<br>`)
+    .map(([key, value]) => `<br><strong>label:</strong> ${key}<br><strong>value:</strong> ${value}<br>`)
     .join('')
 
       
