@@ -1,60 +1,38 @@
 import { getDataDependencies } from "@/utils/api"
-import { getPageData, getAllPageSlugs, fetchServicesBannerData, fetchSubscribeFormData } from "@/utils/index"
+import { getStrapiURL, getAllPageSlugs} from "@/utils/index"
+import config from '@/utils/config'
 import Blocks from "@/components/Blocks"
-import axios from 'axios'
 import { notFound } from 'next/navigation'
 
+export async function generateStaticParams() {
+  const res =  await fetch(getStrapiURL(`/${config.global.API_PAGES_QUERY}`))
+  const resData = await res.json()
+  const slugs = resData.data.map(item => item.attributes.slug)
+  
+  return slugs.map(slug => ({
+  params: { slug: slug }
+  }))
+  
+}
+
+async function getContent(params) {
+  try {
+    const res = await fetch(getStrapiURL(`/${config.global.API_PAGES_QUERY}?${config.global.API_PAGES_CONTENT_QUERY}&filters[slug][$eq]=${params.slug}`))
+    const resData = await res.json()
+    const blocks = resData.data[0].attributes.blocks
+    const data = blocks ? await getDataDependencies(blocks) : {}
+    if (!data) notFound()
+    return data
+  } catch (error) {
+    console.error('Error:', error);
+    notFound()
+  }
+}
+
 export default async function PageSlug({ params }) {
-  const { slug } = params
-  const { blocks} = await fetchData(slug)
+  const { blocks } = await getContent(params)
   
   return (
     <Blocks blocks={blocks} />
   )
-}
-
-export async function generateStaticParams() {
-  const slugs = await getAllPageSlugs(); // Fetch all slugs
-  console.log(slugs)
-
-  return slugs.map(slugSegments => ({
-    params: { slug: slugSegments }
-  }));
-
-}
-
-async function fetchData(slug) {
-  console.log('this is the slug', slug)
-  const data = await getPageData(slug)
-  const res = await axios.get(data.data)
-  const json = res.data
-
-  if (!json.data.length) {
-    console.error(`No page data found for slug: ${data.slug}`)
-    return { notFound: true }
-  }
-
-  const pageDataObj = json.data.find((d) => d.attributes.slug === data.slug)
-  console.log('toimiiko tää', pageDataObj)
-
-  // If no data object is found, throw an error
-  if (!pageDataObj) {
-    console.error(`No page data object found for slug: ${data.slug}`)
-    return { notFound: true }
-  }
-
-  const blocks = pageDataObj.attributes.blocks
-  const pageData = blocks ? await getDataDependencies(blocks) : {}
-
-  if (!pageData) notFound()
-  return pageData 
-}
-
-export async function generateMetadata({ params }) {
-  const { slug } = params
-  const siteUrl = `/${slug}`
-
-  return {
-    slug: siteUrl,
-  }
 }
