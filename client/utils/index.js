@@ -17,7 +17,6 @@ import config from '@/utils/config'
   export const createID = (title) => {
       return title.replace(/\s+/g, '-').toLowerCase();
   }
-
   
   // Get the url of the Strapi API based on the env variable or the default local one.
   export function getStrapiURL(path) {
@@ -51,7 +50,6 @@ import config from '@/utils/config'
       } catch (error) {
         console.error('Failed to fetch API data:', error);
       }
-  
 
       const servicesBannerData = await servicesBannerResponse?.json() || null;
       const subscribeFormData = await subscribeFormResponse?.json() || null;
@@ -98,38 +96,3 @@ import config from '@/utils/config'
       return null;
     }
   }
-
-  // export async function getAllPageSlugs() {
-  //   const url = getStrapiURL(`/${config.global.API_PAGES_QUERY}`);
-  //   try {
-  //     const response = await axios.get(url);
-  //     // Extract and split slugs into segments
-  //     const slugs = response.data.data.map(item => {
-  //       // Split the slug string into an array of segments
-  //       const slugSegments = item.attributes.slug.split('/').filter(Boolean);
-  //       return slugSegments;
-  //     });
-  //     return slugs;
-  //   } catch (error) {
-  //     console.error("Error fetching page slugs:", error);
-  //     return [];
-  //   }
-  // }
-  
-  
-  // export async function getPageData(slug) {
-  //   let slugToReturn = '/'
-  //   if (Array.isArray(slug) && slug.length > 0) {
-  //     slugToReturn = slug.join('/')
-  //     if (slug.length > 1) {
-  //       slugToReturn = slugToReturn.replace(',', '/')
-  //     }
-  //   } else if (typeof slug === 'string' && slug.trim() !== '') {
-  //     slugToReturn = slug
-  //   }
-    
-  //   return {
-  //     data: getStrapiURL(`/${config.global.API_PAGES_QUERY}?${config.global.API_PAGES_CONTENT_QUERY}&filters[slug][$eq]=${slugToReturn}`),
-  //     slug: slugToReturn,
-  //   }
-  // }

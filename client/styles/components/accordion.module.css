@@ -121,7 +121,7 @@
 
 /* Text */
 .text {
-  padding: var(--spacing-single) var(--half);
+  padding: var(--spacing-single) var(--spacing-half);
 }
 
 /* Desktop Styles */
