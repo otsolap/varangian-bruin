@@ -1,29 +1,15 @@
-import axios from 'axios'
 import config from '@/utils/config'
 
   // Youtube url
   export const YouTubeGetID = (url) => {
       url = url.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/)
       return url[2] !== undefined ? url[2].split(/[^0-9a-z_\-]/i)[0] : url[0]
-    }
+  }
     
   // Paginate helper function
   export const paginate = (items, pageNumber, pageSize) => {
     const startIndex = (pageNumber - 1) * pageSize
     return items.slice(startIndex, startIndex + pageSize)
-  }
-
-  export function isNotEmpty(item) {
-    if (Array.isArray(item)) {
-        return item.length > 0;
-    }
-
-    if (item && typeof item === 'object') {
-        return Object.keys(item).length > 0;
-    }
-
-    // For other data types, return false (or however you want to handle them)
-    return false;
   }
 
  // Take the title and return it as a "slug".
@@ -52,37 +38,31 @@ import config from '@/utils/config'
     return `${process.env.NEXT_PUBLIC_API_URL  || process.env.NEXT_PUBLIC_API_URL}${url}`
   }
 
-  export async function fetchServicesBannerData() {
+  export async function fetchBannerData() {
     try {
-      const response = await axios.get(getStrapiURL(`/${config.global.API_SERVICE_BANNER_QUERY}`))
-
-      if (!response.data) {
-        throw new Error('Failed to fetch service banner data')
+      const urls = [
+        getStrapiURL(`/${config.pages.API_SERVICES_BANNER_QUERY}`),
+        getStrapiURL(`/${config.pages.API_SUBSCRIBE_FORM_QUERY}`)
+      ];
+  
+      let servicesBannerResponse, subscribeFormResponse;
+      try {
+        [servicesBannerResponse, subscribeFormResponse] = await Promise.all(urls.map(url => fetch(url)));
+      } catch (error) {
+        console.error('Failed to fetch API data:', error);
       }
+  
 
-      const serviceBannerData = response.data
-
-      return { serviceBannerData }
+      const servicesBannerData = await servicesBannerResponse?.json() || null;
+      const subscribeFormData = await subscribeFormResponse?.json() || null;
+  
+      return {
+        servicesBanner: servicesBannerData.data.attributes.banner ?? null,
+        subscribeForm: subscribeFormData.data.attributes ?? null,
+      };
     } catch (error) {
-      console.error(error)
-      return { serviceBannerData: null }
-    }
-  }
-
-  export async function fetchSubscribeFormData() {
-    try {
-      const response = await axios.get(getStrapiURL(`/${config.global.API_SUBSCRIBE_FORM_QUERY}`))
-
-      if (!response.data) {
-        throw new Error('Failed to fetch service banner data')
-      }
-
-      const subscribeFormData = response.data
-
-      return { subscribeFormData }
-    } catch (error) {
-      console.error(error)
-      return { subscribeFormData: null }
+      console.error('fetch All Data error:', error);
+      return null;
     }
   }
 

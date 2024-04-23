@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import { getStrapiMedia, isNotEmpty } from "@/utils/index";
 
+// isNotEmpty oli mun tekemä apufunktio jonka poistin.
+
 const SEO = ({ metadata, baseSEO, canonicalUrl }) => {
   // Use metadata if it's available and not empty, otherwise use baseSEO
   let seoData = isNotEmpty(metadata) && metadata.metaData != null ? metadata : baseSEO;

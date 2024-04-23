@@ -1,11 +1,10 @@
 import NextImage from "partials/util/NextImage"
 import styles from '@/styles/components/articleFooter.module.css'
-import { isNotEmpty } from "@/utils/index";
 import ContactDetails from '@/partials/util/ContactDetails'
 
 const ArticleFooter = ({ author }) => {
   return (
-    isNotEmpty(author) ? (
+    author ? (
       <footer className={styles.footer}>
         <div className={styles.column}>
             <figure className={styles.imageContainer}>
