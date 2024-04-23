@@ -1,17 +1,16 @@
 import { getStrapiURL } from "@/utils/index"
 import config from '@/utils/config'
 import Blocks from "@/components/Blocks"
-import styles from '@/styles/pages/blog.module.css'
 import ArticleHeading from "@/components/articles/ArticleHeading";
 import ArticleFooter from "@/components/articles/ArticleFooter";
 import HeadingLinks from "@/partials/article/HeadingLinks";
 import { notFound } from 'next/navigation'
+import styles from '@/styles/pages/blog.module.css'
 
 export async function generateStaticParams() {
   const res =  await fetch(getStrapiURL(`/api/articles`))
   const resData = await res.json()
   const slugs = resData.data.map(item => item.attributes.slug)
-  console.log('slugs:', slugs)
   return slugs.map(slug => ({
      params: { slug: slug }
   }))
