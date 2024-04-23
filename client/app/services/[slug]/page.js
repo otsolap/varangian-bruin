@@ -27,7 +27,7 @@ async function getContent(params) {
   }
 }
 
-export default async function PageSlug({ params }) {
+export default async function ServicesSlug({ params }) {
   const { blocks } = await getContent(params)
   
   return (

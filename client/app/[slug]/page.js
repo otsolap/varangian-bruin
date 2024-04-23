@@ -1,5 +1,5 @@
 import { getDataDependencies } from "@/utils/api"
-import { getStrapiURL, getAllPageSlugs} from "@/utils/index"
+import { getStrapiURL} from "@/utils/index"
 import config from '@/utils/config'
 import Blocks from "@/components/Blocks"
 import { notFound } from 'next/navigation'

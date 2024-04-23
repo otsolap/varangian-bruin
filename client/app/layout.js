@@ -18,18 +18,16 @@ export default async function RootLayout({ children }) {
 
 
     return (
-      <>
         <html lang="en">
         <body>
-          {/* Layout UI */}
           <Header navigation={navigation} />
-          <main className={'container'}>{children}</main>
+          <main className={'container'}>
+            {children}
+            </main>
           <Footer footer={footer} />
           <MobileFooter navigation={navigation} />
           <div id="modal-root"></div>
         </body>
       </html>
-      </>
-
     )
   }
