@@ -1,6 +1,6 @@
 'use client'
 import React, { useRef } from 'react'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import axios from 'axios'
 import Inputs from '@/components/Inputs'
 import styles from '@/styles/components/form.module.css'
