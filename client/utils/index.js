@@ -58,7 +58,7 @@ import config from '@/utils/config'
   
       return {
         servicesBanner: servicesBannerData.data.attributes.banner ?? null,
-        subscribeForm: subscribeFormData.data.attributes ?? null,
+        subscribeForm: subscribeFormData.data?.attributes ?? null
       };
     } catch (error) {
       console.error('fetch All Data error:', error);

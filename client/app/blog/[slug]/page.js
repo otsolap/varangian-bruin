@@ -22,7 +22,8 @@ async function getContent(params) {
     const resData = await res.json()
 
     return {
-      article: resData.data[0]?.attributes ?? {},
+      title: resData.data[0]?.attributes.title ?? {},
+      blocks: resData.data[0]?.attributes.blocks ?? {},
       category: resData.data[0]?.attributes.category.data[0]?.attributes ?? {},
       author: resData.data[0]?.attributes.author.data?.attributes ?? {},
     }
@@ -34,16 +35,16 @@ async function getContent(params) {
 }
 
 export default async function BlogSlug ({ params }) {
-  const { article, category, author } = await getContent(params)
+  const { title, blocks, category, author } = await getContent(params)
   
   return (
     <>
     <ArticleHeading article={article} category={category} author={author} />
     <div className={styles.wrapper}>
       <article id={'post'} className={styles.article}>
-        <Blocks blocks={article.blocks} />
+        <Blocks blocks={blocks} />
       </article>
-      <HeadingLinks blocks={article.blocks} title={article.title} />
+      <HeadingLinks blocks={blocks} title={title} />
     </div>
     <ArticleFooter author={author} />
   </>

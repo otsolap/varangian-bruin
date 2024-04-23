@@ -15,9 +15,8 @@ import MobileFooter from "components/navigation/MobileFooter";
 export default async function RootLayout({ children }) {
   const global = await fetchGlobalData();
   const { navigation, footer } = global;
-
-
-    return (
+  
+  return (
         <html lang="en">
         <body>
           <Header navigation={navigation} />
@@ -30,4 +29,4 @@ export default async function RootLayout({ children }) {
         </body>
       </html>
     )
-  }
+}
