@@ -1,7 +1,8 @@
+'use client'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBullseye, faCircleNodes, faCube, faPenNib } from "@fortawesome/free-solid-svg-icons";
 import styles from "@/styles/components/mobileNavLinks.module.css";
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Link from "next/link";
 
 

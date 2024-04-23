@@ -1,6 +1,7 @@
+'use client';
 import React, { useState, useEffect } from "react";
 import styles from "@/styles/components/shareButtons.module.css";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLink } from "@fortawesome/free-solid-svg-icons";
 import {

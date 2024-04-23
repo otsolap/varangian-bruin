@@ -1,8 +1,8 @@
 'use client'
 import React, { useEffect } from 'react'
-import ReactDOM from 'react-dom'
+import { createPortal } from "react-dom";
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import styles from '@/styles/components/offcanvas.module.css'
 import useToggle from "@/hooks/useToggle"
 
@@ -52,14 +52,11 @@ const Offcanvas = ({ navigation, show, closeModal }) => {
         </div>
     ) : null;
 
-    if (isBrowser) {
-        return ReactDOM.createPortal(
+    return (isBrowser) ?
+        createPortal(
             modalComponent,
             document.getElementById('modal-root')
-        );
-    } else {
-        return null;
-    }
+        ) : null;
 }
 
 export default Offcanvas;

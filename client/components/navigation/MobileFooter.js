@@ -1,5 +1,6 @@
+'use client'
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Offcanvas from "@/components/navigation/Offcanvas";
 import MobileNavLinks from "@/partials/navigation/MobileNavLinks";
 import MenuButton from "@/partials/navigation/MenuButton";
