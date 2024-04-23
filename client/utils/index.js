@@ -88,32 +88,31 @@ import config from '@/utils/config'
 
   export async function fetchGlobalData() {
     try {
-      const navigationPromise = axios.get(getStrapiURL(`/${config.global.API_NAVIGATION_QUERY}`));
-      const footerPromise = axios.get(getStrapiURL(`/${config.global.API_FOOTER_QUERY}`));
-      const baseSEOPromise = axios.get(getStrapiURL(`/${config.global.API_BASE_SEO_QUERY}`));
-      const analyticsPromise = axios.get(getStrapiURL(`/${config.global.API_ANALYTICS_QUERY}`));
-
+      const urls = [
+        getStrapiURL(`/${config.global.API_NAVIGATION_QUERY}`),
+        getStrapiURL(`/${config.global.API_FOOTER_QUERY}`),
+        getStrapiURL(`/${config.global.API_BASE_SEO_QUERY}`),
+        getStrapiURL(`/${config.global.API_ANALYTICS_QUERY}`)
+      ];
+  
       let navigationResponse, footerResponse, baseSEOResponse, analyticsResponse;
       try {
-        [navigationResponse, footerResponse, baseSEOResponse, analyticsResponse] = await Promise.all([navigationPromise, footerPromise, baseSEOPromise, analyticsPromise]);
+        [navigationResponse, footerResponse, baseSEOResponse, analyticsResponse] = await Promise.all(urls.map(url => fetch(url)));
       } catch (error) {
         console.error('Failed to fetch API data:', error);
       }
-
-      const baseSEOData = baseSEOResponse?.data || null;
-      const analyticsData = analyticsResponse?.data || null;
-      const navigationData = navigationResponse?.data || null;
-      const footerData = footerResponse?.data || null;
-
-
-      const globalData = {
+  
+      const baseSEOData = await baseSEOResponse?.json() || null;
+      const analyticsData = await analyticsResponse?.json() || null;
+      const navigationData = await navigationResponse?.json() || null;
+      const footerData = await footerResponse?.json() || null;
+  
+      return {
         baseSEO: baseSEOData,
         analytics: analyticsData,
         navigation: navigationData,
         footer: footerData
       };
-
-      return globalData;
     } catch (error) {
       console.error('fetch Global Data error:', error);
       return null;

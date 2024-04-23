@@ -7,14 +7,21 @@ import "swiper/css/effect-coverflow";
 import { poppins, hind_guntur } from "@/utils/fonts";
 // Styles
 import "@/styles/globals.css"
+import { fetchGlobalData } from "@/utils/index"
+import Footer from "@/components/navigation/Footer";
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const global = await fetchGlobalData();
+  const { navigation, footer } = global;
+
+
     return (
       <>
         <html lang="en">
         <body>
           {/* Layout UI */}
-          <main>{children}</main>
+          <main className={'container'}>{children}</main>
+          <Footer footer={footer} />
         </body>
       </html>
       </>

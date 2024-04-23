@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from "react"
 import ServicesItem from "@/partials/blocks/ServicesItem"
 import TaxonomyLinks from "@/partials/navigation/TaxonomyLinks"

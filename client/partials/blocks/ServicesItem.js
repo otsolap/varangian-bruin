@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEuroSign, faDollarSign } from "@fortawesome/free-solid-svg-icons";
 
 const ServicesItem = ({ image, title, price, currency, slug, serviceType }) => {
-
   return (
       <article className={styles.item}>
         {image.data &&

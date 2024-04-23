@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from "react"
 import BlogItem from "partials/blocks/BlogItem"
 import TaxonomyLinks from "partials/navigation/TaxonomyLinks"

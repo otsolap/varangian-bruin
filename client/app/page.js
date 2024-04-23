@@ -12,8 +12,6 @@ export default async function Page () {
   )
 }
 
-
-
 async function getContent() {
   try {
     const res = await fetch(getStrapiURL(`/${config.global.API_HOME_CONTENT_QUERY}`));
