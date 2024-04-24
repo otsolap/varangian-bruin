@@ -10,6 +10,7 @@
       "@/styles/*": ["/styles/*"],
       "@/public/*": ["/public/*"],
       "@/pages/*": ["/pages/*"],
+      "@/app/*": ["/app/*"],
     }
   }
 }

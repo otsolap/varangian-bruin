@@ -4,7 +4,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
 // Fonts
-import { poppins, hind_guntur } from "@/utils/fonts";
+import { poppins, hind_guntur } from "@/app/fonts";
 // Styles
 import "@/styles/globals.css"
 import { fetchGlobalData } from "@/utils/index"
@@ -17,7 +17,7 @@ export default async function RootLayout({ children }) {
   const { navigation, footer } = global;
   
   return (
-        <html lang="en">
+        <html lang="en" className={`${hind_guntur.variable} ${poppins.variable}`}>
         <body>
           <Header navigation={navigation} />
           <main className={'container'}>
