@@ -1,7 +1,6 @@
 .section {
   margin: 0 auto;
   width: 100%;
-  padding: var(--spacing-single);
 }
 
 /* Header */
@@ -128,6 +127,7 @@
 
   .wrapper {
     flex-direction: row;
+    align-items: center;
     gap: var(--spacing-double);
   }
 
@@ -144,6 +144,10 @@
   .image {
     object-fit: cover;
     aspect-ratio: 16/9;
+    border-radius: var(--spacing-quarter);
+    width: inherit;
+    height: inherit;
+    box-shadow: var(--spacing-half) var(--spacing-half) 0px 0px var(--brand-500);
   }
 
 }

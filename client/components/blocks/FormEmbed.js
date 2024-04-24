@@ -1,7 +1,6 @@
 'use client'
 import React, { useRef } from 'react'
 import { useRouter } from 'next/navigation';
-import axios from 'axios'
 import Inputs from '@/components/Inputs'
 import styles from '@/styles/components/form.module.css'
 import config from '@/utils/config'
@@ -22,18 +21,18 @@ const FormEmbed = ({ form }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+  
     const formData = {}
-
+  
     if(e.target.honeypot.value !== "") {
       // Form submission was likely by a bot
       return
     }
-
+  
     formRef.current.querySelectorAll('input').forEach(input => {
       const name = input.name
       const value = input.value 
-
+  
       if(name !== 'honeypot')  { 
           formData[name] = value
         }
@@ -42,12 +41,13 @@ const FormEmbed = ({ form }) => {
     const formattedDataString = Object.entries(formData)
     .map(([key, value]) => `<br><strong>label:</strong> ${key}<br><strong>value:</strong> ${value}<br>`)
     .join('')
-
+  
       
     const headers = {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
      }
-
+  
     const data = {
       data: {
         form: form.data.id,
@@ -55,20 +55,20 @@ const FormEmbed = ({ form }) => {
         details: formattedDataString,
       }
     }
-
-    axios.post(getStrapiURL(`/${config.forms.COLLECTIONS_PATH}`), data, { headers })
-      .then((response) => {
-       // Handle successful response
-       console.log(response.data)
-       router.push(button.href)
+  
+    fetch(getStrapiURL(`/${config.forms.COLLECTIONS_PATH}`), {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        router.push(button.href)
       })
       .catch((error) => {
-        const errorMessage =
-          error.response?.data?.error?.message || 'Unknown error. Blame your internet.'
+        const errorMessage = error.message || 'Unknown error. Blame your internet.'
         console.log(errorMessage)
-      })
-      .finally(() => {
-        // Any final cleanup or logic after the request
       })
   }
 
