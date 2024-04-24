@@ -19,6 +19,12 @@ const Header = ({ navigation }) => {
             <p className={styles.slogan}>{global.slogan}</p>
           ) : null}
         </div>
+       {global.button ? (
+          <CustomLink 
+            link={global.button} 
+            className={`${styles.calendar} mobile-only button button--${global.button.selectTheme}`} 
+          />
+        ) : null }
       </header>
       <nav className={styles.navigation}>
         <div className={styles.wrapper}>
