@@ -14,12 +14,13 @@ import MobileFooter from "components/navigation/MobileFooter";
 
 export default async function RootLayout({ children }) {
   const global = await fetchGlobalData();
-  const { navigation, footer } = global;
+  const navigation =  global.navigation.data.attributes;
+  const footer = global.footer.data;
   
   return (
         <html lang="en" className={`${hind_guntur.variable} ${poppins.variable}`}>
         <body>
-          <Header navigation={navigation} />
+          <Header  navigation={navigation}  />
           <main className={'container'}>
             {children}
             </main>
