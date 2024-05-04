@@ -3,23 +3,21 @@ import styles from '@/styles/components/footer.module.css'
 import CustomLink from '@/partials/util/CustomLink'
 
 const Footer = ({ footer }) => {
-  const global = footer && footer.data ? footer.data.attributes : {};
-
   return (
     <>
       <footer className={styles.footer}>
-        {global.blocks ? (
-          <div className={`${styles.columnContainer} ${styles['footerColumns-' + global.blocks.length]}`}>
-            <Blocks blocks={global.blocks} />
+        {footer.blocks ? (
+          <div className={`${styles.columnContainer} ${styles['footerColumns-' + footer.blocks.length]}`}>
+            <Blocks blocks={footer.blocks} />
           </div>
         ) : null}
-        {global.subFooter ? (
+        {footer.subFooter ? (
           <div className={styles.subFooter}>
             <div className={styles.subFooterContent}>
-              <span className={styles.brand}>{global.subFooter.title} &#169; {new Date().getFullYear()} </span> 
+              <span className={styles.brand}>{footer.subFooter.title} &#169; {new Date().getFullYear()} </span> 
               <span className="desktop-only"> &#124;</span> 
-                {global.subFooter.link ?  (
-                  <CustomLink className={styles.legal} link={global.subFooter.link} />
+                {footer.subFooter.link ?  (
+                  <CustomLink className={styles.legal} link={footer.subFooter.link} />
                 ): null}
               </div>
           </div>

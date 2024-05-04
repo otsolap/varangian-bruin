@@ -1,42 +1,32 @@
 import styles from "@/styles/components/header.module.css";
 import Blocks from "@/components/Blocks";
 import CustomLink from "@/partials/util/CustomLink";
+import Brand from "@/components/navigation/Brand";
 
 
 const Header = ({ navigation }) => {
-
-  const global = navigation && navigation.data ? navigation.data.attributes : {};
-  const brand = { href: '/', title: global ? global.title : {} };
-
   return (
     <>
       <header className={styles.header}>
-        <div className={styles.brand}>
-          {global.title ? (
-            <CustomLink className={styles.title} link={brand} />
-          ) : null}
-          {global.slogan ? (
-            <p className={styles.slogan}>{global.slogan}</p>
-          ) : null}
-        </div>
-       {global.button ? (
+        <Brand title={navigation.title} slogan={navigation.slogan} />
+        {navigation.button ? (
           <CustomLink 
-            link={global.button} 
-            className={`${styles.calendar} mobile-only button button--${global.button.selectTheme}`} 
+            link={navigation.button} 
+            className={`${styles.calendar} mobile-only button button--${navigation.button.selectTheme}`} 
           />
         ) : null }
       </header>
       <nav className={styles.navigation}>
         <div className={styles.wrapper}>
-          {global.blocks && (
+          {navigation.blocks && (
             <>
               <div className={styles.menu}>
-                <Blocks blocks={global.blocks} />
+                <Blocks blocks={navigation.blocks} />
               </div>
-              {global.button ? (
+              {navigation.button ? (
                   <CustomLink 
-                    link={global.button} 
-                    className={`${styles.calendar} button button--${global.button.selectTheme}`} 
+                    link={navigation.button} 
+                    className={`${styles.calendar} button button--${navigation.button.selectTheme}`} 
                   />
                 ) : null }
             </>

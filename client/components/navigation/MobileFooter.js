@@ -36,14 +36,13 @@ const MobileFooter = ({ navigation }) => {
         };
     }, [handleScroll, showModal]); 
 
-    const global = navigation && navigation.data ? navigation.data.attributes : {};
     const PRIMARY_PAGES = 3;
 
     return (
         <footer className={`mobile-only ${styles.mobile}`} style={{ opacity: footerOpacity }}>
             <div className={styles.menuWrapper}>
-                <MobileNavLinks blocks={global.blocks.slice(0, PRIMARY_PAGES)} currentPath={router.asPath} closeModal={() => setShowModal(false)} />
-                {global.blocks.length > PRIMARY_PAGES ? (
+                <MobileNavLinks blocks={navigation.blocks.slice(0, PRIMARY_PAGES)} currentPath={router.asPath} closeModal={() => setShowModal(false)} />
+                {navigation.blocks.length > PRIMARY_PAGES ? (
                     <>
                      <MenuButton isMenuOpen={showModal} toggleMenu={() => setShowModal(value => !value)} />
                     <Offcanvas
