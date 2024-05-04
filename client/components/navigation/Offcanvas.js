@@ -9,7 +9,6 @@ import useToggle from "@/hooks/useToggle"
 const Offcanvas = ({ navigation, show, closeModal }) => {
     const [isBrowser, setIsBrowswer] = useToggle(false);
     const router = useRouter();
-    const global = navigation && navigation.data ? navigation.data.attributes : {};
     const AFTER_PRIMARY_PAGES = 3;
     let OffcanvasLinks = null;
 
@@ -23,8 +22,8 @@ const Offcanvas = ({ navigation, show, closeModal }) => {
         await router.push(href);
     };
 
-    if (global && Array.isArray(global.blocks)) {
-      OffcanvasLinks = global.blocks
+    if (navigation && Array.isArray(navigation.blocks)) {
+      OffcanvasLinks = navigation.blocks
         .slice(AFTER_PRIMARY_PAGES)
         .map((block, i) => {
           const { href, title } = block;

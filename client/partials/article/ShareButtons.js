@@ -53,7 +53,7 @@ const ShareButtons = ({ title, settings }) => {
       <h5 className={styles.title}>Share article:</h5>
       <div className={styles.wrapper}>
         {Object.entries(shareMappings).map(([key, { icon, getUrl }]) => (
-          settings[key] && (
+         settings && settings[key] && (
             <a
               key={key}
               href={getUrl(title, url)}

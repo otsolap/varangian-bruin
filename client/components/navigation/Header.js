@@ -1,38 +1,16 @@
 import styles from "@/styles/components/header.module.css";
-import Blocks from "@/components/Blocks";
-import CustomLink from "@/partials/util/CustomLink";
-import Brand from "@/components/navigation/Brand";
+import Brand from "@/partials/navigation/Brand";
+import NavLinks from "@/partials/navigation/NavLinks";
+import MobileHeaderCallToAction from "@/partials/navigation/MobileHeaderCallToAction";
 
-
-const Header = ({ navigation }) => {
+const Header = ({ navigation, blogNavigation }) => {
   return (
     <>
       <header className={styles.header}>
         <Brand title={navigation.title} slogan={navigation.slogan} />
-        {navigation.button ? (
-          <CustomLink 
-            link={navigation.button} 
-            className={`${styles.calendar} mobile-only button button--${navigation.button.selectTheme}`} 
-          />
-        ) : null }
+        <MobileHeaderCallToAction primary={navigation} blog={blogNavigation} />
       </header>
-      <nav className={styles.navigation}>
-        <div className={styles.wrapper}>
-          {navigation.blocks && (
-            <>
-              <div className={styles.menu}>
-                <Blocks blocks={navigation.blocks} />
-              </div>
-              {navigation.button ? (
-                  <CustomLink 
-                    link={navigation.button} 
-                    className={`${styles.calendar} button button--${navigation.button.selectTheme}`} 
-                  />
-                ) : null }
-            </>
-          )}
-        </div>
-      </nav>
+      <NavLinks mainNavigation={navigation} blogNavigation={blogNavigation} />
     </>
   );
 };

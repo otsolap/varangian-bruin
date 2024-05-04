@@ -16,11 +16,12 @@ export default async function RootLayout({ children }) {
   const global = await fetchGlobalData();
   const navigation =  global.navigation.data.attributes;
   const footer = global.footer.data;
+  const blogNavigation = global.blogNavigation.data.attributes;
   
   return (
         <html lang="en" className={`${hind_guntur.variable} ${poppins.variable}`}>
         <body>
-          <Header  navigation={navigation}  />
+          <Header navigation={navigation} blogNavigation={blogNavigation} />
           <main className={'container'}>
             {children}
             </main>

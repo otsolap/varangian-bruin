@@ -70,12 +70,13 @@ import config from '@/utils/config'
         getStrapiURL(`/${config.global.API_NAVIGATION_QUERY}`),
         getStrapiURL(`/${config.global.API_FOOTER_QUERY}`),
         getStrapiURL(`/${config.global.API_BASE_SEO_QUERY}`),
-        getStrapiURL(`/${config.global.API_ANALYTICS_QUERY}`)
+        getStrapiURL(`/${config.global.API_ANALYTICS_QUERY}`),
+        getStrapiURL(`/${config.global.API_BLOG_NAVIGATION_QUERY}`),
       ];
   
-      let navigationResponse, footerResponse, baseSEOResponse, analyticsResponse;
+      let navigationResponse, footerResponse, baseSEOResponse, analyticsResponse, blogNavigationResponse;
       try {
-        [navigationResponse, footerResponse, baseSEOResponse, analyticsResponse] = await Promise.all(urls.map(url => fetch(url)));
+        [navigationResponse, footerResponse, baseSEOResponse, analyticsResponse, blogNavigationResponse] = await Promise.all(urls.map(url => fetch(url)));
       } catch (error) {
         console.error('Failed to fetch API data:', error);
       }
@@ -84,12 +85,14 @@ import config from '@/utils/config'
       const analyticsData = await analyticsResponse?.json() || null;
       const navigationData = await navigationResponse?.json() || null;
       const footerData = await footerResponse?.json() || null;
+      const blogNavigationData = await blogNavigationResponse?.json() || null;
   
       return {
         baseSEO: baseSEOData,
         analytics: analyticsData,
         navigation: navigationData,
-        footer: footerData
+        footer: footerData,
+        blogNavigation: blogNavigationData
       };
     } catch (error) {
       console.error('fetch Global Data error:', error);

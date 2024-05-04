@@ -11,7 +11,7 @@ export async function generateStaticParams() {
   const slugs = resData.data.map(item => item.attributes.slug)
   
   return slugs.map(slug => ({
-  params: { slug: slug }
+    params: { slug: slug }
   }))
   
 }

@@ -84,14 +84,9 @@ const getBlockComponent = ({ __component, ...rest }, index) => {
 
   return Block ? (
       <Block key={`index-${index}`} {...rest} />
-   ) : null;
-};
+   ) : null
+}
 
-const Blocks = ({ blocks }) => {
-  return (
-      blocks.map(getBlockComponent)
-    )
-  ;
-};
+const Blocks = ({ blocks }) => { return blocks.map(getBlockComponent) }
 
-export default Blocks;
+export default Blocks
