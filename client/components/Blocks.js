@@ -87,6 +87,12 @@ const getBlockComponent = ({ __component, ...rest }, index) => {
    ) : null
 }
 
-const Blocks = ({ blocks }) => { return blocks.map(getBlockComponent) }
+const Blocks = ({ blocks }) => {
+  if (!Array.isArray(blocks)) {
+    return null;
+  }
+
+  return blocks.map(getBlockComponent);
+}
 
 export default Blocks

@@ -3,14 +3,19 @@ import Brand from "@/partials/navigation/Brand";
 import NavLinks from "@/partials/navigation/NavLinks";
 import MobileHeaderCallToAction from "@/partials/navigation/MobileHeaderCallToAction";
 
-const Header = ({ navigation, blogNavigation }) => {
+const Header = ({ navigation, blogNavigation, servicePaths, blogPaths }) => {
   return (
     <>
       <header className={styles.header}>
         <Brand title={navigation.title} slogan={navigation.slogan} />
         <MobileHeaderCallToAction primary={navigation} blog={blogNavigation} />
       </header>
-      <NavLinks mainNavigation={navigation} blogNavigation={blogNavigation} />
+      <NavLinks 
+        mainNavigation={navigation} 
+        blogNavigation={blogNavigation}
+        blogPaths={blogPaths}
+        servicePaths={servicePaths}
+      />
     </>
   );
 };

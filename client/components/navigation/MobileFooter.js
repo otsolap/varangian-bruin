@@ -44,7 +44,7 @@ const MobileFooter = ({ navigation }) => {
                 <MobileNavLinks blocks={navigation.blocks.slice(0, PRIMARY_PAGES)} currentPath={router.asPath} closeModal={() => setShowModal(false)} />
                 {navigation.blocks.length > PRIMARY_PAGES ? (
                     <>
-                     <MenuButton isMenuOpen={showModal} toggleMenu={() => setShowModal(value => !value)} />
+                    <MenuButton isMenuOpen={showModal} toggleMenu={() => setShowModal(value => !value)} />
                     <Offcanvas
                     navigation={navigation}
                     show={showModal}

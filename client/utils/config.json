@@ -23,6 +23,7 @@
     "services": {
         "API_ARCHIVE_PAGE_QUERY":"api/service-archive-page?=&populate=seo,seo.imageBlock.image,hero,hero.buttons,hero.image",
         "SERVICES_PATH":"services",
+        "API_SERVICES_PATH_QUERY":"api/services",
         "SERVICE_TYPES_PATH":"service-types",
         "API_SERVICE_TYPES_PATH_QUERY": "api/service-types",
         "API_SERVICE_TYPES_CONTENT_QUERY":"api/service-types?&populate=services,services.image,services.service_type,hero,hero.buttons,hero.image,seo.imageBlock.image",
@@ -32,6 +33,7 @@
     "blog": {
         "API_ARCHIVE_PAGE_QUERY":"api/article-archive-page?=&populate=seo,seo.imageBlock.image,hero,hero.buttons,hero.image, seo,seo.imageBlock.image",
         "BLOG_PATH":"blog",
+        "API_BLOG_PATH_QUERY": "api/articles",
         "CATEGORY_PATH":"category",
         "API_CATEGORY_PATH_QUERY": "api/categories",
         "API_AUTHORS_CONTENT_QUERY":"api/authors?populate=image,socialMedia",
