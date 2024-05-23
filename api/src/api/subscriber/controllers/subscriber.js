@@ -2,7 +2,6 @@
 
 const axios = require('axios');
 const { createCoreController } = require('@strapi/strapi').factories;
-const token = process.env.API_TOKEN
 
 module.exports = createCoreController('api::subscriber.subscriber', ({ strapi }) => ({
   /**
@@ -12,7 +11,7 @@ module.exports = createCoreController('api::subscriber.subscriber', ({ strapi })
     try {
       // Fetch the form configuration
       const headers = {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${process.env.API_TOKEN}`
        }
 
       const formResponse = await axios.get(`${process.env.PUBLIC_API_URL}/api/subscribe-form`, { headers });
