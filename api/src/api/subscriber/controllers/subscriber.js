@@ -14,7 +14,7 @@ module.exports = createCoreController('api::subscriber.subscriber', ({ strapi })
         Authorization: `Bearer ${process.env.API_TOKEN}`
        }
 
-      const formResponse = await axios.get(`${process.env.PUBLIC_API_URL}/api/subscribe-form`, { headers });
+      const formResponse = await axios.get(`${process.env.PUBLIC_API_URL}/api/subscribe-form`);
       const formID = parseInt(formResponse.data.data.attributes.formID);
 
       // Extract the request data
