@@ -1,5 +1,4 @@
 const axios = require('axios');
-const token = process.env.API_TOKEN
 
 module.exports = {
   // Schedule: Once a day
@@ -8,8 +7,8 @@ module.exports = {
       console.log('Active subscriber data fetched from ConvertKit');
       // Fetch the form ID
       const headers = {
-        Authorization: `Bearer ${token}`
-       }
+        Authorization: `Bearer ${process.env.API_TOKEN}`
+      }
 
       const formResponse = await axios.get(`${process.env.PUBLIC_API_URL}/api/subscribe-form`, { headers });
       const formID = parseInt(formResponse.data.data.attributes.formID);
