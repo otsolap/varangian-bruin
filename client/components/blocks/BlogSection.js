@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import styles from "@/styles/components/articleAndServices.module.css";
 import BlogItem from "@/partials/blocks/BlogItem";
 import Link from "next/link";
-import axios from "axios";
 import { getStrapiURL } from "@/utils/index";
 import config from '@/utils/config'
 
@@ -12,8 +11,9 @@ export default function BlogSection({ title, description, selectTheme, blogs, fi
 
   const fetchData = async () => {
     try {
-      const res = await axios.get(getStrapiURL(`/${config.blocks.CONTENT_BLOG_SECTION_LATEST_QUERY}`));
-      setItems(res.data);
+      const res = await fetch(getStrapiURL(`/${config.blocks.CONTENT_BLOG_SECTION_LATEST_QUERY}`));
+      const data = await res.json();
+      setItems(data);
     } catch (error) {
       console.error(error);
     }
@@ -26,6 +26,7 @@ export default function BlogSection({ title, description, selectTheme, blogs, fi
   }, [filter]);
 
   const blogItems = filter === "latest" ? items : blogs;
+
 
   return (
     <section className={selectTheme == 'primary' ? styles.bgPrimary : styles.bgSecondary}>

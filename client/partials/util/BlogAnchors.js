@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import styles from "@/styles/components/blogAnchor.module.css";
 import Link from "next/link";
-import axios from "axios";
 import { getStrapiURL } from "@/utils/index";
 import config from '@/utils/config'
 
-const BlogAnchors = ({ blogAnchors}) => {
+const BlogAnchors = ({ blogAnchors }) => {
   const [items, setItems] = useState([]);
   let { blogs, filter } = blogAnchors
 
   const fetchData = async () => {
     try {
-      const res = await axios.get(getStrapiURL(`/${config.blocks.CONTENT_BLOG_SECTION_LATEST_QUERY}`));
-      setItems(res.data);
+      const res = await fetch(getStrapiURL(`/${config.blocks.CONTENT_BLOG_SECTION_LATEST_QUERY}`));
+      const data = await res.json();
+      setItems(data);
     } catch (error) {
       console.error(error);
     }
@@ -24,21 +24,20 @@ const BlogAnchors = ({ blogAnchors}) => {
     }
   }, [filter]);
 
-
   const blogItems = filter === "latest" ? items : blogs;
 
   return (
-      blogItems?.data?.length ? (
-        <div className={styles.wrapper}>
-          {blogItems.data.map((item, i) => {
-            return (
-              <Link  className={styles.link} key={i} href={`/${config.blog.BLOG_PATH}/${item.attributes.slug}`}>
-                {item.attributes.title}
-                </Link>
-            );
-          })}
-        </div>
-      ) : null
+    blogItems?.data?.length ? (
+      <div className={styles.wrapper}>
+        {blogItems.data.map((item, i) => {
+          return (
+            <Link className={styles.link} key={i} href={`/${config.blog.BLOG_PATH}/${item.attributes.slug}`}>
+              {item.attributes.title}
+            </Link>
+          );
+        })}
+      </div>
+    ) : null
   );
 };
 
