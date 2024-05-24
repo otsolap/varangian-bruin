@@ -1,7 +1,6 @@
 const axios = require('axios');
 const token = process.env.API_TOKEN
 
-
 module.exports = {
   // Schedule: Once a day
   '0 1 * * *': async () => {
@@ -27,33 +26,42 @@ module.exports = {
         }
       });
 
-      // Process each subscription
-      for (const subscription of subscribersResponse.data.subscriptions) {
-        const email = subscription.subscriber.email_address;
-        const convertKitID = subscription.subscriber.id;
+      // Create a map of active ConvertKit subscribers
+      const activeSubscribers = new Map(subscribersResponse.data.subscriptions.map(sub => [sub.subscriber.id, sub.subscriber.email_address]));
 
-        // Check if the subscriber already exists in Strapi
-        const existingSubscriber = await strapi.entityService.findMany('api::subscriber.subscriber', {
-          filters: { convertkitID: convertKitID }
-        });
+      // Fetch all subscribers from Strapi
+      const strapiSubscribers = await strapi.entityService.findMany('api::subscriber.subscriber');
 
-        // If not, create a new subscriber
-        if (existingSubscriber.length === 0) {
-          await strapi.service('api::subscriber.subscriber').createAndPublish({
-            convertkitID: convertKitID,
-            email: email,
-            // Add other relevant fields
-          });
-        } else {
-          // Update existing subscriber if needed (for instance, if email changes)
-          await strapi.entityService.update('api::subscriber.subscriber', existingSubscriber[0].id, {
+      // Process each Strapi subscriber
+      for (const subscriber of strapiSubscribers) {
+        const convertKitID = subscriber.convertkitID;
+        const email = activeSubscribers.get(convertKitID);
+
+        // If the subscriber still exists in ConvertKit, update it
+        if (email) {
+          await strapi.entityService.update('api::subscriber.subscriber', subscriber.id, {
             data: {
               email: email,
               // Update other relevant fields if necessary
             }
           });
+          // Remove the subscriber from the map of active subscribers
+          activeSubscribers.delete(convertKitID);
+        } else {
+          // If the subscriber no longer exists in ConvertKit, delete it from Strapi
+          await strapi.entityService.delete('api::subscriber.subscriber', subscriber.id);
         }
       }
+
+      // Any remaining subscribers in the map of active subscribers are new, so create them in Strapi
+      for (const [convertKitID, email] of activeSubscribers) {
+        await strapi.service('api::subscriber.subscriber').createAndPublish({
+          convertkitID: convertKitID,
+          email: email,
+          // Add other relevant fields
+        });
+      }
+
       console.log('Subscribers updated from ConvertKit');
     } catch (error) {
       console.error('Error updating subscribers from ConvertKit:', error.message);
