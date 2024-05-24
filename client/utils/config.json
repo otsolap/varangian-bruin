@@ -48,7 +48,7 @@
     },
     "forms": {
         "COLLECTIONS_PATH":"api/contacts",
-        "SUBSCRIPTION_PATH":"api/subscribers"
+        "SUBSCRIPTION_PATH":"api/subscribers/webhook/activate"
     },
     "revalidate": {
         "PAGES_PATH:": "api/pages",

@@ -15,30 +15,19 @@ const FormEmbed = ({ title, description, email, formID }) => {
     return null
   }
 
-  const token = process.env.NEXT_PUBLIC_API_TOKEN
-
   const handleSubmit = async (e) => {
     e.preventDefault()
   
-    if(e.target.honeypot.value !== "") {
-      // Form submission was likely by a bot
-      return
-    }
-  
-    const subscriptionEmail = formRef.current.querySelector('input[name="email"]').value;
+    // Form submission was likely by a bot
+    if(e.target.honeypot.value !== "") return
   
     const headers = {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
     }
   
     const data = {
-      data: {
-        subscribeFormId: formID,
-        email: subscriptionEmail,
-      }
+      email: formRef.current.querySelector('input[name="email"]').value
     }
-  
-    console.log(data)
   
     fetch(getStrapiURL(`/${config.forms.SUBSCRIPTION_PATH}`), {
       method: 'POST',

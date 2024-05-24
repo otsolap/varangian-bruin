@@ -7,7 +7,6 @@ import config from '@/utils/config'
 import { getStrapiURL } from "utils"
 import NextImage from "@/partials/util/NextImage";
 
-
 const FormEmbed = ({ form }) => {
   const formRef = useRef(null)
   const router = useRouter()
@@ -17,17 +16,14 @@ const FormEmbed = ({ form }) => {
   }
 
   const { formID, title, description, showLabels, inputs, image, button } = form.data.attributes
-  const token = process.env.NEXT_PUBLIC_API_TOKEN
 
   const handleSubmit = async (e) => {
     e.preventDefault()
   
     const formData = {}
   
-    if(e.target.honeypot.value !== "") {
-      // Form submission was likely by a bot
-      return
-    }
+    // Form submission was likely by a bot
+    if(e.target.honeypot.value !== "") return
   
     formRef.current.querySelectorAll('input').forEach(input => {
       const name = input.name
@@ -44,7 +40,7 @@ const FormEmbed = ({ form }) => {
   
       
     const headers = {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
       'Content-Type': 'application/json'
      }
   
@@ -63,7 +59,6 @@ const FormEmbed = ({ form }) => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         router.push(button.href)
       })
       .catch((error) => {
