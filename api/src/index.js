@@ -1,6 +1,6 @@
 'use strict';
 
-const axios = require('axios'); // Ensure axios is installed and required
+const axios = require('axios');
 
 module.exports = {
   /**
@@ -46,7 +46,6 @@ module.exports = {
  */
 async function setupConvertKitWebhook(formID, strapi) {
   try {
-    // Define the webhook URL and payload (modify according to your needs)
     const webhookUrl = `https://api.convertkit.com/v3/forms/${formID}/webhooks`;
     const payload = {
       webhook: {
@@ -60,7 +59,7 @@ async function setupConvertKitWebhook(formID, strapi) {
     const response = await axios.post(webhookUrl, payload, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.CONVERTKIT_API_KEY}` // Ensure your ConvertKit API key is set in the environment
+        'Authorization': `Bearer ${process.env.CONVERTKIT_API_KEY}`
       }
     });
 

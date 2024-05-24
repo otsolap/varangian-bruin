@@ -8,8 +8,6 @@ import Banner from "@/components/blocks/Banner"
 import SubscribeForm from "components/blocks/SubscribeForm";
 import axios from 'axios'
 import ErrorPage from "next/error"
-import config from '@/utils/config';
-
 // The file is called [[...slug]].js because we're using Next's
 // optional catch all routes feature. See the related docs:
 // https://nextjs.org/docs/routing/dynamic-routes#optional-catch-all-routes

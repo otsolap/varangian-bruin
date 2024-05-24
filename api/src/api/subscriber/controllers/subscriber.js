@@ -2,7 +2,6 @@
 
 const axios = require('axios');
 const { createCoreController } = require('@strapi/strapi').factories;
-const token = process.env.API_TOKEN
 
 module.exports = createCoreController('api::subscriber.subscriber', ({ strapi }) => ({
   /**
@@ -11,11 +10,7 @@ module.exports = createCoreController('api::subscriber.subscriber', ({ strapi })
   async create(ctx) {
     try {
       // Fetch the form configuration
-      const headers = {
-        Authorization: `Bearer ${token}`
-       }
-
-      const formResponse = await axios.get(`${process.env.PUBLIC_API_URL}/api/subscribe-form`, { headers });
+      const formResponse = await axios.get(`${process.env.PUBLIC_API_URL}/api/subscribe-form`);
       const formID = parseInt(formResponse.data.data.attributes.formID);
 
       // Extract the request data
@@ -30,6 +25,7 @@ module.exports = createCoreController('api::subscriber.subscriber', ({ strapi })
       const convertKitData = {
         email: requestData.email,
         api_key: process.env.CONVERTKIT_API_KEY,
+        // Add any other fields required by ConvertKit
       };
 
       // Send data to ConvertKit
@@ -57,4 +53,3 @@ module.exports = createCoreController('api::subscriber.subscriber', ({ strapi })
     }
   },
 }));
-

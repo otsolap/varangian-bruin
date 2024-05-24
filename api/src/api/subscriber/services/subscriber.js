@@ -1,12 +1,12 @@
 'use strict';
 
 /**
- * subscriber service
+ * subscriber service.
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::subscriber.subscriber', ({ strapi }) => ({
+module.exports = createCoreService('api::subscriber.subscriber', ({ strapi }) =>  ({
   async createAndPublish(data) {
     try {
       const entry = await strapi.entityService.create('api::subscriber.subscriber', { data });
@@ -19,3 +19,4 @@ module.exports = createCoreService('api::subscriber.subscriber', ({ strapi }) =>
     }
   },
 }));
+
