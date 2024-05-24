@@ -7,7 +7,7 @@ module.exports = {
       console.log('Active subscriber data fetched from ConvertKit');
       // Fetch the form ID
       const headers = {
-        Authorization: `Bearer ${process.env.API_TOKEN}`
+        Authorization: `Bearer ${process.env.API_TOKEN_SALT}`
       }
 
       const formResponse = await axios.get(`${process.env.PUBLIC_API_URL}/api/subscribe-form`, { headers });
