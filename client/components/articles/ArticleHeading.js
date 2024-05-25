@@ -18,7 +18,13 @@ const ArticleHeading = ({ article, category, author }) => {
                     <article className={styles.author}>
                     {author.image &&
                     <figure className={styles.authorImageContainer}>
-                        <NextImage image={author.image} className={styles.authorImage} />
+                        <NextImage 
+                        height={80}
+                        width={80}
+                        sizes="80px"
+                        image={author.image} 
+                        className={styles.authorImage} 
+                        />
                     </figure>
                     }
                     <div className={styles.column}>
@@ -30,7 +36,13 @@ const ArticleHeading = ({ article, category, author }) => {
         </div>
         {article.image.data && 
             <figure className={styles.imageContainer}>
-                <NextImage image={article.image} className={styles.image} />
+                <NextImage 
+                image={article.image} 
+                className={styles.image} 
+                height={500}
+                width={668}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
             </figure>
         }
   </header>

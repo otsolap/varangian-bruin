@@ -8,7 +8,14 @@ const ArticleFooter = ({ author }) => {
       <footer className={styles.footer}>
         <div className={styles.column}>
             <figure className={styles.imageContainer}>
-                <NextImage image={author.image} className={styles.image} />
+                <NextImage 
+                  image={author.image} 
+                  alt={author.name || 'Author Image'}
+                  height={500}
+                  width={668}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className={styles.image}
+                   />
             </figure>
         </div>
         <div className={styles.column}>

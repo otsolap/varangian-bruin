@@ -11,7 +11,13 @@ const ServicesItem = ({ image, title, price, currency, slug, serviceType }) => {
         {image.data &&
             <figure className={styles.imageContainer}>
                 <Link aria-label={`Learn more about ${title}`} className={styles.imageLink}  href={`/${config.services.SERVICES_PATH}/${slug}`}>
-                  <NextImage image={image} sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" className={styles.image}/>
+                  <NextImage 
+                  image={image} 
+                  height={216}
+                  width={400}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" 
+                  className={styles.image}
+                  />
                 </Link>
             </figure>
         }

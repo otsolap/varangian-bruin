@@ -20,6 +20,7 @@ const Cards = ({ title, description, cards }) => {
                     <NextImage
                       width={150}
                       height={150}
+                      sizes="150px"
                       image={item.image}
                       className={styles.image}
                     />

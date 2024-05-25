@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { getStrapiMedia } from 'utils/index';
 
-const NextImage = ({ image, width=500, height=500, priority = false, sizes = '100vw', alt="", className }) => {
+const NextImage = ({ image, width=668, height=500, priority = false, sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"', alt="", quality=75, className }) => {
   if (!image?.data) {
     return null;
   }
@@ -20,6 +20,7 @@ const NextImage = ({ image, width=500, height=500, priority = false, sizes = '10
       width={width}
       height={height}
       priority={priority}
+      quality={quality}
       sizes={sizes}
       className={className || ''}
       placeholder="blur"

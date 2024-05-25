@@ -22,7 +22,13 @@ const Accordion = ({ title, description, image, accordions }) => {
             )}
             {image?.data && (
               <figure className={styles.imageContainer}>
-                <NextImage className={styles.image} image={image} />
+                <NextImage 
+                className={styles.image} 
+                image={image} 
+                height={500}
+                width={668}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
               </figure>
             )}
         </div>

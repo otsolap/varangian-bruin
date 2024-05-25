@@ -19,6 +19,7 @@ const MediaMix = ({ mediaMixItems }) => {
                     <NextImage
                       image={item.image}
                       className={styles.image}
+                      height={500}
                       width={668}
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />

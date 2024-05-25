@@ -13,6 +13,7 @@ const Banner = ({ title, description, image, button, selectTheme }) => {
               image={image}
               width={150}
               height={150}
+              sizes="150px"
             />
           </figure>
         )}
