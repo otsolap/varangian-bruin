@@ -3,8 +3,6 @@ import { revalidatePath } from 'next/cache';
 import config from '@/utils/config'
 import { getStrapiURL } from "@/utils/index"
 
-const REVALIDATION_TOKEN = process.env.NEXT_REVALIDATION_TOKEN;
-
 export const dynamic = 'auto' // https://www.reddit.com/r/nextjs/comments/14iu6td/revalidatepath_not_updating_generatestaticparams/
 
 export async function POST(request) {
@@ -13,7 +11,7 @@ export async function POST(request) {
     const requestHeaders = new Headers(request.headers)
     const revalidateWebhook= requestHeaders.get('x-strapi-revalidate-webhook')
 
-    if(revalidateWebhook !== REVALIDATION_TOKEN) {
+    if(revalidateWebhook !== process.env.NEXT_REVALIDATION_TOKEN) {
         return Response.status(401).json({ message: 'Invalid token', now: Date.now(), revalidated: false, })  
     }
 
