@@ -22,9 +22,11 @@ const ServicesItem = ({ image, title, price, currency, slug, serviceType }) => {
             </figure>
         }
         {title && 
-          <Link href={`/${config.services.SERVICES_PATH}/${slug}`}>
-              <h3 className={styles.title}>{title}</h3>
-          </Link>
+          <div className={styles.itemContent}>
+            <Link href={`/${config.services.SERVICES_PATH}/${slug}`}>
+                <h3 className={styles.title}>{title}</h3>
+            </Link>
+          </div>
         }
         {serviceType?.data || price? (
           <footer className={`${styles.footer} ${styles.footerRow}`}>
