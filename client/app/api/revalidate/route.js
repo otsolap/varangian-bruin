@@ -10,6 +10,8 @@ export async function POST(request) {
 
     const requestHeaders = new Headers(request.headers)
     const revalidateWebhook= requestHeaders.get('x-strapi-revalidate-webhook')
+    console.log(revalidateWebhook)
+    console.log(process.env.NEXT_REVALIDATION_TOKEN)
 
     if(revalidateWebhook !== process.env.NEXT_REVALIDATION_TOKEN) {
         return Response.status(401).json({ message: 'Invalid token', now: Date.now(), revalidated: false, })  
