@@ -10,8 +10,6 @@ export async function POST(request) {
 
     const requestHeaders = new Headers(request.headers)
     const revalidateWebhook= requestHeaders.get('x-strapi-revalidate-webhook')
-    console.log(revalidateWebhook)
-    console.log(process.env.NEXT_REVALIDATION_TOKEN)
 
     if(revalidateWebhook !== process.env.NEXT_REVALIDATION_TOKEN) {
         return Response.status(401).json({ message: 'Invalid token', now: Date.now(), revalidated: false, })  
@@ -27,7 +25,7 @@ export async function POST(request) {
         case 'page':
             path = `/${slug}`;
             break;
-        case 'articlea-archive-page':
+        case 'article-archive-page':
             path = '/blog';
             break;
         case 'article':
@@ -48,33 +46,31 @@ export async function POST(request) {
         case 'author':
         case 'blog-navigation':
         case 'newsletter-banner':
-            await revalidatePaths(getAllArticles, `all articles due to model: ${model}`);
-            break;
+            return await revalidatePaths(getAllArticles, `all articles due to model: ${model}`);
         case 'base-seo':
         case 'footer':
         case 'navigation':
-            await revalidatePaths(getAllPages, `entire app due to model: ${model}`);
-            break;
+            return revalidatePaths(getAllPages, `entire app due to model: ${model}`);
         case 'services-banner':
-            await revalidatePaths(getPagesWithServicesBanner, `all pages with services banner due to model: ${model}`);
-            break;
+            return await revalidatePaths(getPagesWithServicesBanner, `all pages with services banner due to model: ${model}`);
         case 'subscribe-form':
-            await revalidatePaths(getPagesWithSubscriptionForm, `all pages with subscription form due to model: ${model}`);
-            break;
+            return revalidatePaths(getPagesWithSubscriptionForm, `all pages with subscription form due to model: ${model}`);
         default:
-            return Response.status(400).json({ revalidated: false, message: 'Invalid model for revalidation.' });
+            return Response.json({ revalidated: false, message: 'Invalid model for revalidation.' });
     }
     
     if (path) {
+        console.log('path', path)
         try {
             await revalidatePath(path);
             console.log(`Successfully revalidated ${model} with slug: ${slug}`);
             return Response.json({ revalidated: true, path, now: Date.now(), });
         } catch (error) {
             console.error("Error during revalidation:", error.message);
-            return Response.status(500).json({revalidated: false, now: Date.now(), message: error.message });
+            return Response.json({revalidated: false, now: Date.now(), message: error.message });
         }
     }
+
 }
 
 async function revalidatePaths(fetchPathsFunction, successMessage) {
@@ -87,31 +83,38 @@ async function revalidatePaths(fetchPathsFunction, successMessage) {
         return Response.json({ revalidated: true, paths, now: Date.now(), });
     } catch (error) {
         console.error("Error during revalidation:", error.message);
-        return Response.status(500).json({ revalidated: false, now: Date.now(), message: error.message });
+        return Response.json({ revalidated: false, now: Date.now(), message: error.message });
     }
 }
 
 async function getAllPages() {
     try {
-        const responses = await Promise.all([
+        console.log(getStrapiURL(`/${config.revalidate.PAGES_PATH}`))
+        console.log(getStrapiURL(`/${config.revalidate.BLOG_PATH}`))
+        console.log(getStrapiURL(`/${config.revalidate.SERVICES_PATH}`))
+        const urls = [
             fetch(getStrapiURL(`/${config.revalidate.PAGES_PATH}`)),
-            fetch(getStrapiURL(`/${config.revalidate.ARTICLES_PATH}`)),
+            fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`)),
             fetch(getStrapiURL(`/${config.revalidate.SERVICES_PATH}`)),
-        ]);
+        ]
 
+        const responses = await Promise.all(urls);
         const data = await Promise.all(responses.map(response => response.json()));
+
+        const mergedData = [].concat(...data);
 
         const types = ['page', 'article', 'service'];
 
-        const routes = data.flatMap((item, index) => {
+        const routes = mergedData.flatMap((item, index) => {
             const slugs = item.data.map(item => item.attributes.slug);
             const type = types[index];
+            console.log('type', type);
             const prefix = getRoutePrefix(type);
             return slugs.map(slug => {
                 if (type === 'page' && slug === '/') {
                     return '/';
                 }
-                return `${prefix}/${slug}`;
+                return `${prefix}${slug}`;
             });
         });
 
@@ -122,16 +125,14 @@ async function getAllPages() {
     }
 }
 
-
 async function getAllArticles() {
     try {
-        const response = await fetch(getStrapiURL(`/${config.revalidate.ARTICLES_PATH}`));
+        const response = await fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`));
         const data = await response.json();
         const slugs = data.data.map(item => item.attributes.slug);
 
-        const routes = slugs.map(slug => `/blog/${slug}`);
+        return slugs.map(slug => `/blog/${slug}`);
 
-        return routes;
     } catch (error) {
         console.error("Error during fetching articles:", error.message);
         return []; // Return an empty array in case of error
@@ -142,45 +143,38 @@ async function getPagesWithSubscriptionForm() {
     try {
         const response = await fetch(getStrapiURL(`/${config.revalidate.SUBSCRIPTION_FORM_PATH}`));
         const data = await response.json();
-    
-        const routes = data.flatMap((item, index) => {
-            const slugs = item.data.map(item => item.attributes.slug);
-            return slugs.map(slug => {
-                if (slug === '/') {
-                    return '/';
-                }
-                return `/${slug}`;
-            });
-        });
-    
-        return routes;
-    } catch (error) {
-        console.error("Error during fetching pages:", error.message);
-        return []; // Return an empty array in case of error
-    }
-    }
-    
-    
-    
-async function getPagesWithServicesBanner() {
-    try {
-        const response = await fetch(getStrapiURL(`${config.revalidate.SERVICES_BANNER_PATH}`));
-        const data = await response.json();
+        const slugs = data.data.map(item => item.attributes.slug);
 
-        const routes = data.flatMap((item) => {
-            const slugs = item.data.map(item => item.attributes.slug);
-            return slugs.map(slug => {
-                if (slug === '/') {
-                    return '/';
-                }
-                return `/${slug}`;
-            });
-        });
-
-        return routes;
+        return slugs.map(slug => `/${slug}`);
     } catch (error) {
         console.error("Error during fetching pages:", error.message);
         return []; // Return an empty array in case of error
     }
 }
     
+async function getPagesWithServicesBanner() {
+    try {
+        const response = await fetch(getStrapiURL(`/${config.revalidate.SERVICES_BANNER_PATH}`));
+        const data = await response.json();
+        const slugs = data.data.map(item => item.attributes.slug);
+
+        return slugs.map(slug => `/${slug}`);
+
+    } catch (error) {
+        console.error("Error during fetching pages:", error.message);
+        return []; // Return an empty array in case of error
+    }
+}
+    
+function getRoutePrefix(type) {
+    switch (type) {
+        case 'page':
+            return '/';
+        case 'article':
+            return '/blog/';
+        case 'service':
+            return '/services/';
+        default:
+            return '';
+    }
+}

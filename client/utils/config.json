@@ -51,7 +51,7 @@
         "SUBSCRIPTION_PATH":"api/subscribers/webhook/activate"
     },
     "revalidate": {
-        "PAGES_PATH:": "api/pages",
+        "PAGES_PATH": "api/pages",
         "BLOG_PATH": "api/articles",
         "SERVICES_PATH": "api/services",
         "SERVICES_BANNER_PATH": "api/pages?populate=showServicesBanner&filters[showServicesBanner][$eq]=true",
