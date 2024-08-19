@@ -1,10 +1,9 @@
-import { getStrapiURL, fetchBannerData } from "@/utils/index"
+import { getStrapiURL, fetchBannerData, generateOpenGraphImages } from "@/utils/index"
 import config from '@/utils/config'
 import Blocks from "@/components/Blocks"
 import { notFound } from 'next/navigation'
 import Banner from "@/components/blocks/Banner"
 import SubscribeForm from "components/blocks/SubscribeForm";
-import { generateOpenGraphImages } from "@/utils/index"
 
 export async function generateStaticParams() {
   const res =  await fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}`))
@@ -34,6 +33,40 @@ async function getContent(params) {
   }
 }
 
+export async function generateMetadata({ params }) {
+  const pageUrl = `/${params.slug}`
+  const { meta } = await getContent(params)
+  
+  if(!meta || Object.keys(meta).length === 0) return null;
+
+  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.attributes?.formats)
+
+  return {
+    robots: {
+      index:  meta.preventIndexing,
+      follow: meta.preventIndexing,
+      googleBot: {
+        index: meta.preventIndexing,
+        follow: meta.preventIndexing
+      }
+    },
+    title: {
+      default: meta.title,
+    },
+    description: meta.description,
+    keywords: [meta.keywords],
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: pageUrl,
+      images: ogImages,
+    },
+    alternates: {
+      canonical: pageUrl
+    }
+  }
+}
+
 export default async function PageSlug({ params }) {
   const { blocks, showServicesBanner, showSubscribeForm } = await getContent(params)
   const banners = await fetchBannerData();
@@ -46,32 +79,4 @@ export default async function PageSlug({ params }) {
     {showSubscribeForm && <SubscribeForm {...subscribeForm} />}
     </>
   )
-}
-
-export async function generateMetadata({ params }) {
-  const pageUrl = `/${params.slug}`
-  const { meta } = await getContent(params)
-  
-  if(!meta) return null;
-
-  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.attributes?.formats)
-
-  return {
-    title: meta.title,
-    description: meta.description,
-    keywords: [meta.keywords],
-    openGraph: {
-      title: {
-        default: meta.title,
-        template: `%s — ${meta.title}`
-      },
-      description: meta.description,
-      url: pageUrl,
-      images: ogImages,
-    },
-    alternates: {
-      canonical: pageUrl
-    }
-  }
-
 }

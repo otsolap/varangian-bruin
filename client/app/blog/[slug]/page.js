@@ -6,6 +6,7 @@ import ArticleFooter from "@/components/articles/ArticleFooter";
 import HeadingLinks from "@/partials/article/HeadingLinks";
 import { notFound } from 'next/navigation'
 import styles from '@/styles/pages/blog.module.css'
+import { generateOpenGraphImages } from "@/utils/index"
 
 export async function generateStaticParams() {
   const res =  await fetch(getStrapiURL(`/api/articles`))
@@ -22,6 +23,7 @@ async function getContent(params) {
     const resData = await res.json()
 
     return {
+      meta: resData.data[0]?.attributes.seo ?? {},
       article: resData.data[0]?.attributes ?? {},
       blocks: resData.data[0]?.attributes.blocks ?? {},
       category: resData.data[0]?.attributes.category.data[0]?.attributes ?? {},
@@ -31,6 +33,32 @@ async function getContent(params) {
   } catch (error) {
     console.error('Error:', error);
     notFound()
+  }
+}
+
+export async function generateMetadata({ params }) {
+  const pageUrl = `/blog/${params.slug}`
+  const { meta, author } = await getContent(params)
+  
+  if(!meta || Object.keys(meta).length === 0) return null;
+
+  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.attributes?.formats)
+
+  return {
+    title: meta.title,
+    description: meta.description,
+    authors: [{ name: author.title }],
+    keywords: [meta.keywords],
+    publisher: 'Varangian Venture',
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: pageUrl,
+      images: ogImages,
+    },
+    alternates: {
+      canonical: pageUrl
+    }
   }
 }
 

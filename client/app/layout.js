@@ -55,7 +55,7 @@ export default async function RootLayout({ children }) {
   )
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata() {
   let baseSEO
 
   try {
@@ -65,6 +65,8 @@ export async function generateMetadata({ params }) {
     console.error('Error:', error)
   }
   
+  if(!baseSEO || Object.keys(baseSEO).length === 0) return null;
+
   const ogImages = generateOpenGraphImages(baseSEO.imageBlock?.image?.data?.attributes?.formats)
   
   return {

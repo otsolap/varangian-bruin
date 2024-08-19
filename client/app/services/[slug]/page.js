@@ -1,5 +1,4 @@
-import { getDataDependencies } from "@/utils/api"
-import { getStrapiURL } from "@/utils/index"
+import { getStrapiURL, generateOpenGraphImages  } from "@/utils/index"
 import config from '@/utils/config'
 import Blocks from "@/components/Blocks"
 import { notFound } from 'next/navigation'
@@ -17,15 +16,43 @@ async function getContent(params) {
   try {
     const res = await fetch(getStrapiURL(`/${config.services.API_SERVICES_CONTENT_QUERY}${params.slug}`))
     const resData = await res.json()
-    const blocks = resData.data[0].attributes.blocks
-    const data = blocks ? await getDataDependencies(blocks) : {}
-    if (!data) notFound()
-    return data
+
+    return {
+      meta: resData.data[0]?.attributes.seo ?? {},
+      blocks: resData.data[0]?.attributes.blocks ?? {},
+    }
   } catch (error) {
     console.error('Error:', error);
     notFound()
   }
 }
+
+export async function generateMetadata({ params }) {
+  const pageUrl = `/services/${params.slug}`
+  const { meta } = await getContent(params)
+  
+  if(!meta || Object.keys(meta).length === 0) return null;
+
+  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.attributes?.formats)
+
+  return {
+    title: {
+      default: meta.title,
+    },
+    description: meta.description,
+    keywords: [meta.keywords],
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: pageUrl,
+      images: ogImages,
+    },
+    alternates: {
+      canonical: pageUrl
+    }
+  }
+}
+
 
 export default async function ServicesSlug({ params }) {
   const { blocks } = await getContent(params)
