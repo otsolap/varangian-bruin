@@ -4,7 +4,7 @@ import "swiper/css/pagination"
 import "swiper/css/effect-coverflow"
 import { poppins, hind_guntur } from "@/app/fonts"
 import "@/styles/globals.css"
-import { fetchGlobalData, fetchGlobalSEOData, getStrapiURL, getStrapiMedia } from "@/utils/index"
+import { fetchGlobalData, fetchGlobalSEOData, generateOpenGraphImages, getStrapiURL } from "@/utils/index"
 import config from '@/utils/config'
 import Header from "components/navigation/Header"
 import Footer from "@/components/navigation/Footer"
@@ -16,8 +16,8 @@ export default async function RootLayout({ children }) {
   try {
     const global = await fetchGlobalData()
     const [servicePathsRes, blogPathsRes] = await Promise.all([
-      fetch(getStrapiURL(`/${config.services.API_SERVICES_PATH_QUERY}?populate=title,slug`)),
-      fetch(getStrapiURL(`/${config.blog.API_BLOG_PATH_QUERY}?populate=title,slug`))
+      fetch(getStrapiURL(`/${config.services.API_SERVICES_NAV_QUERY}`)),
+      fetch(getStrapiURL(`/${config.blog.API_BLOG_NAV_QUERY}`))
     ])
     
     const [servicePathsData, blogPathsData] = await Promise.all([
@@ -65,15 +65,8 @@ export async function generateMetadata({ params }) {
     console.error('Error:', error)
   }
   
-  const imageFormats = baseSEO.imageBlock?.image?.data?.attributes?.formats
-  // Generate the images array for openGraph using imageFormats
-  const ogImages = imageFormats ? Object.values(imageFormats).map((image) => ({
-    url: getStrapiMedia(image.url),
-    width: image.width,
-    height: image.height,
-    alt: baseSEO.title, 
-  })) : [];
-
+  const ogImages = generateOpenGraphImages(baseSEO.imageBlock?.image?.data?.attributes?.formats)
+  
   return {
     metadataBase: new URL(`${baseSEO.URL}`),
     robots: {

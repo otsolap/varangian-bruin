@@ -108,3 +108,14 @@ import config from '@/utils/config'
       return null;
     }
   }
+
+  export function generateOpenGraphImages(imageFormats) {
+    if (!imageFormats) return null;
+
+  
+    return Object.values(imageFormats).map((image) => ({
+      url: getStrapiMedia(image.url),
+      width: image.width,
+      height: image.height,
+    }));
+  }

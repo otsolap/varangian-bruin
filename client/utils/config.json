@@ -24,12 +24,12 @@
         "API_ARCHIVE_PAGE_QUERY":"api/service-archive-page?=&populate=seo,seo.imageBlock.image,hero,hero.buttons,hero.image",
         "SERVICES_PATH":"services",
         "API_SERVICES_PATH_QUERY":"api/services",
-        "API_SERVICES_PATH_QUERY_":"api/services",
         "SERVICE_TYPES_PATH":"service-types",
         "API_SERVICE_TYPES_PATH_QUERY": "api/service-types",
         "API_SERVICE_TYPES_CONTENT_QUERY":"api/service-types?&populate=services,services.image,services.service_type,hero,hero.buttons,hero.image,seo.imageBlock.image",
         "API_SERVICES_QUERY":"api/services?&populate=image,blocks,blocks.image,service_type",
-        "API_SERVICES_CONTENT_QUERY":"api/services?&populate=seo,seo.imageBlock.image,blocks,blocks.image,blocks.accordion,blocks.accordions,blocks.button,blocks.buttons,blocks.blogs,blocks.blogs.author,blocks.blogs.image,blocks.blogs.category,blocks.link,blocks.cards,blocks.cards.image,blocks.form,blocks.form.inputs,blocks.form.inputs.options,blocks.form.image,blocks.form.button,blocks.images.image,blocks.mediaMixItems,blocks.mediaMixItems.image&filters[slug][$eq]="
+        "API_SERVICES_CONTENT_QUERY":"api/services?&populate=seo,seo.imageBlock.image,blocks,blocks.image,blocks.accordion,blocks.accordions,blocks.button,blocks.buttons,blocks.blogs,blocks.blogs.author,blocks.blogs.image,blocks.blogs.category,blocks.link,blocks.cards,blocks.cards.image,blocks.form,blocks.form.inputs,blocks.form.inputs.options,blocks.form.image,blocks.form.button,blocks.images.image,blocks.mediaMixItems,blocks.mediaMixItems.image&filters[slug][$eq]=",
+        "API_SERVICES_NAV_QUERY":"api/services?populate=title,slug"
     },
     "blog": {
         "API_ARCHIVE_PAGE_QUERY":"api/article-archive-page?=&populate=seo,seo.imageBlock.image,hero,hero.buttons,hero.image, seo,seo.imageBlock.image",
@@ -45,7 +45,8 @@
         "RELATED_ARTICLES_THEME":"secondary",
         "RELATED_ARTICLES_LINK_TITLE":"See blog archive",
         "RELATED_ARTICLES_QUERY":"api/categories?filters[slug][$eq]=",
-        "RELATED_ARTICLES_QUERY_ARGUMENTS":"&sort=createdAt%3Adesc&pagination[start]=0&pagination[limit]=3&populate=articles,articles.image,articles.author,articles.category"
+        "RELATED_ARTICLES_QUERY_ARGUMENTS":"&sort=createdAt%3Adesc&pagination[start]=0&pagination[limit]=3&populate=articles,articles.image,articles.author,articles.category",
+        "API_BLOG_NAV_QUERY": "api/articles?populate=title,slug"
     },
     "forms": {
         "COLLECTIONS_PATH":"api/contacts",

@@ -4,6 +4,7 @@ import Blocks from "@/components/Blocks"
 import { notFound } from 'next/navigation'
 import Banner from "@/components/blocks/Banner"
 import SubscribeForm from "components/blocks/SubscribeForm";
+import { generateOpenGraphImages } from "@/utils/index"
 
 export async function generateStaticParams() {
   const res =  await fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}`))
@@ -22,6 +23,7 @@ async function getContent(params) {
     const resData = await res.json()
 
     return {
+      meta: resData.data[0]?.attributes.seo ?? {},
       blocks: resData.data[0]?.attributes.blocks ?? {},
       showServicesBanner: resData.data[0]?.attributes.showServicesBanner ?? false,
       showSubscribeForm: resData.data[0]?.attributes.showSubscribeForm ?? false,
@@ -44,4 +46,32 @@ export default async function PageSlug({ params }) {
     {showSubscribeForm && <SubscribeForm {...subscribeForm} />}
     </>
   )
+}
+
+export async function generateMetadata({ params }) {
+  const pageUrl = `/${params.slug}`
+  const { meta } = await getContent(params)
+  
+  if(!meta) return null;
+
+  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.attributes?.formats)
+
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: [meta.keywords],
+    openGraph: {
+      title: {
+        default: meta.title,
+        template: `%s — ${meta.title}`
+      },
+      description: meta.description,
+      url: pageUrl,
+      images: ogImages,
+    },
+    alternates: {
+      canonical: pageUrl
+    }
+  }
+
 }
