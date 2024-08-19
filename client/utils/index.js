@@ -69,26 +69,23 @@ import config from '@/utils/config'
       const urls = [
         getStrapiURL(`/${config.global.API_NAVIGATION_QUERY}`),
         getStrapiURL(`/${config.global.API_FOOTER_QUERY}`),
-        getStrapiURL(`/${config.global.API_BASE_SEO_QUERY}`),
         getStrapiURL(`/${config.global.API_ANALYTICS_QUERY}`),
         getStrapiURL(`/${config.global.API_BLOG_NAVIGATION_QUERY}`),
       ];
   
-      let navigationResponse, footerResponse, baseSEOResponse, analyticsResponse, blogNavigationResponse;
+      let navigationResponse, footerResponse, analyticsResponse, blogNavigationResponse;
       try {
-        [navigationResponse, footerResponse, baseSEOResponse, analyticsResponse, blogNavigationResponse] = await Promise.all(urls.map(url => fetch(url)));
+        [navigationResponse, footerResponse, analyticsResponse, blogNavigationResponse] = await Promise.all(urls.map(url => fetch(url)));
       } catch (error) {
         console.error('Failed to fetch API data:', error);
       }
   
-      const baseSEOData = await baseSEOResponse?.json() || null;
       const analyticsData = await analyticsResponse?.json() || null;
       const navigationData = await navigationResponse?.json() || null;
       const footerData = await footerResponse?.json() || null;
       const blogNavigationData = await blogNavigationResponse?.json() || null;
   
       return {
-        baseSEO: baseSEOData,
         analytics: analyticsData,
         navigation: navigationData,
         footer: footerData,
@@ -96,6 +93,18 @@ import config from '@/utils/config'
       };
     } catch (error) {
       console.error('fetch Global Data error:', error);
+      return null;
+    }
+  }
+  
+  export async function fetchGlobalSEOData() {
+    try {
+      const url = getStrapiURL(`/${config.global.API_BASE_SEO_QUERY}`);
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Failed to fetch Global SEO Data:', error);
       return null;
     }
   }

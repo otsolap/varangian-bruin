@@ -1,39 +1,38 @@
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/effect-coverflow";
-import { poppins, hind_guntur } from "@/app/fonts";
+import "swiper/css"
+import "swiper/css/navigation"
+import "swiper/css/pagination"
+import "swiper/css/effect-coverflow"
+import { poppins, hind_guntur } from "@/app/fonts"
 import "@/styles/globals.css"
-import { fetchGlobalData, getStrapiURL } from "@/utils/index"
+import { fetchGlobalData, fetchGlobalSEOData, getStrapiURL, getStrapiMedia } from "@/utils/index"
 import config from '@/utils/config'
-import Header from "components/navigation/Header";
-import Footer from "@/components/navigation/Footer";
-import MobileFooter from "components/navigation/MobileFooter";
+import Header from "components/navigation/Header"
+import Footer from "@/components/navigation/Footer"
+import MobileFooter from "components/navigation/MobileFooter"
 
 export default async function RootLayout({ children }) {
-  let navigation, footer, blogNavigation, servicePaths, blogPaths;
+  let navigation, footer, blogNavigation, servicePaths, blogPaths
 
   try {
-    const global = await fetchGlobalData();
+    const global = await fetchGlobalData()
     const [servicePathsRes, blogPathsRes] = await Promise.all([
       fetch(getStrapiURL(`/${config.services.API_SERVICES_PATH_QUERY}?populate=title,slug`)),
       fetch(getStrapiURL(`/${config.blog.API_BLOG_PATH_QUERY}?populate=title,slug`))
-    ]);
+    ])
     
     const [servicePathsData, blogPathsData] = await Promise.all([
       servicePathsRes.json(),
       blogPathsRes.json()
-    ]);
+    ])
 
-  
-    navigation = global.navigation.data.attributes;
-    footer = global.footer.data;
-    blogNavigation = global.blogNavigation.data.attributes;
-    servicePaths = servicePathsData;
-    blogPaths = blogPathsData;
+    navigation = global.navigation.data.attributes
+    footer = global.footer.data
+    blogNavigation = global.blogNavigation.data.attributes
+    servicePaths = servicePathsData
+    blogPaths = blogPathsData
 
   } catch (error) {
-    throw new Error('Error:', error);
+    console.error('Error:', error);
   }
   
   return (
@@ -54,4 +53,59 @@ export default async function RootLayout({ children }) {
       </body>
     </html>
   )
+}
+
+export async function generateMetadata({ params }) {
+  let baseSEO
+
+  try {
+    const global = await fetchGlobalSEOData()
+    baseSEO = global.data.attributes
+  } catch (error) {
+    console.error('Error:', error)
+  }
+  
+  const imageFormats = baseSEO.imageBlock?.image?.data?.attributes?.formats
+  // Generate the images array for openGraph using imageFormats
+  const ogImages = imageFormats ? Object.values(imageFormats).map((image) => ({
+    url: getStrapiMedia(image.url),
+    width: image.width,
+    height: image.height,
+    alt: baseSEO.title, 
+  })) : [];
+
+  return {
+    metadataBase: new URL(`${baseSEO.URL}`),
+    robots: {
+      index:  baseSEO.preventIndexing,
+      follow: baseSEO.preventIndexing,
+      googleBot: {
+        index: baseSEO.preventIndexing,
+        follow: baseSEO.preventIndexing
+      }
+    },
+    title: {
+      default: baseSEO.title,
+      template: `%s — ${baseSEO.title}`
+    },
+    description: baseSEO.description,
+    keywords: [baseSEO.keywords],
+    twitter: {
+      site: baseSEO.XTwitter,
+      creator: baseSEO.XTwitter,
+    },
+    openGraph: {
+      title: {
+        default: baseSEO.title,
+        template: `%s — ${baseSEO.title}`
+      },
+      description: baseSEO.description,
+      images: ogImages,
+    },
+    icons: {
+      icon: '../public/icons/favicon.ico',
+      apple: '../public/icons/apple-touch-icon.png',
+    },
+    manifiest: '../public/icons/site.webmanifest',
+  }
 }

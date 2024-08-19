@@ -7,9 +7,7 @@ const Brand = ({ title, slogan }) => {
           {title && <Link className={styles.title} href="/">{title}</Link>}
           {slogan && <p className={styles.slogan}>{slogan}</p>}
         </div>
-
     )
-
 }
 
 export default Brand;

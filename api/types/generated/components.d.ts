@@ -470,7 +470,6 @@ export interface UtilSeo extends Schema.Component {
     preventIndexing: Attribute.Boolean & Attribute.DefaultTo<false>;
     keywords: Attribute.Text;
     imageBlock: Attribute.Component<'blocks.image-block'>;
-    XTwitter: Attribute.String;
   };
 }
 

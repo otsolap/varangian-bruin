@@ -938,7 +938,13 @@ export interface ApiBaseSeoBaseSeo extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    seo: Attribute.Component<'util.seo'>;
+    title: Attribute.String;
+    description: Attribute.Text;
+    preventIndexing: Attribute.Boolean;
+    keywords: Attribute.Text;
+    imageBlock: Attribute.Component<'blocks.image-block'>;
+    XTwitter: Attribute.String;
+    URL: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

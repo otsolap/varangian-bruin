@@ -15,7 +15,7 @@ export const ArchiveSection = ({ items, categories }) => {
     const header = document.getElementById("blog-archive-header")
     if (header) {
       header.scrollIntoView({ behavior: "smooth" })
-    }x
+    }
   }
 
   const paginatedPosts = paginate(items, currentPage, pageSize)
