@@ -18,6 +18,7 @@ async function getContent(params) {
     const resData = await res.json()
 
     return {
+      pageTitle: resData.data[0]?.attributes.title ?? '',
       meta: resData.data[0]?.attributes.seo ?? {},
       blocks: resData.data[0]?.attributes.blocks ?? {},
     }
@@ -29,20 +30,18 @@ async function getContent(params) {
 
 export async function generateMetadata({ params }) {
   const pageUrl = `/services/${params.slug}`
-  const { meta } = await getContent(params)
+  const { meta, pageTitle } = await getContent(params)
   
   if(!meta || Object.keys(meta).length === 0) return null;
 
   const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.attributes?.formats)
 
   return {
-    title: {
-      default: meta.title,
-    },
+    title: meta.title ?? pageTitle,
     description: meta.description,
     keywords: [meta.keywords],
     openGraph: {
-      title: meta.title,
+      title: meta.title ?? pageTitle,
       description: meta.description,
       url: pageUrl,
       images: ogImages,

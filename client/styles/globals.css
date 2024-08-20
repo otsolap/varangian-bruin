@@ -30,6 +30,7 @@ main {
 
 section {
   padding-top: var(--spacing-double);
+  padding-bottom: var(--spacing-double);
   margin-bottom: var(--spacing-double);
 }
 

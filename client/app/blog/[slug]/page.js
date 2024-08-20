@@ -19,10 +19,11 @@ export async function generateStaticParams() {
 
 async function getContent(params) {
   try {
-    const res = await fetch(getStrapiURL(`/${config.blog.API_ARTICLE_CONTENT_QUERY}&filters[slug][$eq]=${params.slug}`))
+    const res = await fetch(getStrapiURL(`/${config.blog.API_ARTICLE_PAGE_CONTENT_QUERY}${params.slug}`))
     const resData = await res.json()
 
     return {
+      pageTitle: resData.data[0]?.attributes.title ?? '',
       meta: resData.data[0]?.attributes.seo ?? {},
       article: resData.data[0]?.attributes ?? {},
       blocks: resData.data[0]?.attributes.blocks ?? {},
@@ -38,20 +39,21 @@ async function getContent(params) {
 
 export async function generateMetadata({ params }) {
   const pageUrl = `/blog/${params.slug}`
-  const { meta, author } = await getContent(params)
+  const { meta, pageTitle, author } = await getContent(params)
   
   if(!meta || Object.keys(meta).length === 0) return null;
 
   const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.attributes?.formats)
 
   return {
-    title: meta.title,
+    title: meta.title ?? pageTitle,
     description: meta.description,
     authors: [{ name: author.title }],
     keywords: [meta.keywords],
+    type: 'article',
     publisher: 'Varangian Venture',
     openGraph: {
-      title: meta.title,
+      title: meta.title ?? pageTitle,
       description: meta.description,
       url: pageUrl,
       images: ogImages,

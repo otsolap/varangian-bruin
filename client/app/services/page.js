@@ -48,9 +48,7 @@ async function getContent() {
           follow: meta.preventIndexing
         }
       },
-      title: {
-        default: meta.title,
-      },
+      title: meta.title,
       description: meta.description,
       keywords: [meta.keywords],
       openGraph: {

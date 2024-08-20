@@ -80,8 +80,8 @@ export async function generateMetadata() {
       }
     },
     title: {
-      default: baseSEO.title,
-      template: `%s — ${baseSEO.title}`
+      template: `%s — ${baseSEO.title}`,
+      default: baseSEO.title
     },
     description: baseSEO.description,
     keywords: [baseSEO.keywords],

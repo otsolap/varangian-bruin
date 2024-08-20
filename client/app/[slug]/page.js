@@ -22,6 +22,7 @@ async function getContent(params) {
     const resData = await res.json()
 
     return {
+      pageTitle: resData.data[0]?.attributes.title ?? '',
       meta: resData.data[0]?.attributes.seo ?? {},
       blocks: resData.data[0]?.attributes.blocks ?? {},
       showServicesBanner: resData.data[0]?.attributes.showServicesBanner ?? false,
@@ -35,7 +36,7 @@ async function getContent(params) {
 
 export async function generateMetadata({ params }) {
   const pageUrl = `/${params.slug}`
-  const { meta } = await getContent(params)
+  const { meta, pageTitle } = await getContent(params)
   
   if(!meta || Object.keys(meta).length === 0) return null;
 
@@ -50,13 +51,11 @@ export async function generateMetadata({ params }) {
         follow: meta.preventIndexing
       }
     },
-    title: {
-      default: meta.title,
-    },
+    title: meta.title ?? pageTitle,
     description: meta.description,
     keywords: [meta.keywords],
     openGraph: {
-      title: meta.title,
+      title: meta.title ?? pageTitle,
       description: meta.description,
       url: pageUrl,
       images: ogImages,
