@@ -1,4 +1,3 @@
-import { getDataDependencies } from "@/utils/api"
 import Blocks from "@/components/Blocks"
 import { getStrapiURL } from "@/utils/index"
 import config from '@/utils/config'
@@ -16,11 +15,12 @@ async function getContent() {
   try {
     const res = await fetch(getStrapiURL(`/${config.global.API_HOME_CONTENT_QUERY}`));
     const resData= await res.json();
-    const blocks = resData.data.attributes.blocks
-    const data = blocks ? await getDataDependencies(blocks) : {}
-    if(!data) notFound()
-    return data;
+
+    return {
+      blocks: resData.data.attributes.blocks ?? {},
+    }
   } catch (error) {
     console.error('Error:', error);
+    notFound()
   }
 }

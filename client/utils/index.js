@@ -13,7 +13,7 @@ import config from '@/utils/config'
   }
 
  // Take the title and return it as a "slug".
- // used for creating non spaced IDs for elements
+ // used for creating non spaced IDs for input and text fields.
   export const createID = (title) => {
       return title.replace(/\s+/g, '-').toLowerCase();
   }
@@ -59,7 +59,7 @@ import config from '@/utils/config'
         subscribeForm: subscribeFormData.data?.attributes ?? null
       };
     } catch (error) {
-      console.error('fetch All Data error:', error);
+      console.error('fetch Banner data error:', error);
       return null;
     }
   }
@@ -112,7 +112,6 @@ import config from '@/utils/config'
   export function generateOpenGraphImages(imageFormats) {
     if (!imageFormats) return null;
 
-  
     return Object.values(imageFormats).map((image) => ({
       url: getStrapiMedia(image.url),
       width: image.width,
