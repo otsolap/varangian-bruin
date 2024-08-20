@@ -89,9 +89,6 @@ async function revalidatePaths(fetchPathsFunction, successMessage) {
 
 async function getAllPages() {
     try {
-        console.log(getStrapiURL(`/${config.revalidate.PAGES_PATH}`))
-        console.log(getStrapiURL(`/${config.revalidate.BLOG_PATH}`))
-        console.log(getStrapiURL(`/${config.revalidate.SERVICES_PATH}`))
         const urls = [
             fetch(getStrapiURL(`/${config.revalidate.PAGES_PATH}`)),
             fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`)),

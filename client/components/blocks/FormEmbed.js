@@ -69,7 +69,6 @@ const FormEmbed = ({ form }) => {
 
   return (
     <section className={styles.section}>
-
       <div className={styles.wrapper}>
         {inputs.length && button ? (
           <div className={styles.content}>

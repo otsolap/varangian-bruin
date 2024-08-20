@@ -4,7 +4,7 @@ export default function robots() {
         userAgent: '*',
         allow: '/'
       },
-      sitemap: 'https://varangianventure.comsitemap.xml',
+      sitemap: 'https://varangianventure.com/sitemap.xml',
       host: 'https://varangianventure.com'
     }
   }
