@@ -66,9 +66,9 @@
 
 .buttonWrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  gap: var(--spacing-single);
+  gap: var(--spacing-single-half);
   padding-bottom: var(--spacing-single);
 }
 
@@ -97,13 +97,19 @@
 
   .content {
     padding: var(--spacing-double);
-    display: block;
+    gap: var(--spacing-single-half)
   }
 
   .mediaContainer {
     max-height: 561px;
     height: 561px;
   }
+
+  .buttonWrapper {
+    flex-direction: row;
+    gap: var(--spacing-single);
+  }
+
 }
 
 /* Desktop Styles */
