@@ -1,19 +1,17 @@
 'use client'
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import useToggle from '@/hooks/useToggle';
+import { useAccordionEffect } from "@/utils/accordion-effect"
 import ContactDetails from '@/partials/util/ContactDetails'
 import styles from '@/styles/components/footer.module.css';
 
 const FooterSocialMedia = ({  id, open, title, socialMedia }) => {
     const contentRef = useRef(null)
     const [active, setActive] = useToggle(open)
-    useEffect(() => {
-        contentRef.current.style.maxHeight = active
-            ? `${contentRef.current.scrollHeight}px`
-            : "0px";
-    }, [contentRef, active]);
+   
+    useAccordionEffect(contentRef, active);
 
     const toggleAccordion = () => {
         setActive(!active);

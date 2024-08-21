@@ -1,17 +1,15 @@
 'use client'
-import React, { useState, useEffect, useRef } from "react";
-import styles from "@/styles/components/accordion.module.css";
+import React, { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import styles from "@/styles/components/accordion.module.css";
+import { useAccordionEffect } from "@/utils/accordion-effect"
 
 const AccordionItem = ({ title, body, open }) => {
   const contentRef = useRef(null);
   const [active, setActive] = useState(open);
-  useEffect(() => {
-    contentRef.current.style.maxHeight = active
-      ? `${contentRef.current.scrollHeight}px`
-      : "0px";
-  }, [contentRef, active]);
+
+  useAccordionEffect(contentRef, active);
 
   const toggleAccordion = () => {
     setActive(!active);

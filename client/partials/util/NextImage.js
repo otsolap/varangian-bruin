@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { getStrapiMedia } from 'utils/index';
+import { getStrapiMedia } from '@/utils/index';
 
 const NextImage = ({ 
   image, 

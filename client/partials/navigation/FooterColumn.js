@@ -1,8 +1,9 @@
 'use client'
-import React, { useEffect, useRef } from "react"
-import useToggle from "@/hooks/useToggle"
+import React, { useRef } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleUp, faAngleDown } from "@fortawesome/free-solid-svg-icons"
+import useToggle from "@/hooks/useToggle"
+import { useAccordionEffect } from "@/utils/accordion-effect"
 import MarkdownBlock from "@/partials/util/MarkdownBlock"
 import CustomLink from "@/partials/util/CustomLink"
 import NextImage from "@/partials/util/NextImage";
@@ -12,11 +13,7 @@ const FooterColumn = ({ id, open, title, description, image, links }) => {
   const contentRef = useRef(null)
   const [active, setActive] = useToggle(open)
 
-  useEffect(() => {
-    contentRef.current.style.maxHeight = active
-      ? `${contentRef.current.scrollHeight}px`
-      : "0px"
-  }, [contentRef, active])
+  useAccordionEffect(contentRef, active);
 
   const toggleAccordion = () => {
     setActive(!active)

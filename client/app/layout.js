@@ -98,9 +98,9 @@ export async function generateMetadata() {
       images: ogImages,
     },
     icons: {
-      icon: '../public/icons/favicon.ico',
-      apple: '../public/icons/apple-touch-icon.png',
+      icon: '/icons/favicon.ico',
+      apple: '/icons/apple-touch-icon.png',
     },
-    manifiest: '../public/icons/site.webmanifest',
+    manifiest: '/icons/site.webmanifest',
   }
 }
