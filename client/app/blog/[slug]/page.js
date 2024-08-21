@@ -1,10 +1,11 @@
-import { getStrapiURL } from "@/utils/index"
 import config from '@/utils/config'
+import { getStrapiURL } from "@/utils/index"
+import { notFound } from 'next/navigation'
 import Blocks from "@/components/Blocks"
 import ArticleHeading from "@/components/articles/ArticleHeading";
 import ArticleFooter from "@/components/articles/ArticleFooter";
+import BlogSection from 'components/blocks/BlogSection';
 import TOC from "@/partials/article/TOC";
-import { notFound } from 'next/navigation'
 import styles from '@/styles/pages/blog.module.css'
 import { generateOpenGraphImages } from "@/utils/index"
 
@@ -77,6 +78,11 @@ export default async function BlogSlug ({ params }) {
       <TOC blocks={blocks} title={article.title} />
     </div>
     <ArticleFooter author={author} />
+    <BlogSection 
+      title={config.blog.LATEST_ARTICLES_TITLE}
+      selectTheme="secondary"
+      filter="latest" 
+      />
   </>
   )
 }
