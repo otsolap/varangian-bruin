@@ -72,11 +72,11 @@ export async function generateMetadata() {
   return {
     metadataBase: baseSEO.URL ? new URL(`${baseSEO.URL}`) : null,
     robots: {
-      index:  baseSEO.preventIndexing,
-      follow: baseSEO.preventIndexing,
+      index:  !baseSEO.preventIndexing,
+      follow: !baseSEO.preventIndexing,
       googleBot: {
-        index: baseSEO.preventIndexing,
-        follow: baseSEO.preventIndexing
+        index: !baseSEO.preventIndexing,
+        follow: !baseSEO.preventIndexing
       }
     },
     title: {

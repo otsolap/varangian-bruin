@@ -41,11 +41,11 @@ async function getContent() {
   
     return {
       robots: {
-        index:  meta.preventIndexing,
-        follow: meta.preventIndexing,
+        index:  !meta.preventIndexing,
+        follow: !meta.preventIndexing,
         googleBot: {
-          index: meta.preventIndexing,
-          follow: meta.preventIndexing
+          index: !meta.preventIndexing,
+          follow: !meta.preventIndexing
         }
       },
       title: meta.title,

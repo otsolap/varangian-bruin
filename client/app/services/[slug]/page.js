@@ -37,6 +37,14 @@ export async function generateMetadata({ params }) {
   const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.attributes?.formats)
 
   return {
+    robots: {
+      index:  !meta.preventIndexing,
+      follow: !meta.preventIndexing,
+      googleBot: {
+        index: !meta.preventIndexing,
+        follow: !meta.preventIndexing
+      }
+    },
     title: meta.title ?? pageTitle,
     description: meta.description,
     keywords: [meta.keywords],
