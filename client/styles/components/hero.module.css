@@ -15,11 +15,7 @@
 }
 
 .image {
-  width: inherit;
-  height: inherit;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  object-position: center;
+  display: none;
 }
 
 .video {
@@ -47,6 +43,9 @@
 
 .content {
   padding: var(--spacing-single);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-single);
 
   *:not(a):not(.button) {
     text-shadow: 1px 1px 2px var(--background-900);
@@ -56,11 +55,13 @@
 
 .content h1 {
   font-size: var(--spacing-triple);
+  margin-bottom: initial;
 }
 
 .content h3 {
   font-size: var(--spacing-single);
   font-weight: 500;
+  margin-bottom: initial;
 }
 
 .buttonWrapper {
@@ -68,6 +69,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: var(--spacing-single);
+  padding-bottom: var(--spacing-single);
 }
 
 /* Tablet Styles */
@@ -84,8 +86,18 @@
     flex: 0 0 50%;
   }
 
+  .image {
+    display: block;
+    width: inherit;
+    height: inherit;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+  }
+
   .content {
     padding: var(--spacing-double);
+    display: block;
   }
 
   .mediaContainer {
