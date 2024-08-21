@@ -26,7 +26,7 @@
 
 .lead {
     justify-content: center;
-    gap: var(--half);
+    gap: var(--spacing-half);
 }
 
 .title {
@@ -48,7 +48,7 @@
 }
 
 .column {
-    gap: var(--half);
+    gap: var(--spacing-half);
 }
 
 .authorTitle {

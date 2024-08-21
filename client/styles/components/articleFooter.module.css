@@ -34,7 +34,7 @@
     width: inherit;
     height: inherit;
     object-fit: cover;
-    box-shadow: var(--half) var(--half) 0px 0px var(--brand-500);
+    box-shadow: var(--spacing-half) var(--spacing-half) 0px 0px var(--brand-500);
 }
 
 .buttonWrapper {
