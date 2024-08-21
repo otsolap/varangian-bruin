@@ -108,6 +108,7 @@
   .buttonWrapper {
     flex-direction: row;
     gap: var(--spacing-single);
+    width: fit-content;
   }
 
 }
