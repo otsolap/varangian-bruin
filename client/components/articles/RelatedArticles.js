@@ -26,35 +26,36 @@ export default function RelatedArticles ({ title, description, selectTheme, curr
   }, [currentPostID, currentCategory]);
 
   return (
-    <section className={selectTheme == 'primary' ? styles.bgPrimary : styles.bgSecondary}>
-      {title || description ? (
-        <header className={styles.header}>
-          {title && <h2>{title} {categoryTitle}</h2>}
-          {description && <p>{description}</p>}
-        </header>
-      ) : null}
-      {items.length ? (
-        <div className={styles.wrapper}>
-          {items.map((item, i) => {
-            return (
-                <BlogItem
-                key={i}
-                image={item.attributes.image}
-                title={item.attributes.title}
-                description={item.attributes.description}
-                category={item.attributes.category.data?.attributes}
-                publishedAt={item.attributes.publishedAt}
-                slug={item.attributes.slug}
-                />
-            );
-          })}
-        </div>
-      ) : null}
-      <footer className={styles.linkWrapper}>
-      <Link className={styles.archiveLink} href={`/${config.blog.CATEGORY_PATH}/${currentCategory}`}>
-          {config.blog.RELATED_ARTICLES_LINK_TITLE}
-       </Link>
-      </footer>
-    </section>
+    items.length ? (
+        <section className={selectTheme == 'primary' ? styles.bgPrimary : styles.bgSecondary}>
+        {title || description ? (
+            <header className={styles.header}>
+            {title && <h2>{title} {categoryTitle}</h2>}
+            {description && <p>{description}</p>}
+            </header>
+        ) : null}
+        
+            <div className={styles.wrapper}>
+            {items.map((item, i) => {
+                return (
+                    <BlogItem
+                    key={i}
+                    image={item.attributes.image}
+                    title={item.attributes.title}
+                    description={item.attributes.description}
+                    category={item.attributes.category.data?.attributes}
+                    publishedAt={item.attributes.publishedAt}
+                    slug={item.attributes.slug}
+                    />
+                );
+            })}
+            </div>
+        <footer className={styles.linkWrapper}>
+        <Link className={styles.archiveLink} href={`/${config.blog.CATEGORY_PATH}/${currentCategory}`}>
+            {config.blog.RELATED_ARTICLES_LINK_TITLE}
+        </Link>
+        </footer>
+        </section>
+    ) : null
   );
 };
