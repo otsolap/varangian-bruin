@@ -8,6 +8,7 @@ import BlogSection from 'components/blocks/BlogSection';
 import TOC from "@/partials/article/TOC";
 import styles from '@/styles/pages/blog.module.css'
 import { generateOpenGraphImages } from "@/utils/index"
+import RelatedArticles from 'components/articles/RelatedArticles';
 
 export async function generateStaticParams() {
   const res =  await fetch(getStrapiURL(`/api/articles`))
@@ -25,6 +26,7 @@ async function getContent(params) {
 
     return {
       pageTitle: resData.data[0]?.attributes.title ?? '',
+      currentPostID: resData.data[0]?.id ?? null,
       meta: resData.data[0]?.attributes.seo ?? {},
       article: resData.data[0]?.attributes ?? {},
       blocks: resData.data[0]?.attributes.blocks ?? {},
@@ -66,7 +68,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogSlug ({ params }) {
-  const { article, blocks, category, author } = await getContent(params)
+  const { article, blocks, category, author, currentPostID } = await getContent(params)
   
   return (
     <>
@@ -78,6 +80,13 @@ export default async function BlogSlug ({ params }) {
       <TOC blocks={blocks} title={article.title} />
     </div>
     <ArticleFooter author={author} />
+    <RelatedArticles
+      title={config.blog.RELATED_ARTICLES_TITLE}
+      categoryTitle={category.title}
+      currentCategory={category.slug}
+      currentPostID={currentPostID}
+      selectTheme="secondary"
+    />
     <BlogSection 
       title={config.blog.LATEST_ARTICLES_TITLE}
       selectTheme="secondary"

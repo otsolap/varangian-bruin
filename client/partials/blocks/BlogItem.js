@@ -22,7 +22,6 @@ const BlogItem = ({ image, title, description, slug, category, publishedAt }) =>
                   width={400}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw" 
                   className={styles.image}
-                  
                   />
                 </Link>
             </figure>
