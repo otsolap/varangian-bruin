@@ -6,6 +6,7 @@ import styles from '@/styles/components/form.module.css'
 import config from '@/utils/config'
 import { getStrapiURL } from "utils"
 import NextImage from "@/partials/util/NextImage";
+import { formSubmit } from '@/actions/form-embed-actions';
 
 const FormEmbed = ({ form }) => {
   const formRef = useRef(null)
@@ -15,7 +16,7 @@ const FormEmbed = ({ form }) => {
     return null
   }
 
-  const { formID, title, description, showLabels, inputs, image, button } = form.data.attributes
+  const { formID, title, description, showLabels, inputs, image, successMessage, errorMessage, redirect, link } = form.data.attributes
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -70,13 +71,14 @@ const FormEmbed = ({ form }) => {
   return (
     <section className={styles.section}>
       <div className={styles.wrapper}>
-        {inputs.length && button ? (
+        {inputs.length ? (
           <div className={styles.content}>
             <form 
               id={formID ? formID : null}
               className={styles.form} 
               ref={formRef} 
-              onSubmit={handleSubmit}
+              // onSubmit={handleSubmit}
+              action={formSubmit}
               >
             <header className={styles.header}>
                 {title && <h2 className={styles.title}>{title}</h2>}
@@ -91,8 +93,8 @@ const FormEmbed = ({ form }) => {
                 />
               </div>
               <footer className={styles.footer}>
-                <button type="submit" value="submit" className={`button button--${button.selectTheme}`} >
-                  {button.title}
+                <button type="submit" value="submit" className="button button--primary" >
+                  Button Text
                 </button>
               </footer>
             </form>
@@ -101,11 +103,11 @@ const FormEmbed = ({ form }) => {
         {image && (
           <figure className={styles.imageContainer}>
               <NextImage 
-              className={styles.image} 
-              image={image} 
-              height={500}
-              width={668}
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className={styles.image} 
+                image={image} 
+                height={500}
+                width={668}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
           </figure>
         )}

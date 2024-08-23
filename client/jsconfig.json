@@ -11,6 +11,7 @@
       "@/public/*": ["/public/*"],
       "@/pages/*": ["/pages/*"],
       "@/app/*": ["/app/*"],
+      "@/actions/*": ["/actions/*"],
     }
   }
 }
