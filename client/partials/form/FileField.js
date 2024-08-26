@@ -1,8 +1,7 @@
-import React from 'react'
 import styles from '@/styles/components/form.module.css'
 import { createID } from '@/utils/index'
 
-const FileField = ({ name, description, showLabels, required, formRef }) => {
+const FileField = ({ name, description, showLabels, required }) => {
 
   const uid = createID(name)
 
@@ -14,7 +13,6 @@ const FileField = ({ name, description, showLabels, required, formRef }) => {
     id={uid}
     name={uid}
     required={required ? true : null}
-    ref={formRef}
     accept=".jpg, .jpeg, .png, .webp, .pdf"
     className={styles.input}
     />

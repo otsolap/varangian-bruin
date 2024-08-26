@@ -22,7 +22,7 @@ const FormEmbed = ({ title, description, email, formID }) => {
     if(e.target.honeypot.value !== "") return
   
     const headers = {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
+      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
     }
   
     const data = {

@@ -32,6 +32,20 @@
         "tertiary",
         "transparent"
       ]
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Page",
+        "Link"
+      ],
+      "default": "Page",
+      "required": true
     }
   }
 }

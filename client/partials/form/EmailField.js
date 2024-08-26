@@ -1,7 +1,6 @@
-import React from 'react'
 import styles from '@/styles/components/form.module.css'
 
-const EmailField = ({  placeholder, showLabels, required, formRef }) => {
+const EmailField = ({  placeholder, showLabels, required }) => {
   return (
     <>
     <label htmlFor={'email'} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{'Email'}</label>
@@ -12,7 +11,6 @@ const EmailField = ({  placeholder, showLabels, required, formRef }) => {
     className={styles.input}
     placeholder={placeholder ? placeholder : 'email'}
     required={required ? true : null}
-    ref={formRef}
     pattern='[^@\s]+@[^@\s]+\.[^@\s]+'
     />
     </>

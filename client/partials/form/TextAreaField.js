@@ -1,8 +1,6 @@
-import React from 'react'
 import styles from '@/styles/components/form.module.css'
 
-
-const TextAreaField = ({ name, placeholder, showLabels, formRef }) => {
+const TextAreaField = ({ name, placeholder, showLabels }) => {
   return (
     <>
     <label htmlFor={name} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{name}</label>
@@ -10,7 +8,6 @@ const TextAreaField = ({ name, placeholder, showLabels, formRef }) => {
       id={name} 
       name={name} 
       placeholder={placeholder ? placeholder : name} 
-      ref={formRef}
       className={styles.input}
       >
     </textarea>

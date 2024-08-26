@@ -1048,11 +1048,10 @@ export interface ApiContactContact extends Schema.CollectionType {
   attributes: {
     form: Attribute.Relation<
       'api::contact.contact',
-      'oneToOne',
+      'manyToOne',
       'api::form.form'
     >;
-    detailsJSON: Attribute.JSON;
-    details: Attribute.RichText;
+    details: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1159,13 +1158,18 @@ export interface ApiFormForm extends Schema.CollectionType {
     >;
     title: Attribute.String;
     description: Attribute.Text;
-    button: Attribute.Component<'partials.button'>;
     image: Attribute.Media;
     showLabels: Attribute.Boolean & Attribute.DefaultTo<false>;
     formID: Attribute.UID & Attribute.Required;
-    contact: Attribute.Relation<
+    redirect: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    successMessage: Attribute.Text;
+    errorMessage: Attribute.Text;
+    link: Attribute.Component<'partials.link'>;
+    contacts: Attribute.Relation<
       'api::form.form',
-      'oneToOne',
+      'oneToMany',
       'api::contact.contact'
     >;
     createdAt: Attribute.DateTime;

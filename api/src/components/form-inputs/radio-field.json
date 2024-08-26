@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_form_inputs_radio_fields",
+  "info": {
+    "displayName": "Radio-field"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "options": {
+      "type": "component",
+      "repeatable": true,
+      "component": "util.option"
+    }
+  }
+}

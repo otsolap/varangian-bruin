@@ -1,8 +1,7 @@
-import React from 'react'
 import styles from '@/styles/components/form.module.css'
 import { createID } from '@/utils/index'
 
-const CheckboxField = ({ title, options, showLabels, formRef }) => {
+const CheckboxField = ({ title, options, showLabels }) => {
 
   const uid = createID(title)
 
@@ -19,7 +18,7 @@ const CheckboxField = ({ title, options, showLabels, formRef }) => {
                 id={uid + index} 
                 name={title} 
                 value={option.value} 
-                ref={formRef} />
+                />
                 {option.value}
             </label>
         )) : null}

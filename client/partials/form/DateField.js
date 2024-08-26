@@ -1,8 +1,7 @@
 import React from 'react'
-import styles from '@/styles/components/form.module.css'
 import { createID } from '@/utils/index'
 
-const DateField = ({ title, showLabels, required, formRef }) => {
+const DateField = ({ title, showLabels, required }) => {
 
   const uid = createID(title)
 
@@ -14,7 +13,6 @@ const DateField = ({ title, showLabels, required, formRef }) => {
     id={uid}
     name={uid}
     required={required ? true : null}
-    ref={formRef}
     className={styles.input}
     />
     </>

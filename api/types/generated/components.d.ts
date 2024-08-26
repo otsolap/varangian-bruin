@@ -252,6 +252,17 @@ export interface FormInputsFileField extends Schema.Component {
   };
 }
 
+export interface FormInputsRadioField extends Schema.Component {
+  collectionName: 'components_form_inputs_radio_fields';
+  info: {
+    displayName: 'Radio-field';
+  };
+  attributes: {
+    title: Attribute.String;
+    options: Attribute.Component<'util.option', true>;
+  };
+}
+
 export interface FormInputsSelectField extends Schema.Component {
   collectionName: 'components_form_inputs_select_fields';
   info: {
@@ -336,6 +347,10 @@ export interface PartialsLink extends Schema.Component {
     selectTheme: Attribute.Enumeration<
       ['primary', 'secondary', 'tertiary', 'transparent']
     >;
+    page: Attribute.Relation<'partials.link', 'oneToOne', 'api::page.page'>;
+    type: Attribute.Enumeration<['Page', 'Link']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Page'>;
   };
 }
 
@@ -532,6 +547,7 @@ declare module '@strapi/types' {
       'form-inputs.date-field': FormInputsDateField;
       'form-inputs.email-field': FormInputsEmailField;
       'form-inputs.file-field': FormInputsFileField;
+      'form-inputs.radio-field': FormInputsRadioField;
       'form-inputs.select-field': FormInputsSelectField;
       'form-inputs.text-field': FormInputsTextField;
       'form-inputs.textarea-field': FormInputsTextareaField;

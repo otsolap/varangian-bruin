@@ -30,11 +30,6 @@
     "description": {
       "type": "text"
     },
-    "button": {
-      "type": "component",
-      "repeatable": false,
-      "component": "partials.button"
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -51,9 +46,25 @@
       "type": "uid",
       "required": true
     },
-    "contact": {
+    "redirect": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "successMessage": {
+      "type": "text"
+    },
+    "errorMessage": {
+      "type": "text"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "partials.link"
+    },
+    "contacts": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::contact.contact",
       "mappedBy": "form"
     }

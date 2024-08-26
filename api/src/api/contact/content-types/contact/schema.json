@@ -14,15 +14,12 @@
   "attributes": {
     "form": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::form.form",
-      "inversedBy": "contact"
-    },
-    "detailsJSON": {
-      "type": "json"
+      "inversedBy": "contacts"
     },
     "details": {
-      "type": "richtext"
+      "type": "json"
     }
   }
 }

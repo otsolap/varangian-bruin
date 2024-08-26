@@ -1,5 +1,82 @@
 'use server'
+import config from '@/utils/config'
+import { getStrapiURL } from "utils"
 
-export async function formSubmit() {
-    console.log('Hello from Form Embed Actions')
+// Form Embed submission handler
+
+
+export async function formSubmit(state, formData) {
+
+    let fields = {};
+    const excludePatterns = ['$ACTION_'];
+    
+    for (let [name, value] of formData.entries()) {
+        if (name === 'honeypot' && value) {
+            console.error('Honeypot field is filled. Possible bot detected.');
+            return { error: 'Honeypot field should be empty.', message: 'Form submission failed' };
+        }
+    
+        if (excludePatterns.some(pattern => name.startsWith(pattern))) {
+            continue;
+        }
+    
+        fields[name] = value;
+    }
+
+    // TO DO:
+    // IF there is a input type textarea, we need to translate that into readable form somehow.
+    const formattedDataString = Object.entries(fields)
+        .map(([key, value]) => `<br><strong>label:</strong> ${key}<br><strong>value:</strong> ${value}<br>`)
+        .join('');
+
+    const headers = {
+       // Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+        'Content-Type': 'application/json'
+    };
+
+    // Make the fetch request
+    let formID = null;
+
+    try {
+        const response = await fetch(getStrapiURL(`/${config.forms.FORMS_PATH}${state.id}`));
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        if (data.data && data.data.length > 0) {
+            formID = data.data[0].id;
+        } else {
+            console.error('No data found');
+            return { error: 'No data found', message: 'Form submission failed' };
+        }
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+        return { error: error.message, message: 'Form submission failed' };
+    }
+
+    const data = {
+        data: {
+            form: formID,
+            details: fields,
+
+        }
+    };
+
+    console.log(JSON.stringify(data));
+
+    try {
+        await fetch(getStrapiURL(`/${config.forms.COLLECTIONS_PATH}`), {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(data)
+        });
+        return {
+            ...state,
+            message: 'Form submitted successfully',
+        };
+    } catch (error) {
+        const errorMessage = error.message || 'Unknown error. Blame your internet.';
+        console.log('Error:', errorMessage);
+        return { error: errorMessage, message: 'Form submission failed' };
+    }
 }
