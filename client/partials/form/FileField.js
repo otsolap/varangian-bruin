@@ -7,7 +7,7 @@ const FileField = ({ name, description, showLabels, required }) => {
 
   return (
     <>
-    <div>
+    <div className={styles.inputBlock}>
       <label htmlFor={uid} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{description}</label>
       <input
       type='file'

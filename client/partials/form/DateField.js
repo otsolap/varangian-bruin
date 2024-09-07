@@ -7,7 +7,7 @@ const DateField = ({ title, showLabels, required }) => {
 
   return (
     <>
-    <div>
+    <div className={styles.inputBlock}>
       <label htmlFor={uid} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{title}</label>
       <input
       type='date'

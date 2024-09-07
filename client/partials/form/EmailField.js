@@ -3,7 +3,7 @@ import styles from '@/styles/components/form.module.css'
 const EmailField = ({  placeholder, showLabels, required }) => {
   return (
     <>
-    <div>
+    <div className={styles.inputBlock}>
       <label htmlFor={'email'} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{'Email'}</label>
       <input
       type='text'

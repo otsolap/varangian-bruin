@@ -7,7 +7,7 @@ const CheckboxField = ({ title, options, showLabels }) => {
 
   return (
     <>
-    <div>
+    <div className={styles.inputBlock}>
       <fieldset className={styles.fieldset}>
           <legend className={`${styles.legend} ${showLabels ? '' : 'sr-only'}`}>{title}</legend>
           {options 

@@ -7,7 +7,7 @@ const SelectField = ({ title, placeholder, options, required, showLabels}) => {
 
   return (
     <>
-    <div>
+     <div className={styles.inputBlock}>
       <label htmlFor={uid} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{title}</label>
       <select className={styles.select} id={uid} name={uid} required={required ? true : null} >
           {placeholder ? <option value="">{placeholder}</option> : null}

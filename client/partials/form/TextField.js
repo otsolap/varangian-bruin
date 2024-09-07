@@ -7,7 +7,7 @@ const TextField = ({ name, placeholder, showLabels, required }) => {
 
   return (
     <>
-      <div>
+    <div className={styles.inputBlock}>
         <label htmlFor={uid} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{name}</label>
         <input
         type='text'

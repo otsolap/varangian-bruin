@@ -17,12 +17,10 @@ export async function formSubmit(state, formData) {
             continue;
         }
     
-        // Decode the name and value to handle special characters (Ä, Ö, etc.)
-        const decodedName = decodeURIComponent(escape(name));
-        const decodedValue = decodeURIComponent(escape(value));
-
-        fields[decodedName] = decodedValue;
+        fields[name] = value;
     }
+
+    console.log(fields);
 
      // Identify textarea fields
      const textareaFields = Object.entries(fields)
@@ -66,6 +64,8 @@ export async function formSubmit(state, formData) {
 
         }
     };
+
+    console.log(JSON.stringify(data));
 
     try {
         await fetch(getStrapiURL(`/${config.forms.COLLECTIONS_PATH}`), {

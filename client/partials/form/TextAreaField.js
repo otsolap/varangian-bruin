@@ -3,7 +3,7 @@ import styles from '@/styles/components/form.module.css'
 const TextAreaField = ({ name, placeholder, showLabels, rows = 4, cols = 30, }) => {
   return (
     <>
-    <div>
+    <div className={styles.inputBlock}>
         <label htmlFor={name} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{name}</label>
         <textarea 
           id={name} 
