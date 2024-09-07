@@ -7,22 +7,24 @@ const CheckboxField = ({ title, options, showLabels }) => {
 
   return (
     <>
-    <fieldset className={styles.fieldset}>
-        <legend className={`${styles.legend} ${showLabels ? '' : 'sr-only'}`}>{title}</legend>
-        {options 
-        ? options.map((option, index) => (
+    <div>
+      <fieldset className={styles.fieldset}>
+          <legend className={`${styles.legend} ${showLabels ? '' : 'sr-only'}`}>{title}</legend>
+          {options 
+          ? options.map((option, index) => (
             <label className={styles.label} key={index} htmlFor={uid + index}>
-                <input 
-                className={styles.checkbox} 
-                type="checkbox" 
-                id={uid + index} 
-                name={title} 
-                value={option.value} 
-                />
-                {option.value}
-            </label>
-        )) : null}
-    </fieldset>
+                  <input 
+                  className={styles.checkbox} 
+                  type="checkbox" 
+                  id={uid + index} 
+                  name={title} 
+                  value={option.value} 
+                  />
+                  {option.value}
+              </label>
+          )) : null}
+      </fieldset>
+    </div>
     </>
   )
 }

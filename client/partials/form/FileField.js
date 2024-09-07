@@ -7,15 +7,17 @@ const FileField = ({ name, description, showLabels, required }) => {
 
   return (
     <>
-    <label htmlFor={uid} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{description}</label>
-    <input
-    type='file'
-    id={uid}
-    name={uid}
-    required={required ? true : null}
-    accept=".jpg, .jpeg, .png, .webp, .pdf"
-    className={styles.input}
-    />
+    <div>
+      <label htmlFor={uid} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{description}</label>
+      <input
+      type='file'
+      id={uid}
+      name={uid}
+      required={required ? true : null}
+      accept=".jpg, .jpeg, .png, .webp, .pdf"
+      className={styles.input}
+      />
+    </div>
     </>
   )
 }

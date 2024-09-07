@@ -1,16 +1,21 @@
 import styles from '@/styles/components/form.module.css'
 
-const TextAreaField = ({ name, placeholder, showLabels }) => {
+const TextAreaField = ({ name, placeholder, showLabels, rows = 4, cols = 30, }) => {
   return (
     <>
-    <label htmlFor={name} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{name}</label>
-    <textarea 
-      id={name} 
-      name={name} 
-      placeholder={placeholder ? placeholder : name} 
-      className={styles.input}
-      >
-    </textarea>
+    <div>
+        <label htmlFor={name} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{name}</label>
+        <textarea 
+          id={name} 
+          name={`textarea_${name}`} 
+          className={styles.textarea}
+          placeholder={placeholder ? placeholder : name} 
+          rows={rows}
+          cols={cols}
+          >
+        </textarea>
+     </div>
+
     </>
 
   )

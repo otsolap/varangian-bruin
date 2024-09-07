@@ -7,15 +7,17 @@ const TextField = ({ name, placeholder, showLabels, required }) => {
 
   return (
     <>
-    <label htmlFor={uid} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{name}</label>
-    <input
-    type='text'
-    name={uid}
-    id={uid}
-    placeholder={placeholder ? placeholder : name}
-    required={required ? true : null}
-    className={styles.input}
-    />
+      <div>
+        <label htmlFor={uid} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{name}</label>
+        <input
+        type='text'
+        name={uid}
+        id={uid}
+        placeholder={placeholder ? placeholder : name}
+        required={required ? true : null}
+        className={styles.input}
+        />
+      </div>
     </>
   )
 }

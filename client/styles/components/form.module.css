@@ -67,11 +67,16 @@
 .legend {
   display: block;
   font-weight: 700;
+
+  &:first-letter {
+    text-transform: uppercase;
+  }
 }
 
 .label,
 .select,
 .option,
+.textarea,
 .input {
   font-size: var(--spacing-single);
   width: 100%;
@@ -79,10 +84,10 @@
 }
 
 .input,
+.textarea,
 .select,
 .option {
   display: flex;
-  height: var(--spacing-triple);
   padding: var(--spacing-half) var(--spacing-single);
   align-items: center;
   align-self: stretch;
@@ -91,18 +96,25 @@
 .input,
 .select,
 .option {
+  height: var(--spacing-triple);
+}
+
+.input,
+.textarea
+.select,
+.option {
     border-radius: var(--spacing-quarter);
     border: 1px solid rgba(4, 43, 96, 0.25);
 }
 
-
+.textarea,
 .input {
   border-radius: var(--spacing-quarter);
   border: 1px solid rgba(4, 43, 96, 0.25);
 }
 
 /* Subscribe Form Util classes */
-.inputWrapper.row{
+.inputWrapper.row {
   flex-direction: row;
   align-items: center;
 }

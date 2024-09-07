@@ -3,10 +3,7 @@ import config from '@/utils/config'
 import { getStrapiURL } from "utils"
 
 // Form Embed submission handler
-
-
 export async function formSubmit(state, formData) {
-
     let fields = {};
     const excludePatterns = ['$ACTION_'];
     
@@ -20,17 +17,25 @@ export async function formSubmit(state, formData) {
             continue;
         }
     
-        fields[name] = value;
+        // Decode the name and value to handle special characters (Ä, Ö, etc.)
+        const decodedName = decodeURIComponent(escape(name));
+        const decodedValue = decodeURIComponent(escape(value));
+
+        fields[decodedName] = decodedValue;
     }
 
-    // TO DO:
-    // IF there is a input type textarea, we need to translate that into readable form somehow.
-    const formattedDataString = Object.entries(fields)
-        .map(([key, value]) => `<br><strong>label:</strong> ${key}<br><strong>value:</strong> ${value}<br>`)
-        .join('');
+     // Identify textarea fields
+     const textareaFields = Object.entries(fields)
+     .filter(([key, value]) => key.startsWith('textarea_'))
+     .map(([key, value]) => ({ key, value }))
+
+    // Format textarea fields
+    textareaFields.forEach(field => {
+        fields[field.key] = field.value.replace(/\r\n/g, ' ');
+    });
 
     const headers = {
-       // Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
         'Content-Type': 'application/json'
     };
 
@@ -61,8 +66,6 @@ export async function formSubmit(state, formData) {
 
         }
     };
-
-    console.log(JSON.stringify(data));
 
     try {
         await fetch(getStrapiURL(`/${config.forms.COLLECTIONS_PATH}`), {
