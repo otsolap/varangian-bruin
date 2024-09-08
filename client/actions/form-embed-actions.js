@@ -32,6 +32,8 @@ export async function formSubmit(state, formData) {
         fields[field.key] = field.value.replace(/\r\n/g, ' ');
     });
 
+    // Tähän vielä sähköpostin validointi
+
     const headers = {
         Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
         'Content-Type': 'application/json'
@@ -65,8 +67,6 @@ export async function formSubmit(state, formData) {
         }
     };
 
-    console.log(JSON.stringify(data));
-
     try {
         await fetch(getStrapiURL(`/${config.forms.COLLECTIONS_PATH}`), {
             method: 'POST',
@@ -75,7 +75,7 @@ export async function formSubmit(state, formData) {
         });
         return {
             ...state,
-            message: 'Form submitted successfully',
+            message: 'Form submitted successfully.',
         };
     } catch (error) {
         const errorMessage = error.message || 'Unknown error. Blame your internet.';

@@ -18,7 +18,6 @@ const DateField = ({ title, showLabels, required }) => {
       />
     </div>
     </>
-
   )
 }
 

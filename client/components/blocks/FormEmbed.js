@@ -4,6 +4,7 @@ import Inputs from '@/components/Inputs'
 import styles from '@/styles/components/form.module.css'
 import NextImage from "@/partials/util/NextImage";
 import { formSubmit } from '@/actions/form-embed-actions';
+import { SubmitButton } from "@/partials/form/SubmitButton";
 
 const FormEmbed = ({ form }) => {
   const { formID, title, description, showLabels, inputs, image, successMessage, errorMessage, redirect, link } = form.data.attributes
@@ -18,6 +19,7 @@ const FormEmbed = ({ form }) => {
     formSubmit,
     INITIAL_STATE
   );
+
 
   return (
     <section className={styles.section}>
@@ -41,9 +43,8 @@ const FormEmbed = ({ form }) => {
                 />
               </div>
               <footer className={styles.footer}>
-                <button type="submit" value="submit" className="button button--primary" >
-                  Button Text
-                </button>
+                <SubmitButton />
+                <p aria-live="polite">{formState.message}</p>
               </footer>
             </form>
           </div>

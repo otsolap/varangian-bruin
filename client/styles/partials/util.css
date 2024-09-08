@@ -55,6 +55,13 @@
   color: var(--brand-700);
 }
 
+.button--disabled {
+  pointer-events: none;
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-neutral-30);
+}
+
 /* Background and Color Classes */
 .bg-primary {
   background-color: var(--brand-500);
