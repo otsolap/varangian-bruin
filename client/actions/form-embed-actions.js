@@ -6,7 +6,7 @@ import { getStrapiURL } from "utils"
 // Form Embed submission handler
 export async function formSubmit(state, formData) {
     let fields = {};
-    const excludePatterns = ['$ACTION_'];
+    const excludePatterns = ['$ACTION_', 'honeypot'];
     
     for (let [name, value] of formData.entries()) {
         if (name === 'honeypot' && value) {
