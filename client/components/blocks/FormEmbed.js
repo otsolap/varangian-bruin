@@ -11,6 +11,11 @@ const FormEmbed = ({ form }) => {
 
   const INITIAL_STATE = {
     id: formID,
+    redirect: redirect,
+    link: link,
+    successMessage: successMessage,
+    errorMessage: errorMessage,
+    submitSuccess: false,
     data: null,
     message: '',
   };
@@ -19,7 +24,6 @@ const FormEmbed = ({ form }) => {
     formSubmit,
     INITIAL_STATE
   );
-
 
   return (
     <section className={styles.section}>
@@ -43,7 +47,7 @@ const FormEmbed = ({ form }) => {
                 />
               </div>
               <footer className={styles.footer}>
-                <SubmitButton />
+                {formState.submitSuccess === true ? null : <SubmitButton />}
                 <p aria-live="polite">{formState.message}</p>
               </footer>
             </form>

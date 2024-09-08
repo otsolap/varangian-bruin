@@ -8,6 +8,11 @@
   "attributes": {
     "name": {
       "type": "string"
+    },
+    "required": {
+      "type": "boolean",
+      "required": false,
+      "default": false
     }
   }
 }

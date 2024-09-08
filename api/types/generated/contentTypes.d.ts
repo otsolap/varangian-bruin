@@ -1039,7 +1039,7 @@ export interface ApiContactContact extends Schema.CollectionType {
   info: {
     singularName: 'contact';
     pluralName: 'contacts';
-    displayName: 'Contacts (Form)';
+    displayName: 'Contacts (from Forms)';
     description: '';
   };
   options: {
@@ -1166,12 +1166,12 @@ export interface ApiFormForm extends Schema.CollectionType {
       Attribute.DefaultTo<false>;
     successMessage: Attribute.Text;
     errorMessage: Attribute.Text;
-    link: Attribute.Component<'partials.link'>;
     contacts: Attribute.Relation<
       'api::form.form',
       'oneToMany',
       'api::contact.contact'
     >;
+    link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

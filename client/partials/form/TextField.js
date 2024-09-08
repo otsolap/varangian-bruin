@@ -2,7 +2,6 @@ import styles from '@/styles/components/form.module.css'
 import { createID } from '@/utils/index'
 
 const TextField = ({ name, placeholder, showLabels, required }) => {
-
   const uid = createID(name)
 
   return (
@@ -10,9 +9,9 @@ const TextField = ({ name, placeholder, showLabels, required }) => {
     <div className={styles.inputBlock}>
         <label htmlFor={uid} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{name}</label>
         <input
-        type='text'
-        name={uid}
         id={uid}
+        name={uid}
+        type='text'
         placeholder={placeholder ? placeholder : name}
         required={required ? true : null}
         className={styles.input}

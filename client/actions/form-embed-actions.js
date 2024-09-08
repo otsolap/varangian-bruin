@@ -1,4 +1,5 @@
 'use server'
+import { redirect } from 'next/navigation'
 import config from '@/utils/config'
 import { getStrapiURL } from "utils"
 
@@ -20,8 +21,6 @@ export async function formSubmit(state, formData) {
         fields[name] = value;
     }
 
-    console.log(fields);
-
      // Identify textarea fields
      const textareaFields = Object.entries(fields)
      .filter(([key, value]) => key.startsWith('textarea_'))
@@ -31,8 +30,6 @@ export async function formSubmit(state, formData) {
     textareaFields.forEach(field => {
         fields[field.key] = field.value.replace(/\r\n/g, ' ');
     });
-
-    // Tähän vielä sähköpostin validointi
 
     const headers = {
         Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
@@ -52,18 +49,23 @@ export async function formSubmit(state, formData) {
             formID = data.data[0].id;
         } else {
             console.error('No data found');
-            return { error: 'No data found', message: 'Form submission failed' };
+            return { 
+                error: 'No data found', 
+                message: state.errorMessage ?? 'Form submission failed.' 
+            };
         }
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
-        return { error: error.message, message: 'Form submission failed' };
+        return { 
+            error: error.message, 
+            message: state.errorMessage ?? 'Form submission failed.' 
+        };
     }
 
     const data = {
         data: {
             form: formID,
             details: fields,
-
         }
     };
 
@@ -73,13 +75,27 @@ export async function formSubmit(state, formData) {
             headers: headers,
             body: JSON.stringify(data)
         });
+    
+        if (state.redirect && state.link) {
+            redirect(state.link);
+        }
+    
         return {
             ...state,
-            message: 'Form submitted successfully.',
+            message: state.successMessage ?? 'Form submitted successfully.',
+            submitSuccess: true,
         };
     } catch (error) {
         const errorMessage = error.message || 'Unknown error. Blame your internet.';
         console.log('Error:', errorMessage);
-        return { error: errorMessage, message: 'Form submission failed' };
+    
+        if (state.redirect && state.link) {
+            redirect(state.link);
+        }
+    
+        return { 
+            error: errorMessage, 
+            message: state.errorMessage ?? 'Form submission failed.' 
+        };
     }
 }

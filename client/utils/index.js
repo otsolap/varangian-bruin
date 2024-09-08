@@ -12,10 +12,10 @@ import config from '@/utils/config'
     return items.slice(startIndex, startIndex + pageSize)
   }
 
- // Take the title and return it as a "slug".
- // used for creating non spaced IDs for input and text fields.
+  // Take the title and return it as a "slug".
+  // used for creating non spaced IDs for input and text fields.
   export const createID = (title) => {
-      return title.replace(/\s+/g, '-').toLowerCase();
+    return title.replace(/\s+/g, '_').toLowerCase();
   }
   
   // Get the url of the Strapi API based on the env variable or the default local one.

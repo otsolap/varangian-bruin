@@ -298,6 +298,7 @@ export interface FormInputsTextareaField extends Schema.Component {
   };
   attributes: {
     name: Attribute.String;
+    required: Attribute.Boolean & Attribute.DefaultTo<false>;
   };
 }
 
