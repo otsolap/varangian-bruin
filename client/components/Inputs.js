@@ -2,6 +2,7 @@ import CheckboxField from '@/partials/form/CheckboxField';
 import DateField from '@/partials/form/DateField';
 import EmailField from 'partials/form/EmailField';
 import FileField from '@/partials/form/FileField';
+import RadioField from '@/partials/form/RadioField';
 import SelectField from '@/partials/form/SelectField';
 import TextField from '@/partials/form/TextField';
 import TextAreaField from '@/partials/form/TextAreaField';
@@ -21,6 +22,9 @@ const getInputField = ({ __component, ...rest  }, index, formRef, showLabels ) =
     break;
     case 'form-inputs.file-field':
       Input = FileField;
+    break;
+    case 'form-inputs.radio-field':
+      Input = RadioField;
     break;
     case 'form-inputs.select-field':
       Input = SelectField;

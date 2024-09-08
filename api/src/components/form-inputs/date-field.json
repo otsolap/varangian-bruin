@@ -10,7 +10,7 @@
       "type": "boolean",
       "default": false
     },
-    "title": {
+    "name": {
       "type": "string"
     }
   }

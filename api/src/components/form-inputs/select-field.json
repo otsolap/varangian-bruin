@@ -9,9 +9,6 @@
     "placeholder": {
       "type": "string"
     },
-    "title": {
-      "type": "string"
-    },
     "options": {
       "type": "component",
       "repeatable": true,
@@ -20,6 +17,9 @@
     "required": {
       "type": "boolean",
       "default": false
+    },
+    "name": {
+      "type": "string"
     }
   }
 }

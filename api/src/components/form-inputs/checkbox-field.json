@@ -6,13 +6,13 @@
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
     "options": {
       "type": "component",
       "repeatable": true,
       "component": "util.option"
+    },
+    "name": {
+      "type": "string"
     }
   }
 }

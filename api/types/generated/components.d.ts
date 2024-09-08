@@ -210,8 +210,8 @@ export interface FormInputsCheckboxField extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String;
     options: Attribute.Component<'util.option', true>;
+    name: Attribute.String;
   };
 }
 
@@ -223,7 +223,7 @@ export interface FormInputsDateField extends Schema.Component {
   };
   attributes: {
     required: Attribute.Boolean & Attribute.DefaultTo<false>;
-    title: Attribute.String;
+    name: Attribute.String;
   };
 }
 
@@ -248,17 +248,19 @@ export interface FormInputsFileField extends Schema.Component {
   attributes: {
     name: Attribute.String;
     description: Attribute.String;
-    required: Attribute.Boolean;
+    required: Attribute.Boolean & Attribute.DefaultTo<false>;
+    multiple: Attribute.Boolean;
   };
 }
 
 export interface FormInputsRadioField extends Schema.Component {
   collectionName: 'components_form_inputs_radio_fields';
   info: {
-    displayName: 'Radio-field';
+    displayName: 'radio-field';
+    description: '';
   };
   attributes: {
-    title: Attribute.String;
+    name: Attribute.String;
     options: Attribute.Component<'util.option', true>;
   };
 }
@@ -271,9 +273,9 @@ export interface FormInputsSelectField extends Schema.Component {
   };
   attributes: {
     placeholder: Attribute.String;
-    title: Attribute.String;
     options: Attribute.Component<'util.option', true>;
     required: Attribute.Boolean & Attribute.DefaultTo<false>;
+    name: Attribute.String;
   };
 }
 
@@ -293,12 +295,13 @@ export interface FormInputsTextField extends Schema.Component {
 export interface FormInputsTextareaField extends Schema.Component {
   collectionName: 'components_form_inputs_textarea_fields';
   info: {
-    displayName: 'Textarea-field';
+    displayName: 'textarea-field';
     description: '';
   };
   attributes: {
-    name: Attribute.String;
-    required: Attribute.Boolean & Attribute.DefaultTo<false>;
+    required: Attribute.Boolean;
+    name: Attribute.Text;
+    placeholder: Attribute.String;
   };
 }
 

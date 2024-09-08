@@ -13,6 +13,10 @@
       "type": "string"
     },
     "required": {
+      "type": "boolean",
+      "default": false
+    },
+    "multiple": {
       "type": "boolean"
     }
   }

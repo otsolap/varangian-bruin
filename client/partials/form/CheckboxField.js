@@ -1,23 +1,22 @@
 import styles from '@/styles/components/form.module.css'
 import { createID } from '@/utils/index'
 
-const CheckboxField = ({ title, options, showLabels }) => {
-
-  const uid = createID(title)
+const CheckboxField = ({ name, options, showLabels }) => {
+  const uid = createID(name)
 
   return (
     <>
     <div className={styles.inputBlock}>
       <fieldset className={styles.fieldset}>
-          <legend className={`${styles.legend} ${showLabels ? '' : 'sr-only'}`}>{title}</legend>
+          <legend className={`${styles.legend} ${showLabels ? '' : 'sr-only'}`}>{name}</legend>
           {options 
           ? options.map((option, index) => (
             <label className={styles.label} key={index} htmlFor={uid + index}>
                   <input 
-                  className={styles.checkbox} 
+                  className={styles.choice} 
                   type="checkbox" 
                   id={uid + index} 
-                  name={title} 
+                  name={uid} 
                   value={option.value} 
                   />
                   {option.value}

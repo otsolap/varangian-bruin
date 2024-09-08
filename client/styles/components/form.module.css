@@ -60,7 +60,8 @@
   padding: var(--spacing-single);
 }
 
-.checkbox {
+/* Radio & Checkbox */
+.choice {
   margin: var(--spacing-single);
   width: var(--spacing-single);
   max-width: var(--spacing-single);

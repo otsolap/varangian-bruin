@@ -1,14 +1,15 @@
 import React from 'react'
 import { createID } from '@/utils/index'
+import styles from '@/styles/components/form.module.css'
 
-const DateField = ({ title, showLabels, required }) => {
+const DateField = ({ name, showLabels, required }) => {
 
-  const uid = createID(title)
+  const uid = createID(name)
 
   return (
     <>
     <div className={styles.inputBlock}>
-      <label htmlFor={uid} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{title}</label>
+      <label htmlFor={uid} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{name}</label>
       <input
       type='date'
       id={uid}

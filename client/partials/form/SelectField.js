@@ -1,14 +1,14 @@
 import styles from '@/styles/components/form.module.css'
 import { createID } from '@/utils/index'
 
-const SelectField = ({ title, placeholder, options, required, showLabels}) => {
+const SelectField = ({ name, placeholder, options, required, showLabels}) => {
 
-  const uid = createID(title)
+  const uid = createID(name)
 
   return (
     <>
      <div className={styles.inputBlock}>
-      <label htmlFor={uid} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{title}</label>
+      <label htmlFor={uid} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{name}</label>
       <select className={styles.select} id={uid} name={uid} required={required ? true : null} >
           {placeholder ? <option value="">{placeholder}</option> : null}
           {options 

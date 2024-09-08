@@ -1,11 +1,12 @@
 {
   "collectionName": "components_form_inputs_radio_fields",
   "info": {
-    "displayName": "Radio-field"
+    "displayName": "radio-field",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "title": {
+    "name": {
       "type": "string"
     },
     "options": {
