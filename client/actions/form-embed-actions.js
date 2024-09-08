@@ -31,6 +31,8 @@ export async function formSubmit(state, formData) {
         fields[field.key] = field.value.replace(/\r\n/g, ' ');
     });
 
+    console.log('Fields:', fields);
+
     const headers = {
         Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
         'Content-Type': 'application/json'
