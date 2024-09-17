@@ -10,7 +10,7 @@ export function SubmitButton({ text}) {
         type="submit" 
         className={`button ${pending ? 'button--disabled' : 'button--primary'}`}    
     >
-      {pending ? text.submit : text.loading }
+      {pending ? text.loading : text.submit }
     </button>
   )
 }

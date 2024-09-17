@@ -91,10 +91,6 @@ export async function formSubmit(state, formData) {
         const errorMessage = error.message || 'Unknown error. Blame your internet.';
         console.log('Error:', errorMessage);
     
-        if (state.redirect && state.link) {
-            redirect(state.link);
-        }
-    
         return { 
             error: errorMessage, 
             message: state.messages.errorMessage ?? 'Form submission failed.' 

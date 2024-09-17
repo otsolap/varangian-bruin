@@ -2,36 +2,33 @@
 import { useFormState } from "react-dom";
 import styles from '@/styles/components/form.module.css'
 import EmailField from 'partials/form/EmailField';
-import { formSubcribeSubmit } from '@/actions/subscription-form-actions';
+import { formSubcribeSubmit } from '@/actions/susbcription-form-actions';
 import { SubmitButton } from "@/partials/form/SubmitButton";
 
+const SubscribeForm = ({ title, description, email, formID, redirect, link, successMessage, errorMessage,  }) => {
+  const INITIAL_STATE = {
+    id: formID,
+    redirect: redirect,
+    link: link,
+    messages: {
+      successMessage: successMessage,
+      errorMessage: errorMessage,
+    },
+    buttonText: {
+      submit: 'Subscribe',
+      loading: 'Loading...',
+    },
+    submitSuccess: false,
+    message: '',
+  }
+  
+  const [formState, formAction] = useFormState(
+    formSubcribeSubmit,
+    INITIAL_STATE
+  )
 
-const FormEmbed = ({ title, description, email, formID, redirect, link, successMessage, errorMessage,  }) => {
-    if (!formID) return null
-
-    const INITIAL_STATE = {
-        id: formID,
-        redirect: redirect,
-        link: link,
-        messages: {
-          successMessage: successMessage,
-          errorMessage: errorMessage,
-        },
-        buttonText: {
-          submit: 'Subscribe',
-          loading: 'Loading...',
-        },
-        submitSuccess: false,
-        data: null,
-        message: '',
-    }
-
-    const [formState, formAction] = useFormState(
-        formSubcribeSubmit,
-        INITIAL_STATE
-    )
-
-
+  if (!formID) return null
+  
   return (
     <section className={styles.section}>
       <div className={styles.wrapper}>
@@ -50,14 +47,13 @@ const FormEmbed = ({ title, description, email, formID, redirect, link, successM
                   <div className={styles.inputBlock}>
                     <input type="hidden" value="" name="honeypot" />
                     <EmailField 
-                        formRef={formRef} 
                         placeholder={email.placeholder}
                         required={email.required}
                         />
-                    <footer className={`${styles.footer} ${styles.paddingZero}`}>
-                      {formState.submitSuccess === true ? null : <SubmitButton text={formState.buttonText} />}
-                      <p aria-live="polite">{formState.message}</p>
-                    </footer>
+                      <footer className={styles.footer}>
+                        {formState.submitSuccess === true ? null : <SubmitButton text={formState.buttonText} />}
+                        <p aria-live="polite">{formState.message}</p>
+                      </footer>
                   </div>
               </div>
             </form>
@@ -68,4 +64,4 @@ const FormEmbed = ({ title, description, email, formID, redirect, link, successM
   )
 }
 
-export default FormEmbed
+export default SubscribeForm
