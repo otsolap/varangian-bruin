@@ -17,20 +17,12 @@
 
 /* Wrappers */
 .wrapper,
-.form {
+.form,
+.inputWrapper {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--spacing-single);
-}
-
-.inputWrapper {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
   gap: var(--spacing-single);
 }
 
@@ -135,26 +127,6 @@
   width: 100%;
 }
 
-.width-third {
-  max-width: 33.33%;
-  flex: 0 0 33.33%;
-}
-
-.width-half {
-  max-width: 50%;
-  flex: 0 0 50%;
-}
-
-.width-twoThirds {
-  max-width: 66.66%;
-  flex: 0 0 66.66%;
-}
-
-.width-full {
-  max-width: 100%;
-  flex: 0 0 100%;
-}
-
 .spinner {
 		position: absolute;
 		top: 0;
@@ -182,10 +154,41 @@
   .spinner {
     left: calc(50% - 100px);
   } 
+
+  .inputWrapper {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  /* Single input Widths */
+  .width-third,
+  .width-half {
+    max-width: 50%;
+    flex: 0 0 50%;
+  }
+
+  .width-twoThirds {
+    max-width: 66.66%;
+    flex: 0 0 66.66%;
+  }
+
+  .width-full {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+
 }
 
 /* Desktop Styles */
 @media (width >= 1440px) {
+
+    /* Single input Widths */
+    .width-third {
+      max-width: 33.33%;
+      flex: 0 0 33.33%;
+    }
+  
   
   .section {
     margin-bottom: var(--spacing-double);

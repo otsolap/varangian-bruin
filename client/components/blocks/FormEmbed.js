@@ -29,7 +29,7 @@ const FormEmbed = ({ form }) => {
     <section className={styles.section}>
       <div className={styles.wrapper}>
         {inputs.length ? (
-          <div className={styles.content}>
+          <article className={styles.content}>
             <form 
               id={formID ?? null}
               className={styles.form} 
@@ -51,7 +51,7 @@ const FormEmbed = ({ form }) => {
                 <p aria-live="polite">{formState.message}</p>
               </footer>
             </form>
-          </div>
+          </article>
         ) : null}
         {image && (
           <figure className={styles.imageContainer}>
