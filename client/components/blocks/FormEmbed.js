@@ -13,8 +13,14 @@ const FormEmbed = ({ form }) => {
     id: formID,
     redirect: redirect,
     link: link,
-    successMessage: successMessage,
-    errorMessage: errorMessage,
+    messages: {
+      successMessage: successMessage,
+      errorMessage: errorMessage,
+    },
+    buttonText: {
+      submit: 'Submit',
+      loading: 'Submitting...',
+    },
     submitSuccess: false,
     data: null,
     message: '',
@@ -47,7 +53,7 @@ const FormEmbed = ({ form }) => {
                 />
               </div>
               <footer className={styles.footer}>
-                {formState.submitSuccess === true ? null : <SubmitButton />}
+                {formState.submitSuccess === true ? null : <SubmitButton text={formState.buttonText} />}
                 <p aria-live="polite">{formState.message}</p>
               </footer>
             </form>

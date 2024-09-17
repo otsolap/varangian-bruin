@@ -1,7 +1,7 @@
 'use client'
 import { useFormStatus } from 'react-dom'
  
-export function SubmitButton() {
+export function SubmitButton({ text}) {
   const { pending } = useFormStatus()
 
   return (
@@ -10,7 +10,7 @@ export function SubmitButton() {
         type="submit" 
         className={`button ${pending ? 'button--disabled' : 'button--primary'}`}    
     >
-      {pending ? 'Submitting...' : 'Submit'}
+      {pending ? text.submit : text.loading }
     </button>
   )
 }

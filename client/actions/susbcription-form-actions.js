@@ -4,6 +4,8 @@ import { getStrapiURL } from "utils"
 
 // Subscription Form submission handler
 export async function formSubcribeSubmit(state, formData) {
+  console.log(state)
+  console.log(formData)
 
 }
 

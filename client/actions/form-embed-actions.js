@@ -53,14 +53,14 @@ export async function formSubmit(state, formData) {
             console.error('No data found');
             return { 
                 error: 'No data found', 
-                message: state.errorMessage ?? 'Form submission failed.' 
+                message: state.messages.errorMessage ?? 'Form submission failed.' 
             };
         }
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
         return { 
             error: error.message, 
-            message: state.errorMessage ?? 'Form submission failed.' 
+            message: state.messages.errorMessage ?? 'Form submission failed.' 
         };
     }
 
@@ -84,7 +84,7 @@ export async function formSubmit(state, formData) {
     
         return {
             ...state,
-            message: state.successMessage ?? 'Form submitted successfully.',
+            message: state.messages.successMessage ?? 'Form submitted successfully.',
             submitSuccess: true,
         };
     } catch (error) {
@@ -97,7 +97,7 @@ export async function formSubmit(state, formData) {
     
         return { 
             error: errorMessage, 
-            message: state.errorMessage ?? 'Form submission failed.' 
+            message: state.messages.errorMessage ?? 'Form submission failed.' 
         };
     }
 }
