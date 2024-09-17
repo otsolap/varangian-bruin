@@ -31,11 +31,11 @@ export async function formSubmit(state, formData) {
         fields[field.key] = field.value.replace(/\r\n/g, ' ');
     });
 
-    console.log('Fields:', fields);
-
     const headers = {
-        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        ...(process.env.NODE_ENV === 'production' && {
+            Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+        })
     };
 
     // Make the fetch request
