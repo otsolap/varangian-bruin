@@ -18,12 +18,12 @@ const FormEmbed = ({ form }) => {
     submitSuccess: false,
     data: null,
     message: '',
-  };
+  }
 
   const [formState, formAction] = useFormState(
     formSubmit,
     INITIAL_STATE
-  );
+  )
 
   return (
     <section className={styles.section}>

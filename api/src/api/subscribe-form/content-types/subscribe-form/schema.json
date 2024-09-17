@@ -26,6 +26,18 @@
     },
     "description": {
       "type": "text"
+    },
+    "redirect": {
+      "type": "boolean"
+    },
+    "link": {
+      "type": "string"
+    },
+    "successMessage": {
+      "type": "text"
+    },
+    "errorMessage": {
+      "type": "text"
     }
   }
 }

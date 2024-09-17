@@ -1,56 +1,36 @@
 'use client'
-import React, { useRef, useState } from 'react'
+import { useFormState } from "react-dom";
 import styles from '@/styles/components/form.module.css'
 import config from '@/utils/config'
-import { getStrapiURL } from "utils"
 import EmailField from 'partials/form/EmailField';
+import { formSubcribeSubmit } from '@/actions/subscription-form-actions';
 
 
-const FormEmbed = ({ title, description, email, formID }) => {
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const formRef = useRef(null)
+const FormEmbed = ({ title, description, email, formID, redirect, link, successMessage, errorMessage,  }) => {
+    if (!formID) return null
 
-  if (!formID) {
-    return null
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-  
-    // Form submission was likely by a bot
-    if(e.target.honeypot.value !== "") return
-  
-    const headers = {
-      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+    const INITIAL_STATE = {
+        id: formID,
+        redirect: redirect,
+        link: link,
+        successMessage: successMessage,
+        errorMessage: errorMessage,
+        submitSuccess: false,
+        data: null,
+        message: '',
     }
-  
-    const data = {
-      email: formRef.current.querySelector('input[name="email"]').value
-    }
-  
-    fetch(getStrapiURL(`/${config.forms.SUBSCRIPTION_PATH}`), {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify(data)
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        setSuccessMessage("Subscription successful! Please check your email to confirm your subscription.")
-      })
-      .catch((error) => {
-        const errorMessage = error.message || 'Unknown error. Blame your internet.'
-        console.log(errorMessage)
-        setErrorMessage('Email failed to submit. Please try again in a few moments.')
-      })
-  }
+
+    const [formState, formAction] = useFormState(
+        formSubcribeSubmit,
+        INITIAL_STATE
+    )
+
 
   return (
     <section className={styles.section}>
       <div className={styles.wrapper}>
         {formID ? (
-          <div className={styles.content}>
+          <article className={styles.content}>
             <form 
               id={formID ? formID : null}
               className={styles.form} 
@@ -82,7 +62,7 @@ const FormEmbed = ({ title, description, email, formID }) => {
               </div>
               {errorMessage &&  <p><strong>{errorMessage}</strong></p>}
             </form>
-          </div>
+          </article>
         ) : null}
       </div>
     </section>

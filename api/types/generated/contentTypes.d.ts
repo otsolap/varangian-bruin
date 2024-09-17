@@ -1555,6 +1555,10 @@ export interface ApiSubscribeFormSubscribeForm extends Schema.SingleType {
     email: Attribute.Component<'form-inputs.email-field'>;
     title: Attribute.String;
     description: Attribute.Text;
+    redirect: Attribute.Boolean;
+    link: Attribute.String;
+    successMessage: Attribute.Text;
+    errorMessage: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
