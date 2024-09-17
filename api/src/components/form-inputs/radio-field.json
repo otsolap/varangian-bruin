@@ -13,6 +13,16 @@
       "type": "component",
       "repeatable": true,
       "component": "util.option"
+    },
+    "width": {
+      "type": "enumeration",
+      "enum": [
+        "third",
+        "half",
+        "twoThirds",
+        "full"
+      ],
+      "default": "full"
     }
   }
 }

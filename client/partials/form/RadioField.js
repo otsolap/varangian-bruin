@@ -1,12 +1,12 @@
 import styles from '@/styles/components/form.module.css'
 import { createID } from '@/utils/index'
 
-const RadioField = ({ name, options, showLabels }) => {
+const RadioField = ({ name, options, width, showLabels }) => {
   const uid = createID(name)
 
   return (
     <>
-    <div className={styles.inputBlock}>
+    <div className={`${styles.inputBlock} ${styles[`width-${width}`]}`}>
       <fieldset className={styles.fieldset}>
           <legend className={`${styles.legend} ${showLabels ? '' : 'sr-only'}`}>{name}</legend>
           {options 

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styles from '@/styles/components/form.module.css';
 import { createID } from '@/utils/index';
 
-const FileField = ({ name, description, showLabels, required, multiple }) => {
+const FileField = ({ name, description, showLabels, width, required, multiple }) => {
   const uid = createID(name);
   const acceptedFileTypes = ['png', 'pdf', 'heif', 'hevc', 'webp', 'jpg', 'jpeg'];
   const maxFileSize = 30 * 1024 * 1024; 
@@ -22,7 +22,7 @@ const FileField = ({ name, description, showLabels, required, multiple }) => {
 
   return (
     <>
-      <div className={styles.inputBlock}>
+       <div className={`${styles.inputBlock} ${styles[`width-${width}`]}`}>
         <label htmlFor={uid} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{description}</label>
         <input
           type='file'

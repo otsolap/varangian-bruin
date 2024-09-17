@@ -17,12 +17,20 @@
 
 /* Wrappers */
 .wrapper,
-.form,
-.inputWrapper {
+.form {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: var(--spacing-single);
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
   gap: var(--spacing-single);
 }
 
@@ -117,14 +125,34 @@
   border: 1px solid rgba(4, 43, 96, 0.25);
 }
 
-/* Subscribe Form Util classes */
-.inputWrapper.row {
-  flex-direction: row;
-  align-items: center;
-}
-
 .footer.paddingZero {
   padding: 0;
+}
+
+/* Single input Widths */
+
+.inputBlock {
+  width: 100%;
+}
+
+.width-third {
+  max-width: 33.33%;
+  flex: 0 0 33.33%;
+}
+
+.width-half {
+  max-width: 50%;
+  flex: 0 0 50%;
+}
+
+.width-twoThirds {
+  max-width: 66.66%;
+  flex: 0 0 66.66%;
+}
+
+.width-full {
+  max-width: 100%;
+  flex: 0 0 100%;
 }
 
 .spinner {

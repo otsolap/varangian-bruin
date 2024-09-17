@@ -1,12 +1,12 @@
 import { createID } from '@/utils/index'
 import styles from '@/styles/components/form.module.css'
 
-const TextAreaField = ({ name, placeholder, showLabels, rows = 4, cols = 30, }) => {
+const TextAreaField = ({ name, placeholder, showLabels, width, rows = 4, cols = 30, }) => {
   const uid = createID(name)
 
   return (
     <>
-    <div className={styles.inputBlock}>
+    <div className={`${styles.inputBlock} ${styles[`width-${width}`]}`}>
         <label htmlFor={uid} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{name}</label>
         <textarea 
           id={uid} 

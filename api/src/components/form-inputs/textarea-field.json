@@ -14,6 +14,16 @@
     },
     "placeholder": {
       "type": "string"
+    },
+    "width": {
+      "type": "enumeration",
+      "enum": [
+        "third",
+        "half",
+        "twoThirds",
+        "full"
+      ],
+      "default": "full"
     }
   }
 }

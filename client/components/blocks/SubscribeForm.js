@@ -61,7 +61,7 @@ const FormEmbed = ({ title, description, email, formID }) => {
                 {title && <h2 className={styles.title}>{title}</h2>}
                 {description && <p>{description}</p>}
              </header>
-              <div className={`${styles.inputWrapper} ${styles.row}`}>
+              <div className={styles.inputWrapper}>
                   {successMessage ? (
                     <p>{successMessage}</p>
                   ) : (

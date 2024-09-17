@@ -212,6 +212,8 @@ export interface FormInputsCheckboxField extends Schema.Component {
   attributes: {
     options: Attribute.Component<'util.option', true>;
     name: Attribute.String;
+    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
+      Attribute.DefaultTo<'full'>;
   };
 }
 
@@ -224,6 +226,8 @@ export interface FormInputsDateField extends Schema.Component {
   attributes: {
     required: Attribute.Boolean & Attribute.DefaultTo<false>;
     name: Attribute.String;
+    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
+      Attribute.DefaultTo<'full'>;
   };
 }
 
@@ -236,6 +240,8 @@ export interface FormInputsEmailField extends Schema.Component {
   attributes: {
     placeholder: Attribute.String;
     required: Attribute.Boolean & Attribute.DefaultTo<false>;
+    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
+      Attribute.DefaultTo<'full'>;
   };
 }
 
@@ -250,6 +256,8 @@ export interface FormInputsFileField extends Schema.Component {
     description: Attribute.String;
     required: Attribute.Boolean & Attribute.DefaultTo<false>;
     multiple: Attribute.Boolean;
+    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
+      Attribute.DefaultTo<'full'>;
   };
 }
 
@@ -262,6 +270,8 @@ export interface FormInputsRadioField extends Schema.Component {
   attributes: {
     name: Attribute.String;
     options: Attribute.Component<'util.option', true>;
+    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
+      Attribute.DefaultTo<'full'>;
   };
 }
 
@@ -276,6 +286,8 @@ export interface FormInputsSelectField extends Schema.Component {
     options: Attribute.Component<'util.option', true>;
     required: Attribute.Boolean & Attribute.DefaultTo<false>;
     name: Attribute.String;
+    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
+      Attribute.DefaultTo<'full'>;
   };
 }
 
@@ -289,6 +301,8 @@ export interface FormInputsTextField extends Schema.Component {
     name: Attribute.String;
     placeholder: Attribute.String;
     required: Attribute.Boolean & Attribute.DefaultTo<false>;
+    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
+      Attribute.DefaultTo<'full'>;
   };
 }
 
@@ -302,6 +316,8 @@ export interface FormInputsTextareaField extends Schema.Component {
     required: Attribute.Boolean;
     name: Attribute.Text;
     placeholder: Attribute.String;
+    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
+      Attribute.DefaultTo<'full'>;
   };
 }
 

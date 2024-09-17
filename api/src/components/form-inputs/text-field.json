@@ -15,6 +15,16 @@
     "required": {
       "type": "boolean",
       "default": false
+    },
+    "width": {
+      "type": "enumeration",
+      "enum": [
+        "third",
+        "half",
+        "twoThirds",
+        "full"
+      ],
+      "default": "full"
     }
   }
 }
