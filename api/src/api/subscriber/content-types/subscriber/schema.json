@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscribers",
+  "info": {
+    "singularName": "subscriber",
+    "pluralName": "subscribers",
+    "displayName": "subscribers"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "import_id": {
+      "type": "uid"
+    },
+    "convertkitID": {
+      "type": "uid"
+    },
+    "email": {
+      "type": "string"
+    },
+    "importTimestamp": {
+      "type": "uid"
+    }
+  }
+}
