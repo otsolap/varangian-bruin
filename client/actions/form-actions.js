@@ -33,9 +33,7 @@ export async function formSubmit(state, formData) {
 
     const headers = {
         'Content-Type': 'application/json',
-        ...(process.env.NODE_ENV === 'production' && {
-            Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
-        })
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
     };
 
     // Make the fetch request
@@ -122,12 +120,11 @@ export async function subcribeFormSubmit(state, formData) {
 
     const headers = {
         'Content-Type': 'application/json',
-        ...(process.env.NODE_ENV === 'production' && {
-            Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
-        })
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
     };
 
     const data = {
+        api_key: process.env.NEXT_CONVERTKIT_API_KEY,
         email: email
     }
 
@@ -135,13 +132,12 @@ export async function subcribeFormSubmit(state, formData) {
     console.log('Formatted data:', JSON.stringify(data));
 
     try {
-        console.log(getStrapiURL(`/${config.forms.SUBSCRIPTION_PATH}`))
 
-        await fetch(getStrapiURL(`/${config.forms.SUBSCRIPTION_PATH}`), {
+        await fetch(`https://api.convertkit.com/v3/forms/${state.id}/subscribe`), {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(data)
-        });
+        };
 
         if (state.redirect && state.link) {
             redirect(state.link);
@@ -160,19 +156,3 @@ export async function subcribeFormSubmit(state, formData) {
         };
     }
 }
-
-
-/*
-
-// Prepare data for ConvertKit
-const convertKitData = {
-email: requestData.email,
-api_key: process.env.CONVERTKIT_API_KEY,
-// Add any other fields required by ConvertKit
-};
-
-// Send data to ConvertKit
-await axios.post(`https://api.convertkit.com/v3/forms/${formID}/subscribe`, convertKitData);
-
-
-*/
