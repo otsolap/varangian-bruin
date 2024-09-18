@@ -1,7 +1,7 @@
 'use client'
 import { useFormStatus } from 'react-dom'
  
-export function SubmitButton({ text}) {
+export function SubmitButton({ text }) {
   const { pending } = useFormStatus()
 
   return (

@@ -3,7 +3,7 @@ import { useFormState } from "react-dom";
 import Inputs from '@/components/Inputs'
 import styles from '@/styles/components/form.module.css'
 import NextImage from "@/partials/util/NextImage";
-import { formSubmit } from '@/actions/form-embed-actions';
+import { formSubmit } from '@/actions/form-actions';
 import { SubmitButton } from "@/partials/form/SubmitButton";
 
 const FormEmbed = ({ form }) => {
@@ -22,7 +22,6 @@ const FormEmbed = ({ form }) => {
       loading: 'Submitting...',
     },
     submitSuccess: false,
-    data: null,
     message: '',
   }
 
@@ -37,7 +36,7 @@ const FormEmbed = ({ form }) => {
         {inputs.length ? (
           <article className={styles.content}>
             <form 
-              id={formID ?? null}
+              id={formID}
               className={styles.form} 
               action={formAction}
               >

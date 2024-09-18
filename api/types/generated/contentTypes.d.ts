@@ -1577,38 +1577,6 @@ export interface ApiSubscribeFormSubscribeForm extends Schema.SingleType {
   };
 }
 
-export interface ApiSubscriberSubscriber extends Schema.CollectionType {
-  collectionName: 'subscribers';
-  info: {
-    singularName: 'subscriber';
-    pluralName: 'subscribers';
-    displayName: 'Subscribers';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    email: Attribute.Email;
-    convertkitID: Attribute.BigInteger;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::subscriber.subscriber',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::subscriber.subscriber',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1648,7 +1616,6 @@ declare module '@strapi/types' {
       'api::service-type.service-type': ApiServiceTypeServiceType;
       'api::services-banner.services-banner': ApiServicesBannerServicesBanner;
       'api::subscribe-form.subscribe-form': ApiSubscribeFormSubscribeForm;
-      'api::subscriber.subscriber': ApiSubscriberSubscriber;
     }
   }
 }
