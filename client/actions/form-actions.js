@@ -100,7 +100,6 @@ export async function formSubmit(state, formData) {
 // Subscription Form submission handler
 export async function subcribeFormSubmit(state, formData) {
     let email = '';
-    console.log('formData:', formData);
     
     for (let [name, value] of formData.entries()) {
         if (name === 'honeypot' && value) {
@@ -124,15 +123,11 @@ export async function subcribeFormSubmit(state, formData) {
     };
 
     const data = {
-        api_key: process.env.NEXT_CONVERTKIT_API_KEY,
+        api_key: process.env.CONVERTKIT_API_KEY,
         email: email
     }
 
-    console.log('Data:', data);
-    console.log('Formatted data:', JSON.stringify(data));
-
     try {
-
         await fetch(`https://api.convertkit.com/v3/forms/${state.id}/subscribe`), {
             method: 'POST',
             headers: headers,
