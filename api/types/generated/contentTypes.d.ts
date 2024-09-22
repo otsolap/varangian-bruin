@@ -1583,15 +1583,16 @@ export interface ApiSubscriberSubscriber extends Schema.CollectionType {
     singularName: 'subscriber';
     pluralName: 'subscribers';
     displayName: 'subscribers';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    import_id: Attribute.UID;
     convertkitID: Attribute.UID;
     email: Attribute.String;
     importTimestamp: Attribute.UID;
+    importID: Attribute.UID;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

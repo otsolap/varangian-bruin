@@ -4,16 +4,14 @@
   "info": {
     "singularName": "subscriber",
     "pluralName": "subscribers",
-    "displayName": "subscribers"
+    "displayName": "subscribers",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "import_id": {
-      "type": "uid"
-    },
     "convertkitID": {
       "type": "uid"
     },
@@ -21,6 +19,9 @@
       "type": "string"
     },
     "importTimestamp": {
+      "type": "uid"
+    },
+    "importID": {
       "type": "uid"
     }
   }
