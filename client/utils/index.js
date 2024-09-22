@@ -71,11 +71,12 @@ import config from '@/utils/config'
         getStrapiURL(`/${config.global.API_FOOTER_QUERY}`),
         getStrapiURL(`/${config.global.API_ANALYTICS_QUERY}`),
         getStrapiURL(`/${config.global.API_BLOG_NAVIGATION_QUERY}`),
+        getStrapiURL(`/${config.blocks.CONTENT_BLOG_SECTION_LATEST_QUERY}`),
       ];
   
-      let navigationResponse, footerResponse, analyticsResponse, blogNavigationResponse;
+      let navigationResponse, footerResponse, analyticsResponse, blogNavigationResponse, latestBlogs;
       try {
-        [navigationResponse, footerResponse, analyticsResponse, blogNavigationResponse] = await Promise.all(urls.map(url => fetch(url)));
+        [navigationResponse, footerResponse, analyticsResponse, blogNavigationResponse, latestBlogs] = await Promise.all(urls.map(url => fetch(url)));
       } catch (error) {
         console.error('Failed to fetch API data:', error);
       }
@@ -89,7 +90,7 @@ import config from '@/utils/config'
         analytics: analyticsData,
         navigation: navigationData,
         footer: footerData,
-        blogNavigation: blogNavigationData
+        blogNavigation: blogNavigationData,
       };
     } catch (error) {
       console.error('fetch Global Data error:', error);

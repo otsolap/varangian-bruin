@@ -15,6 +15,7 @@ export default async function RootLayout({ children }) {
 
   try {
     const global = await fetchGlobalData()
+
     const [servicePathsRes, blogPathsRes] = await Promise.all([
       fetch(getStrapiURL(`/${config.services.API_SERVICES_NAV_QUERY}`)),
       fetch(getStrapiURL(`/${config.blog.API_BLOG_NAV_QUERY}`))
@@ -28,8 +29,10 @@ export default async function RootLayout({ children }) {
     navigation = global.navigation.data.attributes
     footer = global.footer.data
     blogNavigation = global.blogNavigation.data.attributes
+
     servicePaths = servicePathsData
     blogPaths = blogPathsData
+
 
   } catch (error) {
     console.error('Error:', error);

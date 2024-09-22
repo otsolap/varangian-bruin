@@ -3,6 +3,7 @@ import { getStrapiURL } from "@/utils/index"
 import { notFound } from 'next/navigation'
 import Blocks from "@/components/Blocks"
 import ArticleHeading from "@/components/articles/ArticleHeading";
+import RevisionNotice from "@/partials/article/RevisionNotice";
 import ArticleFooter from "@/components/articles/ArticleFooter";
 import BlogSection from 'components/blocks/BlogSection';
 import TOC from "@/partials/article/TOC";
@@ -28,6 +29,17 @@ async function getContent(params) {
       pageTitle: resData.data[0]?.attributes.title ?? '',
       currentPostID: resData.data[0]?.id ?? null,
       meta: resData.data[0]?.attributes.seo ?? {},
+      revisionNotice: (() => {
+        const updatedAt = resData.data[0]?.attributes.updatedAt;
+        if (!updatedAt) return null;
+      
+        const updatedDate = new Date(updatedAt);
+        const currentDate = new Date();
+        const oneMonthAgo = new Date();
+        oneMonthAgo.setMonth(currentDate.getMonth() - 1);
+      
+        return updatedDate < oneMonthAgo ? updatedAt : null;
+      })(),
       article: resData.data[0]?.attributes ?? {},
       blocks: resData.data[0]?.attributes.blocks ?? {},
       category: resData.data[0]?.attributes.category.data[0]?.attributes ?? {},
@@ -68,13 +80,14 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogSlug ({ params }) {
-  const { article, blocks, category, author, currentPostID } = await getContent(params)
+  const { article, revisionNotice, blocks, category, author, currentPostID } = await getContent(params)
   
   return (
     <>
     <ArticleHeading article={article} category={category} author={author} />
     <div className={styles.wrapper}>
       <article id={'post'} className={styles.article}>
+       {revisionNotice && <RevisionNotice date={revisionNotice} />}
         <Blocks blocks={blocks} />
       </article>
       <TOC blocks={blocks} title={article.title} />
