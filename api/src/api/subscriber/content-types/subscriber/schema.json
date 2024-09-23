@@ -12,17 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "convertkitID": {
-      "type": "uid"
-    },
     "email": {
       "type": "string"
     },
-    "importTimestamp": {
-      "type": "uid"
-    },
     "importID": {
-      "type": "uid"
+      "type": "biginteger"
+    },
+    "importTimestamp": {
+      "type": "datetime"
     }
   }
 }
