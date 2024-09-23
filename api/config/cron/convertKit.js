@@ -14,7 +14,7 @@ module.exports = {
         const matchingIDs = new Set()
         const timestamp = new Date()
 
-        // Get current subscribers and create a map of existing subscribers by their importID
+        // Get current subscribers and create a map of existing subscribers by their importID (ConvertKit ID)
         const currentSubscribers = new Map(
           (await strapi.entityService.findMany('api::subscriber.subscriber', {
             fields: ['id', 'importID']
@@ -60,14 +60,13 @@ module.exports = {
             await strapi.entityService.delete('api::subscriber.subscriber', subscriber.id);
           }
         }
-
         console.log('ConvertKit subscribers updated');
       } catch (error) {
         console.error('Error in fetchConvertKitSubscribers:', error);
       }
     },
     options: {
-      rule: '0 1 * * *', // Every day at 1am
+      rule: '0 1 * * *', // Once a day at 1 am.
     },
   },
 };
