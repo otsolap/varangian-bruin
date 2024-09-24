@@ -10,7 +10,7 @@ const EmailField = ({  placeholder, showLabels, width, required }) => {
       id='email'
       name='email'
       className={styles.input}
-      placeholder={placeholder ? placeholder : 'email'}
+      placeholder={placeholder ?? 'email@email.com'}
       required={required ? true : null}
       pattern='[^@\s]+@[^@\s]+\.[^@\s]+'
       />
