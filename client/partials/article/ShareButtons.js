@@ -45,7 +45,6 @@ const ShareButtons = ({ title, settings }) => {
   useEffect(() => {
     const host = window.location.host;
     const baseUrl = `https://${host}`;
-    console.log(baseUrl)
     setUrl(`${baseUrl}${pathname}`);
   }, [pathname]);
 
