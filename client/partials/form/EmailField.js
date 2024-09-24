@@ -4,7 +4,7 @@ const EmailField = ({  placeholder, showLabels, width, required }) => {
   return (
     <>
     <div className={`${styles.inputBlock} ${styles[`width-${width}`]}`}>
-      <label htmlFor={'email'} className={`${styles.label} ${showLabels ? '' : 'sr-only'}`}>{'Email'}</label>
+      <label htmlFor={'email'} className={`${styles.label} ${showLabels ?? 'sr-only'}`}>{'Email'}</label>
       <input
       type='text'
       id='email'
