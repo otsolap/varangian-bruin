@@ -51,7 +51,11 @@ export default async function RootLayout({ children }) {
           {children}
         </main>
         <Footer footer={footer} />
-        <MobileFooter navigation={navigation} />
+        <MobileFooter 
+            navigation={navigation} 
+            blogPaths={blogPaths} 
+            socialShare={blogNavigation.social}
+        />
         <div id="modal-root"></div>
       </body>
     </html>

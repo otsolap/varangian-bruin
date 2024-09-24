@@ -1,16 +1,31 @@
 'use client'
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname, useParams } from "next/navigation";
 import Offcanvas from "@/components/navigation/Offcanvas";
 import MobileNavLinks from "@/partials/navigation/MobileNavLinks";
 import MenuButton from "@/partials/navigation/MenuButton";
 import styles from "@/styles/components/mobileFooter.module.css";
+import ShareButtons from "@/partials/article/ShareButtons";
+import config from '@/utils/config'
 
-const MobileFooter = ({ navigation }) => {
+const MobileFooter = ({ navigation, blogPaths, socialShare  }) => {
     const [showModal, setShowModal] = useState(false);
     const [footerOpacity, setFooterOpacity] = useState(1);
     const router = useRouter();
     const lastScrollY = useRef(0);
+
+    const pathname = usePathname();
+    const params = useParams()
+  
+    let title = null;
+  
+    if (params.slug) {
+      const matchingPath = pathname.includes(`/${config.blog.BLOG_PATH}/`) 
+        ? blogPaths.data.find(path => path.attributes.slug === params.slug)
+        : null;
+  
+      title = matchingPath ? matchingPath.attributes.title : null;
+    }
 
     const handleScroll = useCallback(() => {
         if (showModal) {
@@ -41,6 +56,10 @@ const MobileFooter = ({ navigation }) => {
     return (
         <footer className={`mobile-only ${styles.mobile}`} style={{ opacity: footerOpacity }}>
             <div className={styles.menuWrapper}>
+            {pathname.includes(`/${config.blog.BLOG_PATH}/`) && params.slug ? (
+                     <ShareButtons title={title} settings={socialShare} />
+            ) : (
+                <>
                 <MobileNavLinks blocks={navigation.blocks.slice(0, PRIMARY_PAGES)} currentPath={router.asPath} closeModal={() => setShowModal(false)} />
                 {navigation.blocks.length > PRIMARY_PAGES ? (
                     <>
@@ -51,7 +70,9 @@ const MobileFooter = ({ navigation }) => {
                     closeModal={() => setShowModal(false)}
                     />
                     </>
-                ) : null}
+                    ) : null}
+                 </>
+                )}
             </div>
         </footer>
     );
