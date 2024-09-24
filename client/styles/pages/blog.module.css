@@ -6,15 +6,6 @@
     padding: var(--spacing-single);
 }
 
-.revision {
-    padding: var(--spacing-single);
-    font-weight: 500;
-    background-color: var(--brand-500);
-    width: fit-content;
-    border-radius: var(--spacing-quarter);
-}
-
-
 .article {
     width: 100%;
    border-radius: var(--radius);

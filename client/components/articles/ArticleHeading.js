@@ -3,15 +3,29 @@ import Link from "next/link"
 import styles from '@/styles/components/articleHeading.module.css'
 import config from '@/utils/config'
 
-const ArticleHeading = ({ article, category, author }) => {
+const ArticleHeading = ({ article, revisionDate, category, author }) => {
+
+const formatDate = (revisionDate) => {
+    if (!revisionDate) return null;
+    const options = { year: 'numeric', month: 'long' };
+    return new Date(revisionDate).toLocaleDateString(undefined, options);
+    };
+
   return (
     <header className={styles.header}>
         <div className={styles.lead}>
+            <div className={styles.metaData}>
             {category && 
                 <Link href={`/${config.blog.CATEGORY_PATH}/${category.slug}`}>
                     <h4 className={styles.category}>{category.title}</h4>
                 </Link>
             }
+            {revisionDate &&
+                <aside className={styles.revision}>
+                    <p>This article was last updated in {formatDate(revisionDate)}.</p>
+                </aside>
+            }
+            </div>
             {article.title && <h1 className={styles.title}>{article.title}</h1>}
             {article.description && <h3 className={styles.description}>{article.description}</h3>}
             {author &&

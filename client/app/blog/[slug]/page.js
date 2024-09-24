@@ -3,7 +3,6 @@ import { getStrapiURL } from "@/utils/index"
 import { notFound } from 'next/navigation'
 import Blocks from "@/components/Blocks"
 import ArticleHeading from "@/components/articles/ArticleHeading";
-import RevisionNotice from "@/partials/article/RevisionNotice";
 import ArticleFooter from "@/components/articles/ArticleFooter";
 import BlogSection from 'components/blocks/BlogSection';
 import TOC from "@/partials/article/TOC";
@@ -84,10 +83,9 @@ export default async function BlogSlug ({ params }) {
   
   return (
     <>
-    <ArticleHeading article={article} category={category} author={author} />
+    <ArticleHeading article={article} category={category} author={author} revisionDate={revisionNotice} />
     <div className={styles.wrapper}>
       <article id={'post'} className={styles.article}>
-       {revisionNotice && <RevisionNotice date={revisionNotice} />}
         <Blocks blocks={blocks} />
       </article>
       <TOC blocks={blocks} title={article.title} />
