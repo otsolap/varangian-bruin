@@ -70,6 +70,7 @@
   flex-wrap: wrap;
   gap: var(--spacing-single-half);
   padding-bottom: var(--spacing-single);
+  width: fit-content;
 }
 
 /* Tablet Styles */
