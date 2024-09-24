@@ -66,7 +66,7 @@ module.exports = {
       }
     },
     options: {
-      rule: '0 1 * * *', // Once a day at 1 am.
+       rule: '0 1 * * *', // Once a day at 1 am.
     },
   },
 };
