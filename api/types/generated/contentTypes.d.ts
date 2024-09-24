@@ -1590,8 +1590,8 @@ export interface ApiSubscriberSubscriber extends Schema.CollectionType {
   };
   attributes: {
     email: Attribute.String;
-    importID: Attribute.BigInteger;
     importTimestamp: Attribute.DateTime;
+    importID: Attribute.UID;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

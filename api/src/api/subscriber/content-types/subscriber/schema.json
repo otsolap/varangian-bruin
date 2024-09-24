@@ -15,11 +15,11 @@
     "email": {
       "type": "string"
     },
-    "importID": {
-      "type": "biginteger"
-    },
     "importTimestamp": {
       "type": "datetime"
+    },
+    "importID": {
+      "type": "uid"
     }
   }
 }

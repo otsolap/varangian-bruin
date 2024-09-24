@@ -2,7 +2,7 @@ module.exports = {
   fetchConvertKitSubscribers: {
     task: async ({ strapi }) => {
       try {
-        const response = await fetch(`https://api.convertkit.com/v3/subscribers?api_secret=${process.env.CONVERTKIT_API_SECRET}`);
+        const response = await fetch(`https://api.convertkit.com/v3/subscribers?api_secret=${process.env.CONVERTKIT_SECRET_KEY}`);
         const data = await response.json();
 
         if (!data.subscribers) {
@@ -11,8 +11,8 @@ module.exports = {
         }
 
         const subscribers = data.subscribers;
-        const matchingIDs = new Set()
-        const timestamp = new Date()
+        const matchingIDs = new Set();
+        const timestamp = new Date();
 
         // Get current subscribers and create a map of existing subscribers by their importID (ConvertKit ID)
         const currentSubscribers = new Map(
@@ -23,13 +23,14 @@ module.exports = {
 
         for (const subscriber of subscribers) {
           const { id: importID, email_address } = subscriber;
-          matchingIDs.add(importID);
+          const importIDStr = String(importID); // UIDs are strings in Strapi, while on convertkit ids are numbers.
+
+          matchingIDs.add(importIDStr);
 
           // Check if subscriber already exists in Strapi
-          if (currentSubscribers.has(importID)) {
+          if (currentSubscribers.has(importIDStr)) {
             // Update existing subscriber
-            console.log(`Updating subscriber with importID: ${importID}`);
-            await strapi.entityService.update('api::subscriber.subscriber', currentSubscribers.get(importID).id, {
+            await strapi.entityService.update('api::subscriber.subscriber', currentSubscribers.get(importIDStr).id, {
               data: {
                 email: email_address,
                 importTimestamp: timestamp,
@@ -37,15 +38,14 @@ module.exports = {
             });
           } else {
             // Create new subscriber
-            console.log(`Creating new subscriber with importID: ${importID}`);
             try {
               await strapi.entityService.create('api::subscriber.subscriber', {
                 data: {
-                  importID: importID,
+                  importID: importIDStr,
                   email: email_address,
                   importTimestamp: timestamp,
                   publishedAt: timestamp,
-              }
+                }
               });
             } catch (createError) {
               console.error('Error creating subscriber:', createError);
@@ -53,10 +53,10 @@ module.exports = {
             }
           }
         }
+
         // Delete subscribers that are no longer in ConvertKit
         for (const [importID, subscriber] of currentSubscribers) {
-          if (!matchingIDs.has(importID)) {
-            console.log(`Deleting subscriber with importID: ${importID}`);
+          if (!matchingIDs.has(String(importID))) {
             await strapi.entityService.delete('api::subscriber.subscriber', subscriber.id);
           }
         }
