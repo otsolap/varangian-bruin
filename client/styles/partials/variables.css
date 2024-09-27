@@ -8,6 +8,8 @@
     /* Text */
     --text-900: #E1E2E1; /* default */
     --text-700: #B0B1B0;
+    --line-height-heading: 1.4;
+    --line-height-body: 1.6;
 
     /* Brand Colors */
     --brand-900: #a56f1a;

@@ -22,7 +22,7 @@ const formatDate = (revisionDate) => {
             }
             {revisionDate &&
                 <aside className={styles.revision}>
-                    <p>This article was last updated in {formatDate(revisionDate)}.</p>
+                    <p>This post was last updated in {formatDate(revisionDate)}.</p>
                 </aside>
             }
             </div>
