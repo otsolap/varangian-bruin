@@ -50,6 +50,7 @@ export async function formSubmit(state, formData) {
         } else {
             console.error('No data found');
             return { 
+                ...state,
                 error: 'No data found', 
                 message: state.messages.errorMessage ?? 'Form submission failed.' 
             };
@@ -57,6 +58,7 @@ export async function formSubmit(state, formData) {
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
         return { 
+            ...state,
             error: error.message, 
             message: state.messages.errorMessage ?? 'Form submission failed.' 
         };
@@ -114,7 +116,11 @@ export async function subcribeFormSubmit(state, formData) {
     
     // Check if email is empty
     if (!email) {
-        return { error: 'Email is required.', message: 'Form submission failed' };
+        return { 
+            ...state,
+            error: 'Email is required.', 
+            message: 'Form submission failed',
+        };
     }
 
     const headers = {
@@ -144,10 +150,12 @@ export async function subcribeFormSubmit(state, formData) {
             submitSuccess: true,
         };
     } catch (error) {
-        console.error('There was a problem with the fetch operation:', error);
+        const errorMessage = error.message || 'Unknown error. Blame your internet.';
+        console.log('Error:', errorMessage);
         return { 
-            error: error.message, 
-            message: state.messages.errorMessage ?? 'Email failed to submit. Please try again in a few moments' 
+            ...state,
+            error: errorMessage, 
+            message: state.messages.errorMessage ?? 'Email failed to submit. Please try again in a few moments', 
         };
     }
 }

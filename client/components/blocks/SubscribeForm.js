@@ -6,6 +6,7 @@ import { subcribeFormSubmit } from '@/actions/form-actions';
 import { SubmitButton } from "@/partials/form/SubmitButton";
 
 const SubscribeForm = ({ title, description, email, formID, redirect, link, successMessage, errorMessage,  }) => {
+  
   const INITIAL_STATE = {
     id: formID,
     redirect: redirect,
