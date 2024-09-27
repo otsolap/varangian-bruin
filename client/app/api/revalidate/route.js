@@ -1,4 +1,4 @@
-import { revalidatePath } from 'next/cache';
+import { revalidatePath } from 'next/cache'
 
 import config from '@/utils/config'
 import { getStrapiURL } from "@/utils/index"
@@ -11,63 +11,71 @@ export async function POST(request) {
     const requestHeaders = new Headers(request.headers)
     const revalidateWebhook= requestHeaders.get('x-strapi-revalidate-webhook')
 
-    if(revalidateWebhook !== process.env.NEXT_REVALIDATION_TOKEN) {
-        return Response.status(401).json({ message: 'Invalid token', now: Date.now(), revalidated: false, })  
+    if (revalidateWebhook !== process.env.NEXT_REVALIDATION_TOKEN) {
+        return new Response(JSON.stringify({ message: 'Invalid token', now: Date.now(), revalidated: false }), {
+            status: 401,
+            headers: { 'Content-Type': 'application/json' }
+        })
     }
 
-    const { model, entry: { slug } } = payload;
-    let path;
+    const { model, entry: { slug } } = payload
+    let path
 
     switch (model) {
         case 'home':
-            path = '/';
-            break;
+            path = '/'
+            break
         case 'page':
-            path = `/${slug}`;
-            break;
+            path = `/${slug}`
+            break
         case 'article-archive-page':
-            path = '/blog';
-            break;
+            path = '/blog'
+            break
         case 'article':
-            path = `/blog/${slug}`;
-            break;
+            path = `/blog/${slug}`
+            break
         case 'category':
-            path = `/category/${slug}`;
-            break;
+            path = `/category/${slug}`
+            break
         case 'service-archive-page':
-            path = '/services';
-            break;
+            path = '/services'
+            break
         case 'service':
-            path = `/services/${slug}`;
-            break;
+            path = `/services/${slug}`
+            break
         case 'service-type':
-            path = `/service-type/${slug}`;
-            break;
+            path = `/service-type/${slug}`
+            break
         case 'author':
         case 'blog-navigation':
         case 'newsletter-banner':
-            return await revalidatePaths(getAllArticles, `all articles due to model: ${model}`);
+            return await revalidatePaths(getAllArticles, `all articles due to model: ${model}`)
         case 'base-seo':
         case 'footer':
         case 'navigation':
-            return revalidatePaths(getAllPages, `entire app due to model: ${model}`);
+            return revalidatePaths(getAllPages, `entire app due to model: ${model}`)
         case 'services-banner':
-            return await revalidatePaths(getPagesWithServicesBanner, `all pages with services banner due to model: ${model}`);
+            return await revalidatePaths(getPagesWithServicesBanner, `all pages with services banner due to model: ${model}`)
         case 'subscribe-form':
-            return revalidatePaths(getPagesWithSubscriptionForm, `all pages with subscription form due to model: ${model}`);
+            return revalidatePaths(getPagesWithSubscriptionForm, `all pages with subscription form due to model: ${model}`)
         default:
-            return Response.json({ revalidated: false, message: 'Invalid model for revalidation.' });
+            return new Response(JSON.stringify({ revalidated: false, message: 'Invalid model for revalidation.' }), {
+                headers: { 'Content-Type': 'application/json' }
+            })
     }
     
     if (path) {
         console.log('path', path)
         try {
-            await revalidatePath(path);
-            console.log(`Successfully revalidated ${model} with slug: ${slug}`);
-            return Response.json({ revalidated: true, path, now: Date.now(), });
+            await revalidatePath(path)
+            console.log(`Successfully revalidated ${model} with slug: ${slug}`)
+            return Response.json({ revalidated: true, path, now: Date.now(), })
         } catch (error) {
-            console.error("Error during revalidation:", error.message);
-            return Response.json({revalidated: false, now: Date.now(), message: error.message });
+            console.error(`Failed to revalidate ${model} with slug: ${slug}`, error)
+            return new Response(JSON.stringify({ revalidated: false, message: 'Revalidation failed.' }), {
+                status: 500,
+                headers: { 'Content-Type': 'application/json' }
+            })
         }
     }
 
@@ -75,15 +83,20 @@ export async function POST(request) {
 
 async function revalidatePaths(fetchPathsFunction, successMessage) {
     try {
-        const paths = await fetchPathsFunction();
+        const paths = await fetchPathsFunction()
         for (const path of paths) {
-            await revalidatePath(path);
+            await revalidatePath(path)
         }
-        console.log(`Successfully revalidated ${successMessage}`);
-        return Response.json({ revalidated: true, paths, now: Date.now(), });
+        console.log(`Successfully revalidated ${successMessage}`)
+        return new Response(JSON.stringify({ revalidated: true, paths, now: Date.now() }), {
+            headers: { 'Content-Type': 'application/json' }
+        })
     } catch (error) {
-        console.error("Error during revalidation:", error.message);
-        return Response.json({ revalidated: false, now: Date.now(), message: error.message });
+        console.error("Error during revalidation:", error.message)
+        return new Response(JSON.stringify({ revalidated: false, now: Date.now(), message: error.message }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' }
+        })
     }
 }
 
@@ -95,83 +108,83 @@ async function getAllPages() {
             fetch(getStrapiURL(`/${config.revalidate.SERVICES_PATH}`)),
         ]
 
-        const responses = await Promise.all(urls);
-        const data = await Promise.all(responses.map(response => response.json()));
+        const responses = await Promise.all(urls)
+        const data = await Promise.all(responses.map(response => response.json()))
 
-        const mergedData = [].concat(...data);
+        const mergedData = [].concat(...data)
 
-        const types = ['page', 'article', 'service'];
+        const types = ['page', 'article', 'service']
 
         const routes = mergedData.flatMap((item, index) => {
-            const slugs = item.data.map(item => item.attributes.slug);
-            const type = types[index];
-            console.log('type', type);
-            const prefix = getRoutePrefix(type);
+            const slugs = item.data.map(item => item.attributes.slug)
+            const type = types[index]
+            console.log('type', type)
+            const prefix = getRoutePrefix(type)
             return slugs.map(slug => {
                 if (type === 'page' && slug === '/') {
-                    return '/';
+                    return '/'
                 }
-                return `${prefix}${slug}`;
-            });
-        });
+                return `${prefix}${slug}`
+            })
+        })
 
-        return routes;
+        return routes
     } catch (error) {
-        console.error("Error during fetching pages:", error.message);
-        return []; // Return an empty array in case of error
+        console.error("Error during fetching pages:", error.message)
+        return [] // Return an empty array in case of error
     }
 }
 
 async function getAllArticles() {
     try {
-        const response = await fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`));
-        const data = await response.json();
-        const slugs = data.data.map(item => item.attributes.slug);
+        const response = await fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`))
+        const data = await response.json()
+        const slugs = data.data.map(item => item.attributes.slug)
 
-        return slugs.map(slug => `/blog/${slug}`);
+        return slugs.map(slug => `/blog/${slug}`)
 
     } catch (error) {
-        console.error("Error during fetching articles:", error.message);
-        return []; // Return an empty array in case of error
+        console.error("Error during fetching articles:", error.message)
+        return [] // Return an empty array in case of error
     }
 }
 
 async function getPagesWithSubscriptionForm() {
     try {
-        const response = await fetch(getStrapiURL(`/${config.revalidate.SUBSCRIPTION_FORM_PATH}`));
-        const data = await response.json();
-        const slugs = data.data.map(item => item.attributes.slug);
+        const response = await fetch(getStrapiURL(`/${config.revalidate.SUBSCRIPTION_FORM_PATH}`))
+        const data = await response.json()
+        const slugs = data.data.map(item => item.attributes.slug)
 
-        return slugs.map(slug => `/${slug}`);
+        return slugs.map(slug => `/${slug}`)
     } catch (error) {
-        console.error("Error during fetching pages:", error.message);
-        return []; // Return an empty array in case of error
+        console.error("Error during fetching pages:", error.message)
+        return [] // Return an empty array in case of error
     }
 }
     
 async function getPagesWithServicesBanner() {
     try {
-        const response = await fetch(getStrapiURL(`/${config.revalidate.SERVICES_BANNER_PATH}`));
-        const data = await response.json();
-        const slugs = data.data.map(item => item.attributes.slug);
+        const response = await fetch(getStrapiURL(`/${config.revalidate.SERVICES_BANNER_PATH}`))
+        const data = await response.json()
+        const slugs = data.data.map(item => item.attributes.slug)
 
-        return slugs.map(slug => `/${slug}`);
+        return slugs.map(slug => `/${slug}`)
 
     } catch (error) {
-        console.error("Error during fetching pages:", error.message);
-        return []; // Return an empty array in case of error
+        console.error("Error during fetching pages:", error.message)
+        return [] // Return an empty array in case of error
     }
 }
     
 function getRoutePrefix(type) {
     switch (type) {
         case 'page':
-            return '/';
+            return '/'
         case 'article':
-            return '/blog/';
+            return '/blog/'
         case 'service':
-            return '/services/';
+            return '/services/'
         default:
-            return '';
+            return ''
     }
 }
