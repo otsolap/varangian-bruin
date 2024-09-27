@@ -33,19 +33,21 @@ const SubscribeForm = ({ title, description, email, formID, redirect, link, succ
       <div className={styles.wrapper}>
           <article className={styles.content}>
             <form 
-              id={formID}
-              className={styles.form} 
-              action={formAction}
+                id={formID}
+                className={styles.form} 
+                action={formAction}
               >
             <header className={styles.header}>
                 {title && <h2 className={styles.title}>{title}</h2>}
                 {description && <p>{description}</p>}
              </header>
               <div className={styles.inputWrapper}>
-                  <div className={styles.inputBlock}>
                     <input type="hidden" value="" name="honeypot" />
-                    <EmailField placeholder={email.placeholder} required={email.required} />
-                  </div>
+                    <EmailField 
+                      placeholder={email.placeholder} 
+                      required={email.required} 
+                      width={email.width} 
+                    />
                   <footer className={styles.footer}>
                     {formState.submitSuccess === true ? null : <SubmitButton text={formState.buttonText} />}
                     <p aria-live="polite">{formState.message}</p>

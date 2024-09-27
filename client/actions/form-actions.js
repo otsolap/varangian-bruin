@@ -51,8 +51,7 @@ export async function formSubmit(state, formData) {
             console.error('No data found');
             return { 
                 ...state,
-                error: 'No data found', 
-                message: state.messages.errorMessage ?? 'Form submission failed.' 
+                message: 'Form submission failed due to our end. Please give it another attempt.' 
             };
         }
     } catch (error) {
@@ -60,7 +59,7 @@ export async function formSubmit(state, formData) {
         return { 
             ...state,
             error: error.message, 
-            message: state.messages.errorMessage ?? 'Form submission failed.' 
+            message: state.messages.errorMessage ?? 'We could not submit the form. Please try again later.' 
         };
     }
 
@@ -93,7 +92,7 @@ export async function formSubmit(state, formData) {
     
         return { 
             error: errorMessage, 
-            message: state.messages.errorMessage ?? 'Form submission failed.' 
+            message: state.messages.errorMessage ?? 'Form submission failed. Did you check all required fields?' 
         };
     }
 }
@@ -118,8 +117,7 @@ export async function subcribeFormSubmit(state, formData) {
     if (!email) {
         return { 
             ...state,
-            error: 'Email is required.', 
-            message: 'Form submission failed',
+            message: 'Form submission failed. Email is a required field.',
         };
     }
 
