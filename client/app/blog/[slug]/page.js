@@ -10,6 +10,35 @@ import styles from '@/styles/pages/blog.module.css'
 import { generateOpenGraphImages } from "@/utils/index"
 import RelatedArticles from 'components/articles/RelatedArticles';
 
+export default async function BlogSlug ({ params }) {
+  const { article, revisionNotice, blocks, category, author, currentPostID } = await getContent(params)
+  
+  return (
+    <>
+    <ArticleHeading article={article} category={category} author={author} revisionDate={revisionNotice} />
+    <div className={styles.wrapper}>
+      <article id={'post'} className={styles.article}>
+        <Blocks blocks={blocks} />
+      </article>
+      <TOC blocks={blocks} title={article.title} />
+    </div>
+    <ArticleFooter author={author} />
+    <RelatedArticles
+      title={config.blog.RELATED_ARTICLES_TITLE}
+      categoryTitle={category.title}
+      currentCategory={category.slug}
+      currentPostID={currentPostID}
+      selectTheme="secondary"
+    />
+    <BlogSection 
+      title={config.blog.LATEST_ARTICLES_TITLE}
+      selectTheme="secondary"
+      filter="latest" 
+      />
+  </>
+  )
+}
+
 export async function generateStaticParams() {
   const res =  await fetch(getStrapiURL(`/api/articles`))
   const resData = await res.json()
@@ -76,33 +105,4 @@ export async function generateMetadata({ params }) {
       canonical: pageUrl
     }
   }
-}
-
-export default async function BlogSlug ({ params }) {
-  const { article, revisionNotice, blocks, category, author, currentPostID } = await getContent(params)
-  
-  return (
-    <>
-    <ArticleHeading article={article} category={category} author={author} revisionDate={revisionNotice} />
-    <div className={styles.wrapper}>
-      <article id={'post'} className={styles.article}>
-        <Blocks blocks={blocks} />
-      </article>
-      <TOC blocks={blocks} title={article.title} />
-    </div>
-    <ArticleFooter author={author} />
-    <RelatedArticles
-      title={config.blog.RELATED_ARTICLES_TITLE}
-      categoryTitle={category.title}
-      currentCategory={category.slug}
-      currentPostID={currentPostID}
-      selectTheme="secondary"
-    />
-    <BlogSection 
-      title={config.blog.LATEST_ARTICLES_TITLE}
-      selectTheme="secondary"
-      filter="latest" 
-      />
-  </>
-  )
 }

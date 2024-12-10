@@ -4,6 +4,17 @@ import { getStrapiURL,  generateOpenGraphImages  } from "@/utils/index"
 import config from '@/utils/config'
 import { notFound } from 'next/navigation'
 
+export default async function Page () {
+  const { hero, items, service_types } = await getContent()
+
+  return (
+    <>
+      <Hero {...hero} />
+      <ArchiveSection items={items} service_types={service_types} />
+    </>
+  )
+}
+
 async function getContent() {
     try {
       const urls = [
@@ -61,17 +72,4 @@ async function getContent() {
         canonical: pageUrl
       }
     }
-  }
-
-  export default async function Page () {
-    const { hero, items, service_types } = await getContent()
-  
-    return (
-      <>
-        <Hero {...hero} />
-        <ArchiveSection items={items} service_types={service_types} />
-      </>
-    )
-  }
-  
-  
+  }  

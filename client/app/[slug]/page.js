@@ -5,6 +5,20 @@ import { notFound } from 'next/navigation'
 import Banner from "@/components/blocks/Banner"
 import SubscribeForm from "components/blocks/SubscribeForm";
 
+export default async function PageSlug({ params }) {
+  const { blocks, showServicesBanner, showSubscribeForm } = await getContent(params)
+  const banners = await fetchBannerData();
+  const { servicesBanner, subscribeForm } = banners;
+
+  return (
+    <>
+    <Blocks blocks={blocks} />
+    {showServicesBanner && <Banner {...servicesBanner} />}
+    {showSubscribeForm && <SubscribeForm {...subscribeForm} />}
+    </>
+  )
+}
+
 export async function generateStaticParams() {
   const res =  await fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}`))
   const resData = await res.json()
@@ -66,16 +80,3 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export default async function PageSlug({ params }) {
-  const { blocks, showServicesBanner, showSubscribeForm } = await getContent(params)
-  const banners = await fetchBannerData();
-  const { servicesBanner, subscribeForm } = banners;
-
-  return (
-    <>
-    <Blocks blocks={blocks} />
-    {showServicesBanner && <Banner {...servicesBanner} />}
-    {showSubscribeForm && <SubscribeForm {...subscribeForm} />}
-    </>
-  )
-}

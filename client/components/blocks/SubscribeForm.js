@@ -1,5 +1,5 @@
 'use client'
-import { useFormState } from "react-dom";
+import { useActionState } from "react";
 import styles from '@/styles/components/form.module.css'
 import EmailField from 'partials/form/EmailField';
 import { subcribeFormSubmit } from '@/actions/form-actions';
@@ -23,7 +23,7 @@ const SubscribeForm = ({ title, description, email, formID, redirect, link, succ
     message: '',
   }
   
-  const [formState, formAction] = useFormState(
+  const [formState, formAction] = useActionState(
     subcribeFormSubmit,
     INITIAL_STATE
   )

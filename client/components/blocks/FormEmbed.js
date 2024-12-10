@@ -1,5 +1,5 @@
 'use client'
-import { useFormState } from "react-dom";
+import { useActionState } from "react";
 import Inputs from '@/components/Inputs'
 import styles from '@/styles/components/form.module.css'
 import NextImage from "@/partials/util/NextImage";
@@ -25,7 +25,7 @@ const FormEmbed = ({ form }) => {
     message: '',
   }
 
-  const [formState, formAction] = useFormState(
+  const [formState, formAction] = useActionState(
     formSubmit,
     INITIAL_STATE
   )

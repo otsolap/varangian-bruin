@@ -3,6 +3,14 @@ import config from '@/utils/config'
 import Blocks from "@/components/Blocks"
 import { notFound } from 'next/navigation'
 
+export default async function ServicesSlug({ params }) {
+  const { blocks } = await getContent(params)
+  
+  return (
+    <Blocks blocks={blocks} />
+  )
+}
+
 export async function generateStaticParams() {
   const res =  await fetch(getStrapiURL(`/api/services`))
   const resData = await res.json()
@@ -58,13 +66,4 @@ export async function generateMetadata({ params }) {
       canonical: pageUrl
     }
   }
-}
-
-
-export default async function ServicesSlug({ params }) {
-  const { blocks } = await getContent(params)
-  
-  return (
-    <Blocks blocks={blocks} />
-  )
 }
