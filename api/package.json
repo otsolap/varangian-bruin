@@ -11,8 +11,8 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "^4.12.7",
-    "@strapi/plugin-users-permissions": "^4.12.7",
+    "@strapi/plugin-i18n": "^4.25.17",
+    "@strapi/plugin-users-permissions": "^4.25.17",
     "@strapi/strapi": "4.25.17",
     "mysql": "2.18.1",
     "react": "^18.2.0",
