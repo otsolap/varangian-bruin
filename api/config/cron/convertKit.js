@@ -16,7 +16,7 @@ module.exports = {
 
         // Get current subscribers and create a map of existing subscribers by their importID (ConvertKit ID)
         const currentSubscribers = new Map(
-          (await strapi.entityService.findMany('api::subscriber.subscriber', {
+          (await strapi.documents('api::subscriber.subscriber').findMany({
             fields: ['id', 'importID']
           })).map(sub => [sub.importID, sub])
         );
@@ -30,7 +30,9 @@ module.exports = {
           // Check if subscriber already exists in Strapi
           if (currentSubscribers.has(importIDStr)) {
             // Update existing subscriber
-            await strapi.entityService.update('api::subscriber.subscriber', currentSubscribers.get(importIDStr).id, {
+            await strapi.documents('api::subscriber.subscriber').update({
+              documentId: "__TODO__",
+
               data: {
                 email: email_address,
                 importTimestamp: timestamp,
@@ -39,7 +41,7 @@ module.exports = {
           } else {
             // Create new subscriber
             try {
-              await strapi.entityService.create('api::subscriber.subscriber', {
+              await strapi.documents('api::subscriber.subscriber').create({
                 data: {
                   importID: importIDStr,
                   email: email_address,
@@ -57,7 +59,9 @@ module.exports = {
         // Delete subscribers that are no longer in ConvertKit
         for (const [importID, subscriber] of currentSubscribers) {
           if (!matchingIDs.has(String(importID))) {
-            await strapi.entityService.delete('api::subscriber.subscriber', subscriber.id);
+            await strapi.documents('api::subscriber.subscriber').delete({
+              documentId: "__TODO__"
+            });
           }
         }
         console.log('ConvertKit subscribers updated');
