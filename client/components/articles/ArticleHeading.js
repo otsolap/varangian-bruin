@@ -15,16 +15,16 @@ const formatDate = (revisionDate) => {
     <header className={styles.header}>
         <div className={styles.lead}>
             <div className={styles.metaData}>
-            {category && 
-                <Link href={`/${config.blog.CATEGORY_PATH}/${category.slug}`}>
-                    <h4 className={styles.category}>{category.title}</h4>
-                </Link>
-            }
-            {revisionDate &&
-                <aside className={styles.revision}>
-                    <p>This post was last updated in {formatDate(revisionDate)}.</p>
-                </aside>
-            }
+                {category && 
+                    <Link href={`/${config.blog.CATEGORY_PATH}/${category.slug}`}>
+                        <h4 className={styles.category}>{category.title}</h4>
+                    </Link>
+                }
+                {revisionDate &&
+                    <aside className={styles.revision}>
+                        <p>This post was last updated in {formatDate(revisionDate)}.</p>
+                    </aside>
+                }
             </div>
             {article.title && <h1 className={styles.title}>{article.title}</h1>}
             {article.description && <h3 className={styles.description}>{article.description}</h3>}
