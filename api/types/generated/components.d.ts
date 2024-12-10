@@ -1,521 +1,533 @@
-import type { Schema, Attribute } from '@strapi/strapi';
+import type { Schema, Struct } from '@strapi/strapi';
 
-export interface BlocksAccordion extends Schema.Component {
+export interface BlocksAccordion extends Struct.ComponentSchema {
   collectionName: 'components_blocks_accordions';
   info: {
-    displayName: 'Accordion';
     description: '';
+    displayName: 'Accordion';
   };
   attributes: {
-    image: Attribute.Media;
-    accordions: Attribute.Relation<
-      'blocks.accordion',
-      'oneToMany',
-      'api::faq.faq'
-    >;
-    title: Attribute.String;
-    description: Attribute.Text;
+    accordions: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'>;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String;
   };
 }
 
-export interface BlocksArticleTextBlock extends Schema.Component {
+export interface BlocksArticleTextBlock extends Struct.ComponentSchema {
   collectionName: 'components_partials_article_text_blocks';
   info: {
-    displayName: 'articleText';
     description: '';
+    displayName: 'articleText';
   };
   attributes: {
-    text: Attribute.RichText;
+    text: Schema.Attribute.RichText;
   };
 }
 
-export interface BlocksBanner extends Schema.Component {
+export interface BlocksBanner extends Struct.ComponentSchema {
   collectionName: 'components_blocks_banner';
   info: {
-    displayName: 'Banner';
     description: '';
+    displayName: 'Banner';
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.RichText;
-    image: Attribute.Media;
-    button: Attribute.Component<'partials.button'>;
-    selectTheme: Attribute.Enumeration<['primary', 'secondary', 'tertiary']>;
+    button: Schema.Attribute.Component<'partials.button', false>;
+    description: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images'>;
+    selectTheme: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary']
+    >;
+    title: Schema.Attribute.String;
   };
 }
 
-export interface BlocksBlogs extends Schema.Component {
+export interface BlocksBlogs extends Struct.ComponentSchema {
   collectionName: 'components_blocks_blogs';
   info: {
-    displayName: 'blogs';
     description: '';
+    displayName: 'blogs';
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    selectTheme: Attribute.Enumeration<['primary', 'secondary']> &
-      Attribute.DefaultTo<'primary'>;
-    filter: Attribute.Enumeration<['latest', 'custom']> &
-      Attribute.DefaultTo<'latest'>;
-    blogs: Attribute.Relation<
-      'blocks.blogs',
-      'oneToMany',
-      'api::article.article'
-    >;
+    blogs: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
+    description: Schema.Attribute.Text;
+    filter: Schema.Attribute.Enumeration<['latest', 'custom']> &
+      Schema.Attribute.DefaultTo<'latest'>;
+    selectTheme: Schema.Attribute.Enumeration<['primary', 'secondary']> &
+      Schema.Attribute.DefaultTo<'primary'>;
+    title: Schema.Attribute.String;
   };
 }
 
-export interface BlocksCards extends Schema.Component {
+export interface BlocksCards extends Struct.ComponentSchema {
   collectionName: 'components_blocks_cards';
   info: {
-    displayName: 'Cards';
     description: '';
+    displayName: 'Cards';
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    cards: Attribute.Component<'partials.card', true>;
+    cards: Schema.Attribute.Component<'partials.card', true>;
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
   };
 }
 
-export interface BlocksFormEmbed extends Schema.Component {
+export interface BlocksFormEmbed extends Struct.ComponentSchema {
   collectionName: 'components_util_form_embeds';
   info: {
-    displayName: 'FormEmbed';
     description: '';
+    displayName: 'FormEmbed';
   };
   attributes: {
-    form: Attribute.Relation<'blocks.form-embed', 'oneToOne', 'api::form.form'>;
+    form: Schema.Attribute.Relation<'oneToOne', 'api::form.form'>;
   };
 }
 
-export interface BlocksHero extends Schema.Component {
+export interface BlocksHero extends Struct.ComponentSchema {
   collectionName: 'components_blocks_heroes';
   info: {
-    displayName: 'Hero';
     description: '';
+    displayName: 'Hero';
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    alignContent: Attribute.Enumeration<['left', 'right']> &
-      Attribute.DefaultTo<'left'>;
-    media: Attribute.Enumeration<['image', 'video']> &
-      Attribute.DefaultTo<'image'>;
-    mediaWidth: Attribute.Boolean;
-    video: Attribute.String;
-    autoplay: Attribute.Boolean & Attribute.DefaultTo<false>;
-    buttons: Attribute.Component<'partials.button', true> &
-      Attribute.SetMinMax<{
-        max: 2;
-      }>;
-    image: Attribute.Media;
+    alignContent: Schema.Attribute.Enumeration<['left', 'right']> &
+      Schema.Attribute.DefaultTo<'left'>;
+    autoplay: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    buttons: Schema.Attribute.Component<'partials.button', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2;
+        },
+        number
+      >;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'>;
+    media: Schema.Attribute.Enumeration<['image', 'video']> &
+      Schema.Attribute.DefaultTo<'image'>;
+    mediaWidth: Schema.Attribute.Boolean;
+    title: Schema.Attribute.String;
+    video: Schema.Attribute.String;
   };
 }
 
-export interface BlocksImageBlock extends Schema.Component {
+export interface BlocksImageBlock extends Struct.ComponentSchema {
   collectionName: 'components_block_image_blocks';
   info: {
-    displayName: 'ImageBlock';
     description: '';
+    displayName: 'ImageBlock';
   };
   attributes: {
-    image: Attribute.Media;
-    caption: Attribute.String;
+    caption: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
   };
 }
 
-export interface BlocksImageGallery extends Schema.Component {
+export interface BlocksImageGallery extends Struct.ComponentSchema {
   collectionName: 'components_blocks_image_galleries';
   info: {
-    displayName: 'ImageGallery';
     description: '';
+    displayName: 'ImageGallery';
   };
   attributes: {
-    images: Attribute.Media;
-    title: Attribute.Text;
+    images: Schema.Attribute.Media<'images', true>;
+    title: Schema.Attribute.Text;
   };
 }
 
-export interface BlocksMediaMix extends Schema.Component {
+export interface BlocksMediaMix extends Struct.ComponentSchema {
   collectionName: 'components_blocks_media_mixes';
   info: {
-    displayName: 'mediaMix';
     description: '';
+    displayName: 'mediaMix';
   };
   attributes: {
-    mediaMixItems: Attribute.Component<'partials.media-mix-item', true> &
-      Attribute.SetMinMax<{
-        min: 2;
-        max: 2;
-      }>;
+    mediaMixItems: Schema.Attribute.Component<'partials.media-mix-item', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2;
+          min: 2;
+        },
+        number
+      >;
   };
 }
 
-export interface BlocksQuote extends Schema.Component {
+export interface BlocksQuote extends Struct.ComponentSchema {
   collectionName: 'components_blocks_quotes';
   info: {
-    displayName: 'Quote';
     description: '';
+    displayName: 'Quote';
   };
   attributes: {
-    title: Attribute.String;
+    title: Schema.Attribute.String;
   };
 }
 
-export interface BlocksServices extends Schema.Component {
+export interface BlocksServices extends Struct.ComponentSchema {
   collectionName: 'components_blocks_services';
   info: {
     displayName: 'Services';
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    selectTheme: Attribute.Enumeration<['primary', 'secondary']>;
-    services: Attribute.Relation<
-      'blocks.services',
-      'oneToMany',
-      'api::service.service'
-    >;
+    description: Schema.Attribute.Text;
+    selectTheme: Schema.Attribute.Enumeration<['primary', 'secondary']>;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
+    title: Schema.Attribute.String;
   };
 }
 
-export interface BlocksTextArea extends Schema.Component {
+export interface BlocksTextArea extends Struct.ComponentSchema {
   collectionName: 'components_blocks_text_areas';
   info: {
-    displayName: 'textArea';
     description: '';
+    displayName: 'textArea';
   };
   attributes: {
-    text: Attribute.RichText;
-    selectTheme: Attribute.Enumeration<['primary', 'secondary', 'tertiary']>;
+    selectTheme: Schema.Attribute.Enumeration<
+      ['primary', 'secondary', 'tertiary']
+    >;
+    text: Schema.Attribute.RichText;
   };
 }
 
-export interface BlocksVideoEmbed extends Schema.Component {
+export interface BlocksVideoEmbed extends Struct.ComponentSchema {
   collectionName: 'components_block_video-embeds';
   info: {
-    displayName: 'VideoEmbed';
     description: '';
+    displayName: 'VideoEmbed';
   };
   attributes: {
-    url: Attribute.Text;
+    url: Schema.Attribute.Text;
   };
 }
 
-export interface FormInputsCheckboxField extends Schema.Component {
+export interface FormInputsCheckboxField extends Struct.ComponentSchema {
   collectionName: 'components_form_inputs_checkbox_fields';
   info: {
-    displayName: 'checkbox-field';
     description: '';
+    displayName: 'checkbox-field';
   };
   attributes: {
-    options: Attribute.Component<'util.option', true>;
-    name: Attribute.String;
-    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
-      Attribute.DefaultTo<'full'>;
+    name: Schema.Attribute.String;
+    options: Schema.Attribute.Component<'util.option', true>;
+    width: Schema.Attribute.Enumeration<
+      ['third', 'half', 'twoThirds', 'full']
+    > &
+      Schema.Attribute.DefaultTo<'full'>;
   };
 }
 
-export interface FormInputsDateField extends Schema.Component {
+export interface FormInputsDateField extends Struct.ComponentSchema {
   collectionName: 'components_form_inputs_date_fields';
   info: {
-    displayName: 'date-field';
     description: '';
+    displayName: 'date-field';
   };
   attributes: {
-    required: Attribute.Boolean & Attribute.DefaultTo<false>;
-    name: Attribute.String;
-    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
-      Attribute.DefaultTo<'full'>;
+    name: Schema.Attribute.String;
+    required: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    width: Schema.Attribute.Enumeration<
+      ['third', 'half', 'twoThirds', 'full']
+    > &
+      Schema.Attribute.DefaultTo<'full'>;
   };
 }
 
-export interface FormInputsEmailField extends Schema.Component {
+export interface FormInputsEmailField extends Struct.ComponentSchema {
   collectionName: 'components_form_inputs_email_fields';
   info: {
-    displayName: 'email-field';
     description: '';
+    displayName: 'email-field';
   };
   attributes: {
-    placeholder: Attribute.String;
-    required: Attribute.Boolean & Attribute.DefaultTo<false>;
-    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
-      Attribute.DefaultTo<'full'>;
+    placeholder: Schema.Attribute.String;
+    required: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    width: Schema.Attribute.Enumeration<
+      ['third', 'half', 'twoThirds', 'full']
+    > &
+      Schema.Attribute.DefaultTo<'full'>;
   };
 }
 
-export interface FormInputsFileField extends Schema.Component {
+export interface FormInputsFileField extends Struct.ComponentSchema {
   collectionName: 'components_form_inputs_file_fields';
   info: {
-    displayName: 'file-field';
     description: '';
+    displayName: 'file-field';
   };
   attributes: {
-    name: Attribute.String;
-    description: Attribute.String;
-    required: Attribute.Boolean & Attribute.DefaultTo<false>;
-    multiple: Attribute.Boolean;
-    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
-      Attribute.DefaultTo<'full'>;
+    description: Schema.Attribute.String;
+    multiple: Schema.Attribute.Boolean;
+    name: Schema.Attribute.String;
+    required: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    width: Schema.Attribute.Enumeration<
+      ['third', 'half', 'twoThirds', 'full']
+    > &
+      Schema.Attribute.DefaultTo<'full'>;
   };
 }
 
-export interface FormInputsRadioField extends Schema.Component {
+export interface FormInputsRadioField extends Struct.ComponentSchema {
   collectionName: 'components_form_inputs_radio_fields';
   info: {
-    displayName: 'radio-field';
     description: '';
+    displayName: 'radio-field';
   };
   attributes: {
-    name: Attribute.String;
-    options: Attribute.Component<'util.option', true>;
-    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
-      Attribute.DefaultTo<'full'>;
+    name: Schema.Attribute.String;
+    options: Schema.Attribute.Component<'util.option', true>;
+    width: Schema.Attribute.Enumeration<
+      ['third', 'half', 'twoThirds', 'full']
+    > &
+      Schema.Attribute.DefaultTo<'full'>;
   };
 }
 
-export interface FormInputsSelectField extends Schema.Component {
+export interface FormInputsSelectField extends Struct.ComponentSchema {
   collectionName: 'components_form_inputs_select_fields';
   info: {
-    displayName: 'select-field';
     description: '';
+    displayName: 'select-field';
   };
   attributes: {
-    placeholder: Attribute.String;
-    options: Attribute.Component<'util.option', true>;
-    required: Attribute.Boolean & Attribute.DefaultTo<false>;
-    name: Attribute.String;
-    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
-      Attribute.DefaultTo<'full'>;
+    name: Schema.Attribute.String;
+    options: Schema.Attribute.Component<'util.option', true>;
+    placeholder: Schema.Attribute.String;
+    required: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    width: Schema.Attribute.Enumeration<
+      ['third', 'half', 'twoThirds', 'full']
+    > &
+      Schema.Attribute.DefaultTo<'full'>;
   };
 }
 
-export interface FormInputsTextField extends Schema.Component {
+export interface FormInputsTextField extends Struct.ComponentSchema {
   collectionName: 'components_form_inputs_text_fields';
   info: {
-    displayName: 'text-field';
     description: '';
+    displayName: 'text-field';
   };
   attributes: {
-    name: Attribute.String;
-    placeholder: Attribute.String;
-    required: Attribute.Boolean & Attribute.DefaultTo<false>;
-    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
-      Attribute.DefaultTo<'full'>;
+    name: Schema.Attribute.String;
+    placeholder: Schema.Attribute.String;
+    required: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    width: Schema.Attribute.Enumeration<
+      ['third', 'half', 'twoThirds', 'full']
+    > &
+      Schema.Attribute.DefaultTo<'full'>;
   };
 }
 
-export interface FormInputsTextareaField extends Schema.Component {
+export interface FormInputsTextareaField extends Struct.ComponentSchema {
   collectionName: 'components_form_inputs_textarea_fields';
   info: {
-    displayName: 'textarea-field';
     description: '';
+    displayName: 'textarea-field';
   };
   attributes: {
-    required: Attribute.Boolean;
-    name: Attribute.Text;
-    placeholder: Attribute.String;
-    width: Attribute.Enumeration<['third', 'half', 'twoThirds', 'full']> &
-      Attribute.DefaultTo<'full'>;
+    name: Schema.Attribute.Text;
+    placeholder: Schema.Attribute.String;
+    required: Schema.Attribute.Boolean;
+    width: Schema.Attribute.Enumeration<
+      ['third', 'half', 'twoThirds', 'full']
+    > &
+      Schema.Attribute.DefaultTo<'full'>;
   };
 }
 
-export interface PartialsButton extends Schema.Component {
+export interface PartialsButton extends Struct.ComponentSchema {
   collectionName: 'components_partials_buttons';
   info: {
-    displayName: 'button';
     description: '';
+    displayName: 'button';
   };
   attributes: {
-    href: Attribute.Text;
-    title: Attribute.String;
-    isExternal: Attribute.Boolean;
-    target: Attribute.Enumeration<['_blank']>;
-    selectTheme: Attribute.Enumeration<
+    href: Schema.Attribute.Text;
+    isExternal: Schema.Attribute.Boolean;
+    selectTheme: Schema.Attribute.Enumeration<
       ['primary', 'secondary', 'tertiary', 'transparent']
     > &
-      Attribute.DefaultTo<'primary'>;
+      Schema.Attribute.DefaultTo<'primary'>;
+    target: Schema.Attribute.Enumeration<['_blank']>;
+    title: Schema.Attribute.String;
   };
 }
 
-export interface PartialsCard extends Schema.Component {
+export interface PartialsCard extends Struct.ComponentSchema {
   collectionName: 'components_partials_cards';
   info: {
-    displayName: 'Card';
     description: '';
+    displayName: 'Card';
   };
   attributes: {
-    title: Attribute.String;
-    image: Attribute.Media;
-    description: Attribute.RichText;
+    description: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String;
   };
 }
 
-export interface PartialsLink extends Schema.Component {
+export interface PartialsLink extends Struct.ComponentSchema {
   collectionName: 'components_partials_links';
   info: {
-    displayName: 'Link';
     description: '';
+    displayName: 'Link';
   };
   attributes: {
-    href: Attribute.Text;
-    title: Attribute.String;
-    isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
-    target: Attribute.Enumeration<['_self', '_blank']> &
-      Attribute.DefaultTo<'_self'>;
-    selectTheme: Attribute.Enumeration<
+    href: Schema.Attribute.Text;
+    isExternal: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>;
+    selectTheme: Schema.Attribute.Enumeration<
       ['primary', 'secondary', 'tertiary', 'transparent']
     >;
-    page: Attribute.Relation<'partials.link', 'oneToOne', 'api::page.page'>;
-    type: Attribute.Enumeration<['Page', 'Link']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'Page'>;
+    target: Schema.Attribute.Enumeration<['_self', '_blank']> &
+      Schema.Attribute.DefaultTo<'_self'>;
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<['Page', 'Link']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Page'>;
   };
 }
 
-export interface PartialsMediaMixItem extends Schema.Component {
+export interface PartialsMediaMixItem extends Struct.ComponentSchema {
   collectionName: 'components_partials_media_mix_items';
   info: {
-    displayName: 'mediaMixItem';
     description: '';
+    displayName: 'mediaMixItem';
   };
   attributes: {
-    type: Attribute.Enumeration<['markdown', 'image', 'video']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'markdown'>;
-    markdown: Attribute.RichText;
-    image: Attribute.Media;
-    video: Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    markdown: Schema.Attribute.RichText;
+    type: Schema.Attribute.Enumeration<['markdown', 'image', 'video']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'markdown'>;
+    video: Schema.Attribute.String;
   };
 }
 
-export interface UtilBlogAnchors extends Schema.Component {
+export interface UtilBlogAnchors extends Struct.ComponentSchema {
   collectionName: 'components_util_blog_anchors';
   info: {
-    displayName: 'blogAnchors';
     description: '';
+    displayName: 'blogAnchors';
   };
   attributes: {
-    filter: Attribute.Enumeration<['latest', 'custom']>;
-    blogs: Attribute.Relation<
-      'util.blog-anchors',
-      'oneToMany',
-      'api::article.article'
-    >;
+    blogs: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
+    filter: Schema.Attribute.Enumeration<['latest', 'custom']>;
   };
 }
 
-export interface UtilBlogSocialShare extends Schema.Component {
+export interface UtilBlogSocialShare extends Struct.ComponentSchema {
   collectionName: 'components_util_blog_social_shares';
   info: {
     displayName: 'BlogSocialShare';
   };
   attributes: {
-    X: Attribute.Boolean;
-    WhatsApp: Attribute.Boolean;
-    Link: Attribute.Boolean;
-    Email: Attribute.Boolean;
-    LinkedIn: Attribute.Boolean;
-    Facebook: Attribute.Boolean;
+    Email: Schema.Attribute.Boolean;
+    Facebook: Schema.Attribute.Boolean;
+    Link: Schema.Attribute.Boolean;
+    LinkedIn: Schema.Attribute.Boolean;
+    WhatsApp: Schema.Attribute.Boolean;
+    X: Schema.Attribute.Boolean;
   };
 }
 
-export interface UtilFooterArticles extends Schema.Component {
+export interface UtilFooterArticles extends Struct.ComponentSchema {
   collectionName: 'components_util_footer_articles';
   info: {
-    displayName: 'footerArticles';
     description: '';
+    displayName: 'footerArticles';
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    open: Attribute.Boolean;
-    blogAnchors: Attribute.Component<'util.blog-anchors'>;
+    blogAnchors: Schema.Attribute.Component<'util.blog-anchors', false>;
+    description: Schema.Attribute.Text;
+    open: Schema.Attribute.Boolean;
+    title: Schema.Attribute.String;
   };
 }
 
-export interface UtilFooterColumn extends Schema.Component {
+export interface UtilFooterColumn extends Struct.ComponentSchema {
   collectionName: 'components_partials_footer_columns';
   info: {
-    displayName: 'footerColumn';
     description: '';
+    displayName: 'footerColumn';
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.RichText;
-    open: Attribute.Boolean & Attribute.DefaultTo<true>;
-    links: Attribute.Component<'partials.link', true>;
-    image: Attribute.Media;
+    description: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    links: Schema.Attribute.Component<'partials.link', true>;
+    open: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    title: Schema.Attribute.String;
   };
 }
 
-export interface UtilFooterSocialMedia extends Schema.Component {
+export interface UtilFooterSocialMedia extends Struct.ComponentSchema {
   collectionName: 'components_util_footer_social_medias';
   info: {
-    displayName: 'footerSocialMedia';
     description: '';
+    displayName: 'footerSocialMedia';
   };
   attributes: {
-    socialMedia: Attribute.Component<'util.social-media-type', true>;
-    title: Attribute.String;
-    open: Attribute.Boolean;
+    open: Schema.Attribute.Boolean;
+    socialMedia: Schema.Attribute.Component<'util.social-media-type', true>;
+    title: Schema.Attribute.String;
   };
 }
 
-export interface UtilMenuItem extends Schema.Component {
+export interface UtilMenuItem extends Struct.ComponentSchema {
   collectionName: 'components_util_menu_items';
   info: {
-    displayName: 'menuItem';
     description: '';
+    displayName: 'menuItem';
   };
   attributes: {
-    href: Attribute.Text & Attribute.Required;
-    title: Attribute.String;
-    icon: Attribute.Enumeration<['bullseye', 'node', 'cube', 'pen']>;
+    href: Schema.Attribute.Text & Schema.Attribute.Required;
+    icon: Schema.Attribute.Enumeration<['bullseye', 'node', 'cube', 'pen']>;
+    title: Schema.Attribute.String;
   };
 }
 
-export interface UtilOption extends Schema.Component {
+export interface UtilOption extends Struct.ComponentSchema {
   collectionName: 'components_util_options';
   info: {
-    displayName: 'option';
     description: '';
+    displayName: 'option';
   };
   attributes: {
-    value: Attribute.String;
+    value: Schema.Attribute.String;
   };
 }
 
-export interface UtilSeo extends Schema.Component {
+export interface UtilSeo extends Struct.ComponentSchema {
   collectionName: 'components_blocks_seos';
   info: {
-    displayName: 'SEO';
     description: '';
+    displayName: 'SEO';
   };
   attributes: {
-    title: Attribute.String &
-      Attribute.SetMinMaxLength<{
-        maxLength: 60;
-      }>;
-    description: Attribute.Text &
-      Attribute.SetMinMaxLength<{
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
         maxLength: 150;
       }>;
-    preventIndexing: Attribute.Boolean & Attribute.DefaultTo<false>;
-    keywords: Attribute.Text;
-    imageBlock: Attribute.Component<'blocks.image-block'>;
+    imageBlock: Schema.Attribute.Component<'blocks.image-block', false>;
+    keywords: Schema.Attribute.Text;
+    preventIndexing: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }>;
   };
 }
 
-export interface UtilSocialMediaType extends Schema.Component {
+export interface UtilSocialMediaType extends Struct.ComponentSchema {
   collectionName: 'components_util_social_media_types';
   info: {
-    displayName: 'contactDetails';
     description: '';
+    displayName: 'contactDetails';
   };
   attributes: {
-    type: Attribute.Enumeration<
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<
       [
         'Facebook',
         'Instagram',
@@ -526,29 +538,28 @@ export interface UtilSocialMediaType extends Schema.Component {
         'Telegram',
         'Pinterest',
         'Email',
-        'Link'
+        'Link',
       ]
     >;
-    title: Attribute.String;
-    url: Attribute.Text;
+    url: Schema.Attribute.Text;
   };
 }
 
-export interface UtilSubFooter extends Schema.Component {
+export interface UtilSubFooter extends Struct.ComponentSchema {
   collectionName: 'components_util_sub_footers';
   info: {
-    displayName: 'subFooter';
     description: '';
+    displayName: 'subFooter';
   };
   attributes: {
-    title: Attribute.String;
-    link: Attribute.Component<'partials.link'>;
+    link: Schema.Attribute.Component<'partials.link', false>;
+    title: Schema.Attribute.String;
   };
 }
 
-declare module '@strapi/types' {
-  export module Shared {
-    export interface Components {
+declare module '@strapi/strapi' {
+  export module Public {
+    export interface ComponentSchemas {
       'blocks.accordion': BlocksAccordion;
       'blocks.article-text-block': BlocksArticleTextBlock;
       'blocks.banner': BlocksBanner;
