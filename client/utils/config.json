@@ -32,21 +32,21 @@
         "API_SERVICES_NAV_QUERY":"api/services"
     },
     "blog": {
-        "API_ARCHIVE_PAGE_QUERY":"api/article-archive-page?=&populate=seo,seo.imageBlock.image,hero,hero.buttons,hero.image, seo,seo.imageBlock.image",
+        "API_ARCHIVE_PAGE_QUERY":"api/article-archive-page?populate[0]=seo&populate[1]=seo.imageBlock.image&populate[2]=hero&populate[3]=hero.buttons&populate[4]=hero.image",
         "BLOG_PATH":"blog",
         "API_BLOG_PATH_QUERY": "api/articles",
         "CATEGORY_PATH":"category",
         "API_CATEGORY_PATH_QUERY": "api/categories",
-        "API_AUTHORS_CONTENT_QUERY":"api/authors?populate=image,socialMedia",
-        "API_CATEGORIES_CONTENT_QUERY":"api/categories?&populate=articles,articles.image,articles.author,articles.category,hero,hero.buttons,hero.image,seo,seo.imageBlock.image",
-        "API_ARTICLES_QUERY":"api/articles?&populate=author,author.image,author.socialMedia,image,blocks,blocks.image,category",
-        "API_ARTICLE_PAGE_CONTENT_QUERY":"api/articles?&populate=seo,seo.imageBlock.image,author,author.image,author.socialMedia,image,blocks,blocks.image,blocks.images.image,category&filters[slug][$eq]=",
+        "API_AUTHORS_CONTENT_QUERY":"api/authors?populate[0]=image&populate[1]=socialMedia",
+        "API_CATEGORIES_CONTENT_QUERY":"api/categories?populate[0]=articles&populate[1]=articles.image&populate[2]=articles.author&populate[3]=articles.category&populate[4]=hero&populate[5]=hero.buttons&populate[6]=hero.image&populate[7]=seo&populate[8]=seo.imageBlock.image",
+        "API_ARTICLES_QUERY":"api/articles?populate[0]=author&populate[1]=author.image&populate[2]=author.socialMedia&populate[3]=image&populate[4]=blocks&populate[5]=blocks.image&populate[6]=category",
+        "API_ARTICLE_PAGE_CONTENT_QUERY":"api/articles?populate[0]=seo&populate[1]=seo.imageBlock.image&populate[2]=author&populate[3]=author.image&populate[4]=author.socialMedia&populate[5]=image&populate[6]=blocks&populate[7]=blocks.image&populate[8]=blocks.images.image&populate[9]=category&filters[slug][$eq]=",
         "LATEST_ARTICLES_TITLE":"Latest Articles",
         "LATEST_ARTICLES_THEME":"secondary",
         "RELATED_ARTICLES_TITLE":"Related Articles on",
         "RELATED_ARTICLES_THEME":"secondary",
         "RELATED_ARTICLES_FILTER_QUERY":"api/categories?filters[slug][$eq]=",
-        "RELATED_ARTICLES_CONTENT_QUERY": "&populate=articles,articles.image,articles.author,articles.category",
+        "RELATED_ARTICLES_CONTENT_QUERY": "&populate[0]=articles&populate[1]=articles.image&populate[2]=articles.author&populate[3]=articles.category",
         "RELATED_ARTICLES_LINK_TITLE":"Read more from the category",
         "API_BLOG_NAV_QUERY": "api/articles?populate=title,slug"
     },
@@ -59,8 +59,8 @@
         "PAGES_PATH": "api/pages",
         "BLOG_PATH": "api/articles",
         "SERVICES_PATH": "api/services",
-        "SERVICES_BANNER_PATH": "api/pages?populate=showServicesBanner&filters[showServicesBanner][$eq]=true",
-        "SUBSCRIPTION_FORM_PATH": "api/pages?populate=showSubscriptionForm&filters[showSubscriptionForm][$eq]=true"
+        "SERVICES_BANNER_PATH": "api/pages?populate[0]=showServicesBanner&filters[showServicesBanner][$eq]=true",
+        "SUBSCRIPTION_FORM_PATH": "api/pages?populate[0]=showSubscriptionForm&filters[showSubscriptionForm][$eq]=true"
     },
     "nonPageSlugs": ["robots.txt", "humans.txt", "ads.txt", "sitemap.xml", "favicon.ico"]
 }  
