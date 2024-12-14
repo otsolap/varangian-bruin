@@ -55,8 +55,8 @@ import config from '@/utils/config'
       const subscribeFormData = await subscribeFormResponse?.json() || null;
   
       return {
-        servicesBanner: servicesBannerData.data.attributes.banner ?? null,
-        subscribeForm: subscribeFormData.data?.attributes ?? null
+        servicesBanner: servicesBannerData.data.banner ?? null,
+        subscribeForm: subscribeFormData.data ?? null
       };
     } catch (error) {
       console.error('fetch Banner data error:', error);
