@@ -22,7 +22,7 @@ function TaxonomyLinks({ categories, service_types }) {
   const isCategory = categories != null;
 
   const getPath = (item) => {
-    const baseSlug = item.attributes.slug;
+    const baseSlug = item.slug;
     return isCategory
       ? `/${config.blog.CATEGORY_PATH}/${baseSlug}`
       : `/${config.services.SERVICE_TYPES_PATH}/${baseSlug}`;
@@ -31,14 +31,14 @@ function TaxonomyLinks({ categories, service_types }) {
   const renderItem = (item, id) => (
     <li className={styles.item} key={id}>
       <Link className={`button ${styles.button}`} href={getPath(item)}>
-        {item.attributes.title}
+        {item.title}
       </Link>
     </li>
   );
 
   const renderSelectOption = (item, id) => (
     <option value={getPath(item)} key={id}>
-      {item.attributes.title}
+      {item.title}
     </option>
   );
 

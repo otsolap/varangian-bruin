@@ -30,8 +30,8 @@ async function getContent() {
       const serviceTypesData = await serviceTypesResponse.json();
   
       return {
-        meta: archivePageData.data.attributes.seo ?? {},
-        hero: archivePageData.data.attributes.hero ?? {},
+        meta: archivePageData.data.seo ?? {},
+        hero: archivePageData.data.hero ?? {},
         items: servicesData.data ?? {},
         service_types: serviceTypesData.data ?? {},   
       }
@@ -48,7 +48,7 @@ async function getContent() {
     
     if(!meta || Object.keys(meta).length === 0) return null;
   
-    const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.attributes?.formats)
+    const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.formats)
   
     return {
       robots: {

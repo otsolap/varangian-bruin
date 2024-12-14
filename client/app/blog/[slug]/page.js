@@ -42,7 +42,7 @@ export default async function BlogSlug ({ params }) {
 export async function generateStaticParams() {
   const res =  await fetch(getStrapiURL(`/api/articles`))
   const resData = await res.json()
-  const slugs = resData.data.map(item => item.attributes.slug)
+  const slugs = resData.data.map(item => item.slug)
   return slugs.map(slug => ({
      params: { slug: slug }
   }))
@@ -54,11 +54,11 @@ async function getContent(params) {
     const resData = await res.json()
 
     return {
-      pageTitle: resData.data[0]?.attributes.title ?? '',
+      pageTitle: resData.data[0]?.title ?? '',
       currentPostID: resData.data[0]?.id ?? null,
-      meta: resData.data[0]?.attributes.seo ?? {},
+      meta: resData.data[0]?.seo ?? {},
       revisionNotice: (() => {
-        const updatedAt = resData.data[0]?.attributes.updatedAt;
+        const updatedAt = resData.data[0]?.updatedAt;
         if (!updatedAt) return null;
       
         const updatedDate = new Date(updatedAt);
@@ -68,10 +68,10 @@ async function getContent(params) {
       
         return updatedDate < oneMonthAgo ? updatedAt : null;
       })(),
-      article: resData.data[0]?.attributes ?? {},
-      blocks: resData.data[0]?.attributes.blocks ?? {},
-      category: resData.data[0]?.attributes.category.data[0]?.attributes ?? {},
-      author: resData.data[0]?.attributes.author.data?.attributes ?? {},
+      article: resData.data[0] ?? {},
+      blocks: resData.data[0]?.blocks ?? {},
+      category: resData.data[0]?.category.data[0] ?? {},
+      author: resData.data[0]?.author.data ?? {},
     }
 
   } catch (error) {
@@ -86,7 +86,7 @@ export async function generateMetadata({ params }) {
   
   if(!meta || Object.keys(meta).length === 0) return null;
 
-  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.attributes?.formats)
+  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.formats)
 
   return {
     title: meta.title ?? pageTitle,

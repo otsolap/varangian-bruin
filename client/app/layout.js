@@ -26,9 +26,9 @@ export default async function RootLayout({ children }) {
       blogPathsRes.json()
     ])
 
-    navigation = global.navigation.data.attributes
+    navigation = global.navigation.data
     footer = global.footer.data
-    blogNavigation = global.blogNavigation.data.attributes
+    blogNavigation = global.blogNavigation.data
 
     servicePaths = servicePathsData
     blogPaths = blogPathsData
@@ -67,14 +67,14 @@ export async function generateMetadata() {
 
   try {
     const global = await fetchGlobalSEOData()
-    baseSEO = global.data.attributes
+    baseSEO = global.data
   } catch (error) {
     console.error('Error:', error)
   }
   
   if(!baseSEO || Object.keys(baseSEO).length === 0) return null;
 
-  const ogImages = generateOpenGraphImages(baseSEO.imageBlock?.image?.data?.attributes?.formats)
+  const ogImages = generateOpenGraphImages(baseSEO.imageBlock?.image?.data?.formats)
   
   return {
     metadataBase: baseSEO.URL ? new URL(`${baseSEO.URL}`) : null,

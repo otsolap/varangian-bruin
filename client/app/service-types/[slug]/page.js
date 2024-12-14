@@ -18,7 +18,7 @@ export default async function serviceTypesSlug ({ params }) {
 export async function generateStaticParams() {
     const res =  await fetch(getStrapiURL(`/${config.services.API_SERVICE_TYPES_PATH_QUERY}`))
     const resData = await res.json()
-    const slugs = resData.data.map(item => item.attributes.slug)
+    const slugs = resData.data.map(item => item.slug)
     return slugs.map(slug => ({
        params: { slug: slug }
     }))
@@ -38,12 +38,12 @@ async function getContent(params) {
       const serviceTypesData = await allServiceTypes.json();
 
       const matchingServiceType = archivePageData.data.find(
-        (service_type) => service_type.attributes.slug === params.slug
+        (service_type) => service_type.slug === params.slug
       )
   
       return {
-        hero: matchingServiceType.attributes.hero ?? {},
-        items: matchingServiceType.attributes.services.data ?? {},
+        hero: matchingServiceType.hero ?? {},
+        items: matchingServiceType.services.data ?? {},
         service_types: serviceTypesData.data ?? {},   
       }
   

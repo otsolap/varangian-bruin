@@ -31,8 +31,8 @@ const BlogAnchors = ({ blogAnchors }) => {
       <div className={styles.wrapper}>
         {blogItems.data.map((item, i) => {
           return (
-            <Link className={styles.link} key={i} href={`/${config.blog.BLOG_PATH}/${item.attributes.slug}`}>
-              {item.attributes.title}
+            <Link className={styles.link} key={i} href={`/${config.blog.BLOG_PATH}/${item.slug}`}>
+              {item.title}
             </Link>
           );
         })}

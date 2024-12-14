@@ -18,7 +18,7 @@ export default async function categorySlug ({ params }) {
 export async function generateStaticParams() {
     const res =  await fetch(getStrapiURL(`/${config.blog.API_CATEGORY_PATH_QUERY}`))
     const resData = await res.json()
-    const slugs = resData.data.map(item => item.attributes.slug)
+    const slugs = resData.data.map(item => item.slug)
     return slugs.map(slug => ({
        params: { slug: slug }
     }))
@@ -38,12 +38,12 @@ async function getContent(params) {
       const categoriesData = await allCategories.json();
 
       const matchingCategory = archivePageData.data.find(
-        (category) => category.attributes.slug === params.slug
+        (category) => category.slug === params.slug
       )
   
       return {
-        hero: matchingCategory.attributes.hero ?? {},
-        items: matchingCategory.attributes.articles.data ?? {},
+        hero: matchingCategory.hero ?? {},
+        items: matchingCategory.articles.data ?? {},
         categories: categoriesData.data ?? {},   
       }
   

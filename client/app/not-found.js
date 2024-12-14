@@ -34,9 +34,9 @@ export default async function Custom404  () {
       }
 
       return {
-        title: resData.data.attributes.title ?? {},
-        description: resData.data.attributes.description ?? {},
-        buttons: resData.data.attributes.buttons ?? {},
+        title: resData.data.title ?? {},
+        description: resData.data.description ?? {},
+        buttons: resData.data.buttons ?? {},
       }
     } catch (error) {
       console.error('Error fetching not-found data:', error);

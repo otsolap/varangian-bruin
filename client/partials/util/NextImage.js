@@ -15,7 +15,7 @@ const NextImage = ({
     return null;
   }
 
-  const imageData = Array.isArray(image.data) ? image.data[0].attributes : image.data.attributes;
+  const imageData = Array.isArray(image.data) ? image.data[0] : image.data;
   const { url, alternativeText } = imageData || {};
 
   if (!url) {

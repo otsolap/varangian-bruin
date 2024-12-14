@@ -14,7 +14,7 @@ export default async function ServicesSlug({ params }) {
 export async function generateStaticParams() {
   const res =  await fetch(getStrapiURL(`/api/services`))
   const resData = await res.json()
-  const slugs = resData.data.map(item => item.attributes.slug)
+  const slugs = resData.data.map(item => item.slug)
   return slugs.map(slug => ({
      params: { slug: slug }
   }))
@@ -26,9 +26,9 @@ async function getContent(params) {
     const resData = await res.json()
 
     return {
-      pageTitle: resData.data[0]?.attributes.title ?? '',
-      meta: resData.data[0]?.attributes.seo ?? {},
-      blocks: resData.data[0]?.attributes.blocks ?? {},
+      pageTitle: resData.data[0]?.title ?? '',
+      meta: resData.data[0]?.seo ?? {},
+      blocks: resData.data[0]?.blocks ?? {},
     }
   } catch (error) {
     console.error('Error:', error);
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
   
   if(!meta || Object.keys(meta).length === 0) return null;
 
-  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.attributes?.formats)
+  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.formats)
 
   return {
     robots: {

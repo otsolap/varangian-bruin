@@ -16,12 +16,12 @@ const NavLinks = ({ mainNavigation, blogNavigation, blogPaths, servicePaths }) =
 
   if (params.slug) {
     const matchingPath = pathname.includes(`/${config.blog.BLOG_PATH}/`) 
-      ? blogPaths.data.find(path => path.attributes.slug === params.slug)
+      ? blogPaths.data.find(path => path.slug === params.slug)
       : pathname.includes(`/${config.services.SERVICES_PATH}/`) 
-      ? servicePaths.data.find(path => path.attributes.slug === params.slug)
+      ? servicePaths.data.find(path => path.slug === params.slug)
       : null;
 
-    title = matchingPath ? matchingPath.attributes.title : null;
+    title = matchingPath ? matchingPath.title : null;
   }
 
   return (

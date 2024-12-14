@@ -25,9 +25,9 @@ async function getContent() {
     const resData= await res.json()
 
     return {
-      showServicesBanner: resData.data.attributes.showServicesBanner ?? false,
-      showSubscribeForm: resData.data.attributes.showSubscribeForm ?? false,
-      blocks: resData.data.attributes.blocks ?? {},
+      showServicesBanner: resData.data.showServicesBanner ?? false,
+      showSubscribeForm: resData.data.showSubscribeForm ?? false,
+      blocks: resData.data.blocks ?? {},
     }
   } catch (error) {
     console.error('Error:', error)

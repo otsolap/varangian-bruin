@@ -41,12 +41,12 @@ export default function BlogSection({ title, description, selectTheme, blogs, fi
             return (
               <BlogItem
                 key={i}
-                image={item.attributes.image}
-                title={item.attributes.title}
-                description={item.attributes.description}
-                category={item.attributes.category.data?.attributes}
-                publishedAt={item.attributes.publishedAt}
-                slug={item.attributes.slug}
+                image={item.image}
+                title={item.title}
+                description={item.description}
+                category={item.category.data}
+                publishedAt={item.publishedAt}
+                slug={item.slug}
               />
             );
           })}

@@ -21,10 +21,10 @@ const MobileFooter = ({ navigation, blogPaths, socialShare  }) => {
   
     if (params.slug) {
       const matchingPath = pathname.includes(`/${config.blog.BLOG_PATH}/`) 
-        ? blogPaths.data.find(path => path.attributes.slug === params.slug)
+        ? blogPaths.data.find(path => path.slug === params.slug)
         : null;
   
-      title = matchingPath ? matchingPath.attributes.title : null;
+      title = matchingPath ? matchingPath.title : null;
     }
 
     const handleScroll = useCallback(() => {

@@ -5,7 +5,7 @@ import { GlobalContext } from '@/pages/_app.js';
 const AnalyticsTagManager = () => {
   const { globalData } = useContext(GlobalContext);
   const { analytics } = globalData;
-  const AnalyticsTagManagerURL = analytics.data.attributes.analyticsTagManagerURL || '';
+  const AnalyticsTagManagerURL = analytics.data.analyticsTagManagerURL || '';
 
   if(!AnalyticsTagManagerURL) return null;
 

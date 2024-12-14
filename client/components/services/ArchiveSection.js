@@ -32,12 +32,12 @@ export const ArchiveSection = ({ items, service_types }) => {
           return (
             <ServicesItem
               key={i}
-              image={item.attributes.image}
-              title={item.attributes.title}
-              price={item.attributes.price}
-              currency={item.attributes.currency}
-              serviceType={item.attributes.service_type.data?.attributes}
-              slug={item.attributes.slug}
+              image={item.image}
+              title={item.title}
+              price={item.price}
+              currency={item.currency}
+              serviceType={item.service_type.data}
+              slug={item.slug}
             />
           )
         })}

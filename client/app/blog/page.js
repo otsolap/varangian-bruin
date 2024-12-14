@@ -30,8 +30,8 @@ async function getContent() {
     const categoriesData = await categoriesResponse.json();
 
     return {
-      meta: archivePageData.data.attributes.seo ?? {},
-      hero: archivePageData.data.attributes.hero ?? {},
+      meta: archivePageData.data.seo ?? {},
+      hero: archivePageData.data.hero ?? {},
       items: articlesData.data ?? {},
       categories: categoriesData.data ?? {},   
     }
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }) {
   
   if(!meta || Object.keys(meta).length === 0) return null;
 
-  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.attributes?.formats)
+  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.formats)
 
   return {
     robots: {

@@ -116,7 +116,7 @@ async function getAllPages() {
         const types = ['page', 'article', 'service']
 
         const routes = mergedData.flatMap((item, index) => {
-            const slugs = item.data.map(item => item.attributes.slug)
+            const slugs = item.data.map(item => item.slug)
             const type = types[index]
             console.log('type', type)
             const prefix = getRoutePrefix(type)
@@ -139,7 +139,7 @@ async function getAllArticles() {
     try {
         const response = await fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`))
         const data = await response.json()
-        const slugs = data.data.map(item => item.attributes.slug)
+        const slugs = data.data.map(item => item.slug)
 
         return slugs.map(slug => `/blog/${slug}`)
 
@@ -153,7 +153,7 @@ async function getPagesWithSubscriptionForm() {
     try {
         const response = await fetch(getStrapiURL(`/${config.revalidate.SUBSCRIPTION_FORM_PATH}`))
         const data = await response.json()
-        const slugs = data.data.map(item => item.attributes.slug)
+        const slugs = data.data.map(item => item.slug)
 
         return slugs.map(slug => `/${slug}`)
     } catch (error) {
@@ -166,7 +166,7 @@ async function getPagesWithServicesBanner() {
     try {
         const response = await fetch(getStrapiURL(`/${config.revalidate.SERVICES_BANNER_PATH}`))
         const data = await response.json()
-        const slugs = data.data.map(item => item.attributes.slug)
+        const slugs = data.data.map(item => item.slug)
 
         return slugs.map(slug => `/${slug}`)
 

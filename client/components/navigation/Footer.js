@@ -3,7 +3,7 @@ import styles from '@/styles/components/footer.module.css'
 import CustomLink from '@/partials/util/CustomLink'
 
 const Footer = ({ footer }) => {
-  const { blocks, subFooter} = footer.attributes
+  const { blocks, subFooter} = footer
   return (
     <>
       <footer className={styles.footer}>

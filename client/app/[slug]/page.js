@@ -22,7 +22,7 @@ export default async function PageSlug({ params }) {
 export async function generateStaticParams() {
   const res =  await fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}`))
   const resData = await res.json()
-  const slugs = resData.data.map(item => item.attributes.slug)
+  const slugs = resData.data.map(item => item.slug)
   
   return slugs.map(slug => ({
     params: { slug: slug }
@@ -36,11 +36,11 @@ async function getContent(params) {
     const resData = await res.json()
 
     return {
-      pageTitle: resData.data[0]?.attributes.title ?? '',
-      meta: resData.data[0]?.attributes.seo ?? {},
-      blocks: resData.data[0]?.attributes.blocks ?? {},
-      showServicesBanner: resData.data[0]?.attributes.showServicesBanner ?? false,
-      showSubscribeForm: resData.data[0]?.attributes.showSubscribeForm ?? false,
+      pageTitle: resData.data[0]?.title ?? '',
+      meta: resData.data[0]?.seo ?? {},
+      blocks: resData.data[0]?.blocks ?? {},
+      showServicesBanner: resData.data[0]?.showServicesBanner ?? false,
+      showSubscribeForm: resData.data[0]?.showSubscribeForm ?? false,
     }
   } catch (error) {
     console.error('Error:', error);
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }) {
   
   if(!meta || Object.keys(meta).length === 0) return null;
 
-  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.attributes?.formats)
+  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.formats)
 
   return {
     robots: {

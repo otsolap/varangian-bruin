@@ -32,13 +32,13 @@ export const ArchiveSection = ({ items, categories }) => {
           return (
             <BlogItem
               key={i}
-              image={item.attributes.image}
-              title={item.attributes.title}
-              description={item.attributes.description}
-              slug={item.attributes.slug}
-              author={item.attributes.author}
-              category={item.attributes.category.data?.attributes}
-              publishedAt={item.attributes.publishedAt}
+              image={item.image}
+              title={item.title}
+              description={item.description}
+              slug={item.slug}
+              author={item.author}
+              category={item.category.data}
+              publishedAt={item.publishedAt}
             />
           )
         })}

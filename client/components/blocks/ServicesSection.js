@@ -18,13 +18,13 @@ export default function ServicesSection({ title, description, selectTheme, servi
             return (
               <ServicesItem
                 key={i}
-                image={item.attributes.image}
-                title={item.attributes.title}
-                description={item.attributes.description}
-                price={item.attributes.price}
-                currency={item.attributes.currency}
-                serviceType={item.attributes.service_type.data?.attributes}
-                slug={item.attributes.slug}
+                image={item.image}
+                title={item.title}
+                description={item.description}
+                price={item.price}
+                currency={item.currency}
+                serviceType={item.service_type.data}
+                slug={item.slug}
               />
             );
           })}
