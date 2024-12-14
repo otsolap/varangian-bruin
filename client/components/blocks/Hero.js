@@ -15,7 +15,7 @@ const Hero = ({ image, alignContent, autoplay,  media, mediaWidth, title, video,
           ${mediaWidth ? styles.fullWrapper : ""} 
           `}
         >
-          {media == "image" && image.data ? (
+          {media == "image" && image ? (
               <NextImage
                 className={styles.image}
                 image={image}

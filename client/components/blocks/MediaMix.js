@@ -14,7 +14,7 @@ const MediaMix = ({ mediaMixItems }) => {
                     <YoutubeEmbed url={item.video} />
                   </div>
                 ) : null}
-                {item.type == "image" && item.image.data ? (
+                {item.type == "image" && item.image ? (
                   <figure className={styles.imageContainer}>
                     <NextImage
                       image={item.image}

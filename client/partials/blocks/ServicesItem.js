@@ -8,7 +8,7 @@ import { faEuroSign, faDollarSign } from "@fortawesome/free-solid-svg-icons";
 const ServicesItem = ({ image, title, price, currency, slug, serviceType }) => {
   return (
       <article className={styles.item}>
-        {image.data &&
+        {image &&
             <figure className={styles.imageContainer}>
                 <Link aria-label={`Learn more about ${title}`} className={styles.imageLink}  href={`/${config.services.SERVICES_PATH}/${slug}`}>
                   <NextImage 

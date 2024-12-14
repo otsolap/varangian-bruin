@@ -48,7 +48,7 @@ const formatDate = (revisionDate) => {
                     </article>
             }
         </div>
-        {article.image.data && 
+        {article.image && 
             <figure className={styles.imageContainer}>
                 <NextImage 
                 image={article.image} 

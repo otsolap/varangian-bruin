@@ -11,11 +11,10 @@ const NextImage = ({
   quality=75, 
   className 
 }) => {
-  if (!image?.data) {
+  if (!image) {
     return null;
   }
-
-  const imageData = Array.isArray(image.data) ? image.data[0] : image.data;
+  const imageData = Array.isArray(image) ? image[0] : image;
   const { url, alternativeText } = imageData || {};
 
   if (!url) {
