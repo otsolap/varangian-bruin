@@ -48,7 +48,7 @@
         "RELATED_ARTICLES_FILTER_QUERY":"api/categories?filters[slug][$eq]=",
         "RELATED_ARTICLES_CONTENT_QUERY": "&populate[0]=articles&populate[1]=articles.image&populate[2]=articles.author&populate[3]=articles.category",
         "RELATED_ARTICLES_LINK_TITLE":"Read more from the category",
-        "API_BLOG_NAV_QUERY": "api/articles?populate=title,slug"
+        "API_BLOG_NAV_QUERY": "api/articles?fields=title,slug"
     },
     "forms": {
         "COLLECTIONS_PATH":"api/contacts",

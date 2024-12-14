@@ -70,8 +70,8 @@ async function getContent(params) {
       })(),
       article: resData.data[0] ?? {},
       blocks: resData.data[0]?.blocks ?? {},
-      category: resData.data[0]?.category.data[0] ?? {},
-      author: resData.data[0]?.author.data ?? {},
+      category: resData.data[0]?.category ?? {},
+      author: resData.data[0]?.author ?? {},
     }
 
   } catch (error) {
