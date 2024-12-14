@@ -27,9 +27,9 @@
         "SERVICE_TYPES_PATH":"service-types",
         "API_SERVICE_TYPES_PATH_QUERY": "api/service-types",
         "API_SERVICE_TYPES_CONTENT_QUERY":"api/service-types?&populate=services,services.image,services.service_type,hero,hero.buttons,hero.image,seo.imageBlock.image",
-        "API_SERVICES_QUERY":"api/services?&populate=image,blocks,blocks.image,service_type",
-        "API_SERVICES_CONTENT_QUERY":"api/services?&populate=seo,seo.imageBlock.image,blocks,blocks.image,blocks.accordion,blocks.accordions,blocks.button,blocks.buttons,blocks.blogs,blocks.blogs.author,blocks.blogs.image,blocks.blogs.category,blocks.link,blocks.cards,blocks.cards.image,blocks.form,blocks.form.inputs,blocks.form.inputs.options,blocks.form.image,blocks.form.button,blocks.images.image,blocks.mediaMixItems,blocks.mediaMixItems.image&filters[slug][$eq]=",
-        "API_SERVICES_NAV_QUERY":"api/services?populate=title,slug"
+        "API_SERVICES_QUERY":"api/services?populate=images",
+        "API_SERVICES_CONTENT_QUERY":"api/services?populate[0]=seo&populate[1]=seo.imageBlock.image&populate[2]=blocks&populate[3]=blocks.image&populate[4]=blocks.accordion&populate[5]=blocks.accordions&populate[6]=blocks.button&populate[7]=blocks.buttons&populate[8]=blocks.blogs&populate[9]=blocks.blogs.author&populate[10]=blocks.blogs.image&populate[11]=blocks.blogs.category&populate[12]=blocks.link&populate[13]=blocks.cards&populate[14]=blocks.cards.image&populate[15]=blocks.form&populate[16]=blocks.form.inputs&populate[17]=blocks.form.inputs.options&populate[18]=blocks.form.image&populate[19]=blocks.form.button&populate[20]=blocks.images.image&populate[21]=blocks.mediaMixItems&populate[22]=blocks.mediaMixItems.image&filters[slug][$eq]=",
+        "API_SERVICES_NAV_QUERY":"api/services"
     },
     "blog": {
         "API_ARCHIVE_PAGE_QUERY":"api/article-archive-page?=&populate=seo,seo.imageBlock.image,hero,hero.buttons,hero.image, seo,seo.imageBlock.image",
