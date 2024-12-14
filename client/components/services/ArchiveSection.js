@@ -18,8 +18,6 @@ export const ArchiveSection = ({ items, service_types }) => {
     }
   }
 
-  const paginatedPosts = paginate(items, currentPage, pageSize)
-
   return (
     <>
       {service_types && 

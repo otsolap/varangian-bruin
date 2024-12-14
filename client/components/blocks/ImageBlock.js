@@ -3,7 +3,7 @@ import styles from '@/styles/components/imageBlock.module.css'
 
 const ImageBlock = ({  image, caption }) => {
   return (
-      image.data ? (
+      image ? (
         <section className={styles.wrapper}>
           <figure className={styles.imageBlock}>
             <NextImage image={image} className={styles.image} />

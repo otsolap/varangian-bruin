@@ -70,7 +70,7 @@ async function getContent(params) {
       })(),
       article: resData.data[0] ?? {},
       blocks: resData.data[0]?.blocks ?? {},
-      category: resData.data[0]?.category ?? {},
+      category: resData.data[0]?.category[0] ?? {},
       author: resData.data[0]?.author ?? {},
     }
 
