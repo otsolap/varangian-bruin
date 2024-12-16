@@ -24,7 +24,6 @@ export async function generateStaticParams() {
        params: { slug: slug }
     }))
   }
-  
 
 async function getContent(params) {
     try {

@@ -23,7 +23,9 @@ async function getContent() {
       getStrapiURL(`/${config.blog.API_CATEGORY_PATH_QUERY}`),
     ];
 
-    const [archivePageResponse, articlesResponse, categoriesResponse] = await Promise.all(urls.map(url => fetch(url)));
+    const [archivePageResponse, articlesResponse, categoriesResponse] = await Promise.all(
+      urls.map(url => fetch(url, { cache: 'force-cache' }))
+    );
 
     const archivePageData = await archivePageResponse.json();
     const articlesData = await articlesResponse.json();
