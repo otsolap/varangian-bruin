@@ -4,7 +4,8 @@ import { getStrapiURL } from "@/utils/index"
 import config from '@/utils/config'
 import { notFound } from 'next/navigation'
 
-export default async function serviceTypesSlug ({ params }) {
+export default async function serviceTypesSlug(props) {
+  const params = await props.params;
   const { hero, items, service_types } = await getContent(params)
 
   return (

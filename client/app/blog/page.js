@@ -42,10 +42,11 @@ async function getContent() {
   }
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+  const params = await props.params;
   const pageUrl = `/${params.slug}`
   const { meta } = await getContent(params)
-  
+
   if(!meta || Object.keys(meta).length === 0) return null;
 
   const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.formats)

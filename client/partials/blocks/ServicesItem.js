@@ -28,7 +28,7 @@ const ServicesItem = ({ image, title, price, currency, slug, serviceType }) => {
             </Link>
           </div>
         }
-        {serviceType?.data || price? (
+        {serviceType || price? (
           <footer className={`${styles.footer} ${styles.footerRow}`}>
             {serviceType && <h4 className={styles.category}>{serviceType.title}</h4>}
             {price && 

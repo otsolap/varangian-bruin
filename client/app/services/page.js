@@ -28,7 +28,7 @@ async function getContent() {
       const archivePageData = await archivePageResponse.json();
       const servicesData = await servicesResponse.json();
       const serviceTypesData = await serviceTypesResponse.json();
-  
+
       return {
         meta: archivePageData.data.seo ?? {},
         hero: archivePageData.data.hero ?? {},
@@ -42,14 +42,15 @@ async function getContent() {
     }
   }
 
-  export async function generateMetadata({ params }) {
+  export async function generateMetadata(props) {
+    const params = await props.params;
     const pageUrl = `/${params.slug}`
     const { meta } = await getContent(params)
-    
+
     if(!meta || Object.keys(meta).length === 0) return null;
-  
+
     const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.formats)
-  
+
     return {
       robots: {
         index:  !meta.preventIndexing,

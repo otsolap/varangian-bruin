@@ -3,9 +3,10 @@ import config from '@/utils/config'
 import Blocks from "@/components/Blocks"
 import { notFound } from 'next/navigation'
 
-export default async function ServicesSlug({ params }) {
+export default async function ServicesSlug(props) {
+  const params = await props.params;
   const { blocks } = await getContent(params)
-  
+
   return (
     <Blocks blocks={blocks} />
   )
@@ -36,10 +37,11 @@ async function getContent(params) {
   }
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+  const params = await props.params;
   const pageUrl = `/services/${params.slug}`
   const { meta, pageTitle } = await getContent(params)
-  
+
   if(!meta || Object.keys(meta).length === 0) return null;
 
   const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.formats)

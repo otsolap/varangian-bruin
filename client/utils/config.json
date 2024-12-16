@@ -27,7 +27,7 @@
         "SERVICE_TYPES_PATH":"service-types",
         "API_SERVICE_TYPES_PATH_QUERY": "api/service-types",
         "API_SERVICE_TYPES_CONTENT_QUERY":"api/service-types?&populate=services,services.image,services.service_type,hero,hero.buttons,hero.image,seo.imageBlock.image",
-        "API_SERVICES_QUERY":"api/services?populate=images",
+        "API_SERVICES_QUERY":"api/services?populate[0]=image&populate[1]=service_types", 
         "API_SERVICES_CONTENT_QUERY":"api/services?populate[0]=seo&populate[1]=seo.imageBlock.image&populate[2]=blocks&populate[3]=blocks.image&populate[4]=blocks.accordion&populate[5]=blocks.accordions&populate[6]=blocks.button&populate[7]=blocks.buttons&populate[8]=blocks.blogs&populate[9]=blocks.blogs.author&populate[10]=blocks.blogs.image&populate[11]=blocks.blogs.category&populate[12]=blocks.link&populate[13]=blocks.cards&populate[14]=blocks.cards.image&populate[15]=blocks.form&populate[16]=blocks.form.inputs&populate[17]=blocks.form.inputs.options&populate[18]=blocks.form.image&populate[19]=blocks.form.button&populate[20]=blocks.images.image&populate[21]=blocks.mediaMixItems&populate[22]=blocks.mediaMixItems.image&filters[slug][$eq]=",
         "API_SERVICES_NAV_QUERY":"api/services"
     },

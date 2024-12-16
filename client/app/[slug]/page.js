@@ -5,7 +5,8 @@ import { notFound } from 'next/navigation'
 import Banner from "@/components/blocks/Banner"
 import SubscribeForm from "components/blocks/SubscribeForm";
 
-export default async function PageSlug({ params }) {
+export default async function PageSlug(props) {
+  const params = await props.params;
   const { blocks, showServicesBanner, showSubscribeForm } = await getContent(params)
   const banners = await fetchBannerData();
   const { servicesBanner, subscribeForm } = banners;
@@ -48,10 +49,11 @@ async function getContent(params) {
   }
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+  const params = await props.params;
   const pageUrl = `/${params.slug}`
   const { meta, pageTitle } = await getContent(params)
-  
+
   if(!meta || Object.keys(meta).length === 0) return null;
 
   const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.formats)

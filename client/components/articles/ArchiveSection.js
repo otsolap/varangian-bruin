@@ -37,7 +37,7 @@ export const ArchiveSection = ({ items, categories }) => {
               description={item.description}
               slug={item.slug}
               author={item.author}
-              category={item.category.data}
+              category={item.category[0]}
               publishedAt={item.publishedAt}
             />
           )

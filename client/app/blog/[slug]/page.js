@@ -10,9 +10,10 @@ import styles from '@/styles/pages/blog.module.css'
 import { generateOpenGraphImages } from "@/utils/index"
 import RelatedArticles from 'components/articles/RelatedArticles';
 
-export default async function BlogSlug ({ params }) {
+export default async function BlogSlug(props) {
+  const params = await props.params;
   const { article, revisionNotice, blocks, category, author, currentPostID } = await getContent(params)
-  
+
   return (
     <>
     <ArticleHeading article={article} category={category} author={author} revisionDate={revisionNotice} />
@@ -80,10 +81,11 @@ async function getContent(params) {
   }
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+  const params = await props.params;
   const pageUrl = `/blog/${params.slug}`
   const { meta, pageTitle, author } = await getContent(params)
-  
+
   if(!meta || Object.keys(meta).length === 0) return null;
 
   const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.formats)

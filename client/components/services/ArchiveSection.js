@@ -18,6 +18,8 @@ export const ArchiveSection = ({ items, service_types }) => {
     }
   }
 
+  const paginatedPosts = paginate(items, currentPage, pageSize)
+
   return (
     <>
       {service_types && 
@@ -34,7 +36,7 @@ export const ArchiveSection = ({ items, service_types }) => {
               title={item.title}
               price={item.price}
               currency={item.currency}
-              serviceType={item.service_type.data}
+              serviceType={item.service_types[0]}
               slug={item.slug}
             />
           )

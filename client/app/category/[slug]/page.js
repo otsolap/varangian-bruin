@@ -4,7 +4,8 @@ import { getStrapiURL } from "@/utils/index"
 import config from '@/utils/config'
 import { notFound } from 'next/navigation'
 
-export default async function categorySlug ({ params }) {
+export default async function categorySlug(props) {
+  const params = await props.params;
   const { hero, items, categories } = await getContent(params)
 
   return (
