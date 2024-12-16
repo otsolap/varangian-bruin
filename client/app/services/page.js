@@ -23,7 +23,9 @@ async function getContent() {
         getStrapiURL(`/${config.services.API_SERVICE_TYPES_PATH_QUERY}`)
       ];
   
-      const [archivePageResponse, servicesResponse, serviceTypesResponse] = await Promise.all(urls.map(url => fetch(url)));
+      const [archivePageResponse, servicesResponse, serviceTypesResponse] = await Promise.all(
+        urls.map(url => fetch(url, { cache: 'force-cache' }))
+      );
   
       const archivePageData = await archivePageResponse.json();
       const servicesData = await servicesResponse.json();
