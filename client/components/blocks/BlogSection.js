@@ -44,7 +44,7 @@ export default function BlogSection({ title, description, selectTheme, blogs, fi
                 image={item.image}
                 title={item.title}
                 description={item.description}
-                category={item.category.data}
+                category={item.category[0]}
                 publishedAt={item.publishedAt}
                 slug={item.slug}
               />

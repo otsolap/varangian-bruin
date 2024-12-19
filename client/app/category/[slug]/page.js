@@ -7,7 +7,7 @@ import { notFound } from 'next/navigation'
 export default async function categorySlug(props) {
   const params = await props.params;
   const { hero, items, categories } = await getContent(params)
-
+  
   return (
     <>
       <Hero {...hero} />
@@ -42,10 +42,11 @@ async function getContent(params) {
       const matchingCategory = archivePageData.data.find(
         (category) => category.slug === params.slug
       )
+
   
       return {
         hero: matchingCategory.hero ?? {},
-        items: matchingCategory.articles.data ?? {},
+        items: matchingCategory.articles ?? {},
         categories: categoriesData.data ?? {},   
       }
   

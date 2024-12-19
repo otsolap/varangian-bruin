@@ -46,7 +46,7 @@ async function getContent(params) {
   
       return {
         hero: matchingServiceType.hero ?? {},
-        items: matchingServiceType.services.data ?? {},
+        items: matchingServiceType.services?? {},
         service_types: serviceTypesData.data ?? {},   
       }
   
