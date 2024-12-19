@@ -24,7 +24,7 @@ async function getContent() {
       ];
   
       const [archivePageResponse, servicesResponse, serviceTypesResponse] = await Promise.all(
-        urls.map(url => fetch(url, { cache: 'force-cache' }))
+        urls.map(url => fetch(url))
       );
   
       const archivePageData = await archivePageResponse.json();

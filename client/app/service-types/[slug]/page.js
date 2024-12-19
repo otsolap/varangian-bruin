@@ -34,7 +34,7 @@ async function getContent(params) {
       ];
   
       const [serviceTypeResponse, allServiceTypes] = await Promise.all(
-        urls.map(url => fetch(url, { cache: 'force-cache' }))
+        urls.map(url => fetch(url))
       );
 
       const archivePageData = await serviceTypeResponse.json();

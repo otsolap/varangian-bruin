@@ -10,6 +10,8 @@ import Header from "components/navigation/Header"
 import Footer from "@/components/navigation/Footer"
 import MobileFooter from "components/navigation/MobileFooter"
 
+export const fetchCache = 'default-cache'
+
 export default async function RootLayout({ children }) {
   let navigation, footer, blogNavigation, servicePaths, blogPaths
 

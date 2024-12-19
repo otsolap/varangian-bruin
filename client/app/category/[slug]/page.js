@@ -33,7 +33,7 @@ async function getContent(params) {
       ];
   
       const [categoryResponse, allCategories] = await Promise.all(
-        urls.map(url => fetch(url, { cache: 'force-cache' }))
+        urls.map(url => fetch(url))
       );
 
       const archivePageData = await categoryResponse.json();
