@@ -25,7 +25,7 @@
 }
 
 .image {
-  border-radius: var(--spacing-quarter);
+  border-radius: var(--spacing-single-quarter);
   width: inherit;
   height: inherit;
   box-shadow: var(--spacing-half) var(--spacing-half) 0px 0px var(--brand-500);

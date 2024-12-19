@@ -31,7 +31,7 @@
   max-width: 100%;
   width: 100%;
   border: 2px solid transparent;
-  border-radius: var(--spacing-quarter);
+  border-radius: var(--spacing-single-quarter);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

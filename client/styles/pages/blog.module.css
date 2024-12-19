@@ -8,7 +8,7 @@
 
 .article {
     width: 100%;
-   border-radius: var(--radius);
+    border-radius: var(--spacing-single-quarter);
 }
 
 /* Tablet Styles */

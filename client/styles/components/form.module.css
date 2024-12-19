@@ -36,7 +36,7 @@
 
 .form {
   padding: var(--spacing-single);
-  border-radius: var(--spacing-quarter);
+  border-radius: var(--spacing-single-quarter);
   border: 1px solid transparent;
 }
 
@@ -50,7 +50,7 @@
   max-width: 100%;
   width: 100%;
   border: 1px solid transparent;
-  border-radius: var(--spacing-quarter);
+  border-radius: var(--spacing-single-quarter);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

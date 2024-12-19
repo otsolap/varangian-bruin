@@ -23,7 +23,7 @@
 .card {
   display: flex;
   flex-direction: column;
-  border-radius: var(--spacing-quarter);
+  border-radius: var(--spacing-single-quarter);
   border: 1px solid var(--text-900);
   padding: var(--spacing-single);
   width: 100%;

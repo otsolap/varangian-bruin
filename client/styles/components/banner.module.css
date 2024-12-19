@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     border: 1px solid transparent;
-    border-radius: var(--spacing-quarter);
+    border-radius: 0px;
     padding: var(--spacing-double);
 }
 
@@ -41,6 +41,7 @@
         gap: var(--spacing-triple);
         padding: var(--spacing-double) var(--spacing-triple);
         max-width: var(--container-desktop);
+    
     }
 
     .imageContainer {
@@ -54,5 +55,12 @@
 
     .buttonWrapper {
         justify-content: flex-start;
+    }
+}
+
+/* Desktop Styles */
+@media (width >= 1440px) {
+    .banner {
+        border-radius: var(--spacing-single-quarter);
     }
 }

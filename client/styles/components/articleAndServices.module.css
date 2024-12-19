@@ -46,7 +46,7 @@
 .item {
     display: flex;
     flex-direction: column;
-    border-radius: var(--spacing-quarter);
+    border-radius: var(--spacing-single-quarter);
     align-items: flex-start;
     border: 1px solid var(--text-900);
     color: var(--text-900);

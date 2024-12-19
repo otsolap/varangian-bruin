@@ -7,7 +7,7 @@
 
 .nav {
     background-color: var(--text-900);
-    border-radius: var(--spacing-quarter);
+    border-radius: var(--spacing-single-quarter);
 }
 
 .wrapper {
