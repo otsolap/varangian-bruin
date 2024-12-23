@@ -4,6 +4,8 @@
     flex-wrap: wrap;
     padding: var(--spacing-double) var(--spacing-single);
     background-color: var(--background-300);
+    border-bottom-right-radius: var(--spacing-single-quarter);
+    border-bottom-left-radius: var(--spacing-single-quarter);
 }
 
 

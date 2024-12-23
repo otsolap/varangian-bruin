@@ -15,7 +15,7 @@ export default function RelatedArticles ({ title, description, selectTheme, curr
         const res = await fetch(getStrapiURL(`/${config.blog.RELATED_ARTICLES_FILTER_QUERY}${currentCategory}${config.blog.RELATED_ARTICLES_CONTENT_QUERY}`));
         const resData = await res.json();
         // Filter out the article with the currentPostID
-        const filteredArticles = resData.data[0].articles.data.filter(article => article.id !== currentPostID);
+        const filteredArticles = resData.data[0].articles.filter(article => article.id !== currentPostID);
         setItems(filteredArticles);
       } catch (error) {
         console.error(error);
