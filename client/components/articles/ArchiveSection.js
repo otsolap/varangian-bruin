@@ -4,7 +4,7 @@ import BlogItem from "partials/blocks/BlogItem"
 import TaxonomyLinks from "partials/navigation/TaxonomyLinks"
 import Pagination from "partials/navigation/Pagination"
 import { paginate } from "@/utils/index"
-import styles from "@/styles/components/articleAndServices.module.css";
+import styles from "@/styles/components/articles.module.css";
 
 export const ArchiveSection = ({ items, categories }) => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -27,28 +27,30 @@ export const ArchiveSection = ({ items, categories }) => {
           <TaxonomyLinks categories={categories} />
         </header>
       }
-      <div className={styles.wrapper}>
-        {paginatedPosts.map((item, i) => {
-          return (
-            <BlogItem
-              key={i}
-              image={item.image}
-              title={item.title}
-              description={item.description}
-              slug={item.slug}
-              author={item.author}
-              category={item.category[0]}
-              publishedAt={item.publishedAt}
-            />
-          )
-        })}
-        <Pagination
-          items={items.length}
-          currentPage={currentPage}
-          pageSize={pageSize}
-          onPageChange={onPageChange}
-        />
-      </div>
+       <div className={styles.wrapper}>
+        {paginatedPosts.length > 0 ? (
+          paginatedPosts.map((item, i) => (
+              <BlogItem
+                key={i}
+                image={item.image}
+                title={item.title}
+                description={item.description}
+                slug={item.slug}
+                author={item.author}
+                category={item.category[0]}
+                publishedAt={item.publishedAt}
+              />
+            ))
+          ) : (
+            <p>No items found</p>
+          )}
+          <Pagination
+            items={items.length}
+            currentPage={currentPage}
+            pageSize={pageSize}
+            onPageChange={onPageChange}
+          />
+        </div>
     </>
   )
 }

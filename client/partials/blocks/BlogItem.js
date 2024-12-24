@@ -1,4 +1,4 @@
-import styles from "@/styles/components/articleAndServices.module.css";
+import styles from "@/styles/components/articles.module.css";
 import NextImage from "@/partials/util/NextImage";
 import Link from "next/link";
 import config from '@/utils/config'
@@ -37,13 +37,13 @@ const BlogItem = ({ image, title, description, slug, category, publishedAt }) =>
           </div>
         }
         {category || formattedDate ? (
-       <footer className={`${styles.footer} ${styles.footerColumn}`}>
+       <footer className={styles.footer}>
             {category &&
               <Link passHref href={`/${config.blog.CATEGORY_PATH}/${category.slug}`}>
                 <h4 className={styles.category}>{category.title}</h4>
                 </Link>
             }
-          {formattedDate && <p>{formattedDate}</p>}
+          {formattedDate && <p className={styles.date}>{formattedDate}</p>}
           </footer>
         ): null}
       </article>

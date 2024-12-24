@@ -4,7 +4,7 @@ import ServicesItem from "@/partials/blocks/ServicesItem"
 import TaxonomyLinks from "@/partials/navigation/TaxonomyLinks"
 import Pagination from "@/partials/navigation/Pagination"
 import { paginate } from "@/utils/index"
-import styles from "@/styles/components/articleAndServices.module.css";
+import styles from "@/styles/components/services.module.css";
 
 export const ArchiveSection = ({ items, service_types }) => {
   const [currentPage, setCurrentPage] = useState(1)
