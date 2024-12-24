@@ -4,7 +4,6 @@
     display: flex;
     flex-direction: column;
     border: 1px solid transparent;
-    border-radius: var(--spacing-single-quarter);
     background-color: var(--background-500);
     padding-top: var(--spacing-double);
     padding-bottom: var(--spacing-double);
@@ -66,6 +65,7 @@
         padding-top: var(--spacing-triple);
         padding-bottom: var(--spacing-triple);
         margin-bottom: var(--spacing-triple);
+        border-radius: var(--spacing-single-quarter);
     }
 
     .column {

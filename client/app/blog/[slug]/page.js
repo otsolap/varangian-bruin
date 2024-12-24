@@ -12,7 +12,7 @@ import RelatedArticles from 'components/articles/RelatedArticles';
 
 export default async function BlogSlug(props) {
   const params = await props.params;
-  const { article, revisionNotice, blocks, category, author, currentPostID } = await getContent(params)
+  const { article, revisionNotice, blocks, category, author, documentId } = await getContent(params)
 
   return (
     <>
@@ -28,7 +28,7 @@ export default async function BlogSlug(props) {
       title={config.blog.RELATED_ARTICLES_TITLE}
       categoryTitle={category.title}
       currentCategory={category.slug}
-      currentPostID={currentPostID}
+      documentId={documentId}
       selectTheme="secondary"
     />
     <BlogSection 
@@ -56,7 +56,7 @@ async function getContent(params) {
 
     return {
       pageTitle: resData.data[0]?.title ?? '',
-      currentPostID: resData.data[0]?.id ?? null,
+      documentId: resData.data[0]?.documentId ?? null,
       meta: resData.data[0]?.seo ?? {},
       revisionNotice: (() => {
         const updatedAt = resData.data[0]?.updatedAt;

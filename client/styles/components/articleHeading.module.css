@@ -4,8 +4,6 @@
     flex-wrap: wrap;
     padding: var(--spacing-double) var(--spacing-single);
     background-color: var(--background-300);
-    border-bottom-right-radius: var(--spacing-single-quarter);
-    border-bottom-left-radius: var(--spacing-single-quarter);
 }
 
 
@@ -149,6 +147,8 @@
 @media (width >= 1440px) {
     .header {
         padding: var(--spacing-triple) var(--spacing-single);
+        border-bottom-right-radius: var(--spacing-single-quarter);
+        border-bottom-left-radius: var(--spacing-single-quarter);
     }
 
     .lead {
