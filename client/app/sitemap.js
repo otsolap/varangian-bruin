@@ -55,14 +55,14 @@ export default async function sitemap() {
 
   serviceTypes.data.forEach(serviceType => {
     sitemapEntries.push({
-      url: `https://varangianventure.com/services/${serviceType.slug}`,
+      url: `https://varangianventure.com/service-types/${serviceType.slug}`,
       lastModified: new Date(serviceType.updatedAt),
     });
   });
 
   categories.data.forEach(category => {
     sitemapEntries.push({
-      url: `https://varangianventure.com/blog/${category.slug}`,
+      url: `https://varangianventure.com/category/${category.slug}`,
       lastModified: new Date(category.updatedAt),
     });
   });
