@@ -41,7 +41,7 @@ const Hero = ({ image, alignContent, autoplay,  media, mediaWidth, title, video,
         >
           <article className={styles.content}>
             {title && <h1>{title}</h1>}
-            {description && <h3>{description}</h3>}
+            {description && <h2>{description}</h2>}
             {buttons && (
               <div className={styles.buttonWrapper}>
                 {buttons.map((button, i) => (
