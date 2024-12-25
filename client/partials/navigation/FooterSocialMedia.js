@@ -23,7 +23,7 @@ const FooterSocialMedia = ({  id, open, title, socialMedia }) => {
                 <div className={styles.wrapper}>
                     <div className={active ? `${styles.open}` : `${styles.closed}`}>
                         <div className={styles.flexBox}>
-                            {title && <h4 className={styles.heading}>{title}</h4>}
+                            {title && <h3 className={styles.heading}>{title}</h3>}
                             <FontAwesomeIcon className={styles.icon} aria-label="Additional information on Footer" icon={active ? faAngleUp : faAngleDown} />
                         </div>
                     </div>
