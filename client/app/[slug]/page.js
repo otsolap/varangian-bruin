@@ -58,7 +58,7 @@ export async function generateMetadata(props) {
 
   if(!meta || Object.keys(meta).length === 0) return null;
 
-  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.data?.formats)
+  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.formats)
 
   return {
     robots: {
