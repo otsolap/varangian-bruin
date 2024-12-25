@@ -7,7 +7,7 @@ import { formSubmit } from '@/actions/form-actions';
 import { SubmitButton } from "@/partials/form/SubmitButton";
 
 const FormEmbed = ({ form }) => {
-  const { formID, title, description, showLabels, inputs, image, successMessage, errorMessage, redirect, link } = form.data
+  const { formID, title, description, showLabels, inputs, image, successMessage, errorMessage, redirect, link } = form
 
   const INITIAL_STATE = {
     id: formID,
