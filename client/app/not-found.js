@@ -4,7 +4,7 @@ import CustomLink from "partials/util/CustomLink";
 import { getStrapiURL } from "@/utils/index"
 import config from '@/utils/config'
 
-export default async function Custom404 () {
+export default async function NotFound () {
     const { title, description, buttons } = await getNotFoundData()
 
     return (

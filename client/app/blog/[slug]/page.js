@@ -54,6 +54,8 @@ async function getContent(params) {
     const res = await fetch(getStrapiURL(`/${config.blog.API_ARTICLE_PAGE_CONTENT_QUERY}${params.slug}`));
     const resData = await res.json();
 
+    if (!resData.data || resData.data.length === 0) notFound();
+
     return {
       pageTitle: resData.data[0]?.title ?? '',
       documentId: resData.data[0]?.documentId ?? null,

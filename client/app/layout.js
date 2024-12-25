@@ -76,7 +76,7 @@ export async function generateMetadata() {
   
   if(!baseSEO || Object.keys(baseSEO).length === 0) return null;
 
-  const ogImages = generateOpenGraphImages(baseSEO.imageBlock?.image?.data?.formats)
+  const ogImages = generateOpenGraphImages(baseSEO.imageBlock?.image?.formats)
   
   return {
     metadataBase: baseSEO.URL ? new URL(`${baseSEO.URL}`) : null,

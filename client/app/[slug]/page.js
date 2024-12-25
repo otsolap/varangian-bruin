@@ -36,6 +36,8 @@ async function getContent(params) {
     const res = await fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}?${config.pages.API_PAGES_CONTENT_QUERY}&filters[slug][$eq]=${params.slug}`))
     const resData = await res.json()
 
+    if (!resData.data || resData.data.length === 0) notFound();
+
     return {
       pageTitle: resData.data[0]?.title ?? '',
       meta: resData.data[0]?.seo ?? {},
