@@ -11,5 +11,6 @@
 @media (width >= 1440px) {
   .content {
     max-width: var(--container-desktop);
+    border-radius: var(--spacing-single-quarter);
   }
 }
