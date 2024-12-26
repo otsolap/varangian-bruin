@@ -37,8 +37,10 @@ async function getContent(params) {
         urls.map(url => fetch(url))
       );
 
-      const archivePageData = await serviceTypeResponse.json();
-      const serviceTypesData = await allServiceTypes.json();
+      const [archivePageData, serviceTypesData] = await Promise.all([
+        serviceTypeResponse.json(),
+        allServiceTypes.json()
+      ]);
 
       const matchingServiceType = archivePageData.data.find(
         (service_type) => service_type.slug === params.slug

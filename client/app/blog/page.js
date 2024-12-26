@@ -27,9 +27,11 @@ async function getContent() {
       urls.map(url => fetch(url))
     );
 
-    const archivePageData = await archivePageResponse.json();
-    const articlesData = await articlesResponse.json();
-    const categoriesData = await categoriesResponse.json();
+    const [archivePageData, articlesData, categoriesData] = await Promise.all([
+      archivePageResponse.json(),
+      articlesResponse.json(),
+      categoriesResponse.json()
+    ]);
 
     return {
       meta: archivePageData.data.seo ?? {},

@@ -36,8 +36,10 @@ async function getContent(params) {
         urls.map(url => fetch(url))
       );
 
-      const archivePageData = await categoryResponse.json();
-      const categoriesData = await allCategories.json();
+      const [archivePageData, categoriesData] = await Promise.all([
+        categoryResponse.json(),
+        allCategories.json()
+      ]);
 
       const matchingCategory = archivePageData.data.find(
         (category) => category.slug === params.slug
