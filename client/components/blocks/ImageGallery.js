@@ -23,7 +23,7 @@ const ImageGallery = ({ images, title }) => {
   return (
     <section className={styles.imageGallery}>
         <div className={styles.wrapper}>
-            {images.data && images.data.map((image, i) => (
+            {images && images.map((image, i) => (
             <figure className={styles.imageContainer} id={i} key={i} onClick={() => openModal(i)}>
                 <NextImage className={styles.image} image={image} />
             </figure>

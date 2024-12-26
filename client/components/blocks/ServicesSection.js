@@ -12,9 +12,9 @@ export default function ServicesSection({ title, description, selectTheme, servi
           {description && <p>{description}</p>}
         </header>
       ) : null}
-      {services?.data?.length ? (
+      {services.length ? (
         <div className={styles.wrapper}>
-          {services.data.map((item, i) => {
+          {services.map((item, i) => {
             return (
               <ServicesItem
                 key={i}
@@ -23,7 +23,7 @@ export default function ServicesSection({ title, description, selectTheme, servi
                 description={item.description}
                 price={item.price}
                 currency={item.currency}
-                serviceType={item.service_type.data}
+                serviceType={item.service_types[0]}
                 slug={item.slug}
               />
             );

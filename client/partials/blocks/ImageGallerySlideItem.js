@@ -21,7 +21,7 @@ const ImageGallerySlideItem = ({ images, selectedImage }) => {
             rewind={true}
             initialSlide={selectedImage}
         >
-            {images.data.map((image, i) => {
+            {images.map((image, i) => {
             return (
                 <SwiperSlide className={styles.slide} key={i}>
                     <figure className={styles.imageModalContainer}>

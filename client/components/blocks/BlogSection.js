@@ -35,9 +35,9 @@ export default function BlogSection({ title, description, selectTheme, blogs, fi
           {description && <p>{description}</p>}
         </header>
       ) : null}
-      {blogItems?.data?.length ? (
+      {blogItems?.length ? (
         <div className={styles.wrapper}>
-          {blogItems.data.map((item, i) => {
+          {blogItems.map((item, i) => {
             return (
               <BlogItem
                 key={i}
