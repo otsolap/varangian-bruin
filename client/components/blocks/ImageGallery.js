@@ -6,6 +6,7 @@ import Modal from "partials/blocks/Modal";
 import ImageGallerySlideItem from "partials/blocks/ImageGallerySlideItem";
 import styles from '@/styles/components/imageGallery.module.css'
 
+// TODO SWIPER IS BORKED. DEBUG AND FIX.
 const ImageGallery = ({ images, title }) => {
   const [show, toggleModal] = useToggle(false);
   const [selectedImage, setSelectedImage, removeSelectedImage] = useLocalStorage('image', undefined);

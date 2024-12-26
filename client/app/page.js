@@ -19,15 +19,24 @@ export default async function Page () {
   )
 }
 
+// TODO: SEO component here.
+
 async function getContent() {
   try {
-    const res = await fetch(getStrapiURL(`/${config.global.API_HOME_CONTENT_QUERY}`))
-    const resData= await res.json()
+    const [seoPathRes, blocksPathRes] = await Promise.all([
+      fetch(getStrapiURL(`/${config.global.API_HOME_QUERY}?${config.blocks.API_SEO_BLOCK_QUERY}`)),
+      fetch(getStrapiURL(`/${config.global.API_HOME_QUERY}?${config.blocks.API_DYNAMIC_ZONE_BLOCKS}`))
+    ]);
+
+    const [seoPathData, blocksPathData] = await Promise.all([
+      seoPathRes.json(),
+      blocksPathRes.json()
+    ]);
 
     return {
-      showServicesBanner: resData.data.showServicesBanner ?? false,
-      showSubscribeForm: resData.data.showSubscribeForm ?? false,
-      blocks: resData.data.blocks ?? {},
+      showServicesBanner: blocksPathData.data.showServicesBanner ?? false,
+      showSubscribeForm: blocksPathData.data.showSubscribeForm ?? false,
+      blocks: blocksPathData.data.blocks ?? {},
     }
   } catch (error) {
     console.error('Error:', error)

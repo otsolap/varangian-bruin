@@ -71,7 +71,7 @@ import config from '@/utils/config'
         getStrapiURL(`/${config.global.API_FOOTER_QUERY}`),
         getStrapiURL(`/${config.global.API_ANALYTICS_QUERY}`),
         getStrapiURL(`/${config.global.API_BLOG_NAVIGATION_QUERY}`),
-        getStrapiURL(`/${config.blocks.CONTENT_BLOG_SECTION_LATEST_QUERY}`),
+        getStrapiURL(`/${config.blocks.API_CONTENT_BLOG_SECTION_LATEST_QUERY}`),
       ];
   
       let navigationResponse, footerResponse, analyticsResponse, blogNavigationResponse, latestBlogs;
