@@ -1,3 +1,8 @@
+.videoEmbed {
+    display: flex;
+    justify-content: center;
+}
+
 .videoContainer {
     height: 250px;
     width: 100%;
@@ -6,7 +11,7 @@
 
 /* Tablet Styles */
 @media (width >= 768px) {
-    
+
     .videoContainer {
         height: 375px;
     }

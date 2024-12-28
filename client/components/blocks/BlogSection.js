@@ -25,7 +25,7 @@ export default function BlogSection({ title, description, selectTheme, blogs, fi
     }
   }, [filter]);
 
-  const blogItems = filter === "latest" ? items : blogs;
+  const blogItems = filter === "latest" ? items.data : blogs;
 
   return (
     <section className={selectTheme == 'primary' ? styles.bgPrimary : styles.bgSecondary}>
