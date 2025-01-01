@@ -159,6 +159,8 @@ export interface BlocksQuote extends Struct.ComponentSchema {
     displayName: 'Quote';
   };
   attributes: {
+    author: Schema.Attribute.String;
+    source: Schema.Attribute.String;
     title: Schema.Attribute.String;
   };
 }

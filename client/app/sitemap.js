@@ -32,39 +32,34 @@ export default async function sitemap() {
     },
   ];
 
+  const addEntry = (url, date) => {
+    const lastModified = new Date(date);
+    if (!isNaN(lastModified)) {
+      sitemapEntries.push({
+        url,
+        lastModified,
+      });
+    }
+  };
+
   pages.data.forEach(page => {
-    sitemapEntries.push({
-      url: `https://varangianventure.com/${page.slug}`,
-      lastModified: new Date(page.updatedAt),
-    });
+    addEntry(`https://varangianventure.com/${page.slug}`, page.updatedAt);
   });
 
   articles.data.forEach(article => {
-    sitemapEntries.push({
-      url: `https://varangianventure.com/blog/${article.slug}`,
-      lastModified: new Date(article.updatedAt),
-    });
+    addEntry(`https://varangianventure.com/blog/${article.slug}`, article.updatedAt);
   });
 
   services.data.forEach(service => {
-    sitemapEntries.push({
-      url: `https://varangianventure.com/services/${service.slug}`,
-      lastModified: new Date(service.updatedAt),
-    });
+    addEntry(`https://varangianventure.com/services/${service.slug}`, service.updatedAt);
   });
 
   serviceTypes.data.forEach(serviceType => {
-    sitemapEntries.push({
-      url: `https://varangianventure.com/service-types/${serviceType.slug}`,
-      lastModified: new Date(serviceType.updatedAt),
-    });
+    addEntry(`https://varangianventure.com/service-types/${serviceType.slug}`, serviceType.updatedAt);
   });
 
   categories.data.forEach(category => {
-    sitemapEntries.push({
-      url: `https://varangianventure.com/category/${category.slug}`,
-      lastModified: new Date(category.updatedAt),
-    });
+    addEntry(`https://varangianventure.com/category/${category.slug}`, category.updatedAt);
   });
 
   return sitemapEntries;

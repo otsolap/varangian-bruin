@@ -8,6 +8,12 @@
   "attributes": {
     "title": {
       "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
     }
   }
 }
