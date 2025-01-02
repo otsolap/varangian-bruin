@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from "react";
-import styles from "@/styles/components/articles.module.css";
+import styles from "@/styles/components/blogs.module.css";
 import BlogItem from "@/partials/blocks/BlogItem";
 import Link from "next/link";
 import { getStrapiURL } from "@/utils/index";

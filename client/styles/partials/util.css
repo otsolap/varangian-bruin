@@ -3,6 +3,7 @@
   width: 100%;
 }
 
+/* buttons */
 .button {
   background-color: var(--color-primary-700);
   color: var(--color-secondary-900);
@@ -20,29 +21,30 @@
 
 .button:hover,
 .button:focus {
-  background-color: var(--tertiary-900);
-  color: var(--color-white);
+  background-color: var(--color-primary-500);
 }
 
-.button--secondary {
-  background-color: var(--tertiary-900);
-}
-
-.button--tertiary {
-  background-color: var(--tertiary-500);
-}
-  
 .button--secondary,
 .button--tertiary {
   color: var(--color-white);
 }
 
+.button--secondary {
+  background-color: var(--color-tertiary-900);
+}
+
 .button--secondary:hover,
-.button--secondary:focus,
+.button--secondary:focus {
+  background-color: var(--color-tertiary-500);
+}
+
+.button--tertiary {
+  background-color: var(--color-tertiary-500);
+}
+
 .button--tertiary:hover,
 .button--tertiary:focus {
-  background-color: var(--color-primary-700);
-  color: var(--color-secondary-900);
+  background-color: var(--color-tertiary-300);
 }
 
 .button--transparent {
@@ -68,11 +70,11 @@
 }
 
 .bg-secondary {
-  background-color: var(--color-secondary-500);
+  background-color: var(--color-secondary-800);
 }
 
 .bg-tertiary {
-  background-color: var(--color-secondary-300);
+  background-color: var(--color-tertiary-900);
 }
 
 .bg-transparent {

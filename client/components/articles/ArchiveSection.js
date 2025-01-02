@@ -4,7 +4,7 @@ import BlogItem from "partials/blocks/BlogItem"
 import TaxonomyLinks from "partials/navigation/TaxonomyLinks"
 import Pagination from "partials/navigation/Pagination"
 import { paginate } from "@/utils/index"
-import styles from "@/styles/components/articles.module.css";
+import styles from "@/styles/components/blogs.module.css";
 
 export const ArchiveSection = ({ items, categories }) => {
   const [currentPage, setCurrentPage] = useState(1)

@@ -16,9 +16,14 @@ export default async function BlogSlug(props) {
 
   return (
     <>
-    <ArticleHeading article={article} category={category} author={author} revisionDate={revisionNotice} />
+    <ArticleHeading article={article} category={category} author={author} />
     <div className={styles.wrapper}>
       <article id={'post'} className={styles.article}>
+        {revisionNotice &&
+            <aside className={styles.revision}>
+                <p>This post was last updated in {revisionNotice}.</p>
+            </aside>
+        }
         <Blocks blocks={blocks} />
       </article>
       <TOC blocks={blocks} title={article.title} />
@@ -69,7 +74,12 @@ async function getContent(params) {
         const oneMonthAgo = new Date();
         oneMonthAgo.setMonth(currentDate.getMonth() - 1);
       
-        return updatedDate < oneMonthAgo ? updatedAt : null;
+        if (updatedDate < oneMonthAgo) {
+          const options = { year: 'numeric', month: 'long' };
+          return updatedDate.toLocaleDateString(undefined, options);
+        }
+      
+        return null;
       })(),
       article: resData.data[0] ?? {},
       blocks: resData.data[0]?.blocks ?? {},

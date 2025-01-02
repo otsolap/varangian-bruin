@@ -1,4 +1,4 @@
-import styles from "@/styles/components/articles.module.css";
+import styles from "@/styles/components/blogs.module.css";
 import NextImage from "@/partials/util/NextImage";
 import Link from "next/link";
 import config from '@/utils/config'

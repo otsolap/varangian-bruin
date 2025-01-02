@@ -60,7 +60,7 @@
     border-color: var(--color-secondary-900);
     background-color: var(--color-primary-300);
 
-    .imageContainer,
+    .image,
     .footer {
         border-color: var(--color-secondary-900);
     }
@@ -69,9 +69,9 @@
 .bgSecondary .item:hover,
 .bgSecondary .item:focus {
     border-color: var(--color-primary-500);
-    background-color: var(--color-secondary-700);
+    background-color: var(--color-secondary-800);
 
-    .imageContainer,
+    .image,
     .footer {
         border-color: var(--color-primary-500);
     }
@@ -85,7 +85,6 @@
 }
 
 .imageLink {
-    border-bottom: 1px solid var(--color-white);
     width: 100%;
 }
 
@@ -95,6 +94,7 @@
     object-fit: cover;
     object-position: 50% 50%;
     aspect-ratio: 16/9;
+    border-bottom: 1px solid var(--color-white);
 }
 
 .itemContent  {

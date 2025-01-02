@@ -3,7 +3,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     padding: var(--spacing-double) var(--spacing-single);
-    background-color: var(--color-secondary-300);
+    background-color: var(--color-secondary-700);
 }
 
 
@@ -19,16 +19,7 @@
     cursor: pointer;
 }
 
-.revision {
-    padding: var(--spacing-single);
-    font-weight: 500;
-    background-color: var(--color-primary-500);
-    width: fit-content;
-    border-radius: var(--spacing-quarter);
-}
-
 .lead,
-.metaData,
 .author,
 .column {
     display: flex;
@@ -39,11 +30,6 @@
     justify-content: center;
     gap: var(--spacing-half);
 }
-
-.metaData {
-    gap: var(--spacing-single);
-}
-
 
 .title {
     font-size: 1.75rem;
@@ -105,11 +91,6 @@
 @media (width >= 768px) {
     .header {
         flex-direction: row;
-    }
-
-    .metaData {
-        flex-direction: row;
-        align-items: center;
     }
 
     .lead,

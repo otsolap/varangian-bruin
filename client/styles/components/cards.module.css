@@ -2,6 +2,7 @@
   margin: 0 auto;
   width: 100%;
   padding: var(--spacing-single);
+  background-color: var(--color-secondary-900);
 }
 
 .header,
@@ -34,7 +35,7 @@
 
 .card:focus,
 .card:hover {
-  background-color: var(--color-secondary-700);
+  background-color: var(--color-secondary-800);
   border-color: var(--color-primary-500);
 }
 
