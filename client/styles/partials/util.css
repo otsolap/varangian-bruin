@@ -4,8 +4,8 @@
 }
 
 .button {
-  background-color: var(--brand-700);
-  color: var(--background-900);
+  background-color: var(--color-primary-700);
+  color: var(--color-secondary-900);
   text-shadow: initial;
   border-color: transparent;
   font-weight: 700;
@@ -20,39 +20,39 @@
 
 .button:hover,
 .button:focus {
-  background-color: var(--cta-900);
-  color: var(--text-900);
+  background-color: var(--tertiary-900);
+  color: var(--color-white);
 }
 
 .button--secondary {
-  background-color: var(--cta-900);
+  background-color: var(--tertiary-900);
 }
 
 .button--tertiary {
-  background-color: var(--cta-500);
+  background-color: var(--tertiary-500);
 }
   
 .button--secondary,
 .button--tertiary {
-  color: var(--text-900);
+  color: var(--color-white);
 }
 
 .button--secondary:hover,
 .button--secondary:focus,
 .button--tertiary:hover,
 .button--tertiary:focus {
-  background-color: var(--brand-700);
-  color: var(--background-900);
+  background-color: var(--color-primary-700);
+  color: var(--color-secondary-900);
 }
 
 .button--transparent {
-  color: var(--text-900);
+  color: var(--color-white);
   background-color: transparent;
 }
 
 .button--transparent:hover,
 .button--transparent:focus {
-  color: var(--brand-700);
+  color: var(--color-primary-700);
 }
 
 .button--disabled {
@@ -64,15 +64,15 @@
 
 /* Background and Color Classes */
 .bg-primary {
-  background-color: var(--brand-500);
+  background-color: var(--color-primary-500);
 }
 
 .bg-secondary {
-  background-color: var(--background-500);
+  background-color: var(--color-secondary-500);
 }
 
 .bg-tertiary {
-  background-color: var(--background-300);
+  background-color: var(--color-secondary-300);
 }
 
 .bg-transparent {
@@ -80,15 +80,15 @@
 }
 
 .color-white {
-  color: var(--text-900);
+  color: var(--color-white);
 }
 
 .color-black {
-  color: var(--background-900);
+  color: var(--color-secondary-900);
 }
 
 .color-primary {
-  color: var(--brand-500);
+  color: var(--color-primary-500);
 }
 
 /* Screen Reader Only Class */

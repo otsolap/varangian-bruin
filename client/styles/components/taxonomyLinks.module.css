@@ -14,15 +14,15 @@
 }
 
 .button {
-    background-color: var(--brand-500);
-    color: var(--background-900);
+    background-color: var(--color-primary-500);
+    color: var(--color-secondary-900);
     transition: 0.6s ease-in-out;
 }
 
 .button:hover,
 .button:focus {
-    background-color: var(--brand-500);
-    color: var(--background-900);
+    background-color: var(--color-primary-500);
+    color: var(--color-secondary-900);
 }
 
 /* Desktop Styles */

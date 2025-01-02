@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     border: 1px solid transparent;
-    background-color: var(--background-500);
+    background-color: var(--color-secondary-500);
     padding-top: var(--spacing-double);
     padding-bottom: var(--spacing-double);
     margin-bottom: var(--spacing-double);
@@ -33,7 +33,7 @@
     width: inherit;
     height: inherit;
     object-fit: cover;
-    box-shadow: var(--spacing-half) var(--spacing-half) 0px 0px var(--brand-500);
+    box-shadow: var(--spacing-half) var(--spacing-half) 0px 0px var(--color-primary-500);
 }
 
 .buttonWrapper {
@@ -55,7 +55,7 @@
     }
 
     .image {
-        box-shadow: var(--spacing-single) var(--spacing-single) 0px 0px var(--brand-500);
+        box-shadow: var(--spacing-single) var(--spacing-single) 0px 0px var(--color-primary-500);
     }
 }
 
@@ -80,6 +80,6 @@
     }
     
     .image {
-        box-shadow: 24px 24px 0px 0px var(--brand-500);
+        box-shadow: 24px 24px 0px 0px var(--color-primary-500);
     }
 }

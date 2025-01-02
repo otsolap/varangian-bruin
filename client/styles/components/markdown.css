@@ -9,7 +9,7 @@
 }
 
 .markdown article p strong {
-  color: var(--brand-500);
+  color: var(--color-primary-500);
 }
 
 .markdown article p {
@@ -33,7 +33,7 @@
 }
 
 .markdown article li:has(strong) path {
-  color: var(--brand-500);
+  color: var(--color-primary-500);
 }
 
 .markdown article img {
@@ -47,7 +47,7 @@
 }
 
 .markdown article a {
-  color: var(--brand-500);
+  color: var(--color-primary-500);
   word-wrap: break-word;
   white-space: pre-wrap;
   word-break: break-word;

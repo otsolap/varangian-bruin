@@ -12,5 +12,5 @@
 .link:hover,
 .link:focus {
   cursor: pointer;
-  color: var(--brand-500);
+  color: var(--color-primary-500);
 }

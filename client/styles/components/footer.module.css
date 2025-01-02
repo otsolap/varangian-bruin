@@ -1,9 +1,9 @@
 .footer {
-  border-top: 1px solid var(--text-900);
+  border-top: 1px solid var(--color-white);
   margin: 0 auto;
   width: 100%;
   padding-bottom: var(--spacing-quintuple);
-  background-color: var(--background-900);
+  background-color: var(--color-secondary-900);
   display: flex;
   flex-direction: column;
 }
@@ -60,7 +60,7 @@
 .link:focus,
 .link:hover {
   cursor: pointer;
-  color: var(--brand-500);
+  color: var(--color-primary-500);
 }
 
 .toggle {
@@ -77,7 +77,7 @@
 .flexBox {
   display: flex;
   border-bottom: 2px solid;
-  border-color: var(--text-900);
+  border-color: var(--color-white);
   align-items: center;
 }
 
@@ -97,7 +97,7 @@
 }
 
 .contentDivider {
-  border-color: var(--text-900);
+  border-color: var(--color-white);
   border-top-width: 2px;
 }
 
@@ -131,7 +131,7 @@
 .subFooter {
   padding: var(--spacing-single);
   margin-top: var(--spacing-single);
-  border-top: 2px solid var(--text-900);
+  border-top: 2px solid var(--color-white);
 }
 
 .subFooterContent {
@@ -141,8 +141,8 @@
 }
 
 .mobile {
-  border-top: 2px solid var(--text-900);
-  background-color: var(--brand-900);
+  border-top: 2px solid var(--color-white);
+  background-color: var(--color-primary-900);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -161,7 +161,7 @@
 
 .mobileMenuWrapper a,
 .mobileMenuWrapper button {
-    color: var(--text-900);
+    color: var(--color-white);
     position: relative;
     width: var(--spacing-quintuple);
     height: var(--spacing-quadruple);

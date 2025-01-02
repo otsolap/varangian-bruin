@@ -10,8 +10,8 @@
   padding-right: var(--spacing-half);
   align-items: center;
   justify-content: center;
-  background-color: var(--brand-500);
-  border-bottom: 1px solid var(--text-900);
+  background-color: var(--color-primary-500);
+  border-bottom: 1px solid var(--color-white);
 }
 
 .navigation,
@@ -90,8 +90,8 @@
     top: 0;
     width: 100vw;
     padding: var(--spacing-half);
-    background-color: var(--background-900);
-    border-bottom: 1px solid var(--text-900);
+    background-color: var(--color-secondary-900);
+    border-bottom: 1px solid var(--color-white);
   }
 
   .wrapper {
@@ -117,7 +117,7 @@
   }
 
   .link:hover {
-    color: var(--brand-700);
+    color: var(--color-primary-700);
     cursor: pointer;
     font-weight: 900;
   }

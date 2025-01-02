@@ -6,12 +6,12 @@
 }
 
 .nav {
-    background-color: var(--text-900);
+    background-color: var(--color-white);
     border-radius: var(--spacing-single-quarter);
 }
 
 .wrapper {
-    color: var(--background-900);
+    color: var(--color-secondary-900);
     padding: var(--spacing-single);
 }
 
@@ -20,19 +20,19 @@
 }
 
 .link {
-    color: var(--background-300);
+    color: var(--color-secondary-300);
 }
 
 .link:hover,
 .link:focus {
-    color: var(--brand-900);
+    color: var(--color-primary-900);
 }
 
 /* Desktop Styles */
 @media (width >= 1440px) {
     .nav {
         max-width: 440px;
-        border-left: 2px solid var(--text-700);
+        border-left: 2px solid var(--color-white);
         height: min-content;
     }
 

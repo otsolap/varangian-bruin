@@ -1,13 +1,13 @@
 .bgPrimary {
-    background-color: var(--brand-500);
+    background-color: var(--color-primary-500);
 }
 
 .bgSecondary {
-    background-color: var(--background-900);
+    background-color: var(--color-secondary-900);
 }
 
 .header {
-    color: var(--text-900);
+    color: var(--color-white);
     padding-bottom: var(--spacing-double);
     display: flex;
     flex-direction: column;
@@ -31,13 +31,13 @@
 }
 
 .archiveLink {
-    color: var(--text-900);
+    color: var(--color-white);
     transition: all .3s cubic-bezier(.4,0,.2,1);
 }
 
 .archiveLink:hover,
 .archiveLink:focus {
-    color: var(--brand-500);
+    color: var(--color-primary-500);
     font-weight: 900;
     cursor: pointer;
 }
@@ -48,8 +48,8 @@
     flex-direction: column;
     border-radius: var(--spacing-single-quarter);
     align-items: flex-start;
-    border: 1px solid var(--text-900);
-    color: var(--text-900);
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
     cursor: pointer;
     overflow: hidden;
     transition: border-color 250ms;
@@ -57,23 +57,23 @@
 
 .bgPrimary .item:hover,
 .bgPrimary .item:focus {
-    border-color: var(--background-900);
-    background-color: var(--brand-300);
+    border-color: var(--color-secondary-900);
+    background-color: var(--color-primary-300);
 
     .imageContainer,
     .footer {
-        border-color: var(--background-900);
+        border-color: var(--color-secondary-900);
     }
 }
 
 .bgSecondary .item:hover,
 .bgSecondary .item:focus {
-    border-color: var(--brand-500);
-    background-color: var(--background-700);
+    border-color: var(--color-primary-500);
+    background-color: var(--color-secondary-700);
 
     .imageContainer,
     .footer {
-        border-color: var(--brand-500);
+        border-color: var(--color-primary-500);
     }
 }
 
@@ -85,7 +85,7 @@
 }
 
 .imageLink {
-    border-bottom: 1px solid var(--text-900);
+    border-bottom: 1px solid var(--color-white);
     width: 100%;
 }
 
@@ -128,7 +128,7 @@
 
 .footer {
     width: 100%;
-    border-top: 1px solid var(--text-900);
+    border-top: 1px solid var(--color-white);
     display: flex;
     flex-direction: column;
     gap: var(--spacing-half);

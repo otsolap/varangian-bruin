@@ -39,18 +39,18 @@
 
 /* Toggle */
 .toggle {
-  border: 1px solid var(--text-900);
+  border: 1px solid var(--color-white);
   transition: 0.6s ease-in-out;
 }
 
 /* Inactive Toggle */
 .inactiveToggle {
-  background-color: var(--background-900);
+  background-color: var(--color-secondary-900);
 }
 
 /* Active Toggle */
 .activeToggle {
-  background-color: var(--brand-500);
+  background-color: var(--color-primary-500);
 }
 
 .activeToggle .heading {
@@ -107,7 +107,7 @@
 
 /* Divider */
 .divider {
-  border-color: var(--text-900);
+  border-color: var(--color-white);
   border-top-width: 2px;
 }
 
@@ -116,7 +116,7 @@
   transition: max-height 0.6s ease;
   max-height: 0;
   overflow: hidden;
-  background-color: var(--background-700);
+  background-color: var(--color-secondary-700);
 }
 
 /* Text */

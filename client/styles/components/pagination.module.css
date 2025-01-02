@@ -15,13 +15,13 @@
     height: var(--spacing-double-half);
     font-size: var(--spacing-single-quarter);
     line-height: 1.75;
-    color: var(--text-900);
-    background-color: var(--brand-700);
+    color: var(--color-white);
+    background-color: var(--color-primary-700);
     border: 1px solid;
-    border-color: var(--brand-700);
+    border-color: var(--color-primary-700);
     border-radius: 100%;
 }
 
 .item.active {
-    color: var(--background-900);
+    color: var(--color-secondary-900);
 }
