@@ -41,7 +41,6 @@
         gap: var(--spacing-triple);
         padding: var(--spacing-double) var(--spacing-triple);
         max-width: var(--container-desktop);
-    
     }
 
     .imageContainer {
