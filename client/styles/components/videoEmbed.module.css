@@ -14,6 +14,7 @@
 
     .videoContainer {
         height: 375px;
+        max-width: var(--container-ipad);
     }
     
 }
