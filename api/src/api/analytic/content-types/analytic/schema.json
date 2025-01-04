@@ -12,8 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "analyticsTagManagerURL": {
+    "siteURL": {
       "type": "string"
+    },
+    "siteID": {
+      "type": "integer"
     }
   }
 }

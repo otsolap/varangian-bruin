@@ -81,15 +81,15 @@ import config from '@/utils/config'
         console.error('Failed to fetch API data:', error);
       }
   
-      const analyticsData = await analyticsResponse?.json() || null;
       const navigationData = await navigationResponse?.json() || null;
       const footerData = await footerResponse?.json() || null;
+      const analyticsData = await analyticsResponse?.json() || null;
       const blogNavigationData = await blogNavigationResponse?.json() || null;
   
       return {
-        analytics: analyticsData,
         navigation: navigationData,
         footer: footerData,
+        analytics: analyticsData,
         blogNavigation: blogNavigationData,
       };
     } catch (error) {

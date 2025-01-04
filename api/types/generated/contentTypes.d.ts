@@ -381,7 +381,6 @@ export interface ApiAnalyticAnalytic extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    analyticsTagManagerURL: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -392,6 +391,8 @@ export interface ApiAnalyticAnalytic extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    siteID: Schema.Attribute.Integer;
+    siteURL: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
