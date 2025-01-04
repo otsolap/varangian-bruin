@@ -62,19 +62,11 @@ export default async function RootLayout({ children }) {
               strategy="beforeInteractive"
               dangerouslySetInnerHTML={{
                 __html: `
-                  var _mtm = window._mtm = window._mtm || [];
-                  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
-                  (function() {
-                    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-                    g.async=true; g.src=\`${analytics.siteURL}\`; s.parentNode.insertBefore(g,s);
-                  })();
-                  
-                  // Initialize Matomo tracker
-                  var _paq = window._paq = window._paq || [];
+              var _paq = window._paq = window._paq || [];
                   _paq.push(['trackPageView']);
                   _paq.push(['enableLinkTracking']);
                   (function() {
-                    var u="${analytics.siteURL.split('/').slice(0, -1).join('/')}/";
+                    var u="//${analytics.siteURL}/";
                     _paq.push(['setTrackerUrl', u+'matomo.php']);
                     _paq.push(['setSiteId', '${analytics.siteID}']);
                     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
