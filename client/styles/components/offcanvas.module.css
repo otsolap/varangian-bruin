@@ -2,13 +2,18 @@
     background-color: var(--color-secondary-900);
     position: fixed;
     top: 0;
-    left: 0;
+    right: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;
     width: 100%;
     padding-top: var(--spacing-quintuple);
+    transition: transform 1.3s ease-in-out;
+}
+
+#modal.show {
+    transform: translateX(0); 
 }
 
 .content {

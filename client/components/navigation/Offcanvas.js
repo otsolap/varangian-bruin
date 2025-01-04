@@ -44,11 +44,21 @@ const Offcanvas = ({ navigation, show, closeModal }) => {
     }
 
     const modalComponent = show ? (
-        <div tabIndex="-1" aria-hidden="true" aria-labelledby="Modal" id={styles.modal} className="mobile-only">
+        <dialog 
+          tabIndex="-1" 
+          aria-hidden="true" 
+          aria-labelledby="Modal" 
+          id={styles.modal}
+          className={` 
+            mobile-only
+            ${show ? styles.show : null}
+            `
+          }
+          >
             <div className={styles.content}>
                 {OffcanvasLinks}
             </div>
-        </div>
+        </dialog>
     ) : null;
 
     return (isBrowser) ?
