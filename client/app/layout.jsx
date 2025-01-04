@@ -32,9 +32,6 @@ export default async function RootLayout({ children }) {
 
     servicePaths = servicePathsData
     blogPaths = blogPathsData
-
-    console.log(analytics.siteID, analytics.siteURL)
-
   } catch (error) {
     console.error('Error:', error);
   }
