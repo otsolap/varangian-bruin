@@ -1,5 +1,4 @@
-.imageGallery,
-.imageGallerySwiper {
+.imageGallery {
     position: relative;
 }
 
@@ -11,16 +10,9 @@
     gap: var(--spacing-single);
 }
 
-.imageContainer,
-.imageModalContainer {
+.imageContainer {
     position: relative;
     width: 320px;
-}
-
-.slide {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
 }
 
 .image {
@@ -38,13 +30,6 @@
 
 /* Tablet Styles */
 @media (width >= 768px) {
-    
-    .imageModalContainer{
-        height: 75vh;
-        width: 75vw;
-        margin: 0 auto;
-    }
-
     .imageContainer {
         max-width: 45%;
         flex: 0 0 45%;

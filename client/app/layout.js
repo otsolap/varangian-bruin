@@ -1,7 +1,3 @@
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
-import "swiper/css/effect-coverflow"
 import { poppins, hind_guntur } from "@/app/fonts"
 import "@/styles/globals.css"
 import { fetchGlobalData, fetchGlobalSEOData, generateOpenGraphImages, getStrapiURL } from "@/utils/index"
