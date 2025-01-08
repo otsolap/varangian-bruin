@@ -29,9 +29,6 @@ export default async function RootLayout({ children }) {
     footer = global.footer.data
     blogNavigation = global.blogNavigation.data
     analytics = global.analytics.data
-    console.log(analytics)
-    console.log(analytics.siteURL)
-    console.log(analytics.siteID)
 
     servicePaths = servicePathsData
     blogPaths = blogPathsData
