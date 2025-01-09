@@ -14,7 +14,7 @@ const Offcanvas = ({ navigation, show, closeModal }) => {
 
     useEffect(() => {
         setIsBrowswer(true);
-    }, [])
+    }, [setIsBrowswer])
 
     const handleClick = async (e, href) => {
         e.preventDefault();
