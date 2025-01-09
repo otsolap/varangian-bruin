@@ -2,14 +2,16 @@
     background-color: var(--color-secondary-900);
     position: fixed;
     top: 0;
-    right: 100%;
+    right: 0; 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     height: 100%;
     width: 100%;
     padding-top: var(--spacing-quintuple);
-    transition: transform 1.3s ease-in-out;
+    transition: transform 0.5s  ease-in-out;
+    z-index: 5;
+    transform: translateX(100%);  
 }
 
 #modal.show {

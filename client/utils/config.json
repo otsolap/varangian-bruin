@@ -59,6 +59,7 @@
         "SUBSCRIPTION_PATH":"api/subscribers/webhook/activate"
     },
     "revalidate": {
+        "HOME_PATH": "api/home",
         "PAGES_PATH": "api/pages",
         "BLOG_PATH": "api/articles",
         "SERVICES_PATH": "api/services",

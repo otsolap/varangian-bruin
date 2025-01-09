@@ -54,7 +54,6 @@ export default async function RootLayout({ children }) {
             blogPaths={blogPaths} 
             socialShare={blogNavigation.social}
         />
-        <div id="modal-root"></div>
         {
           analytics.siteURL && analytics.siteID && (
             <Script 

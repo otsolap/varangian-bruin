@@ -1,15 +1,21 @@
 'use client'
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter, usePathname, useParams } from "next/navigation";
-import Offcanvas from "@/components/navigation/Offcanvas";
+import Sidebar from "@/components/navigation/Sidebar";
 import MobileNavLinks from "@/partials/navigation/MobileNavLinks";
 import MenuButton from "@/partials/navigation/MenuButton";
 import styles from "@/styles/components/mobileFooter.module.css";
 import ShareButtons from "@/partials/article/ShareButtons";
 import config from '@/utils/config'
+import useToggle from "@/hooks/useToggle"
 
 const MobileFooter = ({ navigation, blogPaths, socialShare  }) => {
-    const [showModal, setShowModal] = useState(false);
+    const [show, setShowModal] = useToggle(false);
+
+    const toggleModal = () => {
+        setShowModal(!show);
+    }
+
     const [footerOpacity, setFooterOpacity] = useState(1);
     const router = useRouter();
     const lastScrollY = useRef(0);
@@ -28,7 +34,7 @@ const MobileFooter = ({ navigation, blogPaths, socialShare  }) => {
     }
 
     const handleScroll = useCallback(() => {
-        if (showModal) {
+        if (show) {
             setFooterOpacity(1);
             return;
         }
@@ -40,7 +46,7 @@ const MobileFooter = ({ navigation, blogPaths, socialShare  }) => {
             setFooterOpacity(1);
         }
         lastScrollY.current = currentScrollY;
-    }, [showModal]);
+    }, [show]);
 
     useEffect(() => {
         handleScroll(); // Initial scroll position
@@ -49,32 +55,32 @@ const MobileFooter = ({ navigation, blogPaths, socialShare  }) => {
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
-    }, [handleScroll, showModal]); 
+    }, [handleScroll, show]); 
 
     const PRIMARY_PAGES = 3;
 
     return (
+        <>
+        <Sidebar
+        navigation={navigation}
+        show={show}
+        closeModal={toggleModal}
+        />
         <footer className={`mobile-only ${styles.mobile}`} style={{ opacity: footerOpacity }}>
             <div className={styles.menuWrapper}>
             {pathname.includes(`/${config.blog.BLOG_PATH}/`) && params.slug ? (
-                     <ShareButtons title={title} settings={socialShare} />
+                <ShareButtons title={title} settings={socialShare} />
             ) : (
                 <>
-                <MobileNavLinks blocks={navigation.blocks.slice(0, PRIMARY_PAGES)} currentPath={router.asPath} closeModal={() => setShowModal(false)} />
-                {navigation.blocks.length > PRIMARY_PAGES ? (
-                    <>
-                    <MenuButton isMenuOpen={showModal} toggleMenu={() => setShowModal(value => !value)} />
-                    <Offcanvas
-                    navigation={navigation}
-                    show={showModal}
-                    closeModal={() => setShowModal(false)}
-                    />
-                    </>
+                    <MobileNavLinks blocks={navigation.blocks.slice(0, PRIMARY_PAGES)} currentPath={router.asPath} closeModal={() => setShowModal(false)} />
+                    {navigation.blocks.length > PRIMARY_PAGES ? (
+                        <MenuButton isMenuOpen={show} toggleMenu={toggleModal} />
                     ) : null}
                  </>
                 )}
             </div>
         </footer>
+        </>
     );
 };
 

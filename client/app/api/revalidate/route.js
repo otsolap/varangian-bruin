@@ -103,6 +103,7 @@ async function revalidatePaths(fetchPathsFunction, successMessage) {
 async function getAllPages() {
     try {
         const urls = [
+            fetch(getStrapiURL(`/${config.revalidate.HOME_PATH}`)),
             fetch(getStrapiURL(`/${config.revalidate.PAGES_PATH}`)),
             fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`)),
             fetch(getStrapiURL(`/${config.revalidate.SERVICES_PATH}`)),
@@ -110,20 +111,19 @@ async function getAllPages() {
 
         const responses = await Promise.all(urls)
         const data = await Promise.all(responses.map(response => response.json()))
-
         const mergedData = [].concat(...data)
-
-        const types = ['page', 'article', 'service']
+        const types = ['home', 'page', 'article', 'service']
 
         const routes = mergedData.flatMap((item, index) => {
-            const slugs = item.data.map(item => item.slug)
             const type = types[index]
             console.log('type', type)
+            if (type === 'home') {
+                return '/'
+            }
+            const slugs = item.data.map(item => item.slug)
             const prefix = getRoutePrefix(type)
             return slugs.map(slug => {
-                if (type === 'page' && slug === '/') {
-                    return '/'
-                }
+         
                 return `${prefix}${slug}`
             })
         })
@@ -178,6 +178,7 @@ async function getPagesWithServicesBanner() {
     
 function getRoutePrefix(type) {
     switch (type) {
+        case 'home':
         case 'page':
             return '/'
         case 'article':
