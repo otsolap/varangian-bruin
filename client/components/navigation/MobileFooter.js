@@ -7,30 +7,23 @@ import MenuButton from "@/partials/navigation/MenuButton";
 import styles from "@/styles/components/mobileFooter.module.css";
 import ShareButtons from "@/partials/article/ShareButtons";
 import config from '@/utils/config'
-import useToggle from "@/hooks/useToggle"
 
-const MobileFooter = ({ navigation, blogPaths, socialShare  }) => {
-    const [show, setShowModal] = useToggle(false);
-
-    const toggleModal = () => {
-        setShowModal(!show);
-    }
-
-    const [footerOpacity, setFooterOpacity] = useState(1);
+const MobileFooter = ({ navigation, blogPaths, socialShare }) => {
     const router = useRouter();
-    const lastScrollY = useRef(0);
-
     const pathname = usePathname();
-    const params = useParams()
-  
-    let title = null;
-  
-    if (params.slug) {
-      const matchingPath = pathname.includes(`/${config.blog.BLOG_PATH}/`) 
-        ? blogPaths.data.find(path => path.slug === params.slug)
-        : null;
-  
-      title = matchingPath ? matchingPath.title : null;
+    const params = useParams();
+    const [show, setShowModal] = useState(false);
+    const [footerOpacity, setFooterOpacity] = useState(1);
+    const lastScrollY = useRef(0);
+    const PRIMARY_PAGES = 3;
+    const toggleModal = () => setShowModal(!show);
+
+    function getTitle() {
+        if (params.slug) {
+            const matchingPath = blogPaths.data.find(path => path.slug === params.slug);
+            return matchingPath ? matchingPath.title : null;
+        }
+        return null;
     }
 
     const handleScroll = useCallback(() => {
@@ -40,46 +33,55 @@ const MobileFooter = ({ navigation, blogPaths, socialShare  }) => {
         }
 
         const currentScrollY = window.scrollY;
-        if (currentScrollY > lastScrollY.current) {
-            setFooterOpacity(0.5);
-        } else {
-            setFooterOpacity(1);
-        }
+        setFooterOpacity(currentScrollY > lastScrollY.current ? 0.5 : 1);
         lastScrollY.current = currentScrollY;
     }, [show]);
 
+    const handleKeyDown = useCallback((event) => {
+        if (event.key === 'Escape' && show) {
+            setShowModal(false);
+        }
+    }, [show, setShowModal]);
+
     useEffect(() => {
-        handleScroll(); // Initial scroll position
+        handleScroll(); 
         window.addEventListener("scroll", handleScroll);
-        
+        window.addEventListener("keydown", handleKeyDown);
+
         return () => {
             window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("keydown", handleKeyDown);
         };
-    }, [handleScroll, show]); 
-
-    const PRIMARY_PAGES = 3;
+    }, [handleScroll, handleKeyDown, show]);
 
     return (
         <>
-        <Sidebar
-        navigation={navigation}
-        show={show}
-        closeModal={toggleModal}
-        />
-        <footer className={`mobile-only ${styles.mobile}`} style={{ opacity: footerOpacity }}>
-            <div className={styles.menuWrapper}>
-            {pathname.includes(`/${config.blog.BLOG_PATH}/`) && params.slug ? (
-                <ShareButtons title={title} settings={socialShare} />
-            ) : (
-                <>
-                    <MobileNavLinks blocks={navigation.blocks.slice(0, PRIMARY_PAGES)} currentPath={router.asPath} closeModal={() => setShowModal(false)} />
-                    {navigation.blocks.length > PRIMARY_PAGES ? (
-                        <MenuButton isMenuOpen={show} toggleMenu={toggleModal} />
-                    ) : null}
-                 </>
-                )}
-            </div>
-        </footer>
+            <Sidebar 
+                navigation={navigation} 
+                show={show} 
+                closeModal={() => setShowModal(false)} 
+            />
+            <footer className={`mobile-only ${styles.mobile}`} style={{ opacity: footerOpacity }}>
+                <div className={styles.menuWrapper}>
+                    {pathname.includes(`/${config.blog.BLOG_PATH}/`) && params.slug ? (
+                        <ShareButtons title={getTitle()} settings={socialShare} />
+                    ) : (
+                        <>
+                            <MobileNavLinks 
+                                blocks={navigation.blocks.slice(0, PRIMARY_PAGES)} 
+                                currentPath={router.asPath} 
+                                closeModal={() => setShowModal(false)} 
+                            />
+                            {navigation.blocks.length > PRIMARY_PAGES && (
+                                <MenuButton 
+                                    isMenuOpen={show} 
+                                    toggleMenu={() => setShowModal(value => !value)} 
+                                />
+                            )}
+                        </>
+                    )}
+                </div>
+            </footer>
         </>
     );
 };
