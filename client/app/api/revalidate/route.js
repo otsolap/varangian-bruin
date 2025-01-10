@@ -100,38 +100,68 @@ async function revalidatePaths(fetchPathsFunction, successMessage) {
     }
 }
 
+// async function getAllPages() {
+//     try {
+//         const urls = [
+//             fetch(getStrapiURL(`/${config.revalidate.PAGES_PATH}`)),
+//             fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`)),
+//             fetch(getStrapiURL(`/${config.revalidate.SERVICES_PATH}`)),
+//         ]
+
+//         const responses = await Promise.all(urls)
+//         const data = await Promise.all(responses.map(response => response.json()))
+//         const mergedData = [].concat(...data)
+//         const types = ['page', 'article', 'service']
+
+//         const routes = mergedData.flatMap((item, index) => {
+//             const type = types[index]
+//             console.log('type', type)
+//             const slugs = item.data.map(item => item.slug)
+//             const prefix = getRoutePrefix(type)
+//             return slugs.map(slug => {
+         
+//                 return `${prefix}${slug}`
+//             })
+//         })
+
+//         return routes
+//     } catch (error) {
+//         console.error("Error during fetching pages:", error.message)
+//         return [] // Return an empty array in case of error
+//     }
+// }
+
 async function getAllPages() {
     try {
+        const routes = [];
+        // Add static routes
+        routes.push('/');
+        routes.push(...['/blog', '/services']);
+
+        // todo: add category and service type pages
         const urls = [
-            fetch(getStrapiURL(`/${config.revalidate.HOME_PATH}`)),
             fetch(getStrapiURL(`/${config.revalidate.PAGES_PATH}`)),
             fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`)),
             fetch(getStrapiURL(`/${config.revalidate.SERVICES_PATH}`)),
-        ]
+        ];
 
-        const responses = await Promise.all(urls)
-        const data = await Promise.all(responses.map(response => response.json()))
-        const mergedData = [].concat(...data)
-        const types = ['home', 'page', 'article', 'service']
+        const responses = await Promise.all(urls);
+        const data = await Promise.all(responses.map(response => response.json()));
+        const mergedData = [].concat(...data);
+        
+        // Add dynamic routes
+        // todo add category and service type here as well.
+        const types = ['page', 'article', 'service'];
+        mergedData.forEach((item, index) => {
+            const type = types[index];
+            const prefix = getRoutePrefix(type);
+            routes.push(...item.data.map(item => `${prefix}${item.slug}`));
+        });
 
-        const routes = mergedData.flatMap((item, index) => {
-            const type = types[index]
-            console.log('type', type)
-            if (type === 'home') {
-                return '/'
-            }
-            const slugs = item.data.map(item => item.slug)
-            const prefix = getRoutePrefix(type)
-            return slugs.map(slug => {
-         
-                return `${prefix}${slug}`
-            })
-        })
-
-        return routes
+        return routes;
     } catch (error) {
-        console.error("Error during fetching pages:", error.message)
-        return [] // Return an empty array in case of error
+        console.error("Error during fetching pages:", error.message);
+        return []; // Return an empty array in case of error
     }
 }
 
@@ -178,7 +208,6 @@ async function getPagesWithServicesBanner() {
     
 function getRoutePrefix(type) {
     switch (type) {
-        case 'home':
         case 'page':
             return '/'
         case 'article':
