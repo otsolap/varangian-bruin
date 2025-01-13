@@ -100,49 +100,24 @@ async function revalidatePaths(fetchPathsFunction, successMessage) {
     }
 }
 
-// async function getAllPages() {
-//     try {
-//         const urls = [
-//             fetch(getStrapiURL(`/${config.revalidate.PAGES_PATH}`)),
-//             fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`)),
-//             fetch(getStrapiURL(`/${config.revalidate.SERVICES_PATH}`)),
-//         ]
-
-//         const responses = await Promise.all(urls)
-//         const data = await Promise.all(responses.map(response => response.json()))
-//         const mergedData = [].concat(...data)
-//         const types = ['page', 'article', 'service']
-
-//         const routes = mergedData.flatMap((item, index) => {
-//             const type = types[index]
-//             console.log('type', type)
-//             const slugs = item.data.map(item => item.slug)
-//             const prefix = getRoutePrefix(type)
-//             return slugs.map(slug => {
-         
-//                 return `${prefix}${slug}`
-//             })
-//         })
-
-//         return routes
-//     } catch (error) {
-//         console.error("Error during fetching pages:", error.message)
-//         return [] // Return an empty array in case of error
-//     }
-// }
-
 async function getAllPages() {
     try {
         const routes = [];
         // Add static routes
-        routes.push('/');
-        routes.push(...['/blog', '/services']);
+        routes.push(...[
+            '/', 
+            '/blog', 
+            '/category',
+            '/services', 
+            '/service-types/'
+        ]);
 
-        // todo: add category and service type pages
         const urls = [
             fetch(getStrapiURL(`/${config.revalidate.PAGES_PATH}`)),
             fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`)),
+            fetch(getStrapiURL(`/${config.revalidate.BLOG_CATEGORY_PATH}`)),
             fetch(getStrapiURL(`/${config.revalidate.SERVICES_PATH}`)),
+            fetch(getStrapiURL(`/${config.revalidate.SERVICE_TYPES_PATH}`)),
         ];
 
         const responses = await Promise.all(urls);
@@ -151,7 +126,13 @@ async function getAllPages() {
         
         // Add dynamic routes
         // todo add category and service type here as well.
-        const types = ['page', 'article', 'service'];
+        const types = [
+            'page', 
+            'article', 
+            'category',
+            'service',
+            'service-type'
+        ];
         mergedData.forEach((item, index) => {
             const type = types[index];
             const prefix = getRoutePrefix(type);
@@ -212,8 +193,12 @@ function getRoutePrefix(type) {
             return '/'
         case 'article':
             return '/blog/'
+        case 'category':
+            return '/category/'
         case 'service':
             return '/services/'
+        case 'service-type':
+            return '/service-type/'
         default:
             return ''
     }
