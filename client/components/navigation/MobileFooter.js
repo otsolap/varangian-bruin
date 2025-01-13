@@ -16,7 +16,6 @@ const MobileFooter = ({ navigation, blogPaths, socialShare }) => {
     const [footerOpacity, setFooterOpacity] = useState(1);
     const lastScrollY = useRef(0);
     const PRIMARY_PAGES = 3;
-    const toggleModal = () => setShowModal(!show);
 
     function getTitle() {
         if (params.slug) {
