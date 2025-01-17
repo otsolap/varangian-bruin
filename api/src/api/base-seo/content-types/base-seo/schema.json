@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "base_seos",
+  "info": {
+    "singularName": "base-seo",
+    "pluralName": "base-seos",
+    "displayName": "BaseSEO",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "preventIndexing": {
+      "type": "boolean"
+    },
+    "keywords": {
+      "type": "text"
+    },
+    "imageBlock": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.image-block"
+    },
+    "XTwitter": {
+      "type": "string"
+    },
+    "URL": {
+      "type": "string"
+    }
+  }
+}

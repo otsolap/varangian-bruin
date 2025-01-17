@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_form_inputs_select_fields",
+  "info": {
+    "displayName": "select-field",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "placeholder": {
+      "type": "string"
+    },
+    "options": {
+      "type": "component",
+      "repeatable": true,
+      "component": "util.option"
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    },
+    "name": {
+      "type": "string"
+    },
+    "width": {
+      "type": "enumeration",
+      "enum": [
+        "third",
+        "half",
+        "twoThirds",
+        "full"
+      ],
+      "default": "full"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.videoEmbed {
+    display: flex;
+    justify-content: center;
+}
+
+.videoContainer {
+    height: 250px;
+    width: 100%;
+    margin: var(--spacing-half) 0;
+}
+
+/* Tablet Styles */
+@media (width >= 768px) {
+
+    .videoContainer {
+        height: 375px;
+        max-width: var(--container-ipad);
+    }
+    
+}
+
+/* DESKTOP STYLES */
+@media (width >= 1440px) {
+
+    .videoContainer {
+        max-width: var(--width-max-article);
+        height: 500px;
+    }
+  
+}

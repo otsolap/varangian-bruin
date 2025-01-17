@@ -1,0 +1,73 @@
+@import './partials/variables.css';
+@import './partials/breakpoints.css';
+@import './partials/typography.css';
+@import './partials/util.css';
+@import './components/markdown.css';
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: auto;
+  width: 100%;
+  color: var(--color-white);
+  background-color: var(--color-secondary-900);
+  scroll-behavior: smooth;
+  line-height: 1.5;
+}
+
+main {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  position: relative;
+  background-color: var(--color-secondary-900);
+}
+
+section {
+  padding-top: var(--spacing-double);
+  padding-bottom: var(--spacing-double);
+  margin-bottom: var(--spacing-double);
+}
+
+.youtube {
+    border: var(--spacing-quarter);
+    width: 100%;
+    height: 100%;
+    padding: var(--spacing-single);
+}
+
+.mobile-only {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+/* Desktop Styles */
+@media (width >= 1440px) {
+    .mobile-only {
+      display: none;
+    }
+
+    .desktop-only {
+      display: block;
+    }
+
+    section {
+      padding-top: var(--spacing-triple);
+      padding-bottom: var(--spacing-triple);
+      margin-bottom: var(--spacing-triple);
+    }
+
+    #post section {
+      padding-top: var(--spacing-single);
+      padding-bottom: var(--spacing-single);
+      margin-bottom: var(--spacing-single);
+    }
+}

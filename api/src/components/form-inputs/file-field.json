@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_form_inputs_file_fields",
+  "info": {
+    "displayName": "file-field",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    },
+    "multiple": {
+      "type": "boolean"
+    },
+    "width": {
+      "type": "enumeration",
+      "enum": [
+        "third",
+        "half",
+        "twoThirds",
+        "full"
+      ],
+      "default": "full"
+    }
+  }
+}

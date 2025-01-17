@@ -1,0 +1,31 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.imageBlock {
+    width: 320px;
+    position: relative;
+    padding: var(--spacing-single);
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.caption {
+    font-style: italic;
+    font-size: var(--spacing-three-quarters);
+    text-align: center;
+}
+
+/* Tablet Styles */
+@media (width >= 768px) {
+    
+    .imageBlock {
+        width: auto;
+    }
+}

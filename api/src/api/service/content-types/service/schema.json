@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Services",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "util.seo"
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "blocks.accordion",
+        "blocks.banner",
+        "blocks.cards",
+        "blocks.form-embed",
+        "blocks.hero",
+        "blocks.image-block",
+        "blocks.image-gallery",
+        "blocks.media-mix",
+        "blocks.quote",
+        "blocks.text-area",
+        "blocks.video-embed"
+      ]
+    },
+    "price": {
+      "type": "string"
+    },
+    "service_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::service-type.service-type"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": [
+        "dollar",
+        "euro"
+      ]
+    },
+    "service_types": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service-type.service-type",
+      "mappedBy": "services"
+    }
+  }
+}

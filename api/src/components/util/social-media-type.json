@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_util_social_media_types",
+  "info": {
+    "displayName": "contactDetails",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Facebook",
+        "Instagram",
+        "X",
+        "LinkedIn",
+        "Whatsapp",
+        "TikTok",
+        "Telegram",
+        "Pinterest",
+        "Email",
+        "Link"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "text"
+    }
+  }
+}

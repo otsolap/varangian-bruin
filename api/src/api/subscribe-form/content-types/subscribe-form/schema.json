@@ -1,0 +1,43 @@
+{
+  "kind": "singleType",
+  "collectionName": "subscribe_forms",
+  "info": {
+    "singularName": "subscribe-form",
+    "pluralName": "subscribe-forms",
+    "displayName": "SubscribeForm",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "formID": {
+      "type": "uid",
+      "required": true
+    },
+    "email": {
+      "type": "component",
+      "repeatable": false,
+      "component": "form-inputs.email-field"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "redirect": {
+      "type": "boolean"
+    },
+    "link": {
+      "type": "string"
+    },
+    "successMessage": {
+      "type": "text"
+    },
+    "errorMessage": {
+      "type": "text"
+    }
+  }
+}

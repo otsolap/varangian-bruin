@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "article_archive_pages",
+  "info": {
+    "singularName": "article-archive-page",
+    "pluralName": "article-archive-pages",
+    "displayName": "ArticleArchivePage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.hero"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "util.seo"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+.nav,
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-single);
+}
+
+.nav {
+    background-color: var(--color-white);
+    border-radius: var(--spacing-single-quarter);
+}
+
+.wrapper {
+    color: var(--color-secondary-900);
+    padding: var(--spacing-single);
+}
+
+.list {
+    list-style-type: none;
+}
+
+.link {
+    color: var(--color-secondary-300);
+}
+
+.link:hover,
+.link:focus {
+    color: var(--color-primary-900);
+}
+
+/* Desktop Styles */
+@media (width >= 1440px) {
+    .nav {
+        max-width: 440px;
+        border-left: 2px solid var(--color-white);
+        height: min-content;
+    }
+
+    .wrapper {
+        padding-left: var(--spacing-double);
+        padding-right: var(--spacing-double);
+    }
+}

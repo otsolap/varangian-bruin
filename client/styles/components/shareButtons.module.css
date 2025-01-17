@@ -1,0 +1,33 @@
+.shareButtons {
+    padding: var(--spacing-single);
+    color: var(text-900);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-single);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-single-half);
+}
+
+.title {
+    margin-bottom: initial;
+}
+
+.icon {
+    width: 100%;
+    height: auto;
+    max-width: var(--spacing-double);
+    max-height: var(--spacing-double);
+    color: inherit;
+}
+
+.icon:hover,
+.icon:focus {
+    color: var(--color-primary-900);
+}

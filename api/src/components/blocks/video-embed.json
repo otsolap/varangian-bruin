@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_block_video-embeds",
+  "info": {
+    "displayName": "VideoEmbed",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "text"
+    }
+  }
+}

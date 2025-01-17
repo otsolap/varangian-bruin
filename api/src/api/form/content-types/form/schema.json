@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "forms",
+  "info": {
+    "singularName": "form",
+    "pluralName": "forms",
+    "displayName": "Form",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "inputs": {
+      "type": "dynamiczone",
+      "components": [
+        "form-inputs.text-field",
+        "form-inputs.email-field",
+        "form-inputs.select-field",
+        "form-inputs.date-field",
+        "form-inputs.checkbox-field",
+        "form-inputs.file-field",
+        "form-inputs.textarea-field",
+        "form-inputs.radio-field"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "showLabels": {
+      "type": "boolean",
+      "default": false
+    },
+    "formID": {
+      "type": "uid",
+      "required": true
+    },
+    "redirect": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "successMessage": {
+      "type": "text"
+    },
+    "errorMessage": {
+      "type": "text"
+    },
+    "contacts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::contact.contact",
+      "mappedBy": "form"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

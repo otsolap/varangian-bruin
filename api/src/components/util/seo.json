@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_blocks_seos",
+  "info": {
+    "displayName": "SEO",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 60
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 150
+    },
+    "preventIndexing": {
+      "type": "boolean",
+      "default": false
+    },
+    "keywords": {
+      "type": "text"
+    },
+    "imageBlock": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.image-block"
+    }
+  }
+}

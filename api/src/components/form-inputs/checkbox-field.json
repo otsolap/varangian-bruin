@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_form_inputs_checkbox_fields",
+  "info": {
+    "displayName": "checkbox-field",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "options": {
+      "type": "component",
+      "repeatable": true,
+      "component": "util.option"
+    },
+    "name": {
+      "type": "string"
+    },
+    "width": {
+      "type": "enumeration",
+      "enum": [
+        "third",
+        "half",
+        "twoThirds",
+        "full"
+      ],
+      "default": "full"
+    }
+  }
+}

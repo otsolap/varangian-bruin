@@ -1,0 +1,45 @@
+.socialWrapper {
+  padding: var(--spacing-half) 0;
+}
+
+.socialIcon {
+  width: var(--spacing-single);
+}
+
+.someLink {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-single);
+  font-size: var(--spacing-single);
+  transition: all .6s cubic-bezier(.4,0,.2,1);
+}
+
+.someLink:focus,
+.someLink:hover {
+  cursor: pointer;
+  color: var(--color-primary-500);
+}
+
+.icon {
+  background-image: none;
+  border: 0px solid;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: var(--spacing-single);
+  width: 0.875rem;
+  line-height: 2.25rem;
+}
+
+/* Desktop Styles */
+@media (width >= 1440px) {
+
+  .socialIcon {
+    width: var(--spacing-double);
+  }
+
+  .someLink {
+    align-items: center;
+  }
+  
+}
+

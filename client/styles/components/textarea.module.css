@@ -1,0 +1,16 @@
+.content {
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  word-wrap: break-word;
+  padding-left: var(--spacing-single);
+  padding-right: var(--spacing-single);
+}
+
+/* Desktop Styles */
+@media (width >= 1440px) {
+  .content {
+    max-width: var(--container-desktop);
+    border-radius: var(--spacing-single-quarter);
+  }
+}

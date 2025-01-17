@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "text"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "util.seo"
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "blocks.accordion",
+        "blocks.blogs",
+        "blocks.cards",
+        "blocks.hero",
+        "blocks.banner",
+        "blocks.media-mix",
+        "blocks.text-area",
+        "blocks.form-embed",
+        "blocks.video-embed",
+        "blocks.image-block",
+        "blocks.image-gallery",
+        "blocks.quote",
+        "blocks.services"
+      ]
+    },
+    "showServicesBanner": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "showSubscribeForm": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

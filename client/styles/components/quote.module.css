@@ -1,0 +1,67 @@
+.quoteWrapper {
+    margin: 0 auto;
+    max-width: var(--container-ipad);
+    gap: var(--spacing-single);
+}
+
+.quoteBlock {
+    position: relative;
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--spacing-single);
+    gap: var(--spacing-single);
+}
+
+.quote {
+    font-style: italic;
+}
+
+.quotationMark {
+    width: 100%;
+    height: auto;
+    max-width: 20px; 
+}
+
+.quotationMark:first-of-type {
+    margin-right: auto;
+}
+
+.quotationMark:last-of-type {
+    margin-left: auto;
+}
+
+.source {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* iPad STYLES */
+@media (width >= 768px) {
+
+    .quoteBlock {
+        flex-direction: row;
+    }
+
+    .quote {
+        font-size: var(--spacing-single)
+    }
+
+    .quotationMark {
+        max-width: var(--spacing-single-half); 
+    }
+
+    .quotationMark:first-of-type,
+    .quotationMark:last-of-type {
+        margin: unset;
+    }
+
+    .source {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+
+}
