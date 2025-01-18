@@ -2,10 +2,11 @@ import { poppins, hind_guntur } from "@/app/fonts"
 import "@/styles/globals.css"
 import { fetchGlobalData, fetchGlobalSEOData, generateOpenGraphImages, getStrapiURL } from "@/utils/index"
 import config from '@/utils/config'
-import Script from 'next/script';
 import Header from "@/components/navigation/Header"
 import Footer from "@/components/navigation/Footer"
 import MobileFooter from "components/navigation/MobileFooter"
+import Analytics from "@/components/utils/Analytics"
+import { Suspense } from "react"
 
 export const fetchCache = 'default-cache'
 
@@ -54,28 +55,9 @@ export default async function RootLayout({ children }) {
             blogPaths={blogPaths} 
             socialShare={blogNavigation.social}
         />
-        {
-          analytics.siteURL && analytics.siteID && (
-            <Script 
-              id="matomo-site-tracker"
-              strategy="beforeInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `
-              var _paq = window._paq = window._paq || [];
-                  _paq.push(['trackPageView']);
-                  _paq.push(['enableLinkTracking']);
-                  (function() {
-                    var u="//${analytics.siteURL}/";
-                    _paq.push(['setTrackerUrl', u+'matomo.php']);
-                    _paq.push(['setSiteId', '${analytics.siteID}']);
-                    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-                    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-                  })();
-                `,
-              }}
-            />
-            )
-        }
+       <Suspense>
+          <Analytics analytics={analytics} />
+       </Suspense>
       </body>
     </html>
   )
