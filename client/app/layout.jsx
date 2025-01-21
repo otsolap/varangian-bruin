@@ -29,7 +29,6 @@ export default async function RootLayout({ children }) {
     navigation = global.navigation.data
     footer = global.footer.data
     blogNavigation = global.blogNavigation.data
-    analytics = global.analytics.data
 
     servicePaths = servicePathsData
     blogPaths = blogPathsData
@@ -56,7 +55,7 @@ export default async function RootLayout({ children }) {
             socialShare={blogNavigation.social}
         />
        <Suspense>
-          <Analytics analytics={analytics} />
+          <Analytics />
        </Suspense>
       </body>
     </html>
