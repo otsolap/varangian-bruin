@@ -369,36 +369,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiAnalyticAnalytic extends Struct.SingleTypeSchema {
-  collectionName: 'analytics';
-  info: {
-    description: '';
-    displayName: 'Analytics';
-    pluralName: 'analytics';
-    singularName: 'analytic';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::analytic.analytic'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    siteID: Schema.Attribute.Integer;
-    siteURL: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiArticleArchivePageArticleArchivePage
   extends Struct.SingleTypeSchema {
   collectionName: 'article_archive_pages';
@@ -1675,7 +1645,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::analytic.analytic': ApiAnalyticAnalytic;
       'api::article-archive-page.article-archive-page': ApiArticleArchivePageArticleArchivePage;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
