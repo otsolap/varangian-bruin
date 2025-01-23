@@ -1,5 +1,5 @@
 import React from 'react'
-import { createID } from '@/utils/index'
+import { createID } from '@/utils/helpers'
 import styles from '@/styles/components/form.module.css'
 
 const DateField = ({ name, showLabels, width, required }) => {

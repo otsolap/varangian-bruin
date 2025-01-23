@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styles from "@/styles/components/blogs.module.css";
 import BlogItem from "@/partials/blocks/BlogItem";
 import Link from "next/link";
-import { getStrapiURL } from "@/utils/index";
+import { getStrapiURL } from "@/utils/api";
 import config from '@/utils/config'
 
 export default function RelatedArticles ({ title, description, selectTheme, documentId, categoryTitle, currentCategory}) {

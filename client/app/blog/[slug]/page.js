@@ -1,5 +1,5 @@
 import config from '@/utils/config'
-import { getStrapiURL } from "@/utils/index"
+import { getStrapiURL } from "@/utils/api"
 import { notFound } from 'next/navigation'
 import Blocks from "@/components/Blocks"
 import ArticleHeading from "@/components/articles/ArticleHeading";
@@ -7,7 +7,7 @@ import ArticleFooter from "@/components/articles/ArticleFooter";
 import BlogSection from 'components/blocks/BlogSection';
 import TOC from "@/partials/article/TOC";
 import styles from '@/styles/pages/blog.module.css'
-import { generateOpenGraphImages } from "@/utils/index"
+import { generateOpenGraphImages } from "@/utils/helpers";
 import RelatedArticles from 'components/articles/RelatedArticles';
 
 export default async function BlogSlug(props) {

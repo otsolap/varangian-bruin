@@ -1,4 +1,4 @@
-import { getStrapiURL, fetchBannerData } from "@/utils/index"
+import { getStrapiURL, fetchBannerData } from "@/utils/api"
 import config from '@/utils/config'
 import Blocks from "@/components/Blocks"
 import Banner from "@/components/blocks/Banner"

@@ -1,6 +1,6 @@
 import Hero from "@/components/blocks/Hero"
 import { ArchiveSection } from "@/components/services/ArchiveSection"
-import { getStrapiURL } from "@/utils/index"
+import { getStrapiURL } from "@/utils/api"
 import config from '@/utils/config'
 import { notFound } from 'next/navigation'
 
