@@ -18,10 +18,15 @@ The Varangian Theme is the primary theme for projects developed by the Varangian
 - **Built-in Integrations**:
   - **Matomo**: For GDPR-compliant data analytics, ensuring that you can monitor and analyze website traffic without infringing on user privacy.
   - **Convertkit**: A robust tool for subscriber list growth, especially for newsletters, enhancing your digital marketing capabilities.
+ 
+## Getting Started
 
+- First setup an MySQL database. I recommend using the [docker-mysql](https://hub.docker.com/_/mysql).
+- Go to api/env.example and setup secure passwords for your project.
+- Install and setup Strapi API. 
 
 ## Special thanks
 
-- **Guidance**: 
+- ** Guidance & Mentorship **: 
   - [Åsk 'Dabitch' Wåppling](https://dabitch.net/)
   - [Ville 'Fokke' Saarivaara](https://fokke.fi/)
