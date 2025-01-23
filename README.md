@@ -24,6 +24,8 @@ The Varangian Theme is the primary theme for projects developed by the Varangian
 - First setup an MySQL database. I recommend using the [docker-mysql](https://hub.docker.com/_/mysql).
 - Go to api directory and use env.example to setup mySQL properly. Use PassWord generators for safe and secure passwords.
 - Install and setup Strapi API.
+- Set Up Roles and API Tokens for the project
+- Start publishing content such as mm. Home, Page(s), etc.
 - Go to client directory and use .env.example to setup client properly.
 
 ## Special thanks
