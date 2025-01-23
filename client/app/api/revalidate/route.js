@@ -1,7 +1,7 @@
 import { revalidatePath } from 'next/cache'
 
 import config from '@/utils/config'
-import { getStrapiURL } from "@/utils/index"
+import { getStrapiURL } from "@/utils/api"
 
 export const dynamic = 'auto' // https://www.reddit.com/r/nextjs/comments/14iu6td/revalidatepath_not_updating_generatestaticparams/
 

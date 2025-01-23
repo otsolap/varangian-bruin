@@ -1,5 +1,5 @@
 import styles from '@/styles/components/form.module.css'
-import { createID } from '@/utils/index'
+import { createID } from '@/utils/helpers'
 
 const SelectField = ({ name, placeholder, options, width, required, showLabels}) => {
 

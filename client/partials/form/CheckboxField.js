@@ -1,5 +1,5 @@
 import styles from '@/styles/components/form.module.css'
-import { createID } from '@/utils/index'
+import { createID } from '@/utils/helpers'
 
 const CheckboxField = ({ name, options, width, showLabels }) => {
   const uid = createID(name)

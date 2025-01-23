@@ -1,7 +1,7 @@
 'use server'
 import { redirect } from 'next/navigation'
 import config from '@/utils/config'
-import { getStrapiURL } from "utils"
+import { getStrapiURL } from "utils/api"
 
 // Form Embed submission handler
 export async function formSubmit(state, formData) {

@@ -1,6 +1,6 @@
 import { poppins, hind_guntur } from "@/app/fonts"
 import "@/styles/globals.css"
-import { fetchGlobalData, fetchGlobalSEOData, generateOpenGraphImages, getStrapiURL } from "@/utils/index"
+import { fetchGlobalData, fetchGlobalSEOData, generateOpenGraphImages, getStrapiURL } from "@/utils/api"
 import config from '@/utils/config'
 import Header from "@/components/navigation/Header"
 import Footer from "@/components/navigation/Footer"

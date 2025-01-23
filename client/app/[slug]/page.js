@@ -1,4 +1,4 @@
-import { getStrapiURL, fetchBannerData, generateOpenGraphImages } from "@/utils/index"
+import { getStrapiURL, fetchBannerData, generateOpenGraphImages } from "@/utils/api"
 import config from '@/utils/config'
 import Blocks from "@/components/Blocks"
 import { notFound } from 'next/navigation'

@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import ServicesItem from "@/partials/blocks/ServicesItem"
 import TaxonomyLinks from "@/partials/navigation/TaxonomyLinks"
 import Pagination from "@/partials/navigation/Pagination"
-import { paginate } from "@/utils/index"
+import { paginate } from "@/utils/helpers"
 import styles from "@/styles/components/services.module.css";
 
 export const ArchiveSection = ({ items, service_types }) => {

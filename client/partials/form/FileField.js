@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react';
 import styles from '@/styles/components/form.module.css';
-import { createID } from '@/utils/index';
+import { createID } from '@/utils/helpers';
 
 const FileField = ({ name, description, showLabels, width, required, multiple }) => {
   const uid = createID(name);
