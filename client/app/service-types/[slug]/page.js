@@ -17,7 +17,11 @@ export default async function serviceTypesSlug(props) {
 }
 
 export async function generateStaticParams() {
-    const res =  await fetch(getStrapiURL(`/${config.services.API_SERVICE_TYPES_PATH_QUERY}`))
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+    };
+    const res =  await fetch(getStrapiURL(`/${config.services.API_SERVICE_TYPES_PATH_QUERY}`), { headers})
     const resData = await res.json()
     const slugs = resData.data.map(item => item.slug)
     return slugs.map(slug => ({

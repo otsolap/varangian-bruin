@@ -20,6 +20,11 @@ export function getStrapiMedia(url) {
   }
 
   export async function fetchBannerData() {
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+    };
+
     try {
       const urls = [
         getStrapiURL(`/${config.pages.API_SERVICES_BANNER_QUERY}`),
@@ -28,7 +33,9 @@ export function getStrapiMedia(url) {
   
       let servicesBannerResponse, subscribeFormResponse;
       try {
-        [servicesBannerResponse, subscribeFormResponse] = await Promise.all(urls.map(url => fetch(url)));
+        [servicesBannerResponse, subscribeFormResponse] = await Promise.all(urls.map(url => 
+          fetch(url, { headers })
+        ));
       } catch (error) {
         console.error('Failed to fetch API data:', error);
       }
@@ -47,6 +54,11 @@ export function getStrapiMedia(url) {
   }
 
   export async function fetchGlobalData() {
+    const headers = {
+      'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+    };
+
     try {
       const urls = [
         getStrapiURL(`/${config.global.API_NAVIGATION_QUERY}`),
@@ -57,7 +69,9 @@ export function getStrapiMedia(url) {
   
       let navigationResponse, footerResponse, blogNavigationResponse, latestBlogs;
       try {
-        [navigationResponse, footerResponse, , blogNavigationResponse, latestBlogs] = await Promise.all(urls.map(url => fetch(url)));
+        [navigationResponse, footerResponse, , blogNavigationResponse, latestBlogs] = await Promise.all(urls.map(url => 
+          fetch(url, { headers })
+        ));
       } catch (error) {
         console.error('Failed to fetch API data:', error);
       }
@@ -78,9 +92,14 @@ export function getStrapiMedia(url) {
   }
   
   export async function fetchGlobalSEOData() {
+    const headers = {
+      'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+    };
+
     try {
       const url = getStrapiURL(`/${config.global.API_BASE_SEO_QUERY}`);
-      const response = await fetch(url);
+      const response = await fetch(url, { headers });
       const data = await response.json();
       return data;
     } catch (error) {

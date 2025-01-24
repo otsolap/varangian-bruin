@@ -46,7 +46,12 @@ export default async function BlogSlug(props) {
 }
 
 export async function generateStaticParams() {
-  const res =  await fetch(getStrapiURL(`/api/articles`))
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+  };
+
+  const res =  await fetch(getStrapiURL(`/api/articles`), { headers})
   const resData = await res.json()
   const slugs = resData.data.map(item => item.slug)
   return slugs.map(slug => ({

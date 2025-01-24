@@ -21,7 +21,12 @@ export default async function PageSlug(props) {
 }
 
 export async function generateStaticParams() {
-  const res =  await fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}`))
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+  };
+
+  const res =  await fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}`), { headers})
   const resData = await res.json()
   const slugs = resData.data.map(item => item.slug)
   
