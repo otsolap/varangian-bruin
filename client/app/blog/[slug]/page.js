@@ -51,7 +51,7 @@ export async function generateStaticParams() {
     Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
   };
 
-  const res =  await fetch(getStrapiURL(`/api/articles`), { headers})
+  const res =  await fetch(getStrapiURL(`/api/articles`), { headers })
   const resData = await res.json()
   const slugs = resData.data.map(item => item.slug)
   return slugs.map(slug => ({
