@@ -10,8 +10,13 @@ export default function BlogSection({ title, description, selectTheme, blogs, fi
   const [items, setItems] = useState([]);
 
   const fetchData = async () => {
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+    };
+
     try {
-      const res = await fetch(getStrapiURL(`/${config.blocks.API_CONTENT_BLOG_SECTION_LATEST_QUERY}`));
+      const res = await fetch(getStrapiURL(`/${config.blocks.API_CONTENT_BLOG_SECTION_LATEST_QUERY}`), { headers });
       const data = await res.json();
       setItems(data);
     } catch (error) {
@@ -27,6 +32,8 @@ export default function BlogSection({ title, description, selectTheme, blogs, fi
 
   const blogItems = filter === "latest" ? items.data : blogs;
 
+  if (!blogItems) return null;
+
   return (
     <section className={selectTheme == 'primary' ? styles.bgPrimary : styles.bgSecondary}>
       {title || description ? (
@@ -35,23 +42,21 @@ export default function BlogSection({ title, description, selectTheme, blogs, fi
           {description && <p>{description}</p>}
         </header>
       ) : null}
-      {blogItems?.length ? (
-        <div className={styles.wrapper}>
-          {blogItems.map((item, i) => {
-            return (
-              <BlogItem
-                key={i}
-                image={item.image}
-                title={item.title}
-                description={item.description}
-                category={item.category[0]}
-                publishedAt={item.publishedAt}
-                slug={item.slug}
-              />
-            );
-          })}
-        </div>
-      ) : null}
+      <div className={styles.wrapper}>
+        {blogItems.map((item, i) => {
+          return (
+            <BlogItem
+              key={i}
+              image={item.image}
+              title={item.title}
+              description={item.description}
+              category={item.category[0]}
+              publishedAt={item.publishedAt}
+              slug={item.slug}
+            />
+          );
+        })}
+      </div>
       <footer className={styles.linkWrapper}>
       <Link className={styles.archiveLink} href={`/${config.blog.BLOG_PATH}`}>
           {config.blocks.CONTENT_BLOG_SECTION_BLOG_ARCHIVE_LEAD}
