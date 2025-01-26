@@ -9,13 +9,8 @@ const BlogAnchors = ({ blogAnchors }) => {
   let { blogs, filter } = blogAnchors
 
   const fetchData = async () => {
-    const headers = {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
-    };
-
     try {
-      const res = await fetch(getStrapiURL(`/${config.blocks.API_CONTENT_BLOG_SECTION_LATEST_QUERY}`), { headers });
+      const res = await fetch(getStrapiURL(`/${config.blocks.API_CONTENT_BLOG_SECTION_LATEST_QUERY}`));
       const data = await res.json();
       setItems(data);
     } catch (error) {

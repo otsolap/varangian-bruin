@@ -31,11 +31,6 @@ export async function formSubmit(state, formData) {
         fields[field.key] = field.value.replace(/\r\n/g, ' ');
     });
 
-    const headers = {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
-    };
-
     // Make the fetch request
     let formID = null;
 
@@ -62,6 +57,11 @@ export async function formSubmit(state, formData) {
             message: state.messages.errorMessage ?? 'We could not submit the form. Please try again later.' 
         };
     }
+
+    const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+    };
 
     const data = {
         data: {
