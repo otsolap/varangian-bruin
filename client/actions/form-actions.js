@@ -33,9 +33,14 @@ export async function formSubmit(state, formData) {
 
     // Make the fetch request
     let formID = null;
+    
+    const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+    };
 
     try {
-        const response = await fetch(getStrapiURL(`/${config.forms.FORMS_PATH}${state.id}`));
+        const response = await fetch(getStrapiURL(`/${config.forms.FORMS_PATH}${state.id}`), { headers });
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -57,11 +62,6 @@ export async function formSubmit(state, formData) {
             message: state.messages.errorMessage ?? 'We could not submit the form. Please try again later.' 
         };
     }
-
-    const headers = {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
-    };
 
     const data = {
         data: {
