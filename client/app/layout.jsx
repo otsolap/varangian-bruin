@@ -109,9 +109,6 @@ export async function generateMetadata() {
       icon: '/icons/favicon.ico',
       apple: '/icons/apple-touch-icon.png',
     },
-    verification: {
-      google: 'f6qUY3_hQ4N7eCtAjPyf6pp_WMVxNDhRt7JL3vbTs3Q',
-    },
     manifiest: '/icons/site.webmanifest',
   }
 }

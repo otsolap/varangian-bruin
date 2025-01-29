@@ -1,5 +1,4 @@
-import { getStrapiURL, fetchBannerData } from "@/utils/api"
-import { generateOpenGraphImages } from "@/utils/helpers"
+import { getStrapiURL, fetchBannerData, generateOpenGraphImages } from "@/utils/index"
 import config from '@/utils/config'
 import Blocks from "@/components/Blocks"
 import { notFound } from 'next/navigation'
@@ -22,12 +21,7 @@ export default async function PageSlug(props) {
 }
 
 export async function generateStaticParams() {
-  const headers = {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
-  };
-
-  const res =  await fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}`), { headers} )
+  const res =  await fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}`))
   const resData = await res.json()
   const slugs = resData.data.map(item => item.slug)
   

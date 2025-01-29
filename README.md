@@ -28,8 +28,12 @@ The Varangian Theme is the primary theme for projects developed by the Varangian
 - Start publishing content such as mm. Home, Page(s), etc.
 - Go to client directory and use .env.example to setup client properly.
 
-## Special thanks
+## Updating from Template
 
-- ** Guidance & Mentorship **: 
-  - [Åsk 'Dabitch' Wåppling](https://dabitch.net/)
-  - [Ville 'Fokke' Saarivaara](https://fokke.fi/)
+First add the template as a remote.
+
+git remote add template [<URL-to-template-repo>](https://github.com/otsolap/varangian-theme)
+
+Get the latest updates: git fetch template
+
+git rebase template/master

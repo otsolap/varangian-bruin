@@ -125,7 +125,6 @@ async function getAllPages() {
         const mergedData = [].concat(...data);
         
         // Add dynamic routes
-        // todo add category and service type here as well.
         const types = [
             'page', 
             'article', 
