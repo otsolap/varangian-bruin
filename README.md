@@ -1,6 +1,6 @@
-# Varangian Theme
+# Varangian Bruin
 
-The Varangian Theme is the primary theme for projects developed by the Varangian Venture, leveraging the capabilities of Strapi and NextJS.
+The Varangian Bruin is my personal blog. Based off the Varangian Theme template.
 
 - **Development**: Otso Lappalainen
 
@@ -20,8 +20,12 @@ The Varangian Theme is the primary theme for projects developed by the Varangian
   - **Convertkit**: A robust tool for subscriber list growth, especially for newsletters, enhancing your digital marketing capabilities.
 
 
-## Special thanks
+## Updating from Template
 
-- **Guidance**: 
-  - [Åsk 'Dabitch' Wåppling](https://dabitch.net/)
-  - [Ville 'Fokke' Saarivaara](https://fokke.fi/)
+First add the template as a remote.
+
+git remote add template [<URL-to-template-repo>](https://github.com/otsolap/varangian-theme)
+
+Get the latest updates: git fetch template
+
+git rebase template/master
