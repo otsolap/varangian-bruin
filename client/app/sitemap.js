@@ -23,17 +23,17 @@ export default async function sitemap() {
 
   const sitemapEntries = [
     {
-      url: 'https://varangianventure.com',
+      url: '${process.env.PRODUCTION_URL}',
       lastModified: new Date(),
       changeFrequency: 'yearly',
     },
     {
-      url: 'https://varangianventure.com/services',
+      url: '${process.env.PRODUCTION_URL}/services',
       lastModified: new Date(),
       changeFrequency: 'monthly',
     },
     {
-      url: 'https://varangianventure.com/blog',
+      url: '${process.env.PRODUCTION_URL}/blog',
       lastModified: new Date(),
       changeFrequency: 'monthly',
     },
@@ -50,23 +50,23 @@ export default async function sitemap() {
   };
 
   pages.data.forEach(page => {
-    addEntry(`https://varangianventure.com/${page.slug}`, page.updatedAt);
+    addEntry(`${process.env.PRODUCTION_URL}/${page.slug}`, page.updatedAt);
   });
 
   articles.data.forEach(article => {
-    addEntry(`https://varangianventure.com/blog/${article.slug}`, article.updatedAt);
+    addEntry(`${process.env.PRODUCTION_URL}/blog/${article.slug}`, article.updatedAt);
   });
 
   services.data.forEach(service => {
-    addEntry(`https://varangianventure.com/services/${service.slug}`, service.updatedAt);
+    addEntry(`${process.env.PRODUCTION_URL}/services/${service.slug}`, service.updatedAt);
   });
 
   serviceTypes.data.forEach(serviceType => {
-    addEntry(`https://varangianventure.com/service-types/${serviceType.slug}`, serviceType.updatedAt);
+    addEntry(`${process.env.PRODUCTION_URL}/service-types/${serviceType.slug}`, serviceType.updatedAt);
   });
 
   categories.data.forEach(category => {
-    addEntry(`https://varangianventure.com/category/${category.slug}`, category.updatedAt);
+    addEntry(`${process.env.PRODUCTION_URL}/category/${category.slug}`, category.updatedAt);
   });
 
   return sitemapEntries;

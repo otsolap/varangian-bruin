@@ -110,7 +110,7 @@ export async function generateMetadata() {
       apple: '/icons/apple-touch-icon.png',
     },
     verification: {
-      google: 'f6qUY3_hQ4N7eCtAjPyf6pp_WMVxNDhRt7JL3vbTs3Q',
+      google: process.env.GOOGLE_SEARCH_CONSOLE_ID,
     },
     manifiest: '/icons/site.webmanifest',
   }
