@@ -1,5 +1,4 @@
-import React from "react";
-import { YouTubeGetID } from "@/utils/index";
+import { YouTubeGetID } from "@/utils/helpers";
 
 const YoutubeEmbed = ({ url, className, autoplay }) => {
   return (

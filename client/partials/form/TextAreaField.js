@@ -1,4 +1,4 @@
-import { createID } from '@/utils/index'
+import { createID } from '@/utils/helpers'
 import styles from '@/styles/components/form.module.css'
 
 const TextAreaField = ({ name, placeholder, showLabels, width, rows = 4, cols = 30, }) => {

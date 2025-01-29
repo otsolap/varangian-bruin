@@ -1,4 +1,4 @@
-import { getStrapiURL, fetchBannerData } from "@/utils/index"
+import { getStrapiURL, fetchBannerData } from "@/utils/api"
 import config from '@/utils/config'
 import Blocks from "@/components/Blocks"
 import Banner from "@/components/blocks/Banner"
@@ -22,10 +22,15 @@ export default async function Page () {
 // TODO: SEO component here.
 
 async function getContent() {
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+  };
+
   try {
     const [seoPathRes, blocksPathRes] = await Promise.all([
-      fetch(getStrapiURL(`/${config.global.API_HOME_QUERY}?${config.blocks.API_SEO_BLOCK_QUERY}`)),
-      fetch(getStrapiURL(`/${config.global.API_HOME_QUERY}?${config.blocks.API_DYNAMIC_ZONE_BLOCKS}`))
+      fetch(getStrapiURL(`/${config.global.API_HOME_QUERY}?${config.blocks.API_SEO_BLOCK_QUERY}`), { headers }),
+      fetch(getStrapiURL(`/${config.global.API_HOME_QUERY}?${config.blocks.API_DYNAMIC_ZONE_BLOCKS}`), { headers })
     ]);
 
     const [seoPathData, blocksPathData] = await Promise.all([

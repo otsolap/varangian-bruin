@@ -1,7 +1,7 @@
 import styles from '@/styles/pages/error.module.css'
 import MarkdownBlock from "@/partials/util/MarkdownBlock";
 import CustomLink from "partials/util/CustomLink";
-import { getStrapiURL } from "@/utils/index"
+import { getStrapiURL } from "@/utils/api"
 import config from '@/utils/config'
 
 export default async function NotFound () {

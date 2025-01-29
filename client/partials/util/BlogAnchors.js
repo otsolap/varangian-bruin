@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "@/styles/components/blogAnchor.module.css";
 import Link from "next/link";
-import { getStrapiURL } from "@/utils/index";
+import { getStrapiURL } from "@/utils/api";
 import config from '@/utils/config'
 
 const BlogAnchors = ({ blogAnchors }) => {

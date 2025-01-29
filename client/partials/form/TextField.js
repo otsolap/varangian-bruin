@@ -1,5 +1,5 @@
 import styles from '@/styles/components/form.module.css'
-import { createID } from '@/utils/index'
+import { createID } from '@/utils/helpers'
 
 const TextField = ({ name, placeholder, showLabels, width, required }) => {
   const uid = createID(name)

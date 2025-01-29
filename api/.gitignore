@@ -107,7 +107,10 @@ coverage
 ############################
 
 .env
+<<<<<<< HEAD
+=======
 .env.*
+>>>>>>> 1a5ebce (Initial commit)
 license.txt
 exports
 *.cache

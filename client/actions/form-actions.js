@@ -1,7 +1,7 @@
 'use server'
 import { redirect } from 'next/navigation'
 import config from '@/utils/config'
-import { getStrapiURL } from "utils"
+import { getStrapiURL } from "utils/api"
 
 // Form Embed submission handler
 export async function formSubmit(state, formData) {
@@ -31,16 +31,16 @@ export async function formSubmit(state, formData) {
         fields[field.key] = field.value.replace(/\r\n/g, ' ');
     });
 
+    // Make the fetch request
+    let formID = null;
+    
     const headers = {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
     };
 
-    // Make the fetch request
-    let formID = null;
-
     try {
-        const response = await fetch(getStrapiURL(`/${config.forms.FORMS_PATH}${state.id}`));
+        const response = await fetch(getStrapiURL(`/${config.forms.FORMS_PATH}${state.id}`), { headers });
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }

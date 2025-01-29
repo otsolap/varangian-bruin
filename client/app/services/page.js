@@ -1,6 +1,7 @@
 import Hero from "@/components/blocks/Hero"
 import { ArchiveSection } from "@/components/services/ArchiveSection"
-import { getStrapiURL,  generateOpenGraphImages  } from "@/utils/index"
+import { getStrapiURL  } from "@/utils/api"
+import { generateOpenGraphImages  } from "@/utils/helpers"
 import config from '@/utils/config'
 import { notFound } from 'next/navigation'
 

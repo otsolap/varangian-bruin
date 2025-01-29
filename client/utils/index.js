@@ -69,24 +69,27 @@ import config from '@/utils/config'
       const urls = [
         getStrapiURL(`/${config.global.API_NAVIGATION_QUERY}`),
         getStrapiURL(`/${config.global.API_FOOTER_QUERY}`),
+        getStrapiURL(`/${config.global.API_ANALYTICS_QUERY}`),
         getStrapiURL(`/${config.global.API_BLOG_NAVIGATION_QUERY}`),
         getStrapiURL(`/${config.blocks.API_CONTENT_BLOG_SECTION_LATEST_QUERY}`),
       ];
   
-      let navigationResponse, footerResponse, blogNavigationResponse, latestBlogs;
+      let navigationResponse, footerResponse, analyticsResponse, blogNavigationResponse, latestBlogs;
       try {
-        [navigationResponse, footerResponse, , blogNavigationResponse, latestBlogs] = await Promise.all(urls.map(url => fetch(url)));
+        [navigationResponse, footerResponse, analyticsResponse, blogNavigationResponse, latestBlogs] = await Promise.all(urls.map(url => fetch(url)));
       } catch (error) {
         console.error('Failed to fetch API data:', error);
       }
   
       const navigationData = await navigationResponse?.json() || null;
       const footerData = await footerResponse?.json() || null;
+      const analyticsData = await analyticsResponse?.json() || null;
       const blogNavigationData = await blogNavigationResponse?.json() || null;
   
       return {
         navigation: navigationData,
         footer: footerData,
+        analytics: analyticsData,
         blogNavigation: blogNavigationData,
       };
     } catch (error) {

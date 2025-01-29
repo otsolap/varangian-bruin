@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styles from "@/styles/components/blogs.module.css";
 import BlogItem from "@/partials/blocks/BlogItem";
 import Link from "next/link";
-import { getStrapiURL } from "@/utils/index";
+import { getStrapiURL } from "@/utils/api";
 import config from '@/utils/config'
 
 export default function BlogSection({ title, description, selectTheme, blogs, filter}) {
@@ -27,6 +27,8 @@ export default function BlogSection({ title, description, selectTheme, blogs, fi
 
   const blogItems = filter === "latest" ? items.data : blogs;
 
+  if (!blogItems) return null;
+
   return (
     <section className={selectTheme == 'primary' ? styles.bgPrimary : styles.bgSecondary}>
       {title || description ? (
@@ -35,23 +37,21 @@ export default function BlogSection({ title, description, selectTheme, blogs, fi
           {description && <p>{description}</p>}
         </header>
       ) : null}
-      {blogItems?.length ? (
-        <div className={styles.wrapper}>
-          {blogItems.map((item, i) => {
-            return (
-              <BlogItem
-                key={i}
-                image={item.image}
-                title={item.title}
-                description={item.description}
-                category={item.category[0]}
-                publishedAt={item.publishedAt}
-                slug={item.slug}
-              />
-            );
-          })}
-        </div>
-      ) : null}
+      <div className={styles.wrapper}>
+        {blogItems.map((item, i) => {
+          return (
+            <BlogItem
+              key={i}
+              image={item.image}
+              title={item.title}
+              description={item.description}
+              category={item.category[0]}
+              publishedAt={item.publishedAt}
+              slug={item.slug}
+            />
+          );
+        })}
+      </div>
       <footer className={styles.linkWrapper}>
       <Link className={styles.archiveLink} href={`/${config.blog.BLOG_PATH}`}>
           {config.blocks.CONTENT_BLOG_SECTION_BLOG_ARCHIVE_LEAD}

@@ -1,6 +1,7 @@
 import Hero from "@/components/blocks/Hero"
 import { ArchiveSection } from "@/components/articles/ArchiveSection"
-import { getStrapiURL, generateOpenGraphImages } from "@/utils/index"
+import { getStrapiURL } from "@/utils/api"
+import { generateOpenGraphImages } from "@/utils/helpers"
 import config from '@/utils/config'
 import { notFound } from 'next/navigation'
 
@@ -16,6 +17,11 @@ export default async function Page () {
 }
 
 async function getContent() {
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+  };
+
   try {
     const urls = [
       getStrapiURL(`/${config.blog.API_ARCHIVE_PAGE_QUERY}`),
@@ -24,7 +30,9 @@ async function getContent() {
     ];
 
     const [archivePageResponse, articlesResponse, categoriesResponse] = await Promise.all(
-      urls.map(url => fetch(url))
+      urls.map(url => 
+        fetch(url, { headers })
+      )
     );
 
     const [archivePageData, articlesData, categoriesData] = await Promise.all([

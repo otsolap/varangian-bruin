@@ -1,4 +1,5 @@
-import { getStrapiURL, generateOpenGraphImages  } from "@/utils/index"
+import { getStrapiURL  } from "@/utils/api"
+import { generateOpenGraphImages  } from "@/utils/helpers"
 import config from '@/utils/config'
 import Blocks from "@/components/Blocks"
 import { notFound } from 'next/navigation'
@@ -13,7 +14,12 @@ export default async function ServicesSlug(props) {
 }
 
 export async function generateStaticParams() {
-  const res =  await fetch(getStrapiURL(`/api/services`))
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+  };
+
+  const res =  await fetch(getStrapiURL(`/api/services`), { headers })
   const resData = await res.json()
   const slugs = resData.data.map(item => item.slug)
   return slugs.map(slug => ({
