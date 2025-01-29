@@ -46,7 +46,7 @@ export async function formSubmit(state, formData) {
         }
         const data = await response.json();
         if (data.data && data.data.length > 0) {
-            formID = data.data[0].id;
+            formID = data.data[0].formID;
         } else {
             console.error('No data found');
             return { 

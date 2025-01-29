@@ -10,7 +10,14 @@ export default async function sitemap() {
     `/${config.blog.API_CATEGORY_PATH_QUERY}`
   ];
 
-  const fetchPromises = urls.map(url => fetch(getStrapiURL(url)).then(res => res.json()));
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+};
+
+  const fetchPromises = urls.map(url => 
+    fetch(getStrapiURL(url, { headers })).then(res => res.json())
+  );
 
   const [pages, articles, services, serviceTypes, categories] = await Promise.all(fetchPromises);
 
