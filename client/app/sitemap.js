@@ -23,17 +23,17 @@ export default async function sitemap() {
 
   const sitemapEntries = [
     {
-      url: '${process.env.PRODUCTION_URL}',
+      url: `${process.env.PRODUCTION_URL}`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
     },
     {
-      url: '${process.env.PRODUCTION_URL}/services',
+      url: `${process.env.PRODUCTION_URL}/services`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
     },
     {
-      url: '${process.env.PRODUCTION_URL}/blog',
+      url: `${process.env.PRODUCTION_URL}/blog`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
     },
