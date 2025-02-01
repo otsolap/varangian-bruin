@@ -32,6 +32,7 @@ The Varangian Theme is the primary theme for projects developed by the Varangian
 
 - Install and set up the Strapi API.
 - Configure an API Token for the project in both the backend and frontend, as this is required for all non-public API requests.
+- Configure Revalidation Token.
 - Start publishing content such as Home, Page(s), etc.
 
 ### Frontend
