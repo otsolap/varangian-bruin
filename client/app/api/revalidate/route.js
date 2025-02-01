@@ -1,5 +1,4 @@
 import { revalidatePath } from 'next/cache'
-
 import config from '@/utils/config'
 import { getStrapiURL } from "@/utils/api"
 
@@ -112,12 +111,17 @@ async function getAllPages() {
             '/service-types/'
         ]);
 
+        const headers = {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+        };
+
         const urls = [
-            fetch(getStrapiURL(`/${config.revalidate.PAGES_PATH}`)),
-            fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`)),
-            fetch(getStrapiURL(`/${config.revalidate.BLOG_CATEGORY_PATH}`)),
-            fetch(getStrapiURL(`/${config.revalidate.SERVICES_PATH}`)),
-            fetch(getStrapiURL(`/${config.revalidate.SERVICE_TYPES_PATH}`)),
+            fetch(getStrapiURL(`/${config.revalidate.PAGES_PATH}`), { headers }),
+            fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`), { headers }),
+            fetch(getStrapiURL(`/${config.revalidate.BLOG_CATEGORY_PATH}`), { headers }),
+            fetch(getStrapiURL(`/${config.revalidate.SERVICES_PATH}`), { headers }),
+            fetch(getStrapiURL(`/${config.revalidate.SERVICE_TYPES_PATH}`), { headers }),
         ];
 
         const responses = await Promise.all(urls);
@@ -146,8 +150,13 @@ async function getAllPages() {
 }
 
 async function getAllArticles() {
+    const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+    };
+
     try {
-        const response = await fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`))
+        const response = await fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`), { headers })
         const data = await response.json()
         const slugs = data.data.map(item => item.slug)
 
@@ -160,8 +169,13 @@ async function getAllArticles() {
 }
 
 async function getPagesWithSubscriptionForm() {
+    const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+    };
+
     try {
-        const response = await fetch(getStrapiURL(`/${config.revalidate.SUBSCRIPTION_FORM_PATH}`))
+        const response = await fetch(getStrapiURL(`/${config.revalidate.SUBSCRIPTION_FORM_PATH}`), { headers })
         const data = await response.json()
         const slugs = data.data.map(item => item.slug)
 
@@ -173,8 +187,13 @@ async function getPagesWithSubscriptionForm() {
 }
     
 async function getPagesWithServicesBanner() {
+    const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+    };
+
     try {
-        const response = await fetch(getStrapiURL(`/${config.revalidate.SERVICES_BANNER_PATH}`))
+        const response = await fetch(getStrapiURL(`/${config.revalidate.SERVICES_BANNER_PATH}`), { headers })
         const data = await response.json()
         const slugs = data.data.map(item => item.slug)
 
