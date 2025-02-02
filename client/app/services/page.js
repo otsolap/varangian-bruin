@@ -35,12 +35,11 @@ async function getContent() {
       ]);
   
       return {
-        meta: archivePageData.data.seo ?? {},
-        hero: archivePageData.data.hero ?? {},
+        meta: archivePageData.data?.seo ?? {},
+        hero: archivePageData.data?.hero ?? {},
         items: servicesData.data ?? {},
-        service_types: serviceTypesData.data ?? {},   
+        service_types: serviceTypesData?.data ?? {},   
       }
-  
     } catch (error) {
       console.error('Error:', error);
       notFound()

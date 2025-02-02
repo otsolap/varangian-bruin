@@ -34,10 +34,12 @@ async function getContent(params) {
 
     if (!resData.data || resData.data.length === 0) notFound();
 
+    const { title, seo, blocks } = resData.data[0] ?? {};
+
     return {
-      pageTitle: resData.data[0]?.title ?? '',
-      meta: resData.data[0]?.seo ?? {},
-      blocks: resData.data[0]?.blocks ?? {},
+      pageTitle: title ?? '',
+      meta: seo ?? {},
+      blocks: blocks ?? {},
     }
   } catch (error) {
     console.error('Error:', error);

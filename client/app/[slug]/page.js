@@ -44,13 +44,15 @@ async function getContent(params) {
 
     if (!resData.data || resData.data.length === 0) notFound();
 
+    const { title, seo, blocks, showServicesBanner, showSubscribeForm } = resData.data[0] ?? {};
+
     return {
-      pageTitle: resData.data[0]?.title ?? '',
-      meta: resData.data[0]?.seo ?? {},
-      blocks: resData.data[0]?.blocks ?? {},
-      showServicesBanner: resData.data[0]?.showServicesBanner ?? false,
-      showSubscribeForm: resData.data[0]?.showSubscribeForm ?? false,
-    }
+        pageTitle: title ?? '',
+        meta: seo ?? {},
+        blocks: blocks ?? {},
+        showServicesBanner: showServicesBanner ?? false,
+        showSubscribeForm: showSubscribeForm ?? false,
+    };
   } catch (error) {
     console.error('Error:', error);
     notFound()
