@@ -19,7 +19,6 @@ export default async function Page () {
   )
 }
 
-// TODO: SEO component here.
 
 async function getContent() {
   const headers = {
@@ -39,12 +38,47 @@ async function getContent() {
     ]);
 
     return {
+      pageTitle: title ?? '',
+      meta: seoPathData.seo ?? {},
+      blocks: blocksPathData.data.blocks ?? {},
       showServicesBanner: blocksPathData.data.showServicesBanner ?? false,
       showSubscribeForm: blocksPathData.data.showSubscribeForm ?? false,
-      blocks: blocksPathData.data.blocks ?? {},
     }
   } catch (error) {
     console.error('Error:', error)
     notFound()
+  }
+}
+
+export async function generateMetadata(props) {
+  const params = await props.params;
+  const pageUrl = `/`
+  const { meta, pageTitle } = await getContent(params)
+
+  if(!meta || Object.keys(meta).length === 0) return null;
+
+  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.formats)
+
+  return {
+    robots: {
+      index:  !meta.preventIndexing,
+      follow: !meta.preventIndexing,
+      googleBot: {
+        index: !meta.preventIndexing,
+        follow: !meta.preventIndexing
+      }
+    },
+    title: meta.title ?? pageTitle,
+    description: meta.description,
+    keywords: [meta.keywords],
+    openGraph: {
+      title: meta.title ?? pageTitle,
+      description: meta.description,
+      url: pageUrl,
+      images: ogImages,
+    },
+    alternates: {
+      canonical: pageUrl
+    }
   }
 }

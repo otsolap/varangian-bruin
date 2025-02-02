@@ -38,17 +38,29 @@ export async function generateStaticParams() {
 }
 
 async function getContent(params) {
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+  };
+
   try {
-    const res = await fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}?${config.blocks.API_DYNAMIC_ZONE_BLOCKS}&filters[slug][$eq]=${params.slug}`))
-    const resData = await res.json()
+    const [seoPathRes, blocksPathRes] = await Promise.all([
+      fetch(getStrapiURL(`/${config.global.API_PAGES_QUERY}?${config.blocks.API_SEO_BLOCK_QUERY}&filters[slug][$eq]=${params.slug}`), { headers }),
+      fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}?${config.blocks.API_DYNAMIC_ZONE_BLOCKS}&filters[slug][$eq]=${params.slug}`), { headers })
+    ]);
 
-    if (!resData.data || resData.data.length === 0) notFound();
+    const [seoPathData, blocksPathData] = await Promise.all([
+      seoPathRes.json(),
+      blocksPathRes.json()
+    ]);
 
-    const { title, seo, blocks, showServicesBanner, showSubscribeForm } = resData.data[0] ?? {};
+    if (!blocksPathData.data || blocksPathData.data.length === 0) notFound();
+
+    const { title, blocks, showServicesBanner, showSubscribeForm } = blocksPathData.data[0] ?? {};
 
     return {
         pageTitle: title ?? '',
-        meta: seo ?? {},
+        meta: seoPathData.seo ?? {},
         blocks: blocks ?? {},
         showServicesBanner: showServicesBanner ?? false,
         showSubscribeForm: showSubscribeForm ?? false,
