@@ -66,17 +66,17 @@ const MobileFooter = ({ navigation, blogPaths, socialShare }) => {
                         <ShareButtons title={getTitle()} settings={socialShare} />
                     ) : (
                         <>
-                            <MobileNavLinks 
-                                blocks={navigation.blocks.slice(0, PRIMARY_PAGES)} 
-                                currentPath={router.asPath} 
-                                closeModal={() => setShowModal(false)} 
+                        <MobileNavLinks 
+                            blocks={navigation.blocks?.slice(0, PRIMARY_PAGES)} 
+                            currentPath={router.asPath} 
+                            closeModal={() => setShowModal(false)} 
+                        />
+                        {navigation.blocks?.length > PRIMARY_PAGES && (
+                            <MenuButton 
+                                isMenuOpen={show} 
+                                toggleMenu={() => setShowModal(value => !value)} 
                             />
-                            {navigation.blocks.length > PRIMARY_PAGES && (
-                                <MenuButton 
-                                    isMenuOpen={show} 
-                                    toggleMenu={() => setShowModal(value => !value)} 
-                                />
-                            )}
+                        )}
                         </>
                     )}
                 </div>

@@ -27,12 +27,12 @@ export default async function RootLayout({ children }) {
       blogPathsRes.json()
     ])
 
-    navigation = global.navigation.data
-    footer = global.footer.data
-    blogNavigation = global.blogNavigation.data
+    navigation = global.navigation.data ?? {}
+    footer = global.footer.data ?? {}
+    blogNavigation = global.blogNavigation.data ?? {}
 
-    servicePaths = servicePathsData
-    blogPaths = blogPathsData
+    servicePaths = servicePathsData ?? {}
+    blogPaths = blogPathsData ?? {}
   } catch (error) {
     console.error('Error:', error);
   }
