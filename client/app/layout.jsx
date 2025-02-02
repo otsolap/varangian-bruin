@@ -12,14 +12,19 @@ import { Suspense } from "react"
 export const fetchCache = 'default-cache'
 
 export default async function RootLayout({ children }) {
-  let navigation, footer, analytics, blogNavigation, servicePaths, blogPaths
+  let navigation, footer, blogNavigation, servicePaths, blogPaths
 
   try {
     const global = await fetchGlobalData()
 
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+    };
+
     const [servicePathsRes, blogPathsRes] = await Promise.all([
-      fetch(getStrapiURL(`/${config.services.API_SERVICES_NAV_QUERY}`)),
-      fetch(getStrapiURL(`/${config.blog.API_BLOG_NAV_QUERY}`))
+      fetch(getStrapiURL(`/${config.services.API_SERVICES_NAV_QUERY}`, { headers})),
+      fetch(getStrapiURL(`/${config.blog.API_BLOG_NAV_QUERY}`, { headers}))
     ])
     
     const [servicePathsData, blogPathsData] = await Promise.all([
