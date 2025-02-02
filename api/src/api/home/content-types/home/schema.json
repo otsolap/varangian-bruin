@@ -16,7 +16,6 @@
       "type": "dynamiczone",
       "components": [
         "blocks.accordion",
-        "blocks.article-text-block",
         "blocks.banner",
         "blocks.blogs",
         "blocks.cards",
