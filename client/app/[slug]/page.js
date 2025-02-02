@@ -32,19 +32,26 @@ export async function generateStaticParams() {
 }
 
 async function getContent(params) {
-  try {
-    const res = await fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}?${config.blocks.API_DYNAMIC_ZONE_BLOCKS}&filters[slug][$eq]=${params.slug}`))
-    const resData = await res.json()
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+  };
 
-    if (!resData.data || resData.data.length === 0) notFound();
+  try {
+    const apiResponse = await fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}?${config.blocks.API_DYNAMIC_ZONE_BLOCKS}&${config.blocks.API_SEO_BLOCK_QUERY}&filters[slug][$eq]=${params.slug}`), { headers });
+    const fetchedData = await apiResponse.json();
+    
+    if (!fetchedData.data || fetchedData.data.length === 0) notFound();
+    
+    const { title, blocks, showServicesBanner, showSubscribeForm } = fetchedData.data[0] ?? {};
 
     return {
-      pageTitle: resData.data[0]?.title ?? '',
-      meta: resData.data[0]?.seo ?? {},
-      blocks: resData.data[0]?.blocks ?? {},
-      showServicesBanner: resData.data[0]?.showServicesBanner ?? false,
-      showSubscribeForm: resData.data[0]?.showSubscribeForm ?? false,
-    }
+        pageTitle: title ?? '',
+        meta: seoPathData.seo ?? {},
+        blocks: blocks ?? {},
+        showServicesBanner: showServicesBanner ?? false,
+        showSubscribeForm: showSubscribeForm ?? false,
+    };
   } catch (error) {
     console.error('Error:', error);
     notFound()

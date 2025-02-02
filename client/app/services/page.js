@@ -17,6 +17,11 @@ export default async function Page () {
 }
 
 async function getContent() {
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+    };
+
     try {
       const urls = [
         getStrapiURL(`/${config.services.API_ARCHIVE_PAGE_QUERY}`),
@@ -25,7 +30,9 @@ async function getContent() {
       ];
   
       const [archivePageResponse, servicesResponse, serviceTypesResponse] = await Promise.all(
-        urls.map(url => fetch(url))
+        urls.map(url => 
+          fetch(url, { headers })
+        )
       );
 
       const [archivePageData, servicesData, serviceTypesData] = await Promise.all([
@@ -35,12 +42,11 @@ async function getContent() {
       ]);
   
       return {
-        meta: archivePageData.data.seo ?? {},
-        hero: archivePageData.data.hero ?? {},
+        meta: archivePageData.data?.seo ?? {},
+        hero: archivePageData.data?.hero ?? {},
         items: servicesData.data ?? {},
-        service_types: serviceTypesData.data ?? {},   
+        service_types: serviceTypesData?.data ?? {},   
       }
-  
     } catch (error) {
       console.error('Error:', error);
       notFound()

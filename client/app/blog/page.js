@@ -42,10 +42,10 @@ async function getContent() {
     ]);
 
     return {
-      meta: archivePageData.data.seo ?? {},
-      hero: archivePageData.data.hero ?? {},
+      meta: archivePageData.data?.seo ?? {},
+      hero: archivePageData.data?.hero ?? {},
       items: articlesData.data ?? {},
-      categories: categoriesData.data ?? {},   
+      categories: categoriesData?.data ?? {},   
     }
 
   } catch (error) {

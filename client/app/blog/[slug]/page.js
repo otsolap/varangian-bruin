@@ -66,32 +66,40 @@ async function getContent(params) {
 
     if (!resData.data || resData.data.length === 0) notFound();
 
+    const {
+        title,
+        documentId,
+        seo,
+        updatedAt,
+        blocks,
+        category,
+        author
+    } = resData.data[0] ?? {};
+    
     return {
-      pageTitle: resData.data[0]?.title ?? '',
-      documentId: resData.data[0]?.documentId ?? null,
-      meta: resData.data[0]?.seo ?? {},
-      revisionNotice: (() => {
-        const updatedAt = resData.data[0]?.updatedAt;
-        if (!updatedAt) return null;
-      
-        const updatedDate = new Date(updatedAt);
-        const currentDate = new Date();
-        const oneMonthAgo = new Date();
-        oneMonthAgo.setMonth(currentDate.getMonth() - 1);
-      
-        if (updatedDate < oneMonthAgo) {
-          const options = { year: 'numeric', month: 'long' };
-          return updatedDate.toLocaleDateString(undefined, options);
-        }
-      
-        return null;
-      })(),
-      article: resData.data[0] ?? {},
-      blocks: resData.data[0]?.blocks ?? {},
-      category: resData.data[0]?.category[0] ?? {},
-      author: resData.data[0]?.author ?? {},
-    }
-
+        pageTitle: title ?? '',
+        documentId: documentId ?? null,
+        meta: seo ?? {},
+        revisionNotice: (() => {
+            if (!updatedAt) return null;
+    
+            const updatedDate = new Date(updatedAt);
+            const currentDate = new Date();
+            const oneMonthAgo = new Date();
+            oneMonthAgo.setMonth(currentDate.getMonth() - 1);
+    
+            if (updatedDate < oneMonthAgo) {
+                const options = { year: 'numeric', month: 'long' };
+                return updatedDate.toLocaleDateString(undefined, options);
+            }
+    
+            return null;
+        })(),
+        article: resData.data[0] ?? {},
+        blocks: blocks ?? {},
+        category: category[0] ?? {},
+        author: author ?? {},
+    };
   } catch (error) {
     console.error('Error:', error);
     notFound()

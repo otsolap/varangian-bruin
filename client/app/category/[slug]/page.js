@@ -52,8 +52,8 @@ async function getContent(params) {
 
   
       return {
-        hero: matchingCategory.hero ?? {},
-        items: matchingCategory.articles ?? {},
+        hero: matchingCategory?.hero ?? {},
+        items: matchingCategory?.articles ?? {},
         categories: categoriesData.data ?? {},   
       }
   

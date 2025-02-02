@@ -19,8 +19,6 @@ export default async function Page () {
   )
 }
 
-// TODO: SEO component here.
-
 async function getContent() {
   const headers = {
     'Content-Type': 'application/json',
@@ -28,23 +26,51 @@ async function getContent() {
   };
 
   try {
-    const [seoPathRes, blocksPathRes] = await Promise.all([
-      fetch(getStrapiURL(`/${config.global.API_HOME_QUERY}?${config.blocks.API_SEO_BLOCK_QUERY}`), { headers }),
-      fetch(getStrapiURL(`/${config.global.API_HOME_QUERY}?${config.blocks.API_DYNAMIC_ZONE_BLOCKS}`), { headers })
-    ]);
-
-    const [seoPathData, blocksPathData] = await Promise.all([
-      seoPathRes.json(),
-      blocksPathRes.json()
-    ]);
+    const apiResponse = await fetch(getStrapiURL(`/${config.global.API_HOME_QUERY}?${config.blocks.API_DYNAMIC_ZONE_BLOCKS}&${config.blocks.API_SEO_BLOCK_QUERY}`), { headers });
+    const fetchedData = await apiResponse.json();
 
     return {
-      showServicesBanner: blocksPathData.data.showServicesBanner ?? false,
-      showSubscribeForm: blocksPathData.data.showSubscribeForm ?? false,
-      blocks: blocksPathData.data.blocks ?? {},
+      pageTitle: fetchedData.title ?? '',
+      meta: fetchedData.seo ?? {},
+      blocks: fetchedData.data.blocks ?? {},
+      showServicesBanner: fetchedData.data.showServicesBanner ?? false,
+      showSubscribeForm: fetchedData.data.showSubscribeForm ?? false,
     }
   } catch (error) {
     console.error('Error:', error)
     notFound()
+  }
+}
+
+export async function generateMetadata(props) {
+  const params = await props.params;
+  const pageUrl = `/`
+  const { meta, pageTitle } = await getContent(params)
+
+  if(!meta || Object.keys(meta).length === 0) return null;
+
+  const ogImages = await generateOpenGraphImages(meta.imageBlock?.image?.formats)
+
+  return {
+    robots: {
+      index:  !meta.preventIndexing,
+      follow: !meta.preventIndexing,
+      googleBot: {
+        index: !meta.preventIndexing,
+        follow: !meta.preventIndexing
+      }
+    },
+    title: meta.title ?? pageTitle,
+    description: meta.description,
+    keywords: [meta.keywords],
+    openGraph: {
+      title: meta.title ?? pageTitle,
+      description: meta.description,
+      url: pageUrl,
+      images: ogImages,
+    },
+    alternates: {
+      canonical: pageUrl
+    }
   }
 }
