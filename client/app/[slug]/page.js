@@ -44,19 +44,12 @@ async function getContent(params) {
   };
 
   try {
-    const [seoPathRes, blocksPathRes] = await Promise.all([
-      fetch(getStrapiURL(`/${config.global.API_PAGES_QUERY}?${config.blocks.API_SEO_BLOCK_QUERY}&filters[slug][$eq]=${params.slug}`), { headers }),
-      fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}?${config.blocks.API_DYNAMIC_ZONE_BLOCKS}&filters[slug][$eq]=${params.slug}`), { headers })
-    ]);
-
-    const [seoPathData, blocksPathData] = await Promise.all([
-      seoPathRes.json(),
-      blocksPathRes.json()
-    ]);
-
-    if (!blocksPathData.data || blocksPathData.data.length === 0) notFound();
-
-    const { title, blocks, showServicesBanner, showSubscribeForm } = blocksPathData.data[0] ?? {};
+    const apiResponse = await fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}?${config.blocks.API_DYNAMIC_ZONE_BLOCKS}&${config.blocks.API_SEO_BLOCK_QUERY}&filters[slug][$eq]=${params.slug}`), { headers });
+    const fetchedData = await apiResponse.json();
+    
+    if (!fetchedData.data || fetchedData.data.length === 0) notFound();
+    
+    const { title, blocks, showServicesBanner, showSubscribeForm } = fetchedData.data[0] ?? {};
 
     return {
         pageTitle: title ?? '',

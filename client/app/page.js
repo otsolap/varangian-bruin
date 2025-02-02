@@ -19,7 +19,6 @@ export default async function Page () {
   )
 }
 
-
 async function getContent() {
   const headers = {
     'Content-Type': 'application/json',
@@ -27,22 +26,15 @@ async function getContent() {
   };
 
   try {
-    const [seoPathRes, blocksPathRes] = await Promise.all([
-      fetch(getStrapiURL(`/${config.global.API_HOME_QUERY}?${config.blocks.API_SEO_BLOCK_QUERY}`), { headers }),
-      fetch(getStrapiURL(`/${config.global.API_HOME_QUERY}?${config.blocks.API_DYNAMIC_ZONE_BLOCKS}`), { headers })
-    ]);
-
-    const [seoPathData, blocksPathData] = await Promise.all([
-      seoPathRes.json(),
-      blocksPathRes.json()
-    ]);
+    const apiResponse = await fetch(getStrapiURL(`/${config.global.API_HOME_QUERY}?${config.blocks.API_DYNAMIC_ZONE_BLOCKS}&${config.blocks.API_SEO_BLOCK_QUERY}`), { headers });
+    const fetchedData = await apiResponse.json();
 
     return {
-      pageTitle: title ?? '',
-      meta: seoPathData.seo ?? {},
-      blocks: blocksPathData.data.blocks ?? {},
-      showServicesBanner: blocksPathData.data.showServicesBanner ?? false,
-      showSubscribeForm: blocksPathData.data.showSubscribeForm ?? false,
+      pageTitle: fetchedData.title ?? '',
+      meta: fetchedData.seo ?? {},
+      blocks: fetchedData.data.blocks ?? {},
+      showServicesBanner: fetchedData.data.showServicesBanner ?? false,
+      showSubscribeForm: fetchedData.data.showSubscribeForm ?? false,
     }
   } catch (error) {
     console.error('Error:', error)
