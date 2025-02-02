@@ -738,7 +738,6 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     blocks: Schema.Attribute.DynamicZone<
       [
         'blocks.accordion',
-        'blocks.article-text-block',
         'blocks.banner',
         'blocks.blogs',
         'blocks.cards',
