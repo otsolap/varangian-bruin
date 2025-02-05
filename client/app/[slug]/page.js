@@ -49,11 +49,11 @@ async function getContent(params) {
     
     if (!fetchedData.data || fetchedData.data.length === 0) notFound();
     
-    const { title, blocks, showServicesBanner, showSubscribeForm } = fetchedData.data[0] ?? {};
+    const { title, blocks, seo, showServicesBanner, showSubscribeForm } = fetchedData.data[0] ?? {};
 
     return {
         pageTitle: title ?? '',
-        meta: seoPathData.seo ?? {},
+        meta: seo ?? {},
         blocks: blocks ?? {},
         showServicesBanner: showServicesBanner ?? false,
         showSubscribeForm: showSubscribeForm ?? false,
