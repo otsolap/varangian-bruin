@@ -65,7 +65,7 @@
         "SERVICES_PATH": "api/services",
         "SERVICE_TYPES_PATH": "api/service-types",
         "SERVICES_BANNER_PATH": "api/pages?filters[showServicesBanner][$eq]=true",
-        "SUBSCRIPTION_FORM_PATH": "api/pages?filters[showSubscriptionForm][$eq]=true"
+        "SUBSCRIPTION_FORM_PATH": "api/pages?filters[showSubscribeForm][$eq]=true"
     },
     "nonPageSlugs": ["robots.txt", "humans.txt", "ads.txt", "sitemap.xml", "favicon.ico"]
 }  
