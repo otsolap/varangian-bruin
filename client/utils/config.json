@@ -59,14 +59,13 @@
         "SUBSCRIPTION_PATH":"api/subscribers/webhook/activate"
     },
     "revalidate": {
-        "HOME_PATH": "api/home",
         "PAGES_PATH": "api/pages",
         "BLOG_PATH": "api/articles",
         "BLOG_CATEGORY_PATH": "api/categories",
         "SERVICES_PATH": "api/services",
         "SERVICE_TYPES_PATH": "api/service-types",
-        "SERVICES_BANNER_PATH": "api/pages?populate[0]=showServicesBanner&filters[showServicesBanner][$eq]=true",
-        "SUBSCRIPTION_FORM_PATH": "api/pages?populate[0]=showSubscriptionForm&filters[showSubscriptionForm][$eq]=true"
+        "SERVICES_BANNER_PATH": "api/pages?filters[showServicesBanner][$eq]=true",
+        "SUBSCRIPTION_FORM_PATH": "api/pages?filters[showSubscriptionForm][$eq]=true"
     },
     "nonPageSlugs": ["robots.txt", "humans.txt", "ads.txt", "sitemap.xml", "favicon.ico"]
 }  
