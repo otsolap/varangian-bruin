@@ -8,6 +8,13 @@ const BlogAnchors = ({ blogAnchors }) => {
   const [items, setItems] = useState([]);
   let { blogs, filter } = blogAnchors
 
+  useEffect(() => {
+    if (filter === 'latest') {
+      fetchData();
+    }
+  }, [filter]);
+
+
   const fetchData = async () => {
     try {
       const res = await fetch(getStrapiURL(`/${config.blocks.API_CONTENT_BLOG_SECTION_LATEST_QUERY}`));
@@ -18,18 +25,13 @@ const BlogAnchors = ({ blogAnchors }) => {
     }
   };
 
-  useEffect(() => {
-    if (filter === 'latest') {
-      fetchData();
-    }
-  }, [filter]);
 
-  const blogItems = filter === "latest" ? items : blogs;
+  const blogItems = filter === "latest" ? items.data : blogs;
 
   return (
-    blogItems?.data?.length ? (
+    blogItems?.length ? (
       <div className={styles.wrapper}>
-        {blogItems.data.map((item, i) => {
+        {blogItems.map((item, i) => {
           return (
             <Link className={styles.link} key={i} href={`/${config.blog.BLOG_PATH}/${item.slug}`}>
               {item.title}
