@@ -33,9 +33,9 @@
       "type": "uid",
       "targetField": "title"
     },
-    "article": {
+    "articles": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::article.article",
       "mappedBy": "author"
     },
