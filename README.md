@@ -25,13 +25,12 @@ The Varangian Theme is the primary theme for projects developed by the Varangian
 
 ### Database
 
-First, set up a MySQL database. I recommend using [docker-mysql](https://hub.docker.com/_/mysql). Go to the `api` directory and use `env.example` to configure MySQL properly. Use password generators for safe and secure passwords.
+First, set up a MySQL database. I recommend using [docker-mysql](https://hub.docker.com/_/mysql). Go to the `api` directory and use `env.example` to configure MySQL properly. Use password generators for safe and secure passwords. Import data from the `varangian_theme_api` MYSQL Database to your new project's Database for the starting data.
 
 ### Backend
 
 Install and set up the Strapi API. Configure an API Token for the project in both the backend and frontend, as this is required for all non-public API requests. The API token is a custom value with rights to `find`, `findOne` and `update`. The update feature is used for revalidation. You can read more at [NextJS](https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#route-segment-config)
 
-Start publishing content such as Home, Page(s), etc.
 
 ### Frontend
 
@@ -44,5 +43,6 @@ Navigate to the `client` directory and use `.env.example` to set up the client p
 ## Special thanks
 
 - ** Guidance & Mentorship **: 
+
   - [Åsk 'Dabitch' Wåppling](https://dabitch.net/)
   - [Ville 'Fokke' Saarivaara](https://fokke.fi/)
