@@ -26,12 +26,6 @@
     "description": {
       "type": "string"
     },
-    "author": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::author.author",
-      "inversedBy": "article"
-    },
     "slug": {
       "type": "uid",
       "targetField": "title",
@@ -57,6 +51,12 @@
       "type": "component",
       "repeatable": false,
       "component": "util.seo"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "articles"
     }
   }
 }

@@ -44,7 +44,7 @@ export function getStrapiMedia(url) {
       const subscribeFormData = await subscribeFormResponse?.json() || null;
   
       return {
-        servicesBanner: servicesBannerData.data.banner ?? null,
+        servicesBanner: servicesBannerData.data?.banner ?? null,
         subscribeForm: subscribeFormData.data ?? null
       };
     } catch (error) {
@@ -64,22 +64,21 @@ export function getStrapiMedia(url) {
         getStrapiURL(`/${config.global.API_NAVIGATION_QUERY}`),
         getStrapiURL(`/${config.global.API_FOOTER_QUERY}`),
         getStrapiURL(`/${config.global.API_BLOG_NAVIGATION_QUERY}`),
-        getStrapiURL(`/${config.blocks.API_CONTENT_BLOG_SECTION_LATEST_QUERY}`),
       ];
-  
-      let navigationResponse, footerResponse, blogNavigationResponse, latestBlogs;
+
+      let navigationResponse, footerResponse, blogNavigationResponse;
       try {
-        [navigationResponse, footerResponse, , blogNavigationResponse, latestBlogs] = await Promise.all(urls.map(url => 
+        [navigationResponse, footerResponse, blogNavigationResponse] = await Promise.all(urls.map(url => 
           fetch(url, { headers })
         ));
       } catch (error) {
         console.error('Failed to fetch API data:', error);
       }
-  
+
       const navigationData = await navigationResponse?.json() || null;
       const footerData = await footerResponse?.json() || null;
       const blogNavigationData = await blogNavigationResponse?.json() || null;
-  
+
       return {
         navigation: navigationData,
         footer: footerData,
