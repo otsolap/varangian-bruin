@@ -25,12 +25,29 @@ The Varangian Theme is the primary theme for projects developed by the Varangian
 
 ### Database
 
-First, set up a MySQL database. I recommend using [docker-mysql](https://hub.docker.com/_/mysql). Go to the `api` directory and use `env.example` to configure MySQL properly. Use password generators for safe and secure passwords. Import data from the `varangian_theme_api` MYSQL Database to your new project's Database for the starting data.
+First, set up a MySQL database. I recommend using [docker-mysql](https://hub.docker.com/_/mysql). Go to the `api` directory and use `env.example` to configure MySQL properly. Use password generators for safe and secure passwords. 
+
+#### Importing the starter database.
+
+Import data from the `varangian_theme_api` MYSQL Database to your new project's Database for the starting data.
 
 ### Backend
 
 Install and set up the Strapi API. Configure an API Token for the project in both the backend and frontend, as this is required for all non-public API requests. The API token is a custom value with rights to `find`, `findOne` and `update`. The update feature is used for revalidation. You can read more at [NextJS](https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#route-segment-config)
 
+First we retrieve the data from our template database:
+
+```
+docker exec mysql-container \
+  mysqldump -u <MYSQL_USER> -p<MYSQL_PASSWORD> --no-create-info <DB> > data_dump.sql
+```
+
+Then we dump the `data_dumpp.sql`into our new database we just created:
+
+```
+docker exec -i <TARGET_CONTAINER> \
+  mysql -u <MYSQL_USER> -p<MYSQL_PASSWORD> <TARGET_DATABASE> < data_dump.sql
+```
 
 ### Frontend
 
