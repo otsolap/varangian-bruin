@@ -8,6 +8,7 @@ import { getStrapiMedia } from "@/utils/api"
     
   // Paginate helper function
   export const paginate = (items, pageNumber, pageSize) => {
+    if (!items.length) return {}
     const startIndex = (pageNumber - 1) * pageSize
     return items.slice(startIndex, startIndex + pageSize)
   }

@@ -28,19 +28,21 @@ export const ArchiveSection = ({ items, service_types }) => {
         </header>
       }
       <div className={styles.wrapper}>
-        {paginatedPosts.map((item, i) => {
-          return (
-            <ServicesItem
-              key={i}
-              image={item.image}
-              title={item.title}
-              price={item.price}
-              currency={item.currency}
-              serviceType={item.service_types[0]}
-              slug={item.slug}
-            />
-          )
-        })}
+        {paginatedPosts.length > 0 ? (
+            paginatedPosts.map((item, i) => (
+              <ServicesItem
+                key={i}
+                image={item.image}
+                title={item.title}
+                price={item.price}
+                currency={item.currency}
+                serviceType={item.service_types[0]}
+                slug={item.slug}
+              />
+            ))
+          ) : (
+            <p>No items found</p>
+        )}
         <Pagination
           items={items.length}
           currentPage={currentPage}

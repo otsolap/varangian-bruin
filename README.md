@@ -38,16 +38,19 @@ Install and set up the Strapi API. Configure an API Token for the project in bot
 First we retrieve the data from our template database:
 
 ```
-docker exec mysql-container \
-  mysqldump -u <MYSQL_USER> -p<MYSQL_PASSWORD> --no-create-info <DB> > data_dump.sql
+docker exec <DOCKER_MYSQL_IMAGE> \
+  mysqldump -u <MYSQL_USER> -p<MYSQL_PASSWORD> <TEMPLATE_DB> > starter_data.sql
 ```
 
-Then we dump the `data_dumpp.sql`into our new database we just created:
+Then we dump the `starter_data.sql`into our new database we just created:
 
 ```
-docker exec -i <TARGET_CONTAINER> \
-  mysql -u <MYSQL_USER> -p<MYSQL_PASSWORD> <TARGET_DATABASE> < data_dump.sql
+docker exec -i <DOCKER_MYSQL_IMAGE> \
+  mysql -u <MYSQL_USER> -p<MYSQL_PASSWORD> <NEW_DB>> < starter_data.sql
 ```
+
+Test that the data dump went succesfully. If everything went right you can delete the `starter_data.sql` file.
+
 
 ### Frontend
 
