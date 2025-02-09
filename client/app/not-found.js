@@ -25,8 +25,14 @@ export default async function NotFound () {
   }
 
   async function getNotFoundData() {
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+    };
+
+
     try {
-      const res = await fetch(getStrapiURL(`/${config.global.API_NOT_FOUND_QUERY}`));
+      const res = await fetch(getStrapiURL(`/${config.global.API_NOT_FOUND_QUERY}`), { headers });
       const resData= await res.json();
   
       if (!resData) {
