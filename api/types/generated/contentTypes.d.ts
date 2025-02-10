@@ -973,7 +973,6 @@ export interface ApiServiceTypeServiceType extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'util.seo', false>;
-    services: Schema.Attribute.Relation<'manyToMany', 'api::service.service'>;
     slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -1025,10 +1024,6 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     seo: Schema.Attribute.Component<'util.seo', false>;
     service_type: Schema.Attribute.Relation<
       'oneToOne',
-      'api::service-type.service-type'
-    >;
-    service_types: Schema.Attribute.Relation<
-      'manyToMany',
       'api::service-type.service-type'
     >;
     slug: Schema.Attribute.UID<'title'>;

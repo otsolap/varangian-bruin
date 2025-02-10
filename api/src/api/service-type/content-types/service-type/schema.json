@@ -19,12 +19,6 @@
       "type": "uid",
       "targetField": "title"
     },
-    "services": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::service.service",
-      "inversedBy": "service_types"
-    },
     "hero": {
       "type": "component",
       "repeatable": false,
