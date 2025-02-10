@@ -38,7 +38,8 @@
         "blocks.image-block",
         "blocks.image-gallery",
         "blocks.quote",
-        "blocks.services"
+        "blocks.services",
+        "blocks.buttons"
       ]
     },
     "showServicesBanner": {

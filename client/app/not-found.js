@@ -13,25 +13,24 @@ export default async function NotFound () {
                {title && <h1>{title}</h1>}
             </header>
             {description && <MarkdownBlock markdown={description} />}
-            {buttons && (
+            {buttons && buttons.length ? (
               <div className={styles.buttonWrapper}>
                 {buttons.map((button, i) => (
                   <CustomLink link={button} key={i} className={`button button--${button.selectTheme}`} />
                 ))}
               </div>
-            )}
+            ): null}
         </section>
     )
   }
 
   async function getNotFoundData() {
-    const headers = {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
-    };
-
-
     try {
+      const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+      };
+
       const res = await fetch(getStrapiURL(`/${config.global.API_NOT_FOUND_QUERY}`), { headers });
       const resData= await res.json();
   
@@ -40,17 +39,11 @@ export default async function NotFound () {
       }
 
       return {
-        title: resData.data?.title ?? {},
-        description: resData.data?.description ?? {},
+        title: resData.data?.title ?? `test`,
+        description: resData.data?.description ?? `test`,
         buttons: resData.data?.buttons ?? {},
       }
     } catch (error) {
       console.error('Error fetching not-found data:', error);
-  
-      return {
-        title: "404 - Page Not Found",
-        description:"Unfortunately, the page you were looking for cannot be found it might have been moved or deleted. If you typed the address directly into the browsers address bar, you might want to double-check to make sure that no typing errors have slipped in.\n\nLinks that could help you track down the content you're looking for",
-        buttons: [{"href":"/","title":"Home","isExternal":false,"target":null,"selectTheme":"primary"}],
-      }
     }
   }

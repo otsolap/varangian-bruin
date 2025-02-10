@@ -894,6 +894,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'blocks.image-gallery',
         'blocks.quote',
         'blocks.services',
+        'blocks.buttons',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
