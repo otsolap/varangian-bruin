@@ -1,6 +1,7 @@
 import Accordion from '@/components/blocks/Accordion';
 import Banner from '@/components/blocks/Banner';
 import BlogSection from '@/components/blocks/BlogSection';
+import Buttons from '@/components/blocks/Buttons';
 import Cards from '@/components/blocks/Cards';
 import FormEmbed from '@/components/blocks/FormEmbed';
 import FooterColumn from '@/partials/navigation/FooterColumn';
@@ -26,17 +27,20 @@ const getBlockComponent = ({ __component, ...rest }, index) => {
     case 'blocks.article-text-block':
       Block = Textarea;
       break;
-    case 'blocks.embed':
-      Block = Embed;
-      break;
     case 'blocks.banner':
       Block = Banner;
       break;
     case 'blocks.blogs':
       Block = BlogSection;
       break;
+    case 'blocks.buttons':
+      Block = Buttons;
+      break;
     case 'blocks.cards':
       Block = Cards;
+      break;
+    case 'blocks.embed':
+      Block = Embed;
       break;
     case 'blocks.form-embed':
       Block = FormEmbed;

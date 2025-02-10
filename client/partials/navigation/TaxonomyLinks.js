@@ -6,19 +6,20 @@ import config from '@/utils/config';
 
 function TaxonomyLinks({ categories, service_types }) {
   const [isDesktop, setIsDesktop] = useState(false);
-
+  
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth > 1440);
     };
-
+    
     handleResize();
     window.addEventListener('resize', handleResize);
-
+    
     return () => window.removeEventListener('resize', handleResize);
   }, [isDesktop]);
-
+  
   const data = categories || service_types;
+  if(!data.length) return null;
   const isCategory = categories != null;
 
   const getPath = (item) => {

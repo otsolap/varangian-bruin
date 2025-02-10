@@ -59,6 +59,19 @@ export interface BlocksBlogs extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksButtons extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_buttons';
+  info: {
+    description: '';
+    displayName: 'Buttons';
+  };
+  attributes: {
+    buttons: Schema.Attribute.Component<'partials.button', true>;
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface BlocksCards extends Struct.ComponentSchema {
   collectionName: 'components_blocks_cards';
   info: {
@@ -566,6 +579,7 @@ declare module '@strapi/strapi' {
       'blocks.article-text-block': BlocksArticleTextBlock;
       'blocks.banner': BlocksBanner;
       'blocks.blogs': BlocksBlogs;
+      'blocks.buttons': BlocksButtons;
       'blocks.cards': BlocksCards;
       'blocks.form-embed': BlocksFormEmbed;
       'blocks.hero': BlocksHero;

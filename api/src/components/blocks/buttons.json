@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_blocks_buttons",
+  "info": {
+    "displayName": "Buttons",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "partials.button"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
