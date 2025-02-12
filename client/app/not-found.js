@@ -39,9 +39,9 @@ export default async function NotFound () {
       }
 
       return {
-        title: resData.data?.title ?? `test`,
-        description: resData.data?.description ?? `test`,
-        buttons: resData.data?.buttons ?? {},
+        title: resData.data?.title ?? `${config.notFound.title}`,
+        description: resData.data?.description ?? `${config.notFound.description}`,
+        buttons: resData.data?.buttons ?? `${config.notFound.buttons}`,
       }
     } catch (error) {
       console.error('Error fetching not-found data:', error);
