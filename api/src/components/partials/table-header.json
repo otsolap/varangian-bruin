@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_partials_table_headers",
+  "info": {
+    "displayName": "TableHeader"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

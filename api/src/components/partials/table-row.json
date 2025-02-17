@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_partials_table_rows",
+  "info": {
+    "displayName": "TableRow",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "TableCell": {
+      "displayName": "TableCell",
+      "type": "component",
+      "repeatable": true,
+      "component": "partials.table-cell"
+    }
+  }
+}

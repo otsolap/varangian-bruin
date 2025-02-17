@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_partials_table_cells",
+  "info": {
+    "displayName": "TableCell"
+  },
+  "options": {},
+  "attributes": {
+    "cell": {
+      "type": "text"
+    }
+  }
+}
