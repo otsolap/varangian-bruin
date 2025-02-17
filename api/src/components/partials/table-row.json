@@ -1,14 +1,13 @@
 {
   "collectionName": "components_partials_table_rows",
   "info": {
-    "displayName": "TableRow",
-    "icon": "apps",
-    "description": ""
+    "displayName": "tableRow",
+    "icon": "apps"
   },
   "options": {},
   "attributes": {
-    "TableCell": {
-      "displayName": "TableCell",
+    "tableCell": {
+      "displayName": "tableCell",
       "type": "component",
       "repeatable": true,
       "component": "partials.table-cell"

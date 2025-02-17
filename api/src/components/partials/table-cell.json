@@ -1,7 +1,8 @@
 {
   "collectionName": "components_partials_table_cells",
   "info": {
-    "displayName": "TableCell"
+    "displayName": "tableCell",
+    "icon": "apps"
   },
   "options": {},
   "attributes": {

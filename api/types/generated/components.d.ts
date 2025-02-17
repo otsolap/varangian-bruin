@@ -194,13 +194,14 @@ export interface BlocksServices extends Struct.ComponentSchema {
 export interface BlocksTable extends Struct.ComponentSchema {
   collectionName: 'components_blocks_tables';
   info: {
+    description: '';
     displayName: 'Table';
     icon: 'dashboard';
   };
   attributes: {
     caption: Schema.Attribute.Text;
-    TableHeader: Schema.Attribute.Component<'partials.table-header', true>;
-    TableRow: Schema.Attribute.Component<'partials.table-row', true>;
+    tableHeader: Schema.Attribute.Component<'partials.table-header', true>;
+    tableRow: Schema.Attribute.Component<'partials.table-row', true>;
   };
 }
 
@@ -435,7 +436,8 @@ export interface PartialsMediaMixItem extends Struct.ComponentSchema {
 export interface PartialsTableCell extends Struct.ComponentSchema {
   collectionName: 'components_partials_table_cells';
   info: {
-    displayName: 'TableCell';
+    displayName: 'tableCell';
+    icon: 'apps';
   };
   attributes: {
     cell: Schema.Attribute.Text;
@@ -445,22 +447,22 @@ export interface PartialsTableCell extends Struct.ComponentSchema {
 export interface PartialsTableHeader extends Struct.ComponentSchema {
   collectionName: 'components_partials_table_headers';
   info: {
-    displayName: 'TableHeader';
+    displayName: 'tableHeader';
+    icon: 'apps';
   };
   attributes: {
-    title: Schema.Attribute.String;
+    title: Schema.Attribute.Text;
   };
 }
 
 export interface PartialsTableRow extends Struct.ComponentSchema {
   collectionName: 'components_partials_table_rows';
   info: {
-    description: '';
-    displayName: 'TableRow';
+    displayName: 'tableRow';
     icon: 'apps';
   };
   attributes: {
-    TableCell: Schema.Attribute.Component<'partials.table-cell', true>;
+    tableCell: Schema.Attribute.Component<'partials.table-cell', true>;
   };
 }
 

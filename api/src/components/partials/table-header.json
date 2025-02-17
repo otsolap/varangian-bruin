@@ -1,12 +1,13 @@
 {
   "collectionName": "components_partials_table_headers",
   "info": {
-    "displayName": "TableHeader"
+    "displayName": "tableHeader",
+    "icon": "apps"
   },
   "options": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "text"
     }
   }
 }

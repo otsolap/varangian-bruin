@@ -2,22 +2,23 @@
   "collectionName": "components_blocks_tables",
   "info": {
     "displayName": "Table",
-    "icon": "dashboard"
+    "icon": "dashboard",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "TableHeader": {
+    "caption": {
+      "type": "text"
+    },
+    "tableHeader": {
       "type": "component",
       "repeatable": true,
       "component": "partials.table-header"
     },
-    "TableRow": {
+    "tableRow": {
       "type": "component",
       "repeatable": true,
       "component": "partials.table-row"
-    },
-    "caption": {
-      "type": "text"
     }
   }
 }
