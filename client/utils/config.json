@@ -6,7 +6,6 @@
         "API_FOOTER_QUERY":"api/footer?populate[0]=blocks&populate[1]=blocks.image&populate[2]=blocks.links&populate[3]=blocks.socialMedia&populate[4]=blocks.blogAnchors&populate[5]=blocks.blogAnchors.blogs&populate[6]=subFooter&populate[7]=subFooter.link",
         "API_BASE_SEO_QUERY":"api/base-seo?populate[0]=imageBlock.image",
         "API_NOT_FOUND_QUERY": "api/not-found?populate[0]=buttons",
-        "API_ANALYTICS_QUERY": "api/analytic",
         "API_BLOG_NAVIGATION_QUERY": "api/blog-navigation?populate[0]=social&populate[1]=button"
     },
     "pages": {
@@ -17,7 +16,7 @@
     },
     "blocks": {
         "API_SEO_BLOCK_QUERY":"populate[0]=seo&populate[1]=seo.imageBlock.image",
-        "API_DYNAMIC_ZONE_BLOCKS": "populate[blocks][on][blocks.hero][populate]=image&populate[blocks][on][blocks.hero][populate]=buttons&populate[blocks][on][blocks.blogs][populate]=blogs.image&populate[blocks][on][blocks.blogs][populate]=blogs.category&populate[blocks][on][blocks.cards][populate]=cards.image&populate[blocks][on][blocks.form-embed][populate]=form.inputs.options&populate[blocks][on][blocks.services][populate]=services.image&populate[blocks][on][blocks.services][populate]=services.service_type&populate[blocks][on][blocks.accordion][populate]=accordions&populate[blocks][on][blocks.accordion][populate]=image&populate[blocks][on][blocks.media-mix][populate]=mediaMixItems.image&populate[blocks][on][blocks.text-area][populate]=*&populate[blocks][on][blocks.video-embed][populate]=*&populate[blocks][on][blocks.image-block][populate]=image&populate[blocks][on][blocks.image-gallery][populate]=images&populate[blocks][on][blocks.quote][populate]=*&populate[blocks][on][blocks.buttons][populate]=*",
+        "API_DYNAMIC_ZONE_BLOCKS": "populate[blocks][on][blocks.hero][populate]=image&populate[blocks][on][blocks.hero][populate]=buttons&populate[blocks][on][blocks.blogs][populate]=blogs.image&populate[blocks][on][blocks.blogs][populate]=blogs.category&populate[blocks][on][blocks.cards][populate]=cards.image&populate[blocks][on][blocks.form-embed][populate]=form.inputs.options&populate[blocks][on][blocks.services][populate]=services.image&populate[blocks][on][blocks.services][populate]=services.service_type&populate[blocks][on][blocks.accordion][populate]=accordions&populate[blocks][on][blocks.accordion][populate]=image&populate[blocks][on][blocks.media-mix][populate]=mediaMixItems.image&populate[blocks][on][blocks.text-area][populate]=*&populate[blocks][on][blocks.video-embed][populate]=*&populate[blocks][on][blocks.image-block][populate]=image&populate[blocks][on][blocks.image-gallery][populate]=images&populate[blocks][on][blocks.quote][populate]=*&populate[blocks][on][blocks.buttons][populate]=*&populate[blocks][on][blocks.table][populate]=tableHeader&populate[blocks][on][blocks.table][populate]=tableRow.tableCell",
         "API_CONTENT_BLOG_SECTION_LATEST_QUERY":"api/articles?populate[0]=image&populate[1]=category&sort[0]=createdAt:desc&pagination[start]=0&pagination[limit]=3",
         "CONTENT_BLOG_SECTION_BLOG_ARCHIVE_LEAD":"See blog archive",
         "CONTENT_SERVICES_SECTION_SERVICE_ARCHIVE_LEAD":"See all services"
@@ -42,7 +41,7 @@
         "API_AUTHORS_CONTENT_QUERY":"api/authors?populate[0]=image&populate[1]=socialMedia",
         "API_CATEGORIES_CONTENT_QUERY":"api/categories?populate[0]=articles&populate[1]=articles.image&populate[2]=articles.author&populate[3]=articles.category&populate[4]=hero&populate[5]=hero.buttons&populate[6]=hero.image&populate[7]=seo&populate[8]=seo.imageBlock.image",
         "API_ARTICLES_QUERY":"api/articles?populate[0]=author&populate[1]=author.image&populate[2]=author.socialMedia&populate[3]=image&populate[4]=blocks&populate[5]=blocks.image&populate[6]=category",
-        "API_ARTICLE_PAGE_CONTENT_QUERY":"api/articles?populate[0]=seo&populate[1]=seo.imageBlock.image&populate[2]=author&populate[3]=author.image&populate[4]=author.socialMedia&populate[5]=image&populate[6]=blocks&populate[7]=blocks.image&populate[8]=blocks.images.image&populate[9]=category&filters[slug][$eq]=",
+        "API_ARTICLE_PAGE_CONTENT_QUERY":"articles?populate[seo][fields]=*&populate[seo][populate][imageBlock][populate]=image&populate[author][populate]=image&populate[author][populate]=socialMedia&populate[image][populate]=*&populate[blocks][on][blocks.image-block][populate]=image&populate[blocks][on][blocks.image-gallery][populate]=images&populate[category][populate]=*&filters[slug][$eq]=",
         "LATEST_ARTICLES_TITLE":"All latest articles",
         "LATEST_ARTICLES_THEME":"secondary",
         "RELATED_ARTICLES_TITLE":"Related Articles on",
