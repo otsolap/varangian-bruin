@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_partials_table_cells",
+  "info": {
+    "displayName": "tableCell",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "cell": {
+      "type": "text"
+    }
+  }
+}

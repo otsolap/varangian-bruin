@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_blocks_tables",
+  "info": {
+    "displayName": "Table",
+    "icon": "dashboard",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "caption": {
+      "type": "text"
+    },
+    "tableHeader": {
+      "type": "component",
+      "repeatable": true,
+      "component": "partials.table-header"
+    },
+    "tableRow": {
+      "type": "component",
+      "repeatable": true,
+      "component": "partials.table-row"
+    }
+  }
+}

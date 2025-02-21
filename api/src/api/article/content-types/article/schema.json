@@ -38,7 +38,8 @@
         "blocks.article-text-block",
         "blocks.image-block",
         "blocks.video-embed",
-        "blocks.image-gallery"
+        "blocks.image-gallery",
+        "blocks.table"
       ]
     },
     "category": {

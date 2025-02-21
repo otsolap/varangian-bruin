@@ -419,6 +419,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
         'blocks.image-block',
         'blocks.video-embed',
         'blocks.image-gallery',
+        'blocks.table',
       ]
     >;
     category: Schema.Attribute.Relation<'manyToMany', 'api::category.category'>;
@@ -895,6 +896,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'blocks.quote',
         'blocks.services',
         'blocks.buttons',
+        'blocks.table',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
