@@ -37,7 +37,7 @@
 
 .category,
 .description {
-    font-size: var(--spacing-single);
+    font-size: 1rem;
 }
 
 .description {
@@ -54,12 +54,12 @@
 }
 
 .authorTitle {
-    font-size: var(--spacing-single-quarter);
+    font-size: 1.25rem;
     margin-bottom: initial;
 }
 
 .authorSubtitle {
-    font-size: var(--spacing-three-quarters);
+    font-size: 0.75rem;
 }
 
 .authorImageContainer,
@@ -102,17 +102,17 @@
     }
 
     .title {
-        font-size: var(--spacing-double-half);
+        font-size: 2.5rem;
     }
 
     .category,
     .authorSubtitle {
-        font-size: var(--spacing-single-quarter);
+        font-size: 1.25rem;
     }
 
     .description,
     .authorTitle {
-        font-size: var(--spacing-single-half);
+        font-size: 1.5rem;
     }
 
     .imageContainer {

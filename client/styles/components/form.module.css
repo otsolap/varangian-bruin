@@ -82,7 +82,7 @@
 .option,
 .textarea,
 .input {
-  font-size: var(--spacing-single);
+  font-size: 1rem;
   width: 100%;
   max-width: 100%;
 }

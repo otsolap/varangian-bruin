@@ -18,7 +18,7 @@
 
 .caption {
     font-style: italic;
-    font-size: var(--spacing-three-quarters);
+    font-size: .75rem;
     text-align: center;
 }
 
