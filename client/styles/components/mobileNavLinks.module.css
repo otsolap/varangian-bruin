@@ -35,6 +35,6 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  font-size: var(--spacing-three-quarters);
+  font-size: .75rem;
   line-height: 1.625;
 }

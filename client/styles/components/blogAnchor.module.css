@@ -5,7 +5,7 @@
 }
 
 .link {
-    font-size: var(--spacing-single);
+    font-size: 1rem;
     transition: all .3s cubic-bezier(.4,0,.2,1);
 }
 
