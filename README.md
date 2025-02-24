@@ -20,7 +20,10 @@ The Varangian Theme is the primary theme for projects developed by the Varangian
   - **Convertkit**: A robust tool for subscriber list growth, especially for newsletters, enhancing your digital marketing capabilities.
   - **Google Search-Console**: Integration for monitoring and optimizing your site's presence in Google search results.
 
- 
+## Updating The Theme
+
+If you update the theme with new features. Do remember to update the Strapi exports. This way each data has the latest database with all latest features.
+
 ## Getting Started
 
 ### Database
@@ -29,28 +32,11 @@ First, set up a MySQL database. I recommend using [docker-mysql](https://hub.doc
 
 #### Importing the starter database.
 
-Import data from the `varangian_theme_api` MYSQL Database to your new project's Database for the starting data.
+Get the latest theme_starting_data_{date}.tar.gz from either your local device or cloud. Download and place the file under `api` directory and run `npm run strapi import` on it. Now you're good to go.
 
 ### Backend
 
 Install and set up the Strapi API. Configure an API Token for the project in both the backend and frontend, as this is required for all non-public API requests. The API token is a custom value with rights to `find`, `findOne` and `update`. The update feature is used for revalidation. You can read more at [NextJS](https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#route-segment-config)
-
-First we retrieve the data from our template database:
-
-```
-docker exec <DOCKER_MYSQL_IMAGE> \
-  mysqldump -u <MYSQL_USER> -p<MYSQL_PASSWORD> <TEMPLATE_DB> > starter_data.sql
-```
-
-Then we dump the `starter_data.sql`into our new database we just created:
-
-```
-docker exec -i <DOCKER_MYSQL_IMAGE> \
-  mysql -u <MYSQL_USER> -p<MYSQL_PASSWORD> <NEW_DB>> < starter_data.sql
-```
-
-Test that the data dump went succesfully. If everything went right you can delete the `starter_data.sql` file.
-
 
 ### Frontend
 
