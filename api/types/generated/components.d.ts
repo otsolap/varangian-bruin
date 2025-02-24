@@ -191,6 +191,20 @@ export interface BlocksServices extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksTable extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_tables';
+  info: {
+    description: '';
+    displayName: 'Table';
+    icon: 'dashboard';
+  };
+  attributes: {
+    caption: Schema.Attribute.Text;
+    tableHeader: Schema.Attribute.Component<'partials.table-header', true>;
+    tableRow: Schema.Attribute.Component<'partials.table-row', true>;
+  };
+}
+
 export interface BlocksTextArea extends Struct.ComponentSchema {
   collectionName: 'components_blocks_text_areas';
   info: {
@@ -419,6 +433,39 @@ export interface PartialsMediaMixItem extends Struct.ComponentSchema {
   };
 }
 
+export interface PartialsTableCell extends Struct.ComponentSchema {
+  collectionName: 'components_partials_table_cells';
+  info: {
+    displayName: 'tableCell';
+    icon: 'apps';
+  };
+  attributes: {
+    cell: Schema.Attribute.Text;
+  };
+}
+
+export interface PartialsTableHeader extends Struct.ComponentSchema {
+  collectionName: 'components_partials_table_headers';
+  info: {
+    displayName: 'tableHeader';
+    icon: 'apps';
+  };
+  attributes: {
+    title: Schema.Attribute.Text;
+  };
+}
+
+export interface PartialsTableRow extends Struct.ComponentSchema {
+  collectionName: 'components_partials_table_rows';
+  info: {
+    displayName: 'tableRow';
+    icon: 'apps';
+  };
+  attributes: {
+    tableCell: Schema.Attribute.Component<'partials.table-cell', true>;
+  };
+}
+
 export interface UtilBlogAnchors extends Struct.ComponentSchema {
   collectionName: 'components_util_blog_anchors';
   info: {
@@ -588,6 +635,7 @@ declare module '@strapi/strapi' {
       'blocks.media-mix': BlocksMediaMix;
       'blocks.quote': BlocksQuote;
       'blocks.services': BlocksServices;
+      'blocks.table': BlocksTable;
       'blocks.text-area': BlocksTextArea;
       'blocks.video-embed': BlocksVideoEmbed;
       'form-inputs.checkbox-field': FormInputsCheckboxField;
@@ -602,6 +650,9 @@ declare module '@strapi/strapi' {
       'partials.card': PartialsCard;
       'partials.link': PartialsLink;
       'partials.media-mix-item': PartialsMediaMixItem;
+      'partials.table-cell': PartialsTableCell;
+      'partials.table-header': PartialsTableHeader;
+      'partials.table-row': PartialsTableRow;
       'util.blog-anchors': UtilBlogAnchors;
       'util.blog-social-share': UtilBlogSocialShare;
       'util.footer-articles': UtilFooterArticles;

@@ -58,12 +58,12 @@
 }
 
 .content h1 {
-  font-size: var(--spacing-triple);
+  font-size: 3rem;
   margin-bottom: initial;
 }
 
 .content h2 {
-  font-size: var(--spacing-single);
+  font-size: 1rem;
   font-weight: 500;
   margin-bottom: initial;
 }
@@ -170,7 +170,7 @@
   }
 
   .content h2 {
-    font-size: var(--spacing-single-half);
+    font-size: 1.5rem;
     padding-bottom: var(--spacing-single);
   }
 

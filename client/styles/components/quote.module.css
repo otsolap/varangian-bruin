@@ -46,7 +46,7 @@
     }
 
     .quote {
-        font-size: var(--spacing-single)
+        font-size: 1rem;
     }
 
     .quotationMark {

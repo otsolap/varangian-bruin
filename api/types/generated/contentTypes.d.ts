@@ -419,13 +419,14 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
         'blocks.image-block',
         'blocks.video-embed',
         'blocks.image-gallery',
+        'blocks.table',
       ]
     >;
     category: Schema.Attribute.Relation<'manyToMany', 'api::category.category'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
     image: Schema.Attribute.Media<'images', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -895,6 +896,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'blocks.quote',
         'blocks.services',
         'blocks.buttons',
+        'blocks.table',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;

@@ -13,7 +13,7 @@
     text-align: center;
     width: var(--spacing-double-half);
     height: var(--spacing-double-half);
-    font-size: var(--spacing-single-quarter);
+    font-size: 1.25rem;
     line-height: 1.75;
     color: var(--color-white);
     background-color: var(--color-primary-700);

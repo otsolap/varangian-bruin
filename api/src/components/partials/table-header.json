@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_partials_table_headers",
+  "info": {
+    "displayName": "tableHeader",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    }
+  }
+}

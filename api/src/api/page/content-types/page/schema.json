@@ -39,7 +39,8 @@
         "blocks.image-gallery",
         "blocks.quote",
         "blocks.services",
-        "blocks.buttons"
+        "blocks.buttons",
+        "blocks.table"
       ]
     },
     "showServicesBanner": {
