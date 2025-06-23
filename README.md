@@ -48,10 +48,27 @@ Navigate to the `client` directory and use `.env.example` to set up the client p
 
 ## Updating from Template
 
-First add the template as a remote.
+First add the template as a remote. You only need to do this once. ;-)
 
 git remote add template [<URL-to-template-repo>](https://github.com/otsolap/varangian-theme)
 
-Get the latest updates: git fetch template
+Get the latest updates: 
 
-git merge template/master --allow-unrelated-histories
+`git fetch template`
+
+Switch to a new branch: 
+
+`git checkout -b template-update`
+
+Squash all changes done in the template to a single commit: 
+
+`git merge --squash template/master --allow-unrelated-histories`
+
+`git commit -m "template updates"`
+
+`git checkout master`
+
+`git merge template-update`
+
+
+

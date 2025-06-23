@@ -1,7 +1,7 @@
 .table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 1rem;;
+    font-size: 1rem;
     max-width: 100%;
 }
 
@@ -10,12 +10,22 @@
     padding-top: var(--spacing-single);
 }
 
+.tableHeader,
+.tableCell {
+    padding: var(--spacing-half) var(--spacing-three-quarters);
+    border: 1px solid;
+}
+
 .tableHeader {
-    padding: 8px 12px;
     text-align: center;
     border: 1px solid;
-    background-color: green;
+    background-color: var(--color-primary-900);
     font-weight: 700;
+}
+
+.tableCell {
+    border: 1px solid;
+    text-align: left;
 }
 
 .tableRow {
@@ -30,29 +40,26 @@
 }
 
 .tableRow:nth-child(even) {
-    background-color: yellow;
-}
-
-.tableCell {
-    padding: var(--spacing-half) var(--spacing-three-quarters);
-    border: 1px solid;
-    text-align: left;
+    background-color: var(--color-secondary-500);
 }
 
 /* Tablet Styles */
 @media (width >= 768px) {
+
     .table {
         overflow-x: auto;
         display: block;
         font-size: 14px;
     }
-}
 
+}
 
 /* Desktop Styles */
 @media (width >= 1440px) {
+
     .table {
         display: table;
         overflow-x: initial;
     }
+    
 }
