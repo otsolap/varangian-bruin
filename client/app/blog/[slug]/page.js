@@ -3,7 +3,7 @@ import { getStrapiURL } from "@/utils/api"
 import { notFound } from 'next/navigation'
 import Blocks from "@/components/Blocks"
 import ArticleHeading from "@/components/articles/ArticleHeading";
-import ArticleFooter from "@/components/articles/ArticleFooter";
+import ArticleAuthor from "@/components/articles/ArticleAuthor";
 import BlogSection from 'components/blocks/BlogSection';
 import TOC from "@/partials/article/TOC";
 import styles from '@/styles/pages/blog.module.css'
@@ -28,7 +28,7 @@ export default async function BlogSlug(props) {
       </article>
       <TOC blocks={blocks} title={article.title} />
     </div>
-    <ArticleFooter author={author} />
+    <ArticleAuthor author={author} />
     <RelatedArticles
       title={config.blog.RELATED_ARTICLES_TITLE}
       categoryTitle={category.title}

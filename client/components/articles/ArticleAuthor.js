@@ -1,11 +1,11 @@
 import NextImage from "partials/util/NextImage"
-import styles from '@/styles/components/articleFooter.module.css'
+import styles from '@/styles/components/articleAuthor.module.css'
 import ContactDetails from '@/partials/util/ContactDetails'
 
-const ArticleFooter = ({ author }) => {
+const ArticleAuthor = ({ author }) => {
   return (
     author ? (
-      <footer className={styles.footer}>
+      <section className={styles.section}>
         <div className={styles.column}>
             <figure className={styles.imageContainer}>
                 <NextImage 
@@ -29,9 +29,9 @@ const ArticleFooter = ({ author }) => {
             )}
             </article>
         </div>
-      </footer>
+      </section>
     ): null
   )
 }
 
-export default ArticleFooter
+export default ArticleAuthor

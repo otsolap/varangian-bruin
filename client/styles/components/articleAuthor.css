@@ -1,4 +1,4 @@
-.footer {
+.section {
     width: 100%;
     padding: var(--spacing-single);
     display: flex;
@@ -45,7 +45,7 @@
 
 /* Tablet Styles */
 @media (width >= 768px) {
-    .footer {
+    .section {
         flex-direction: row;
         gap: var(--spacing-double);
     }
@@ -63,7 +63,7 @@
 /* Desktop Styles */
 @media (width >= 1440px) {
 
-    .footer {
+    .section {
         padding-top: var(--spacing-triple);
         padding-bottom: var(--spacing-triple);
         margin-bottom: var(--spacing-triple);

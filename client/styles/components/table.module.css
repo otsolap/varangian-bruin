@@ -19,7 +19,11 @@
 .tableHeader {
     text-align: center;
     border: 1px solid;
+<<<<<<< HEAD
     background-color: var(--color-primary-900);
+=======
+    background-color: var(--color-tertiary-900);
+>>>>>>> template/master
     font-weight: 700;
 }
 
@@ -40,7 +44,11 @@
 }
 
 .tableRow:nth-child(even) {
+<<<<<<< HEAD
     background-color: var(--color-secondary-500);
+=======
+    background-color: var(--color-tertiary-500);
+>>>>>>> template/master
 }
 
 /* Tablet Styles */

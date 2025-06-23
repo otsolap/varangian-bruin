@@ -16,6 +16,10 @@
     },
     "caption": {
       "type": "string"
+    },
+    "openLarge": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

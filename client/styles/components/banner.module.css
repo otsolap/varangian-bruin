@@ -36,11 +36,11 @@
 
 /* Tablet Styles */
 @media (width >= 768px) {
+
     .banner {
         flex-direction: row;
         gap: var(--spacing-triple);
         padding: var(--spacing-double) var(--spacing-triple);
-        max-width: var(--container-desktop);
     }
 
     .imageContainer {
@@ -59,6 +59,7 @@
 
 /* Desktop Styles */
 @media (width >= 1440px) {
+
     .banner {
         border-radius: var(--spacing-single-quarter);
     }

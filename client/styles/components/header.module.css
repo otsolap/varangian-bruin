@@ -68,7 +68,6 @@
     justify-content: space-evenly;
     flex-direction: column;
     padding: initial;
-    width: 100vw;
   }
 
   .title {
@@ -88,7 +87,6 @@
     position: sticky;
     z-index: 50;
     top: 0;
-    width: 100vw;
     padding: var(--spacing-half);
     background-color: var(--color-secondary-900);
     border-bottom: 1px solid var(--color-white);

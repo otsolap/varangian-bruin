@@ -1,7 +1,4 @@
 .cards {
-  margin: 0 auto;
-  width: 100%;
-  padding: var(--spacing-single);
   background-color: var(--color-secondary-900);
 }
 
@@ -82,12 +79,6 @@
   .header {
     max-width: var(--container-ipad-landscape);
     flex: 0 0 50%;
-  }
-
-  .cards {
-    padding-top: var(--spacing-double);
-    padding-bottom: var(--spacing-double);
-    max-width: var(--container-desktop);
   }
 
   .wrapper {
