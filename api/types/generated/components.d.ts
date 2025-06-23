@@ -132,6 +132,7 @@ export interface BlocksImageBlock extends Struct.ComponentSchema {
   attributes: {
     caption: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images'>;
+    openLarge: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
   };
 }
 

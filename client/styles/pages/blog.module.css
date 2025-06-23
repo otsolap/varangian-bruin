@@ -8,11 +8,12 @@
 
 .revision {
     font-weight: 700;
-    color: var(--color-secondary-900);
-    background-color: var(--color-primary-300);
-    padding: var(--spacing-single);
-    border-radius: var(--spacing-quarter);
     width: fit-content;
+    color: var(--color-secondary-900);
+    padding: var(--spacing-single);
+    margin-bottom: var(--spacing-single);
+    background-color: var(--color-primary-300);
+    border-radius: var(--spacing-quarter);
 }
 
 .article {

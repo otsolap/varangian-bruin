@@ -4,8 +4,9 @@
 }
 
 .imageBlock {
-    width: 320px;
     position: relative;
+    height: auto;
+    width: 320px;
     padding: var(--spacing-single);
 }
 
@@ -16,16 +17,86 @@
     object-position: center;
 }
 
-.caption {
+.caption,
+.dialogCaption {
     font-style: italic;
     font-size: .75rem;
+}
+
+.caption {
     text-align: center;
+}
+
+.imageBlockClickable {
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.imageBlockClickable:hover {
+    transform: scale(1.05); 
+    opacity: 0.9;
+}
+
+.dialog[open] {
+    color: var(--color-white);
+    background-color: var(--color-black);
+    height: 95vh;
+    max-width: 95vw;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: var(--spacing-single);
+    margin-bottom: var(--spacing-single);
+}
+
+.dialogImageBlock {
+    position: relative;
+    width: 85vw;
+}
+
+.dialogImage {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.dialogButton {
+    position: absolute;
+    top: var(--spacing-single-quarter);
+    right: var(--spacing-single-quarter);
+    width: var(--spacing-double-half);
+    height: var(--spacing-double-half);
+    padding: 0;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: 1px solid var(--color-white);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialogCaption {
+    margin-top: 1rem;
+    font-size: 1rem;
 }
 
 /* Tablet Styles */
 @media (width >= 768px) {
-    
+
     .imageBlock {
-        width: auto;
+        width: 100%;
+    }
+
+    .dialog[open] {
+        margin-top: var(--spacing-double);
+        margin-bottom: var(--spacing-double);
     }
 }
