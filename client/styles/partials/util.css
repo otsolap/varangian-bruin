@@ -54,7 +54,7 @@
 
 .button--transparent:hover,
 .button--transparent:focus {
-  color: var(--color-primary-700);
+  color: var(--color-secondary-300);
 }
 
 .button--disabled {

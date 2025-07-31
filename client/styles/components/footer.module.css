@@ -60,7 +60,7 @@
 .link:focus,
 .link:hover {
   cursor: pointer;
-  color: var(--color-primary-500);
+  color: var(--color-secondary-300);
 }
 
 .toggle {
@@ -225,17 +225,17 @@
     max-width: calc(100% / 2);
     flex: 0 0 calc(50% - var(--spacing-double));
   }
-  
+
   .footerColumns-3 .column {
     max-width: calc(100% / 3);
     flex: 0 0 calc(33.333% - var(--spacing-double));
   }
-  
+
   .footerColumns-4 .column {
     max-width: calc(100% / 4);
     flex: 0 0 calc(25% - var(--spacing-double));
   }
-  
+
   .footerColumns-5 .column {
     max-width: calc(100% / 5);
     flex: 0 0 calc(20% - var(--spacing-double));
@@ -277,7 +277,7 @@
   .brand {
     padding-right: var(--spacing-half);
   }
-  
+
   .legal {
     padding-left: var(--spacing-half);
   }

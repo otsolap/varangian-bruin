@@ -5,7 +5,7 @@
     flex-direction: column;
     gap: var(--spacing-single);
     border: 1px solid transparent;
-    background-color: var(--color-secondary-700);
+    background-color: var(--color-primary-700);
     padding-top: var(--spacing-double);
     padding-bottom: var(--spacing-double);
     margin-bottom: var(--spacing-double);
@@ -33,7 +33,7 @@
     width: inherit;
     height: inherit;
     object-fit: cover;
-    box-shadow: var(--spacing-half) var(--spacing-half) 0px 0px var(--color-primary-500);
+    box-shadow: var(--spacing-half) var(--spacing-half) 0px 0px var(--color-secondary-300);
 }
 
 .buttonWrapper {
@@ -56,7 +56,7 @@
     }
 
     .image {
-        box-shadow: var(--spacing-single) var(--spacing-single) 0px 0px var(--color-primary-500);
+        box-shadow: var(--spacing-single) var(--spacing-single) 0px 0px var(--color-secondary-300);
     }
 }
 
