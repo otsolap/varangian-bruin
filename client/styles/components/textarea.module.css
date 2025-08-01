@@ -3,8 +3,8 @@
   margin-left: auto;
   width: 100%;
   word-wrap: break-word;
-  padding-left: var(--spacing-single);
-  padding-right: var(--spacing-single);
+  padding-left: var(--spacing-double);
+  padding-right: var(--spacing-double);
 }
 
 /* Desktop Styles */

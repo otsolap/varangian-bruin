@@ -18,11 +18,11 @@
 .link:focus,
 .toggle:hover,
 .toggle:focus {
-  color: var(--color-primary-700);
+  color: var(--color-orange-semidark);
 }
 
 .active {
-  color: var(--color-primary-700);
+  color: var(--color-orange-semidark);
 }
 
 .icon {

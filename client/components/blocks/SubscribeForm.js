@@ -29,33 +29,35 @@ const SubscribeForm = ({ title, description, email, formID, redirect, link, succ
   )
 
   return (
-    <section className={styles.section}>
-      <div className={styles.wrapper}>
-          <article className={styles.content}>
-            <form 
-                id={formID}
-                className={styles.form} 
-                action={formAction}
-              >
-            <header className={styles.header}>
-                {title && <h2 className={styles.title}>{title}</h2>}
-                {description && <p>{description}</p>}
-             </header>
-              <div className={styles.inputWrapper}>
-                    <input type="hidden" value="" name="honeypot" />
-                    <EmailField 
-                      placeholder={email.placeholder} 
-                      required={email.required} 
-                      width={email.width} 
-                    />
-                  <footer className={styles.footer}>
-                    {formState.submitSuccess === true ? null : <SubmitButton text={formState.buttonText} />}
-                    <p aria-live="polite">{formState.message}</p>
-                  </footer>
-              </div>
-            </form>
-          </article>
-      </div>
+    <section className={styles.formEmbed}>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+            <article className={styles.content}>
+              <form 
+                  id={formID}
+                  className={styles.form} 
+                  action={formAction}
+                >
+              <header className={styles.header}>
+                  {title && <h2 className={styles.title}>{title}</h2>}
+                  {description && <p>{description}</p>}
+              </header>
+                <div className={styles.inputWrapper}>
+                      <input type="hidden" value="" name="honeypot" />
+                      <EmailField 
+                        placeholder={email.placeholder} 
+                        required={email.required} 
+                        width={email.width} 
+                      />
+                    <footer className={styles.footer}>
+                      {formState.submitSuccess === true ? null : <SubmitButton text={formState.buttonText} />}
+                      <p aria-live="polite">{formState.message}</p>
+                    </footer>
+                </div>
+              </form>
+            </article>
+        </div>
+        </div>
     </section>
   )
 }

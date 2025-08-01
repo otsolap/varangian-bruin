@@ -6,7 +6,7 @@ import Link from "next/link";
 import { getStrapiURL } from "@/utils/api";
 import config from '@/utils/config'
 
-export default function BlogSection({ title, description, selectTheme, blogs, filter}) {
+export default function Blogs({ title, description, selectTheme, blogs, filter}) {
   const [items, setItems] = useState([]);
 
   const fetchData = async () => {

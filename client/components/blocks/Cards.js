@@ -4,7 +4,7 @@ import MarkdownBlock from "@/partials/util/MarkdownBlock";
 
 const Cards = ({ title, description, cards }) => {
   return (
-      <section className={`${styles.cards}`}>
+      <section className={styles.cards}>
         {title && (
           <header className={styles.header}>
             {title && <h2>{title}</h2>}
@@ -23,7 +23,7 @@ const Cards = ({ title, description, cards }) => {
                       sizes="150px"
                       image={item.image}
                       className={styles.image}
-                    />
+                      />
                   </figure>
                 ) : null}
                 {(item.title || item.description) ? (

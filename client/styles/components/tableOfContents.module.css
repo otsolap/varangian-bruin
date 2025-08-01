@@ -1,0 +1,39 @@
+.nav,
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-single-half);
+}
+
+.nav {
+    height: min-content;
+    background-color: var(--color-blue);
+    border: 2px solid var(--color-orange);
+    border-radius: var(--spacing-quarter);
+}
+
+.wrapper {
+    color: var(--color-white);
+    padding: var(--spacing-double);
+}
+
+.title {
+    margin-bottom: 0;
+}
+
+.list {
+    list-style-type: none;
+}
+
+.link:hover,
+.link:focus {
+  color: var(--color-orange);
+}
+
+/* Desktop Styles */
+@media (width >= 1440px) {
+    .wrapper {
+        width: 100%;
+        max-width: var(--container-mobile);
+    }
+}

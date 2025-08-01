@@ -1,9 +1,9 @@
 .bgPrimary {
-    background-color: var(--color-primary-500);
+    background-color: var(--color-orange);
 }
 
 .bgSecondary {
-    background-color: var(--color-secondary-900);
+    background-color: var(--color-blue-dark);
 }
 
 .header {
@@ -37,7 +37,7 @@
 
 .archiveLink:hover,
 .archiveLink:focus {
-    color: var(--color-primary-500);
+    color: var(--color-orange);
     font-weight: 900;
     cursor: pointer;
 }
@@ -57,23 +57,23 @@
 
 .bgPrimary .item:hover,
 .bgPrimary .item:focus {
-    border-color: var(--color-secondary-900);
-    background-color: var(--color-primary-300);
+    border-color: var(--color-blue-dark);
+    background-color: var(--color-orange-light);
 
     .imagge,
     .footer {
-        border-color: var(--color-secondary-900);
+        border-color: var(--color-blue-dark);
     }
 }
 
 .bgSecondary .item:hover,
 .bgSecondary .item:focus {
-    border-color: var(--color-primary-500);
-    background-color: var(--color-secondary-700);
+    border-color: var(--color-orange);
+    background-color: var(--color-blue);
 
     .imagge,
     .footer {
-        border-color: var(--color-primary-500);
+        border-color: var(--color-orange);
     }
 }
 

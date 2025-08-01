@@ -9,7 +9,12 @@ const CustomLink = ({ link, className }) => {
   // <a> for external links
   if (link.isExternal) {
     return (
-      <a href={link.href} className={`${link.selectTheme ? `button--${link.selectTheme}` : ''} ${className || ''}`} target="_blank" rel="noreferrer">
+      <a 
+        href={link.href} 
+        className={`${link.selectTheme ? `button--${link.selectTheme}` : ''} ${className || ''}`} 
+        target="_blank" 
+        rel="noreferrer"
+      >
         {link.title}
       </a>
     )
@@ -18,13 +23,23 @@ const CustomLink = ({ link, className }) => {
   // if target is blank
   if(link.target === '_blank') {
     return (
-      <Link href={link.href} target="_blank" rel="noopener noreferrer" className={`${link.selectTheme ? `button--${link.selectTheme}` : ''} ${className || ''}`}>
+      <Link 
+        href={link.href} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className={`${link.selectTheme ? `button--${link.selectTheme}` : ''} ${className || ''}`}
+      >
           {link.title}
       </Link>
     )
   }
 
-  return <Link href={link.href} className={`${link.selectTheme ? `button--${link.selectTheme}` : ''} ${className || ''}`} >{link.title}</Link>;
+  return <Link 
+    href={link.href}
+    className={`${link.selectTheme ? `button--${link.selectTheme}` : ''} ${className || ''}`} 
+   >
+    {link.title}
+  </Link>;
 };
 
 export default CustomLink;

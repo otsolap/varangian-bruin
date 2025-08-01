@@ -1,6 +1,6 @@
 import Accordion from '@/components/blocks/Accordion';
 import Banner from '@/components/blocks/Banner';
-import BlogSection from '@/components/blocks/BlogSection';
+import Blogs from '@/components/blocks/Blogs';
 import Buttons from '@/components/blocks/Buttons';
 import Cards from '@/components/blocks/Cards';
 import FormEmbed from '@/components/blocks/FormEmbed';
@@ -32,7 +32,7 @@ const getBlockComponent = ({ __component, ...rest }, index) => {
       Block = Banner;
       break;
     case 'blocks.blogs':
-      Block = BlogSection;
+      Block = Blogs;
       break;
     case 'blocks.buttons':
       Block = Buttons;

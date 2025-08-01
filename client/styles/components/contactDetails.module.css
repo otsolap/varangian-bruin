@@ -17,7 +17,7 @@
 .someLink:focus,
 .someLink:hover {
   cursor: pointer;
-  color: var(--color-primary-500);
+  color: var(--color-orange);
 }
 
 .icon {

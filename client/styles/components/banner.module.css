@@ -1,9 +1,14 @@
 .banner {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.wrapper {
     display: flex;
     flex-direction: column;
-    border: 1px solid transparent;
-    border-radius: 0px;
     padding: var(--spacing-double);
+    border-radius: 0px;
+    border: 1px solid transparent;
 }
 
 .imageContainer {
@@ -37,10 +42,9 @@
 /* Tablet Styles */
 @media (width >= 768px) {
 
-    .banner {
+    .wrapper {
         flex-direction: row;
         gap: var(--spacing-triple);
-        padding: var(--spacing-double) var(--spacing-triple);
     }
 
     .imageContainer {
@@ -60,7 +64,7 @@
 /* Desktop Styles */
 @media (width >= 1440px) {
 
-    .banner {
+    .wrapper {
         border-radius: var(--spacing-single-quarter);
     }
 }

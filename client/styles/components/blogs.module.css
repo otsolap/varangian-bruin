@@ -1,13 +1,14 @@
 .bgPrimary {
-    background-color: var(--color-primary-500);
+    background-color: var(--color-orange);
+    color: var(--color-black);
 }
 
 .bgSecondary {
     background-color: var(--color-primary-700);
+    color: var(--color-white);
 }
 
 .header {
-    color: var(--color-white);
     padding-bottom: var(--spacing-double);
     display: flex;
     flex-direction: column;
@@ -31,15 +32,21 @@
 }
 
 .archiveLink {
-    color: var(--color-white);
     transition: all .3s cubic-bezier(.4,0,.2,1);
 }
 
 .archiveLink:hover,
 .archiveLink:focus {
-    color: var(--color-secondary-300);
     font-weight: 900;
     cursor: pointer;
+}
+
+.bgPrimary .item {
+    border-color: var(--color-black);
+}
+
+.bgSecondary .item {
+    border-color: var(--color-white);
 }
 
 .item {
@@ -47,8 +54,7 @@
     flex-direction: column;
     border-radius: var(--spacing-single-quarter);
     align-items: flex-start;
-    border: 1px solid var(--color-white);
-    color: var(--color-white);
+    border: 1px solid;
     cursor: pointer;
     overflow: hidden;
     transition: border-color 250ms;
@@ -92,8 +98,19 @@
     object-fit: cover;
     object-position: 50% 50%;
     aspect-ratio: 16/9;
-    border-bottom: 1px solid var(--color-white);
+    border-bottom: 1px solid;
 }
+
+.bgPrimary .image,
+.bgPrimary .footer {
+    border-color: var(--color-black);
+}
+
+.bgSecondary .image,
+.bgSecondary .footer {
+    border-color: var(--color-white);
+}
+
 
 .itemContent  {
     display: flex;
@@ -126,7 +143,7 @@
 
 .footer {
     width: 100%;
-    border-top: 1px solid var(--color-white);
+    border-top: 1px solid;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-half);

@@ -1,11 +1,11 @@
 .footer {
-  border-top: 1px solid var(--color-white);
   margin: 0 auto;
   width: 100%;
-  padding-bottom: var(--spacing-quintuple);
-  background-color: var(--color-primary-900);
   display: flex;
   flex-direction: column;
+  background-color: var(--color-primary-900);
+  padding-bottom: var(--spacing-quintuple);
+  border-top: 1px solid var(--color-white);
 }
 
 .logoContainer {
@@ -142,7 +142,7 @@
 
 .mobile {
   border-top: 2px solid var(--color-white);
-  background-color: var(--color-primary-900);
+  background-color: var(--color-orange-dark);
   position: fixed;
   bottom: 0;
   left: 0;

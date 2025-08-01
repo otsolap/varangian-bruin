@@ -27,7 +27,7 @@
         "primary",
         "secondary",
         "tertiary",
-        "transparent"
+        "link"
       ],
       "default": "primary"
     }

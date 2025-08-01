@@ -375,7 +375,7 @@ export interface PartialsButton extends Struct.ComponentSchema {
     href: Schema.Attribute.Text;
     isExternal: Schema.Attribute.Boolean;
     selectTheme: Schema.Attribute.Enumeration<
-      ['primary', 'secondary', 'tertiary', 'transparent']
+      ['primary', 'secondary', 'tertiary', 'link']
     > &
       Schema.Attribute.DefaultTo<'primary'>;
     target: Schema.Attribute.Enumeration<['_blank']>;
@@ -407,7 +407,7 @@ export interface PartialsLink extends Struct.ComponentSchema {
     isExternal: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>;
     selectTheme: Schema.Attribute.Enumeration<
-      ['primary', 'secondary', 'tertiary', 'transparent']
+      ['primary', 'secondary', 'tertiary', 'link']
     >;
     target: Schema.Attribute.Enumeration<['_self', '_blank']> &
       Schema.Attribute.DefaultTo<'_self'>;

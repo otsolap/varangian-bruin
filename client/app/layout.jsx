@@ -51,7 +51,7 @@ export default async function RootLayout({ children }) {
           servicePaths={servicePaths}
           blogPaths={blogPaths}
         />
-        <main className={'container'}>
+        <main>
           {children}
         </main>
         <Footer footer={footer} />

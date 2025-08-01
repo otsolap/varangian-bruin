@@ -31,44 +31,46 @@ const FormEmbed = ({ form }) => {
   )
 
   return (
-    <section className={styles.section}>
-      <div className={styles.wrapper}>
-        {inputs.length ? (
-          <article className={styles.content}>
-            <form 
-              id={formID}
-              className={styles.form} 
-              action={formAction}
-              >
-            <header className={styles.header}>
-                {title && <h2 className={styles.title}>{title}</h2>}
-                {description && <p>{description}</p>}
-             </header>
-              <div className={styles.inputWrapper}>
-                <input type="hidden" value="" name="honeypot" />
-                <Inputs 
-                  inputs={inputs} 
-                  showLabels={showLabels}
+    <section className={styles.formEmbed}>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          {inputs.length ? (
+            <article className={styles.content}>
+              <form 
+                id={formID}
+                className={styles.form} 
+                action={formAction}
+                >
+              <header className={styles.header}>
+                  {title && <h2 className={styles.title}>{title}</h2>}
+                  {description && <p>{description}</p>}
+              </header>
+                <div className={styles.inputWrapper}>
+                  <input type="hidden" value="" name="honeypot" />
+                  <Inputs 
+                    inputs={inputs} 
+                    showLabels={showLabels}
+                  />
+                </div>
+                <footer className={styles.footer}>
+                  {formState.submitSuccess === true ? null : <SubmitButton text={formState.buttonText} />}
+                  <p aria-live="polite">{formState.message}</p>
+                </footer>
+              </form>
+            </article>
+          ) : null}
+          {image && (
+            <figure className={styles.imageContainer}>
+                <NextImage 
+                  className={styles.image} 
+                  image={image} 
+                  height={500}
+                  width={668}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-              </div>
-              <footer className={styles.footer}>
-                {formState.submitSuccess === true ? null : <SubmitButton text={formState.buttonText} />}
-                <p aria-live="polite">{formState.message}</p>
-              </footer>
-            </form>
-          </article>
-        ) : null}
-        {image && (
-          <figure className={styles.imageContainer}>
-              <NextImage 
-                className={styles.image} 
-                image={image} 
-                height={500}
-                width={668}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
-          </figure>
-        )}
+            </figure>
+          )}
+        </div>
       </div>
     </section>
   )

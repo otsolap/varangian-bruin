@@ -10,7 +10,7 @@
   padding-right: var(--spacing-half);
   align-items: center;
   justify-content: center;
-  background-color: var(--color-primary-500);
+  background-color: var(--color-blue-dark);
   border-bottom: 1px solid var(--color-white);
 }
 
@@ -88,7 +88,7 @@
     z-index: 50;
     top: 0;
     padding: var(--spacing-half);
-    background-color: var(--color-secondary-900);
+    background-color: var(--color-blue-dark);
     border-bottom: 1px solid var(--color-white);
   }
 
@@ -115,7 +115,7 @@
   }
 
   .link:hover {
-    color: var(--color-primary-700);
+    color: var(--color-orange-semidark);
     cursor: pointer;
     font-weight: 900;
   }

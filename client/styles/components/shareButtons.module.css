@@ -29,5 +29,5 @@
 
 .icon:hover,
 .icon:focus {
-    color: var(--color-primary-900);
+    color: var(--color-orange-dark);
 }

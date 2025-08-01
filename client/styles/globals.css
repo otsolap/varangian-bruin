@@ -23,34 +23,28 @@ html, body, #root {
 main {
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
   max-width: 100%;
   position: relative;
   background-color: var(--color-primary-900);
+  padding-bottom: var(--spacing-double);
 }
 
 section {
-  padding-top: var(--spacing-double);
-  padding-bottom: var(--spacing-double);
+  margin: 0 auto;
+  width: 100%;
+  padding: var(--spacing-double);
   max-width: var(--container-desktop);
-}
-
-.youtube {
-    border: var(--spacing-quarter);
-    width: 100%;
-    height: 100%;
-    padding: var(--spacing-single);
-}
-
-.mobile-only {
-  display: block;
-}
-
-.desktop-only {
-  display: none;
 }
 
 /* Tablet Styles */
 @media (width >= 768px) {
+
+    section {
+      padding-top: var(--spacing-triple);
+      padding-bottom: var(--spacing-triple);
+    }
+
     /* Blog posts */
     #post section {
       padding-top: var(--spacing-single);
@@ -61,28 +55,23 @@ section {
 
 /* Desktop Styles */
 @media (width >= 1440px) {
-    .mobile-only {
-      display: none;
-    }
 
-    .desktop-only {
-      display: block;
-    }
 
     main.container section:first-child {
       margin-top: var(--spacing-double);
     }
-    
+
+    section {
+      padding-top: var(--spacing-quadruple);
+      padding-bottom: var(--spacing-quadruple);
+    }
+
+    /* Blog posts */
     main.container #post section:first-child {
       margin-top: 0;
     }
 
-    section {
-      padding-top: var(--spacing-quintuple);
-      padding-bottom: var(--spacing-quintuple);
-    }
 
-    /* Blog posts */
     #post section {
       padding-top: 0;
       padding-bottom: var(--spacing-single);

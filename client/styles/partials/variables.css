@@ -32,19 +32,19 @@
     --line-height-body: 1.6;
 
     /* Success Colors */
-    --color-success-900: #388E3C;
-    --color-success-500: #4CAF50;
-    --color-success-100: #81C784;
+    --color-success-dark: #388E3C;
+    --color-success: #4CAF50;
+    --color-success-light: #81C784;
 
     /* Error Colors */
-    --color-error-900: #B71C1C;
-    --color-error-500: #E53935;
-    --color-error-100: #FF867C;
+    --color-error-dark: #B71C1C;
+    --color-error: #E53935;
+    --color-error-light: #FF867C;
 
     /* Random colors */
-    --color-accent: var(--color-success-500);
-    --color-info: var(--color-tertiary-300);
-    --color-alert: var(--color-error-100);
+    --color-accent: var(--color-success-light);
+    --color-info: var(--color-teal-light);
+    --color-alert: var(--color-error-light);
 
     /* Spacing */
     --spacing-quarter: .25rem;
@@ -58,4 +58,5 @@
     --spacing-triple: 3rem;
     --spacing-quadruple: 4rem;
     --spacing-quintuple: 5rem;
+    --spacing-sextuple: 6rem;
 }

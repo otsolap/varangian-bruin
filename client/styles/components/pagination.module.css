@@ -16,12 +16,12 @@
     font-size: 1.25rem;
     line-height: 1.75;
     color: var(--color-white);
-    background-color: var(--color-primary-700);
+    background-color: var(--color-orange-semidark);
     border: 1px solid;
-    border-color: var(--color-primary-700);
+    border-color: var(--color-orange-semidark);
     border-radius: 100%;
 }
 
 .item.active {
-    color: var(--color-secondary-900);
+    color: var(--color-blue-dark);
 }

@@ -28,13 +28,12 @@
     }
 }
 
-/* DESKTOP STYLES */
-@media (width >= 1440px) {
-
+/* LAPTOP STYLES */
+@media (width >= 1024px) {
     .wrapper {
         max-width: var(--container-desktop);
         flex-direction: row;
-        gap: var(--spacing-triple);
+        gap: var(--spacing-quintuple);
     }
     
     .article{

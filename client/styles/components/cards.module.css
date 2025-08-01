@@ -32,8 +32,8 @@
 
 .card:focus,
 .card:hover {
-  background-color: var(--color-secondary-800);
-  border-color: var(--color-primary-500);
+  background-color: var(--color-orange-semidark);
+  border-color: var(--color-orange);
 }
 
 .body {

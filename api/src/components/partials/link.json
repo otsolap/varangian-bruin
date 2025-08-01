@@ -30,7 +30,7 @@
         "primary",
         "secondary",
         "tertiary",
-        "transparent"
+        "link"
       ]
     },
     "page": {
