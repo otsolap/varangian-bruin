@@ -39,12 +39,12 @@
 
 /* Inactive Toggle */
 .inactiveToggle {
-  background-color: var(--color-blue-dark);
+  background-color: var(--color-green-dark);
 }
 
 /* Active Toggle */
 .activeToggle {
-  background-color: var(--color-orange-semidark);
+  background-color: var(--color-copper-semidark);
   color: var(--color-black);
 }
 

@@ -3,7 +3,7 @@
 }
 
 .bgSecondary {
-    background-color: var(--color-blue-dark);
+    background-color: var(--color-green-dark);
 }
 
 .header {
@@ -57,12 +57,12 @@
 
 .bgPrimary .item:hover,
 .bgPrimary .item:focus {
-    border-color: var(--color-blue-dark);
-    background-color: var(--color-orange-light);
+    border-color: var(--color-green-dark);
+    background-color: var(--color-copper-light);
 
     .imagge,
     .footer {
-        border-color: var(--color-blue-dark);
+        border-color: var(--color-green-dark);
     }
 }
 

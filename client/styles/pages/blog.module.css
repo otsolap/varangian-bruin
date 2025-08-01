@@ -9,10 +9,10 @@
 .revision {
     font-weight: 700;
     width: fit-content;
-    color: var(--color-secondary-900);
+    color: var(--color-green-dark);
     padding: var(--spacing-single);
     margin-bottom: var(--spacing-single);
-    background-color: var(--color-primary-300);
+    background-color: var(--color-green-light);
     border-radius: var(--spacing-quarter);
 }
 

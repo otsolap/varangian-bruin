@@ -4,7 +4,7 @@
 }
 
 .bgSecondary {
-    background-color: var(--color-primary-700);
+    background-color: var(--color-green-semidark);
     color: var(--color-white);
 }
 
@@ -62,23 +62,23 @@
 
 .bgPrimary .item:hover,
 .bgPrimary .item:focus {
-    border-color: var(--color-secondary-300);
-    background-color: var(--color-primary-700);
+    border-color: var(--color-copper-light);
+    background-color: var(--color-green-semidark);
 
     .image,
     .footer {
-        border-color: var(--color-secondary-300);
+        border-color: var(--color-copper-light);
     }
 }
 
 .bgSecondary .item:hover,
 .bgSecondary .item:focus {
-    border-color: var(--color-secondary-300);
-    background-color: var(--color-primary-500);
+    border-color: var(--color-copper-light);
+    background-color: var(--color-green);
 
     .image,
     .footer {
-        border-color: var(--color-secondary-300);
+        border-color: var(--color-copper-light);
     }
 }
 

@@ -6,12 +6,12 @@
 }
 
 .nav {
-    background-color: var(--color-primary-900);
+    background-color: var(--color-green-dark);
     border-radius: var(--spacing-single-quarter);
 }
 
 .wrapper {
-    color: var(--color-secondary-900);
+    color: var(--color-copper-dark);
     padding: var(--spacing-single);
 }
 
@@ -20,12 +20,12 @@
 }
 
 .link {
-    color: var(--color-secondary-300);
+    color: var(--color-copper-light);
 }
 
 .link:hover,
 .link:focus {
-    color: var(--color-primary-900);
+    color: var(--color-green-dark);
 }
 
 /* Desktop Styles */

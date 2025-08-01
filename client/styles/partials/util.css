@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   color: var(--color-black);
-  background-color: var(--color-orange-semidark);
+  background-color: var(--color-copper-semidark);
   padding: var(--spacing-half) var(--spacing-single);
   border-radius: var(--spacing-single);
   text-shadow: none;
@@ -51,7 +51,7 @@
 
 .button--link:hover,
 .button--link:focus {
-  color: var(--color-secondary-300);
+  color: var(--color-copper-light);
 }
 
 .button--disabled {
@@ -67,7 +67,7 @@
 }
 
 .bg-secondary {
-  background-color: var(--color-blue-semidark);
+  background-color: var(--color-green-semidark);
 }
 
 .bg-tertiary {
@@ -83,7 +83,7 @@
 }
 
 .color-black {
-  color: var(--color-blue-dark);
+  color: var(--color-green-dark);
 }
 
 .color-primary {

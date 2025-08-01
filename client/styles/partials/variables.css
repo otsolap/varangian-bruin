@@ -1,17 +1,20 @@
 :root {
-  /* Primary (Dark Green) */
-    --color-primary-900: #0F221A;
-    --color-primary-700: #153027;
-    --color-primary-500: #1B3B2F;
-    --color-primary-300: #2E5849;
-    --color-primary-100: #4A6B5B;
+    /* Primary (Dark Green) */
+    --color-green-dark: #0F221A; /* 900 */
+    --color-green-semidark: #153027;
+    --color-green: #1B3B2F;
+    --color-green-light: #2E5849;
 
     /* Secondary (Copper) */
-    --color-secondary-900: #7C471D;
-    --color-secondary-700: #944F20;
-    --color-secondary-500: #B4682C;
-    --color-secondary-300: #D88F5A;
-    --color-secondary-100: #F0C4A3;
+    --color-copper-dark: #7C471D;
+    --color-copper-semidark: #944F20;
+    --color-copper: #B4682C;
+    --color-copper-light: #D88F5A;
+
+    --color-blue-dark: #202C3A;
+    --color-blue: #50677C;
+    --color-blue-light: #8DA0B5;
+
 
     /* Neutral */
     --background: #F3F1EE;
@@ -19,11 +22,7 @@
     --text-inverse: #FFFFFF;
     --border: #D7D5D1;
 
-    /* Tertiary color */
-    --color-tertiary-900: #202C3A;
-    --color-tertiary-500:  #50677C;   
-    --color-tertiary-300: #8DA0B5;
-    
+
 
     /* Text */
     --color-black: #121212;
@@ -43,7 +42,7 @@
 
     /* Random colors */
     --color-accent: var(--color-success-light);
-    --color-info: var(--color-teal-light);
+    --color-info: var(--color-blue-light);
     --color-alert: var(--color-error-light);
 
     /* Spacing */

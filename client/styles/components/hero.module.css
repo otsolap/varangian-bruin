@@ -1,5 +1,5 @@
 .hero {
-  background-color: var(--color-primary-900);
+  background-color: var(--color-green-dark);
   color: var(--color-white);
   margin-top: 0;
   margin-left: auto;
@@ -51,7 +51,7 @@
   gap: var(--spacing-single);
 
   *:not(a):not(.button) {
-    text-shadow: 1px 1px 2px var(--color-blue-dark);
+    text-shadow: 1px 1px 2px var(--color-green-dark);
   }
  
 }
