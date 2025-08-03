@@ -16,14 +16,11 @@
     --color-blue-light: #8DA0B5;
 
     /* Neutral */
-    --background: #F3F1EE;
-    --text-primary: #111111;
-    --text-inverse: #FFFFFF;
-    --border: #D7D5D1;
+    --background: #F3F1EE
 
     /* Text */
-    --color-black: #121212;
-    --color-white: #faf7f2; 
+    --color-black: #111111;
+    --color-white: #FFFFFF;
     --line-height-heading: 1.4;
     --line-height-body: 1.6;
 
