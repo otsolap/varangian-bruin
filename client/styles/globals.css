@@ -55,8 +55,7 @@ section {
 
 /* Desktop Styles */
 @media (width >= 1440px) {
-
-
+  
     main.container section:first-child {
       margin-top: var(--spacing-double);
     }
