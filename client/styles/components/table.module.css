@@ -19,7 +19,7 @@
 .tableHeader {
     text-align: center;
     border: 1px solid;
-    background-color: var(--color-green-dark);
+    background-color: var(--color-primary-dark);
     font-weight: 700;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .tableRow:nth-child(even) {
-    background-color: var(--color-copper);
+    background-color: var(--color-secondary);
 }
 
 /* Tablet Styles */

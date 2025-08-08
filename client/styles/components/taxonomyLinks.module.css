@@ -14,15 +14,15 @@
 }
 
 .button {
-    background-color: var(--color-orange);
-    color: var(--color-green-dark);
+    background-color: var(--color-secondary);
+    color: var(--color-primary-dark);
     transition: 0.6s ease-in-out;
 }
 
 .button:hover,
 .button:focus {
-    background-color: var(--color-orange);
-    color: var(--color-green-dark);
+    background-color: var(--color-secondary);
+    color: var(--color-primary-dark);
 }
 
 /* Desktop Styles */

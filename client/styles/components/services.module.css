@@ -1,10 +1,10 @@
 .bgPrimary {
-    background-color: var(--color-green-dark);
+    background-color: var(--color-primary-dark);
     color: var(--color-white);
 }
 
 .bgSecondary {
-    background-color: var(--color-green-semidark);
+    background-color: var(--color-primary-semidark);
 }
 
 .header {
@@ -50,7 +50,7 @@
     overflow: hidden;
     transition: border-color 250ms;
     color: var(--color-white);
-    background-color: var(--color-green-dark);
+    background-color: var(--color-primary-dark);
 }
 
 .imageContainer {
@@ -78,12 +78,12 @@
 .item:focus,
 .item:focus .image,
 .item:focus .footer {
-    border-color: var(--color-copper-light);
-    background-color: var(--color-green-semidark);
+    border-color: var(--color-secondary-light);
+    background-color: var(--color-primary-semidark);
 }
 
 .bgSecondary .item {
-    background-color: var(--color-green-semidark);
+    background-color: var(--color-primary-semidark);
 }
 
 .bgSecondary .item:hover,
@@ -92,8 +92,8 @@
 .bgSecondary .item:focus,
 .bgSecondary .item:focus .image,
 .bgSecondary .item:focus .footer {
-    background-color: var(--color-green-dark);
-    border-color: var(--color-copper);
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-secondary);
 }
 
 .itemContent  {

@@ -28,7 +28,7 @@
   border-radius: var(--spacing-single-quarter);
   width: inherit;
   height: inherit;
-  box-shadow: var(--spacing-half) var(--spacing-half) 0px 0px var(--color-orange);
+  box-shadow: var(--spacing-half) var(--spacing-half) 0px 0px var(--color-secondary);
   aspect-ratio: 16/9;
   object-fit: cover;
 }
@@ -52,7 +52,7 @@
   }
 
   .image {
-    box-shadow: var(--spacing-single) var(--spacing-single) 0px 0px var(--color-orange);
+    box-shadow: var(--spacing-single) var(--spacing-single) 0px 0px var(--color-secondary);
   }
 }
 
@@ -72,6 +72,6 @@
   }
 
   .image {
-    box-shadow: 24px 24px 0px 0px var(--color-orange);
+    box-shadow: 24px 24px 0px 0px var(--color-secondary);
   }
 }

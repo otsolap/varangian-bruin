@@ -5,7 +5,7 @@
     flex-direction: column;
     gap: var(--spacing-single);
     border: 1px solid transparent;
-    background-color: var(--color-green-semidark);
+    background-color: var(--color-primary-semidark);
     padding-top: var(--spacing-double);
     padding-bottom: var(--spacing-double);
     margin-bottom: var(--spacing-double);
@@ -33,7 +33,7 @@
     width: inherit;
     height: inherit;
     object-fit: cover;
-    box-shadow: var(--spacing-half) var(--spacing-half) 0px 0px var(--color-copper-light);
+    box-shadow: var(--spacing-half) var(--spacing-half) 0px 0px var(--color-secondary-light);
 }
 
 .buttonWrapper {
@@ -56,7 +56,7 @@
     }
 
     .image {
-        box-shadow: var(--spacing-single) var(--spacing-single) 0px 0px var(--color-copper-light);
+        box-shadow: var(--spacing-single) var(--spacing-single) 0px 0px var(--color-secondary-light);
     }
 }
 
@@ -82,6 +82,6 @@
     }
     
     .image {
-        box-shadow: 24px 24px 0px 0px var(--color-orange);
+        box-shadow: 24px 24px 0px 0px var(--color-secondary);
     }
 }

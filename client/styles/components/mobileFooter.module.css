@@ -1,6 +1,6 @@
 .mobile {
   border-top: 2px solid var(--color-white);
-  background-color: var(--color-green-dark);
+  background-color: var(--color-primary-dark);
   position: fixed;
   bottom: 0;
   left: 0;

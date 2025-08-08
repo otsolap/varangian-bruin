@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   color: var(--color-black);
-  background-color: var(--color-copper-semidark);
+  background-color: var(--color-secondary-semidark);
   padding: var(--spacing-half) var(--spacing-single);
   border-radius: var(--spacing-single);
   text-shadow: none;
@@ -18,7 +18,7 @@
 
 .button:hover,
 .button:focus {
-  background-color: var(--color-orange);
+  background-color: var(--color-secondary);
 }
 
 .button--secondary,
@@ -51,7 +51,7 @@
 
 .button--link:hover,
 .button--link:focus {
-  color: var(--color-copper-light);
+  color: var(--color-secondary-light);
 }
 
 .button--disabled {
@@ -63,11 +63,11 @@
 
 /* Background and Color Classes */
 .bg-primary {
-  background-color: var(--color-orange);
+  background-color: var(--color-secondary);
 }
 
 .bg-secondary {
-  background-color: var(--color-green-semidark);
+  background-color: var(--color-primary-semidark);
 }
 
 .bg-tertiary {
@@ -83,11 +83,11 @@
 }
 
 .color-black {
-  color: var(--color-green-dark);
+  color: var(--color-primary-dark);
 }
 
 .color-primary {
-  color: var(--color-orange);
+  color: var(--color-secondary);
 }
 
 /* Screen Reader Only Class */

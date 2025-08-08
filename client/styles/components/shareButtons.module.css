@@ -29,5 +29,5 @@
 
 .icon:hover,
 .icon:focus {
-    color: var(--color-copper-dark);
+    color: var(--color-secondary-dark);
 }

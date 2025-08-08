@@ -39,12 +39,12 @@
 
 /* Inactive Toggle */
 .inactiveToggle {
-  background-color: var(--color-green-dark);
+  background-color: var(--color-primary-dark);
 }
 
 /* Active Toggle */
 .activeToggle {
-  background-color: var(--color-copper-semidark);
+  background-color: var(--color-secondary-semidark);
   color: var(--color-black);
 }
 
@@ -116,7 +116,7 @@
   transition: max-height 0.6s ease;
   max-height: 0;
   overflow: hidden;
-  background-color: var(--color-blue);
+  background-color: var(--color-tertiary);
   padding-left: var(--spacing-half);
 }
 

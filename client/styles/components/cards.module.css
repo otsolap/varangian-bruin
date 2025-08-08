@@ -1,5 +1,5 @@
 .cards {
-  background-color: var(--color-green-dark);
+  background-color: var(--color-primary-dark);
 }
 
 .header,
@@ -32,8 +32,8 @@
 
 .card:focus,
 .card:hover {
-  background-color: var(--color-copper-semidark);
-  border-color: var(--color-orange);
+  background-color: var(--color-primary-semidark);
+  border-color: var(--color-secondary);
 }
 
 .body {

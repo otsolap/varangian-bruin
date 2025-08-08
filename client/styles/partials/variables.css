@@ -1,19 +1,19 @@
 :root {
     /* Primary (Dark Green) */
-    --color-green-dark: #0F221A; /* 900 */
-    --color-green-semidark: #153027;
-    --color-green: #1B3B2F;
-    --color-green-light: #2E5849;
+    --color-primary-dark: #0F221A; /* 900 */
+    --color-primary-semidark: #153027;
+    --color-primary: #1B3B2F;
+    --color-primary-light: #2E5849;
 
     /* Secondary (Copper) */
-    --color-copper-dark: #7C471D;
-    --color-copper-semidark: #944F20;
-    --color-copper: #B4682C;
-    --color-copper-light: #D88F5A;
+    --color-secondary-dark: #7C471D;
+    --color-secondary-semidark: #944F20;
+    --color-secondary: #B4682C;
+    --color-secondary-light: #D88F5A;
 
-    --color-blue-dark: #202C3A;
-    --color-blue: #50677C;
-    --color-blue-light: #8DA0B5;
+    --color-tertiary-dark: #202C3A;
+    --color-tertiary: #50677C;
+    --color-tertiary-light: #8DA0B5;
 
     /* Neutral */
     --background: #F3F1EE
@@ -36,7 +36,7 @@
 
     /* Random colors */
     --color-accent: var(--color-success-light);
-    --color-info: var(--color-blue-light);
+    --color-info: var(--color-tertiary-light);
     --color-alert: var(--color-error-light);
 
     /* Spacing */
