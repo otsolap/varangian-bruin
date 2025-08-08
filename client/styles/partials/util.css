@@ -27,21 +27,21 @@
 }
 
 .button--secondary {
-  background-color: var(--color-teal-dark);
+  background-color: var(--color-tertiary-dark);
 }
 
 .button--secondary:hover,
 .button--secondary:focus {
-  background-color: var(--color-teal);
+  background-color: var(--color-tertiary);
 }
 
 .button--tertiary {
-  background-color: var(--color-teal);
+  background-color: var(--color-tertiary);
 }
 
 .button--tertiary:hover,
 .button--tertiary:focus {
-  background-color: var(--color-teal-light);
+  background-color: var(--color-tertiary-light);
 }
 
 .button--link {
@@ -71,7 +71,7 @@
 }
 
 .bg-tertiary {
-  background-color: var(--color-teal-dark);
+  background-color: var(--color-tertiary-dark);
 }
 
 .bg-transparent {
