@@ -1,8 +1,8 @@
 const hostnames = [
   'localhost',
   '127.0.0.1',
-  'varangianventure.com',
-  'api.varangianventure.com'
+  'varangianbruin.com',
+  'api.varangianbruin.com'
 ]
 
 /** @type {import('next').NextConfig} */

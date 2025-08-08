@@ -1,13 +1,13 @@
 .bgPrimary {
-    background-color: var(--color-orange);
+    background-color: var(--color-green-dark);
+    color: var(--color-white);
 }
 
 .bgSecondary {
-    background-color: var(--color-green-dark);
+    background-color: var(--color-green-semidark);
 }
 
 .header {
-    color: var(--color-white);
     padding-bottom: var(--spacing-double);
     display: flex;
     flex-direction: column;
@@ -31,17 +31,14 @@
 }
 
 .archiveLink {
-    color: var(--color-white);
     transition: all .3s cubic-bezier(.4,0,.2,1);
 }
 
 .archiveLink:hover,
 .archiveLink:focus {
-    color: var(--color-orange);
     font-weight: 900;
     cursor: pointer;
 }
-
 
 .item {
     display: flex;
@@ -49,34 +46,12 @@
     border-radius: var(--spacing-single-quarter);
     align-items: flex-start;
     border: 1px solid var(--color-white);
-    color: var(--color-white);
     cursor: pointer;
     overflow: hidden;
     transition: border-color 250ms;
+    color: var(--color-white);
+    background-color: var(--color-green-dark);
 }
-
-.bgPrimary .item:hover,
-.bgPrimary .item:focus {
-    border-color: var(--color-green-dark);
-    background-color: var(--color-copper-light);
-
-    .imagge,
-    .footer {
-        border-color: var(--color-green-dark);
-    }
-}
-
-.bgSecondary .item:hover,
-.bgSecondary .item:focus {
-    border-color: var(--color-orange);
-    background-color: var(--color-blue);
-
-    .imagge,
-    .footer {
-        border-color: var(--color-orange);
-    }
-}
-
 
 .imageContainer {
     position: relative;
@@ -97,7 +72,34 @@
     border-bottom: 1px solid var(--color-white);
 }
 
+.item:hover,
+.item:hover .image,
+.item:hover .footer,
+.item:focus,
+.item:focus .image,
+.item:focus .footer {
+    border-color: var(--color-copper-light);
+    background-color: var(--color-green-semidark);
+}
+
+.bgSecondary .item {
+    background-color: var(--color-green-semidark);
+}
+
+.bgSecondary .item:hover,
+.bgSecondary .item:hover .image,
+.bgSecondary .item:hover .footer,
+.bgSecondary .item:focus,
+.bgSecondary .item:focus .image,
+.bgSecondary .item:focus .footer {
+    background-color: var(--color-green-dark);
+    border-color: var(--color-copper);
+}
+
 .itemContent  {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     padding: var(--spacing-double);
 }
 
@@ -115,22 +117,16 @@
 }
 
 .category {
+    margin-top: var(--spacing-single);
     margin-bottom: initial;
-}
-
-.date {
-    margin-bottom: var(--spacing-single);
 }
 
 .footer {
     width: 100%;
-    border-top: 1px solid var(--color-white);
+    border-top: 1px solid;
     display: flex;
+    flex-direction: column;
     gap: var(--spacing-half);
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--spacing-single) var(--spacing-double);
 }
 
 .price {

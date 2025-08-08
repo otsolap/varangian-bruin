@@ -1,11 +1,10 @@
 .bgPrimary {
-    background-color: var(--color-orange);
-    color: var(--color-black);
+    background-color: var(--color-green-dark);
+    color: var(--color-white);
 }
 
 .bgSecondary {
     background-color: var(--color-green-semidark);
-    color: var(--color-white);
 }
 
 .header {
@@ -41,45 +40,17 @@
     cursor: pointer;
 }
 
-.bgPrimary .item {
-    border-color: var(--color-black);
-}
-
-.bgSecondary .item {
-    border-color: var(--color-white);
-}
-
 .item {
     display: flex;
     flex-direction: column;
     border-radius: var(--spacing-single-quarter);
     align-items: flex-start;
-    border: 1px solid;
+    border: 1px solid var(--color-white);
     cursor: pointer;
     overflow: hidden;
     transition: border-color 250ms;
-}
-
-.bgPrimary .item:hover,
-.bgPrimary .item:focus {
-    border-color: var(--color-copper-light);
-    background-color: var(--color-green-semidark);
-
-    .image,
-    .footer {
-        border-color: var(--color-copper-light);
-    }
-}
-
-.bgSecondary .item:hover,
-.bgSecondary .item:focus {
-    border-color: var(--color-copper-light);
-    background-color: var(--color-green);
-
-    .image,
-    .footer {
-        border-color: var(--color-copper-light);
-    }
+    color: var(--color-white);
+    background-color: var(--color-green-dark);
 }
 
 .imageContainer {
@@ -98,19 +69,32 @@
     object-fit: cover;
     object-position: 50% 50%;
     aspect-ratio: 16/9;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid var(--color-white);
 }
 
-.bgPrimary .image,
-.bgPrimary .footer {
-    border-color: var(--color-black);
+.item:hover,
+.item:hover .image,
+.item:hover .footer,
+.item:focus,
+.item:focus .image,
+.item:focus .footer {
+    border-color: var(--color-copper-light);
+    background-color: var(--color-green-semidark);
 }
 
-.bgSecondary .image,
-.bgSecondary .footer {
-    border-color: var(--color-white);
+.bgSecondary .item {
+    background-color: var(--color-green-semidark);
 }
 
+.bgSecondary .item:hover,
+.bgSecondary .item:hover .image,
+.bgSecondary .item:hover .footer,
+.bgSecondary .item:focus,
+.bgSecondary .item:focus .image,
+.bgSecondary .item:focus .footer {
+    background-color: var(--color-green-dark);
+    border-color: var(--color-copper);
+}
 
 .itemContent  {
     display: flex;
@@ -149,19 +133,6 @@
     gap: var(--spacing-half);
 }
 
-.price {
-    display: flex;
-    flex-direction: row;
-    gap: var(--spacing-quarter);
-    align-items: center;
-}
-
-.currency {
-    background-size: cover; 
-    display: inline-block;
-    height: var(--spacing-single);
-    width: var(--spacing-single);
-}
 
 /* Tablet Styles */
 @media (width >= 768px) {
