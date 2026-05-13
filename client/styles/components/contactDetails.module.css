@@ -1,21 +1,24 @@
-.socialWrapper {
+.wrapper {
+  display: flex;
+  align-items: flex-start;
   padding: var(--spacing-half) 0;
 }
 
-.socialIcon {
+.icon {
   width: var(--spacing-single);
 }
 
-.someLink {
+.link {
   display: flex;
   flex-direction: row;
   gap: var(--spacing-single);
   font-size: 1rem;
   transition: all .6s cubic-bezier(.4,0,.2,1);
+  align-items: center;
 }
 
-.someLink:focus,
-.someLink:hover {
+.link:focus,
+.link:hover {
   cursor: pointer;
   color: var(--color-secondary);
 }
@@ -33,11 +36,11 @@
 /* Desktop Styles */
 @media (width >= 1440px) {
 
-  .socialIcon {
+  .icon {
     width: var(--spacing-double);
   }
 
-  .someLink {
+  .link {
     align-items: center;
   }
   

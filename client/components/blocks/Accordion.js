@@ -1,8 +1,7 @@
 import AccordionItem from "@/partials/blocks/AccordionItem";
-import NextImage from "@/partials/util/NextImage";
 import styles from "@/styles/components/accordion.module.css";
 
-const Accordion = ({ title, description, image, accordions }) => {
+const Accordion = ({ title, description, accordions }) => {
   return ( 
     accordions ? (
       <section className={styles.accordion}>
@@ -16,20 +15,9 @@ const Accordion = ({ title, description, image, accordions }) => {
             {accordions && (
                 <div className={styles.content}>
                   {accordions.map((item, i) => (
-                      <AccordionItem key={i} {...item} />
+                      <AccordionItem  key={item.id || `accordion-${i}`} {...item} />
                   ))}
               </div>
-            )}
-            {image && (
-              <figure className={styles.imageContainer}>
-                <NextImage 
-                className={styles.image} 
-                image={image} 
-                height={500}
-                width={668}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-              </figure>
             )}
         </div>
       </section>

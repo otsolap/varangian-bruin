@@ -29,7 +29,7 @@ export async function generateStaticParams() {
 
 async function getContent(params) {
   try {
-    const res = await fetch(getStrapiURL(`/${config.services.API_SERVICES_CONTENT_QUERY}${params.slug}`));
+    const res = await fetch(getStrapiURL(`/${config.endpoints.services}?${config.services.dynamicZone}&${config.blocks.seo}&${config.blocks.filterBySlug}=${params.slug}`));
     const resData = await res.json()
 
     if (!resData.data || resData.data.length === 0) notFound();

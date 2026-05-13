@@ -23,8 +23,8 @@ export default async function RootLayout({ children }) {
     };
 
     const [servicePathsRes, blogPathsRes] = await Promise.all([
-      fetch(getStrapiURL(`/${config.services.API_SERVICES_NAV_QUERY}`, { headers})),
-      fetch(getStrapiURL(`/${config.blog.API_BLOG_NAV_QUERY}`, { headers}))
+      fetch(getStrapiURL(`/${config.endpoints.services}`, { headers})),
+      fetch(getStrapiURL(`/${config.global.blogNavigationDetails}`, { headers}))
     ])
     
     const [servicePathsData, blogPathsData] = await Promise.all([

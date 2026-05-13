@@ -22,12 +22,16 @@ export const ArchiveSection = ({ items, categories }) => {
 
   return (
       <section>
+<<<<<<< HEAD
         <div className={styles.container}>
+=======
+>>>>>>> template/master
           {categories && 
             <header className={styles.header}>
               <TaxonomyLinks categories={categories} />
             </header>
           }
+<<<<<<< HEAD
           {paginatedPosts.length > 0 ? (
             paginatedPosts.map((item, i) => (
                 <BlogItem
@@ -44,6 +48,26 @@ export const ArchiveSection = ({ items, categories }) => {
             ) : (
               <p>No items found</p>
             )}
+=======
+          <div className={styles.container}>
+            {paginatedPosts.length > 0 ? (
+              paginatedPosts.map((item, i) => (
+                  <BlogItem
+                    key={item.id || `blog-item-${i}`}
+                    image={item.image}
+                    title={item.title}
+                    description={item.description}
+                    slug={item.slug}
+                    author={item.author}
+                    category={item.category[0]}
+                    publishedAt={item.publishedAt}
+                  />
+                ))
+              ) : (
+                <p>No items found</p>
+              )}
+          </div>
+>>>>>>> template/master
             <div className={styles.wrapper}>
               <Pagination
                 items={items.length}
@@ -51,7 +75,10 @@ export const ArchiveSection = ({ items, categories }) => {
                 pageSize={pageSize}
                 onPageChange={onPageChange}
                 />
+<<<<<<< HEAD
             </div>
+=======
+>>>>>>> template/master
         </div>
     </section>
   )

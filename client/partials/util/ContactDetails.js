@@ -31,10 +31,10 @@ const ContactDetails = ({ list }) => {
     const href = contact.type === 'Link' ? contact.url : `${urlPrefix}${contact.url}`;
 
     return (
-      <p className={styles.socialWrapper} key={index}>
+      <div className={styles.wrapper} key={index}>
         {contactMappings[contact.type] && (
           <a
-            className={styles.someLink}
+            className={styles.link}
             href={href}
             target="_blank"
             rel="noopener noreferrer"
@@ -42,12 +42,12 @@ const ContactDetails = ({ list }) => {
             <FontAwesomeIcon
               aria-label={contact.type}
               icon={contactMappings[contact.type].icon}
-              className={styles.socialIcon}
+              className={styles.icon}
             />
             {contact.title}
           </a>
         )}
-      </p>
+      </div>
     );
   });
 

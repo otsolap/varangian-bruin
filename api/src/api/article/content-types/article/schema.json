@@ -31,17 +31,6 @@
       "targetField": "title",
       "required": true
     },
-    "blocks": {
-      "type": "dynamiczone",
-      "components": [
-        "blocks.quote",
-        "blocks.article-text-block",
-        "blocks.image-block",
-        "blocks.video-embed",
-        "blocks.image-gallery",
-        "blocks.table"
-      ]
-    },
     "category": {
       "type": "relation",
       "relation": "manyToMany",
@@ -58,6 +47,21 @@
       "relation": "manyToOne",
       "target": "api::author.author",
       "inversedBy": "articles"
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "blocks.video-embed",
+        "blocks.table",
+        "blocks.quote",
+        "blocks.notes",
+        "blocks.image-gallery",
+        "blocks.image-block",
+        "blocks.buttons",
+        "blocks.article-text-block",
+        "blocks.accordion",
+        "blocks.banner"
+      ]
     }
   }
 }

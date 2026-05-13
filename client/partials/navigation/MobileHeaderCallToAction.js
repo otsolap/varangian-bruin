@@ -8,7 +8,7 @@ const MobileHeaderCallToAction = ({ primary, blog }) => {
     const pathname = usePathname();
     const params = useParams()
   
-    const button = pathname.includes(`/${config.blog.BLOG_PATH}/`) && params.slug ? blog : primary;
+    const button = pathname.includes(`/${config.blog.path}/`) && params.slug ? blog : primary;
 
     return (
         button.button && <CustomLink link={button.button} className={`${styles.callToAction} mobile-only button button--${button.button.selectTheme}`} />

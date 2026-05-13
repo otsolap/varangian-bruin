@@ -14,17 +14,15 @@ const BlogAnchors = ({ blogAnchors }) => {
     }
   }, [filter]);
 
-
   const fetchData = async () => {
     try {
-      const res = await fetch(getStrapiURL(`/${config.blocks.API_CONTENT_BLOG_SECTION_LATEST_QUERY}`));
+      const res = await fetch(getStrapiURL(`/${config.blocks.blogsLatestArticles}`));
       const data = await res.json();
       setItems(data);
     } catch (error) {
       console.error(error);
     }
   };
-
 
   const blogItems = filter === "latest" ? items.data : blogs;
 
@@ -33,7 +31,11 @@ const BlogAnchors = ({ blogAnchors }) => {
       <div className={styles.wrapper}>
         {blogItems.map((item, i) => {
           return (
-            <Link className={styles.link} key={i} href={`/${config.blog.BLOG_PATH}/${item.slug}`}>
+            <Link 
+              className={styles.link} 
+              key={item.id || `blog-item-${i}`}
+              href={`/${config.blog.path}/${item.slug}`}
+              >
               {item.title}
             </Link>
           );

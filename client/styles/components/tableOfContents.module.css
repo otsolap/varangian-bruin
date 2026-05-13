@@ -1,15 +1,28 @@
+<<<<<<< HEAD
 .nav,
+=======
+.tableOfContents,
+>>>>>>> template/master
 .wrapper {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-single-half);
 }
 
+<<<<<<< HEAD
 .nav {
+=======
+.tableOfContents {
+>>>>>>> template/master
     height: min-content;
     background-color: var(--color-primary);
     border: 2px solid var(--color-secondary);
     border-radius: var(--spacing-quarter);
+<<<<<<< HEAD
+=======
+    margin-left: var(--spacing-double);
+    margin-right: var(--spacing-double);
+>>>>>>> template/master
 }
 
 .wrapper {
@@ -30,10 +43,29 @@
   color: var(--color-secondary);
 }
 
+<<<<<<< HEAD
 /* Desktop Styles */
 @media (width >= 1440px) {
     .wrapper {
         width: 100%;
+=======
+/* iPad Styles */
+@media (width >= 768px) {
+
+    .tableOfContents {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .wrapper {
+        width: 100%;
+    }
+}
+
+/* Laptop styles */
+@media (width >= 1024px) {
+    .wrapper {
+>>>>>>> template/master
         max-width: var(--container-mobile);
     }
 }

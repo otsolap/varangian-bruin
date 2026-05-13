@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_blocks_notes",
+  "info": {
+    "displayName": "Notes",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "listItem": {
+      "displayName": "ListItem",
+      "type": "component",
+      "repeatable": true,
+      "component": "partials.list-item"
+    }
+  }
+}

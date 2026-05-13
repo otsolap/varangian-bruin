@@ -24,9 +24,9 @@ async function getContent() {
 
     try {
       const urls = [
-        getStrapiURL(`/${config.services.API_ARCHIVE_PAGE_QUERY}`),
-        getStrapiURL(`/${config.services.API_SERVICES_QUERY}`),
-        getStrapiURL(`/${config.services.API_SERVICE_TYPES_PATH_QUERY}`)
+        getStrapiURL(`/${config.services.archivePage}&${config.blocks.seo}`),
+        getStrapiURL(`/${config.services.archivePageContent}`),
+        getStrapiURL(`/${config.endpoints.serviceTypes}`)
       ];
   
       const [archivePageResponse, servicesResponse, serviceTypesResponse] = await Promise.all(

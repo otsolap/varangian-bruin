@@ -51,7 +51,11 @@
 
 .button--link:hover,
 .button--link:focus {
+<<<<<<< HEAD
   color: var(--color-secondary-light);
+=======
+  color: var(--color-secondary-semidark);
+>>>>>>> template/master
 }
 
 .button--disabled {
@@ -104,10 +108,17 @@
 }
 
 .youtube {
+<<<<<<< HEAD
     border: var(--spacing-quarter);
     width: 100%;
     height: 100%;
     padding: var(--spacing-single);
+=======
+  border: var(--spacing-quarter);
+  width: 100%;
+  height: 100%;
+  padding: var(--spacing-single);
+>>>>>>> template/master
 }
 
 .mobile-only {

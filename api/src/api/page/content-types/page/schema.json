@@ -31,7 +31,6 @@
         "blocks.cards",
         "blocks.hero",
         "blocks.banner",
-        "blocks.media-mix",
         "blocks.text-area",
         "blocks.form-embed",
         "blocks.video-embed",
@@ -40,7 +39,9 @@
         "blocks.quote",
         "blocks.services",
         "blocks.buttons",
-        "blocks.table"
+        "blocks.table",
+        "blocks.notes",
+        "blocks.text-and-image"
       ]
     },
     "showServicesBanner": {

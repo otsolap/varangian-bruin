@@ -27,7 +27,10 @@ main {
   max-width: 100%;
   position: relative;
   background-color: var(--color-primary-dark);
+<<<<<<< HEAD
   padding-bottom: var(--spacing-double);
+=======
+>>>>>>> template/master
 }
 
 section {
@@ -55,7 +58,12 @@ section {
 
 /* Desktop Styles */
 @media (width >= 1440px) {
+<<<<<<< HEAD
   
+=======
+
+
+>>>>>>> template/master
     main.container section:first-child {
       margin-top: var(--spacing-double);
     }

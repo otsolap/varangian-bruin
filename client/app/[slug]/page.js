@@ -21,7 +21,16 @@ export default async function PageSlug(props) {
 }
 
 export async function generateStaticParams() {
+<<<<<<< HEAD
   const res =  await fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}`))
+=======
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
+  };
+
+  const res =  await fetch(getStrapiURL(`/${config.endpoints.pages}`), { headers} )
+>>>>>>> template/master
   const resData = await res.json()
   const slugs = resData.data.map(item => item.slug)
   
@@ -38,7 +47,7 @@ async function getContent(params) {
   };
 
   try {
-    const apiResponse = await fetch(getStrapiURL(`/${config.pages.API_PAGES_QUERY}?${config.blocks.API_DYNAMIC_ZONE_BLOCKS}&${config.blocks.API_SEO_BLOCK_QUERY}&filters[slug][$eq]=${params.slug}`), { headers });
+    const apiResponse = await fetch(getStrapiURL(`/${config.endpoints.pages}?${config.blocks.dynamicZone}&${config.blocks.seo}&${config.blocks.filterBySlug}=${params.slug}`), { headers });
     const fetchedData = await apiResponse.json();
     
     if (!fetchedData.data || fetchedData.data.length === 0) notFound();

@@ -32,7 +32,11 @@
 
 .card:focus,
 .card:hover {
+<<<<<<< HEAD
   background-color: var(--color-primary-semidark);
+=======
+  background-color: var(--color-primary-semidark);  
+>>>>>>> template/master
   border-color: var(--color-secondary);
 }
 

@@ -8,7 +8,7 @@ const ArticleHeading = ({ article, category, author }) => {
     <header className={styles.header}>
         <div className={styles.lead}>
                 {category && 
-                    <Link href={`/${config.blog.CATEGORY_PATH}/${category.slug}`}>
+                    <Link href={`/${config.categories.path}/${category.slug}`}>
                         <h4 className={styles.category}>{category.title}</h4>
                     </Link>
                 }

@@ -10,7 +10,7 @@ const ServicesItem = ({ image, title, price, currency, slug, serviceType }) => {
       <article className={styles.item}>
         {image &&
             <figure className={styles.imageContainer}>
-                <Link aria-label={`Learn more about ${title}`} className={styles.imageLink}  href={`/${config.services.SERVICES_PATH}/${slug}`}>
+                <Link aria-label={`Learn more about ${title}`} className={styles.imageLink}  href={`/${config.services.path}/${slug}`}>
                   <NextImage 
                   image={image} 
                   height={216}
@@ -23,7 +23,7 @@ const ServicesItem = ({ image, title, price, currency, slug, serviceType }) => {
         }
         {title && 
           <div className={styles.itemContent}>
-            <Link href={`/${config.services.SERVICES_PATH}/${slug}`}>
+            <Link href={`/${config.services.path}/${slug}`}>
                 <h3 className={styles.title}>{title}</h3>
             </Link>
           </div>

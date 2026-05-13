@@ -116,7 +116,11 @@
   transition: max-height 0.6s ease;
   max-height: 0;
   overflow: hidden;
+<<<<<<< HEAD
   background-color: var(--color-tertiary);
+=======
+  background-color: var(--color-primary);
+>>>>>>> template/master
   padding-left: var(--spacing-half);
 }
 
@@ -127,6 +131,10 @@
 
 /* Desktop Styles */
 @media (width >= 1440px) {
+<<<<<<< HEAD
+=======
+  
+>>>>>>> template/master
   .header {
     max-width: var(--container-ipad-landscape);
     flex: 0 0 50%;
@@ -137,12 +145,12 @@
     gap: var(--spacing-double);
   }
 
-  .imageContainer,
   .content {
     max-width: 50%;
     flex: 0 0 50%;
   }
 
+<<<<<<< HEAD
   .imageContainer {
     display: block;
   }
@@ -152,6 +160,8 @@
     aspect-ratio: 16/9;
   }
 
+=======
+>>>>>>> template/master
   .text {
     padding: var(--spacing-double) var(--spacing-single);
   }

@@ -26,7 +26,7 @@ async function getContent() {
   };
 
   try {
-    const apiResponse = await fetch(getStrapiURL(`/${config.global.API_HOME_QUERY}?${config.blocks.API_DYNAMIC_ZONE_BLOCKS}&${config.blocks.API_SEO_BLOCK_QUERY}`), { headers });
+    const apiResponse = await fetch(getStrapiURL(`/${config.endpoints.home}?${config.blocks.dynamicZone}&${config.blocks.seo}`), { headers });
     const fetchedData = await apiResponse.json();
 
     return {

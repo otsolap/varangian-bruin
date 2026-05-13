@@ -21,9 +21,16 @@
     flex-wrap: wrap;
 }
 
+<<<<<<< HEAD
 
 /* Tablet Styles */
 @media (width >= 768px) {
+=======
+/* Tablet Styles */
+@media (width >= 768px) {
+
+    .container,
+>>>>>>> template/master
     .wrapper {
         flex-direction: row;
     }

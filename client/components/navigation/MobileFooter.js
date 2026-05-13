@@ -62,7 +62,7 @@ const MobileFooter = ({ navigation, blogPaths, socialShare }) => {
             />
             <footer className={`mobile-only ${styles.mobile}`} style={{ opacity: footerOpacity }}>
                 <div className={styles.menuWrapper}>
-                    {pathname.includes(`/${config.blog.BLOG_PATH}/`) && params.slug ? (
+                    {pathname.includes(`/${config.blog.path}/`) && params.slug ? (
                         <ShareButtons title={getTitle()} settings={socialShare} />
                     ) : (
                         <>

@@ -34,19 +34,16 @@
         "blocks.hero",
         "blocks.image-block",
         "blocks.image-gallery",
-        "blocks.media-mix",
         "blocks.quote",
         "blocks.text-area",
-        "blocks.video-embed"
+        "blocks.video-embed",
+        "blocks.text-and-image",
+        "blocks.table",
+        "blocks.buttons"
       ]
     },
     "price": {
       "type": "string"
-    },
-    "service_type": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::service-type.service-type"
     },
     "image": {
       "type": "media",
@@ -62,6 +59,12 @@
         "dollar",
         "euro"
       ]
+    },
+    "service_type": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service-type.service-type",
+      "mappedBy": "services"
     }
   }
 }

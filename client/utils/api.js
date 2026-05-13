@@ -27,8 +27,8 @@ export function getStrapiMedia(url) {
 
     try {
       const urls = [
-        getStrapiURL(`/${config.pages.API_SERVICES_BANNER_QUERY}`),
-        getStrapiURL(`/${config.pages.API_SUBSCRIBE_FORM_QUERY}`)
+        getStrapiURL(`/${config.pages.servicesBanner}`),
+        getStrapiURL(`/${config.pages.subscribeForm}`)
       ];
   
       let servicesBannerResponse, subscribeFormResponse;
@@ -61,9 +61,9 @@ export function getStrapiMedia(url) {
 
     try {
       const urls = [
-        getStrapiURL(`/${config.global.API_NAVIGATION_QUERY}`),
-        getStrapiURL(`/${config.global.API_FOOTER_QUERY}`),
-        getStrapiURL(`/${config.global.API_BLOG_NAVIGATION_QUERY}`),
+        getStrapiURL(`/${config.global.navigation}`),
+        getStrapiURL(`/${config.global.footer}`),
+        getStrapiURL(`/${config.global.blogNavigation}`),
       ];
 
       let navigationResponse, footerResponse, blogNavigationResponse;
@@ -97,7 +97,7 @@ export function getStrapiMedia(url) {
     };
 
     try {
-      const url = getStrapiURL(`/${config.global.API_BASE_SEO_QUERY}`);
+      const url = getStrapiURL(`/${config.global.baseSEO}`);
       const response = await fetch(url, { headers });
       const data = await response.json();
       return data;

@@ -7,6 +7,15 @@
     padding: var(--spacing-single);
 }
 
+<<<<<<< HEAD
+=======
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-single);
+}
+
+>>>>>>> template/master
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -17,6 +26,11 @@
 
 /* Tablet Styles */
 @media (width >= 768px) {
+<<<<<<< HEAD
+=======
+
+    .container,
+>>>>>>> template/master
     .wrapper {
         flex-direction: row;
     }
@@ -24,6 +38,15 @@
 
 /* Desktop Styles */
 @media (width >= 1440px) {
+<<<<<<< HEAD
+=======
+    .header {
+        max-width: var(--container-ipad-landscape);
+        flex: 0 0 50%;
+    }
+    
+    .container,
+>>>>>>> template/master
     .wrapper {
         gap: var(--spacing-triple);
     }

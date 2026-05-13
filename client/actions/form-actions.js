@@ -40,7 +40,7 @@ export async function formSubmit(state, formData) {
     };
 
     try {
-        const response = await fetch(getStrapiURL(`/${config.forms.FORMS_PATH}${state.id}`), { headers });
+        const response = await fetch(getStrapiURL(`/${config.forms.path}${state.id}`), { headers });
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -71,7 +71,7 @@ export async function formSubmit(state, formData) {
     };
 
     try {
-        await fetch(getStrapiURL(`/${config.forms.COLLECTIONS_PATH}`), {
+        await fetch(getStrapiURL(`/${config.endpoints.contacts}`), {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(data)

@@ -1,70 +1,63 @@
 {
     "global": {
-        "API_NAVIGATION_QUERY":"api/navigation?populate[0]=blocks&populate[1]=blocks.icon&populate[2]=button",
-        "API_HOME_QUERY":"api/home",
-        "API_NEWSLETTER_BANNER_QUERY":"api/newsletter-banner?populate[0]=button&populate[1]=image",
-        "API_FOOTER_QUERY":"api/footer?populate[0]=blocks&populate[1]=blocks.image&populate[2]=blocks.links&populate[3]=blocks.socialMedia&populate[4]=blocks.blogAnchors&populate[5]=blocks.blogAnchors.blogs&populate[6]=subFooter&populate[7]=subFooter.link",
-        "API_BASE_SEO_QUERY":"api/base-seo?populate[0]=imageBlock.image",
-        "API_NOT_FOUND_QUERY": "api/not-found?populate[0]=buttons",
-        "API_BLOG_NAVIGATION_QUERY": "api/blog-navigation?populate[0]=social&populate[1]=button"
+        "navigation":"api/navigation?populate[blocks][on][util.menu-item][populate]=*&populate[button]=*",
+        "footer":"api/footer?populate[blocks][on][util.footer-social-media][populate][socialMedia]=*&populate[blocks][on][util.footer-column][populate]=*&populate[subFooter][populate]=*",
+        "baseSEO":"api/base-seo?populate[imageBlock][populate]=image",
+        "notFound": "api/not-found?populate[buttons][populate]=*",
+        "blogNavigation": "api/blog-navigation?populate[social][populate]=*&populate[button][populate]=*",
+        "blogNavigationDetails": "api/articles?fields=title,slug"
+    },
+    "endpoints": {
+        "home":"api/home",
+        "pages": "api/pages",
+        "articles": "api/articles",
+        "categories": "api/categories",
+        "services": "api/services",
+        "serviceTypes": "api/service-types",
+        "contacts":"api/contacts"
     },
     "pages": {
-        "API_PAGES_QUERY": "api/pages",
-        "API_PAGES_CONTENT_QUERY":"populate[0]=seo&populate[1]=seo.imageBlock.image&populate[2]=blocks&populate[3]=blocks.image&populate[4]=blocks.accordion&populate[5]=blocks.accordions&populate[6]=blocks.button&populate[7]=blocks.buttons&populate[8]=blocks.blogs&populate[9]=blocks.blogs.author&populate[10]=blocks.blogs.image&populate[11]=blocks.blogs.categories&populate[12]=blocks.link&populate[13]=blocks.cards&populate[14]=blocks.cards.image&populate[15]=blocks.form&populate[16]=blocks.form.inputs&populate[17]=blocks.form.inputs.options&populate[18]=blocks.form.image&populate[19]=blocks.form.button&populate[20]=blocks.images.image&populate[21]=blocks.mediaMixItems&populate[22]=blocks.mediaMixItems.image&populate[23]=blocks.services&populate[24]=blocks.services.image&populate[25]=blocks.services.service_type",
-        "API_SERVICES_BANNER_QUERY":"api/services-banner?populate[0]=banner&populate[1]=banner.button&populate[2]=banner.image",
-        "API_SUBSCRIBE_FORM_QUERY": "api/subscribe-form?populate[0]=email"
+        "servicesBanner":"api/services-banner?populate[banner][populate]=*",
+        "subscribeForm": "api/subscribe-form?populate[email][populate]=*"
     },
     "blocks": {
-        "API_SEO_BLOCK_QUERY":"populate[0]=seo&populate[1]=seo.imageBlock.image",
-        "API_DYNAMIC_ZONE_BLOCKS": "populate[blocks][on][blocks.hero][populate]=image&populate[blocks][on][blocks.hero][populate]=buttons&populate[blocks][on][blocks.blogs][populate]=blogs.image&populate[blocks][on][blocks.blogs][populate]=blogs.category&populate[blocks][on][blocks.cards][populate]=cards.image&populate[blocks][on][blocks.form-embed][populate]=form.inputs.options&populate[blocks][on][blocks.services][populate]=services.image&populate[blocks][on][blocks.services][populate]=services.service_type&populate[blocks][on][blocks.accordion][populate]=accordions&populate[blocks][on][blocks.accordion][populate]=image&populate[blocks][on][blocks.media-mix][populate]=mediaMixItems.image&populate[blocks][on][blocks.text-area][populate]=*&populate[blocks][on][blocks.video-embed][populate]=*&populate[blocks][on][blocks.image-block][populate]=image&populate[blocks][on][blocks.image-gallery][populate]=images&populate[blocks][on][blocks.quote][populate]=*&populate[blocks][on][blocks.buttons][populate]=*&populate[blocks][on][blocks.table][populate]=tableHeader&populate[blocks][on][blocks.table][populate]=tableRow.tableCell",
-        "API_CONTENT_BLOG_SECTION_LATEST_QUERY":"api/articles?populate[0]=image&populate[1]=category&sort[0]=createdAt:desc&pagination[start]=0&pagination[limit]=3",
-        "CONTENT_BLOG_SECTION_BLOG_ARCHIVE_LEAD":"See blog archive",
-        "CONTENT_SERVICES_SECTION_SERVICE_ARCHIVE_LEAD":"See all services"
+        "seo":"populate[seo][populate][imageBlock][populate]=image",
+        "dynamicZone": "populate[blocks][on][blocks.accordion][populate]=accordions&populate[blocks][on][blocks.banner][populate]=*&populate[blocks][on][blocks.blogs][populate]=blogs.image&populate[blocks][on][blocks.buttons][populate]=*&populate[blocks][on][blocks.blogs][populate]=blogs.category&populate[blocks][on][blocks.cards][populate]=cards.image&populate[blocks][on][blocks.form-embed][populate]=form.inputs.options&populate[blocks][on][blocks.hero][populate]=image&populate[blocks][on][blocks.hero][populate]=buttons&populate[blocks][on][blocks.image-block][populate]=image&populate[blocks][on][blocks.image-gallery][populate]=images&populate[blocks][on][blocks.notes][populate]=*&populate[blocks][on][blocks.services][populate]=services.image&populate[blocks][on][blocks.services][populate]=services.service_type&populate[blocks][on][blocks.table][populate]=tableHeader&populate[blocks][on][blocks.table][populate]=tableRow.tableCell&populate[blocks][on][blocks.text-area][populate]=*&populate[blocks][on][blocks.text-and-image][populate]=image&populate[blocks][on][blocks.video-embed][populate]=*&populate[blocks][on][blocks.quote][populate]=*",
+        "blogsLatestArticles":"api/articles?populate[image][populate]=*&populate[category][populate]=*&sort=createdAt:desc&pagination[start]=0&pagination[limit]=3",
+        "filterBySlug": "filters[slug][$eq]",
+        "blogsArchivePageCTA":"See blog archive",
+        "servicesArchivePageCTA":"See all services"
     },
     "services": {
-        "API_ARCHIVE_PAGE_QUERY":"api/service-archive-page?populate[0]=seo&populate[1]=seo.imageBlock.image&populate[2]=hero&populate[3]=hero.buttons&populate[4]=hero.image",
-        "SERVICES_PATH":"services",
-        "API_SERVICES_PATH_QUERY":"api/services",
-        "SERVICE_TYPES_PATH":"service-types",
-        "API_SERVICE_TYPES_PATH_QUERY": "api/service-types",
-        "API_SERVICE_TYPES_CONTENT_QUERY":"api/service-types?populate[0]=services&populate[1]=services.image&populate[2]=services.service_types&populate[3]=hero&populate[4]=hero.buttons&populate[5]=hero.image&populate[6]=seo",
-        "API_SERVICES_QUERY":"api/services?populate[0]=image&populate[1]=service_types", 
-        "API_SERVICES_CONTENT_QUERY":"api/services?populate[0]=seo&populate[1]=seo.imageBlock.image&populate[2]=blocks&populate[3]=blocks.image&populate[4]=blocks.accordion&populate[5]=blocks.accordions&populate[6]=blocks.button&populate[7]=blocks.buttons&populate[8]=blocks.blogs&populate[9]=blocks.blogs.author&populate[10]=blocks.blogs.image&populate[11]=blocks.blogs.category&populate[12]=blocks.link&populate[13]=blocks.cards&populate[14]=blocks.cards.image&populate[15]=blocks.form&populate[16]=blocks.form.inputs&populate[17]=blocks.form.inputs.options&populate[18]=blocks.form.image&populate[19]=blocks.form.button&populate[20]=blocks.images.image&populate[21]=blocks.mediaMixItems&populate[22]=blocks.mediaMixItems.image&filters[slug][$eq]=",
-        "API_SERVICES_NAV_QUERY":"api/services"
+        "path":"services",
+        "archivePage":"api/service-archive-page?populate[seo][populate][imageBlock][populate]=image&populate[hero][populate][buttons][populate]=*&populate[hero][populate][image][populate]=*",
+        "archivePageContent":"api/services?populate[image][populate]=*&populate[service_type][populate]=*", 
+        "dynamicZone":"populate[blocks][on][blocks.accordion][populate]=accordions&populate[blocks][on][blocks.banner][populate]=*&populate[blocks][on][blocks.buttons][populate]=*&populate[blocks][on][blocks.cards][populate]=cards.image&populate[blocks][on][blocks.form-embed][populate]=form.inputs.options&populate[blocks][on][blocks.hero][populate]=image&populate[blocks][on][blocks.hero][populate]=buttons&populate[blocks][on][blocks.image-block][populate]=image&populate[blocks][on][blocks.image-gallery][populate]=images&populate[blocks][on][blocks.notes][populate]=*&populate[blocks][on][blocks.table][populate]=tableHeader&populate[blocks][on][blocks.table][populate]=tableRow.tableCell&populate[blocks][on][blocks.text-area][populate]=*&populate[blocks][on][blocks.text-and-image][populate]=image&populate[blocks][on][blocks.video-embed][populate]=*&populate[blocks][on][blocks.quote][populate]=*"
+    },
+    "serviceTypes": {
+        "path":"service-type",
+        "content":"api/service-types?populate[services][populate]=image&populate[services][populate]=service_type&populate[hero][populate]=*"
     },
     "blog": {
-        "API_ARCHIVE_PAGE_QUERY":"api/article-archive-page?populate[0]=seo&populate[1]=seo.imageBlock.image&populate[2]=hero&populate[3]=hero.buttons&populate[4]=hero.image",
-        "BLOG_PATH":"blog",
-        "API_BLOG_PATH_QUERY": "api/articles",
-        "CATEGORY_PATH":"category",
-        "API_CATEGORY_PATH_QUERY": "api/categories",
-        "API_AUTHORS_CONTENT_QUERY":"api/authors?populate[0]=image&populate[1]=socialMedia",
-        "API_CATEGORIES_CONTENT_QUERY":"api/categories?populate[0]=articles&populate[1]=articles.image&populate[2]=articles.author&populate[3]=articles.category&populate[4]=hero&populate[5]=hero.buttons&populate[6]=hero.image&populate[7]=seo&populate[8]=seo.imageBlock.image",
-        "API_ARTICLES_QUERY":"api/articles?populate[0]=author&populate[1]=author.image&populate[2]=author.socialMedia&populate[3]=image&populate[4]=blocks&populate[5]=blocks.image&populate[6]=category",
-        "API_ARTICLE_PAGE_CONTENT_QUERY":"api/articles?populate[seo][fields]=*&populate[seo][populate][imageBlock][populate]=image&populate[author][populate]=image&populate[author][populate]=socialMedia&populate[image][populate]=*&populate[blocks][on][blocks.image-block][populate]=image&populate[blocks][on][blocks.article-text-block][populate]=*&populate[blocks][on][blocks.image-gallery][populate]=images&populate[category][populate]=*&populate[blocks][on][blocks.table][populate]=tableHeader&populate[blocks][on][blocks.table][populate]=tableRow.tableCell&filters[slug][$eq]=",
-        "LATEST_ARTICLES_TITLE":"All latest articles",
-        "LATEST_ARTICLES_THEME":"secondary",
-        "RELATED_ARTICLES_TITLE":"Related Articles on",
-        "RELATED_ARTICLES_THEME":"secondary",
-        "RELATED_ARTICLES_CATEGORY_FILTER_QUERY":"api/articles?filters[category][slug][$eq]=",
-        "RELATED_ARTICLES_ID_FILTER_QUERY": "&filters[documentId][$ne]=",
-        "RELATED_ARTICLES_CONTENT_QUERY": "&populate[1]=image",
-        "RELATED_ARTICLES_LINK_TITLE":"Read more from the category",
-        "API_BLOG_NAV_QUERY": "api/articles?fields=title,slug"
+        "archivePage":"api/article-archive-page?populate[hero][populate]=*",
+        "path":"blog",
+        "archivePageContent":"api/articles?populate[author][populate]=image&populate[author][populate]=socialMedia&populate[image][populate]=*&populate[category][populate]=*&sort=createdAt:desc",
+        "articleHeader":"[populate][author][populate]=image&[populate][author][populate]=socialMedia&populate[category][populate]=*&populate[image][populate]=*",
+        "dynamicZone":"populate[blocks][on][blocks.accordion][populate]=accordions&populate[blocks][on][blocks.article-text-block][populate]=*&populate[blocks][on][blocks.banner][populate]=*&populate[blocks][on][blocks.buttons][populate]=*&populate[blocks][on][blocks.image-block][populate]=image&populate[blocks][on][blocks.image-gallery][populate]=images&populate[blocks][on][blocks.notes][populate]=*&populate[blocks][on][blocks.table][populate]=tableHeader&populate[blocks][on][blocks.table][populate]=tableRow.tableCell",
+        "relatedArticlesCategoryFilter":"api/articles?sort=createdAt:desc&filters[category][slug][$eq]=",
+        "relatedArticlesIDFilter": "&filters[documentId][$ne]=",
+        "relatedArticlesContent": "&populate[image][populate]=*"
+    },
+    "categories": {
+        "path":"category",
+        "content":"populate[articles][populate]=image&populate[articles][populate]=author&populate[articles][populate]=category&populate[hero][populate]=*"
     },
     "forms": {
-        "COLLECTIONS_PATH":"api/contacts",
-        "FORMS_PATH":"api/forms?filters[title][$eq]=",
-        "SUBSCRIPTION_PATH":"api/subscribers/webhook/activate"
+        "path":"api/forms?filters[title][$eq]="
     },
     "revalidate": {
-        "PAGES_PATH": "api/pages",
-        "BLOG_PATH": "api/articles",
-        "BLOG_CATEGORY_PATH": "api/categories",
-        "SERVICES_PATH": "api/services",
-        "SERVICE_TYPES_PATH": "api/service-types",
-        "SERVICES_BANNER_PATH": "api/pages?filters[showServicesBanner][$eq]=true",
-        "SUBSCRIPTION_FORM_PATH": "api/pages?filters[showSubscribeForm][$eq]=true"
+        "servicesBanner": "api/pages?filters[showServicesBanner][$eq]=true",
+        "subscriptionForm": "api/pages?filters[showSubscribeForm][$eq]=true"
     },
     "notFound": {
         "title": "404 - Page Not Found",

@@ -3,11 +3,11 @@ import config from '@/utils/config'
 
 export default async function sitemap() {
   const urls = [
-    `/${config.pages.API_PAGES_QUERY}`,
-    `/api/articles`,
-    `/api/services`,
-    `/${config.services.API_SERVICE_TYPES_PATH_QUERY}`,
-    `/${config.blog.API_CATEGORY_PATH_QUERY}`
+    `/${config.endpoints.pages}`,
+    `/${config.endpoints.articles}`,
+    `/${config.endpoints.services}`,
+    `/${config.endpoints.serviceTypes}`,
+    `/${config.endpoints.categories}`
   ];
 
   const headers = {

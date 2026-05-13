@@ -28,6 +28,12 @@
       "type": "component",
       "repeatable": false,
       "component": "util.seo"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service.service",
+      "inversedBy": "service_type"
     }
   }
 }

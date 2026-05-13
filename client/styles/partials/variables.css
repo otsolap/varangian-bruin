@@ -1,4 +1,5 @@
 :root {
+<<<<<<< HEAD
     /* Primary (Dark Green) */
     --color-primary-dark: #0F221A; /* 900 */
     --color-primary-semidark: #153027;
@@ -22,6 +23,30 @@
     --color-black: #111111;
     --color-white: #FFFFFF;
     --line-height-heading: 1.4;
+=======
+    /* Primary - Blue */
+    --color-primary-dark: #001f2a; /* default */
+    --color-primary-semidark: #0f3240;
+    --color-primary: #1c4554; 
+    --color-primary-light: #6e91a2;
+
+    /* Secondary - Orange */
+    --color-secondary-dark: #c15b27;
+    --color-secondary-semidark: #d67c2e; 
+    --color-secondary: #e19536; /* default */
+    --color-secondary-light: #eab260;
+
+    /* Tertiary - Teal */
+    --color-tertiary-dark: #15646b;
+    --color-tertiary: #1f8ea3; /* default */
+    --color-tertiary-light: #3ca4b0;
+
+    /* Text */
+    --color-black: #001f2a;
+    --color-white: #E1E2E1; 
+    --line-height-heading: 1.2;
+    --line-height-subheading: 1.4;
+>>>>>>> template/master
     --line-height-body: 1.6;
 
     /* Success Colors */

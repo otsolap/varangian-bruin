@@ -47,7 +47,6 @@ export async function POST(request) {
             break
         case 'author':
         case 'blog-navigation':
-        case 'newsletter-banner':
             return await revalidatePaths(getAllArticles, `all articles due to model: ${model}`)
         case 'base-seo':
         case 'footer':
@@ -117,11 +116,11 @@ async function getAllPages() {
         };
 
         const urls = [
-            fetch(getStrapiURL(`/${config.revalidate.PAGES_PATH}`), { headers }),
-            fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`), { headers }),
-            fetch(getStrapiURL(`/${config.revalidate.BLOG_CATEGORY_PATH}`), { headers }),
-            fetch(getStrapiURL(`/${config.revalidate.SERVICES_PATH}`), { headers }),
-            fetch(getStrapiURL(`/${config.revalidate.SERVICE_TYPES_PATH}`), { headers }),
+            fetch(getStrapiURL(`/${config.endpoints.pages}`), { headers }),
+            fetch(getStrapiURL(`/${config.endpoints.articles}`), { headers }),
+            fetch(getStrapiURL(`/${config.endpoints.categories}`), { headers }),
+            fetch(getStrapiURL(`/${config.endpoints.services}`), { headers }),
+            fetch(getStrapiURL(`/${config.endpoints.serviceTypes}`), { headers }),
         ];
 
         const responses = await Promise.all(urls);
@@ -156,7 +155,7 @@ async function getAllArticles() {
     };
 
     try {
-        const response = await fetch(getStrapiURL(`/${config.revalidate.BLOG_PATH}`), { headers })
+        const response = await fetch(getStrapiURL(`/${config.endpoints.articles}`), { headers })
         const data = await response.json()
         const slugs = data.data.map(item => item.slug)
 
@@ -175,7 +174,7 @@ async function getPagesWithSubscriptionForm() {
     };
 
     try {
-        const response = await fetch(getStrapiURL(`/${config.revalidate.SUBSCRIPTION_FORM_PATH}`), { headers })
+        const response = await fetch(getStrapiURL(`/${config.revalidate.subscriptionForm}`), { headers })
         const data = await response.json()
         const slugs = data.data.map(item => item.slug)
 
@@ -193,7 +192,7 @@ async function getPagesWithServicesBanner() {
     };
 
     try {
-        const response = await fetch(getStrapiURL(`/${config.revalidate.SERVICES_BANNER_PATH}`), { headers })
+        const response = await fetch(getStrapiURL(`/${config.revalidate.servicesBanner}`), { headers })
         const data = await response.json()
         const slugs = data.data.map(item => item.slug)
 

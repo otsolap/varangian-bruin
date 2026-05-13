@@ -60,7 +60,11 @@
 .link:focus,
 .link:hover {
   cursor: pointer;
+<<<<<<< HEAD
   color: var(--color-secondary-light);
+=======
+  color: var(--color-secondary);
+>>>>>>> template/master
 }
 
 .toggle {

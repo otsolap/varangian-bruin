@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_partials_list_items",
+  "info": {
+    "displayName": "ListItem",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "text"
+    }
+  }
+}

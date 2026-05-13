@@ -1,7 +1,11 @@
 module.exports = {
   apps: [
     {
+<<<<<<< HEAD
       name: 'bruin-api',
+=======
+      name: 'venture-api',
+>>>>>>> template/master
       script: 'npm',
       args: 'run start',
       cwd: './api',
@@ -12,7 +16,11 @@ module.exports = {
       log_date_format: 'DD-MM-YYYY HH:mm:ss',
     },
     {
+<<<<<<< HEAD
       name: 'bruin-client',
+=======
+      name: 'venture-client',
+>>>>>>> template/master
       script: 'npm',
       args: 'run start',
       cwd: './client',

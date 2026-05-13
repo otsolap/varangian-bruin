@@ -15,7 +15,7 @@ const BlogItem = ({ image, title, description, slug, category, publishedAt }) =>
       <article className={styles.item}>
         {image &&
             <figure className={styles.imageContainer}>
-                <Link aria-label={`Read more about ${title}`} className={styles.imageLink}  href={`/${config.blog.BLOG_PATH}/${slug}`}>
+                <Link aria-label={`Read more about ${title}`} className={styles.imageLink}  href={`/${config.blog.path}/${slug}`}>
                   <NextImage 
                   image={image} 
                   height={216}
@@ -29,7 +29,7 @@ const BlogItem = ({ image, title, description, slug, category, publishedAt }) =>
         {(title || description) && 
           <div className={styles.itemContent}>
             {title && 
-              <Link href={`/${config.blog.BLOG_PATH}/${slug}`}>
+              <Link href={`/${config.blog.path}/${slug}`}>
                   <h3 className={styles.title}>{title}</h3>
               </Link>
             }
@@ -39,7 +39,7 @@ const BlogItem = ({ image, title, description, slug, category, publishedAt }) =>
         {category || formattedDate ? (
        <footer className={styles.footer}>
             {category &&
-              <Link passHref href={`/${config.blog.CATEGORY_PATH}/${category.slug}`}>
+              <Link passHref href={`/${config.categories.path}/${category.slug}`}>
                 <h4 className={styles.category}>{category.title}</h4>
                 </Link>
             }

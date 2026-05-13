@@ -25,8 +25,8 @@ function TaxonomyLinks({ categories, service_types }) {
   const getPath = (item) => {
     const baseSlug = item.slug;
     return isCategory
-      ? `/${config.blog.CATEGORY_PATH}/${baseSlug}`
-      : `/${config.services.SERVICE_TYPES_PATH}/${baseSlug}`;
+      ? `/${config.categories.path}/${baseSlug}`
+      : `/${config.serviceTypes.path}/${baseSlug}`;
   };
 
   const renderItem = (item, id) => (

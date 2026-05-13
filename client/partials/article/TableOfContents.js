@@ -23,6 +23,7 @@ function TableOfContents ({ blocks }) {
   });
 
   return (
+<<<<<<< HEAD
     <nav className={styles.nav}>
       {headings && headings.length > 0 && (
           <ul className={styles.wrapper}>
@@ -38,6 +39,22 @@ function TableOfContents ({ blocks }) {
         )
       }
     </nav>
+=======
+    headings && headings.length > 0 && (
+      <aside className={styles.tableOfContents}>
+        <ul className={styles.wrapper}>
+        <h4 className={styles.title}>Table of Contents</h4>
+          {headings.map((heading, index) => (
+            <li className={styles.list} key={index}>
+              <Link className={styles.link}  href={`#${heading.id}`}>
+                {heading.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    )
+>>>>>>> template/master
   );
 }
 

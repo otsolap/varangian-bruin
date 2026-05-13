@@ -34,6 +34,10 @@ export interface AdminApiToken extends Struct.CollectionTypeSchema {
         minLength: 1;
       }> &
       Schema.Attribute.DefaultTo<''>;
+    encryptedKey: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
     expiresAt: Schema.Attribute.DateTime;
     lastUsedAt: Schema.Attribute.DateTime;
     lifespan: Schema.Attribute.BigInteger;
@@ -414,12 +418,16 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
     blocks: Schema.Attribute.DynamicZone<
       [
-        'blocks.quote',
-        'blocks.article-text-block',
-        'blocks.image-block',
         'blocks.video-embed',
-        'blocks.image-gallery',
         'blocks.table',
+        'blocks.quote',
+        'blocks.notes',
+        'blocks.image-gallery',
+        'blocks.image-block',
+        'blocks.buttons',
+        'blocks.article-text-block',
+        'blocks.accordion',
+        'blocks.banner',
       ]
     >;
     category: Schema.Attribute.Relation<'manyToMany', 'api::category.category'>;
@@ -746,11 +754,14 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
         'blocks.hero',
         'blocks.image-block',
         'blocks.image-gallery',
-        'blocks.media-mix',
         'blocks.quote',
         'blocks.services',
         'blocks.text-area',
         'blocks.video-embed',
+        'blocks.text-and-image',
+        'blocks.buttons',
+        'blocks.table',
+        'blocks.notes',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -795,42 +806,6 @@ export interface ApiNavigationNavigation extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     slogan: Schema.Attribute.Text;
-    title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiNewsletterBannerNewsletterBanner
-  extends Struct.SingleTypeSchema {
-  collectionName: 'newsletter_banners';
-  info: {
-    description: '';
-    displayName: 'newsletterBanner';
-    pluralName: 'newsletter-banners';
-    singularName: 'newsletter-banner';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    button: Schema.Attribute.Component<'partials.button', false>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::newsletter-banner.newsletter-banner'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    selectTheme: Schema.Attribute.Enumeration<
-      ['primary', 'secondary', 'tertiary']
-    >;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -887,7 +862,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'blocks.cards',
         'blocks.hero',
         'blocks.banner',
-        'blocks.media-mix',
         'blocks.text-area',
         'blocks.form-embed',
         'blocks.video-embed',
@@ -897,6 +871,8 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'blocks.services',
         'blocks.buttons',
         'blocks.table',
+        'blocks.notes',
+        'blocks.text-and-image',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -975,6 +951,7 @@ export interface ApiServiceTypeServiceType extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'util.seo', false>;
+    services: Schema.Attribute.Relation<'manyToMany', 'api::service.service'>;
     slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -1004,10 +981,12 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
         'blocks.hero',
         'blocks.image-block',
         'blocks.image-gallery',
-        'blocks.media-mix',
         'blocks.quote',
         'blocks.text-area',
         'blocks.video-embed',
+        'blocks.text-and-image',
+        'blocks.table',
+        'blocks.buttons',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -1025,7 +1004,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'util.seo', false>;
     service_type: Schema.Attribute.Relation<
-      'oneToOne',
+      'manyToMany',
       'api::service-type.service-type'
     >;
     slug: Schema.Attribute.UID<'title'>;
@@ -1654,7 +1633,6 @@ declare module '@strapi/strapi' {
       'api::form.form': ApiFormForm;
       'api::home.home': ApiHomeHome;
       'api::navigation.navigation': ApiNavigationNavigation;
-      'api::newsletter-banner.newsletter-banner': ApiNewsletterBannerNewsletterBanner;
       'api::not-found.not-found': ApiNotFoundNotFound;
       'api::page.page': ApiPagePage;
       'api::service-archive-page.service-archive-page': ApiServiceArchivePageServiceArchivePage;

@@ -22,7 +22,7 @@ export async function generateStaticParams() {
       Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
     };
 
-    const res =  await fetch(getStrapiURL(`/${config.blog.API_CATEGORY_PATH_QUERY}`), { headers})
+    const res =  await fetch(getStrapiURL(`/${config.endpoints.categories}`), { headers})
     const resData = await res.json()
     const slugs = resData.data.map(item => item.slug)
     return slugs.map(slug => ({
@@ -33,8 +33,8 @@ export async function generateStaticParams() {
 async function getContent(params) {
     try {
       const urls = [
-        getStrapiURL(`/${config.blog.API_CATEGORIES_CONTENT_QUERY}&filters[slug][$eq]=${params.slug}`),
-        getStrapiURL(`/${config.blog.API_CATEGORY_PATH_QUERY}`),
+        getStrapiURL(`/${config.endpoints.categories}?${config.categories.content}&${config.blocks.filterBySlug}=${params.slug}`),
+        getStrapiURL(`/${config.endpoints.categories}`),
       ];
   
       const [categoryResponse, allCategories] = await Promise.all(

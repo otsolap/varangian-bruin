@@ -13,7 +13,7 @@ const Buttons = ({ title, description, buttons }) => {
        {buttons && (
             <div className={styles.wrapper}>
                 {buttons.map((button, i) => (
-                    <div className={styles.column} key={i}>
+                    <div className={styles.column}  key={button.id || `button-${i}`}>
                         <CustomLink link={button} className={`button button--${button.selectTheme}`} />
                     </div>
                 ))}

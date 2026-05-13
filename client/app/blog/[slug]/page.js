@@ -30,14 +30,18 @@ export default async function BlogSlug(props) {
     </div>
     <ArticleAuthor author={author} />
     <RelatedArticles
-      title={config.blog.RELATED_ARTICLES_TITLE}
+      title="Related Articles on"
       categoryTitle={category.title}
       currentCategory={category.slug}
       documentId={documentId}
-      selectTheme="secondary"
+      selectTheme="primary"
     />
     <Blogs 
+<<<<<<< HEAD
       title={config.blog.LATEST_ARTICLES_TITLE}
+=======
+      title="All latest articles"
+>>>>>>> template/master
       selectTheme="secondary"
       filter="latest" 
       />
@@ -51,7 +55,7 @@ export async function generateStaticParams() {
     Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
   };
 
-  const res =  await fetch(getStrapiURL(`/api/articles`), { headers })
+  const res =  await fetch(getStrapiURL(`/${config.endpoints.articles}`), { headers })
   const resData = await res.json()
   const slugs = resData.data.map(item => item.slug)
   return slugs.map(slug => ({
@@ -61,7 +65,7 @@ export async function generateStaticParams() {
 
 async function getContent(params) {
   try {
-    const res = await fetch(getStrapiURL(`/${config.blog.API_ARTICLE_PAGE_CONTENT_QUERY}${params.slug}`));
+    const res = await fetch(getStrapiURL(`/${config.endpoints.articles}?${config.blog.articleHeader}&${config.blocks.seo}&${config.blog.dynamicZone}&${config.blocks.filterBySlug}=${params.slug}`));
     const resData = await res.json();
 
     if (!resData.data || resData.data.length === 0) notFound();

@@ -12,7 +12,7 @@ export default function RelatedArticles ({ title, description, selectTheme, docu
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(getStrapiURL(`/${config.blog.RELATED_ARTICLES_CATEGORY_FILTER_QUERY}${currentCategory}${config.blog.RELATED_ARTICLES_ID_FILTER_QUERY}${documentId}${config.blog.RELATED_ARTICLES_CONTENT_QUERY}`));
+        const res = await fetch(getStrapiURL(`/${config.blog.relatedArticlesCategoryFilter}${currentCategory}${config.blog.relatedArticlesIDFilter}${documentId}${config.blog.relatedArticlesContent}`));
         const resData = await res.json();
         setItems(resData);
       } catch (error) {
@@ -37,7 +37,7 @@ export default function RelatedArticles ({ title, description, selectTheme, docu
             {items.data.map((item, i) => {
                 return (
                     <BlogItem
-                    key={i}
+                     key={item.id || `related-blog-item-${i}`}
                     image={item.image}
                     title={item.title}
                     description={item.description}
@@ -48,8 +48,8 @@ export default function RelatedArticles ({ title, description, selectTheme, docu
             })}
             </div>
         <footer className={styles.linkWrapper}>
-        <Link className={styles.archiveLink} href={`/${config.blog.CATEGORY_PATH}/${currentCategory}`}>
-            {config.blog.RELATED_ARTICLES_LINK_TITLE}
+        <Link className={styles.archiveLink} href={`/${config.categories.path}/${currentCategory}`}>
+            Read more from the category
         </Link>
         </footer>
         </section>

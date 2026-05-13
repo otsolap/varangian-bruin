@@ -15,9 +15,9 @@ const NavLinks = ({ mainNavigation, blogNavigation, blogPaths, servicePaths }) =
   let title = null;
 
   if (params.slug) {
-    const matchingPath = pathname.includes(`/${config.blog.BLOG_PATH}/`) 
+    const matchingPath = pathname.includes(`/${config.blog.path}/`) 
       ? blogPaths.data.find(path => path.slug === params.slug)
-      : pathname.includes(`/${config.services.SERVICES_PATH}/`) 
+      : pathname.includes(`/${config.services.path}/`) 
       ? servicePaths.data.find(path => path.slug === params.slug)
       : null;
 
@@ -27,9 +27,9 @@ const NavLinks = ({ mainNavigation, blogNavigation, blogPaths, servicePaths }) =
   return (
     <nav className={styles.navigation}>
       <div className={styles.wrapper}>
-        {pathname.includes(`/${config.blog.BLOG_PATH}/`) && params.slug ? (
+        {pathname.includes(`/${config.blog.path}/`) && params.slug ? (
           <ArticleNavigation title={title} navigation={blogNavigation} />
-        ): pathname.includes(`/${config.services.SERVICES_PATH}/`) && params.slug ? (
+        ): pathname.includes(`/${config.services.path}/`) && params.slug ? (
           <ServicesNavigation title={title} />
         ) : (
           mainNavigation.blocks && (

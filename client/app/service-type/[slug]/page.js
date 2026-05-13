@@ -21,7 +21,7 @@ export async function generateStaticParams() {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`
     };
-    const res =  await fetch(getStrapiURL(`/${config.services.API_SERVICE_TYPES_PATH_QUERY}`), { headers})
+    const res =  await fetch(getStrapiURL(`/${config.endpoints.serviceTypes}`), { headers})
     const resData = await res.json()
     const slugs = resData.data.map(item => item.slug)
     return slugs.map(slug => ({
@@ -33,8 +33,8 @@ export async function generateStaticParams() {
 async function getContent(params) {
     try {
       const urls = [
-        getStrapiURL(`/${config.services.API_SERVICE_TYPES_CONTENT_QUERY}&filters[slug][$eq]=${params.slug}`),
-        getStrapiURL(`/${config.services.API_SERVICE_TYPES_PATH_QUERY}`),
+        getStrapiURL(`/${config.serviceTypes.content}&${config.blocks.filterBySlug}=${params.slug}`),
+        getStrapiURL(`/${config.endpoints.serviceTypes}`),
       ];
   
       const [serviceTypeResponse, allServiceTypes] = await Promise.all(

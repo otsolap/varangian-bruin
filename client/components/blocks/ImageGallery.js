@@ -6,7 +6,11 @@ const ImageGallery = ({ images, title }) => {
     <section className={styles.imageGallery}>
         <div className={styles.wrapper}>
             {images && images.map((image, i) => (
-            <figure className={styles.imageContainer} id={i} key={i} >
+            <figure 
+              className={styles.imageContainer} 
+              id={image.id} 
+              key={image.id || `imagegallery-image-${i}`}
+            >
                 <NextImage className={styles.image} image={image} />
             </figure>
             ))}

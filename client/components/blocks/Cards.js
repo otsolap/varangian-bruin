@@ -14,7 +14,7 @@ const Cards = ({ title, description, cards }) => {
         {cards && (
           <div className={styles.wrapper}>
             {cards.map((item, i) => (
-              <article key={i} className={`${styles.card}`}>
+              <article key={item.id || `card-${i}`} className={`${styles.card}`}>
                 {item.image ? (
                   <figure className={styles.imageContainer}>
                     <NextImage

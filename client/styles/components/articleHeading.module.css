@@ -2,12 +2,16 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+<<<<<<< HEAD
     padding: var(--spacing-double) var(--spacing-single);
     background-color: var(--color-primary-semidark);
+=======
+    padding: var(--spacing-double);
+    background-color: var(--color-primary);
+>>>>>>> template/master
     max-width: var(--container-desktop);
     margin: 0 auto;
 }
-
 
 .category {
     margin-bottom: 0;
@@ -85,7 +89,11 @@
     height: inherit;
     width: inherit;
     object-fit: cover;
+<<<<<<< HEAD
     box-shadow: var(--spacing-three-quarters) var(--spacing-three-quarters) 0px 0px var(--color-secondary-light);
+=======
+    box-shadow: var(--spacing-three-quarters) var(--spacing-three-quarters) 0px 0px var(--color-secondary);
+>>>>>>> template/master
     aspect-ratio: 16/9;
 }
 
@@ -122,7 +130,11 @@
     }
 
     .image {
+<<<<<<< HEAD
         box-shadow: var(--spacing-single) var(--spacing-single) 0px 0px var(--color-secondary-light);
+=======
+        box-shadow: var(--spacing-single) var(--spacing-single) 0px 0px var(--color-secondary);
+>>>>>>> template/master
     }
 }
 

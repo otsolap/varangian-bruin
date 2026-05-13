@@ -12,7 +12,9 @@ import ImageBlock from '@/components/blocks/ImageBlock';
 import ImageGallery from '@/components/blocks/ImageGallery';
 import MediaMix from '@/components/blocks/MediaMix';
 import MenuItem from '@/partials/navigation/MenuItem';
+import Notes from '@/components/blocks/Notes';
 import Table from '@/components/blocks/Table';
+import TextAndImage from '@/components/blocks/TextAndImage'
 import Textarea from '@/components/blocks/Textarea'
 import ServicesSection from '@/components/blocks/ServicesSection';
 import VideoEmbed from '@/components/blocks/VideoEmbed';
@@ -46,15 +48,6 @@ const getBlockComponent = ({ __component, ...rest }, index) => {
     case 'blocks.form-embed':
       Block = FormEmbed;
       break;
-    case 'util.footer-column':
-      Block = FooterColumn;
-      break;
-    case 'util.footer-social-media':
-      Block = FooterSocialMedia;
-      break;
-    case 'util.footer-articles':
-      Block = FooterArticles;
-      break;
     case 'blocks.hero':
       Block = Hero;
       break;
@@ -67,8 +60,8 @@ const getBlockComponent = ({ __component, ...rest }, index) => {
     case 'blocks.media-mix':
       Block = MediaMix;
       break;
-    case 'util.menu-item':
-      Block = MenuItem;
+    case 'blocks.notes':
+      Block = Notes;
       break;
     case 'blocks.services':
       Block = ServicesSection;
@@ -79,11 +72,26 @@ const getBlockComponent = ({ __component, ...rest }, index) => {
     case 'blocks.text-area':
       Block = Textarea;
       break;
+    case 'blocks.text-and-image':
+      Block = TextAndImage;
+      break;
     case 'blocks.video-embed':
       Block = VideoEmbed;
       break;
     case 'blocks.quote':
       Block = Quote;
+      break;
+    case 'util.footer-column':
+      Block = FooterColumn;
+      break;
+    case 'util.footer-social-media':
+      Block = FooterSocialMedia;
+      break;
+    case 'util.footer-articles':
+      Block = FooterArticles;
+      break;
+    case 'util.menu-item':
+      Block = MenuItem;
       break;
     default:
       console.error(`No component found for: ${__component}`)

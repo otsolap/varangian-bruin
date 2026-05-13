@@ -148,21 +148,15 @@ export interface BlocksImageGallery extends Struct.ComponentSchema {
   };
 }
 
-export interface BlocksMediaMix extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_media_mixes';
+export interface BlocksNotes extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_notes';
   info: {
-    description: '';
-    displayName: 'mediaMix';
+    displayName: 'Notes';
+    icon: 'bulletList';
   };
   attributes: {
-    mediaMixItems: Schema.Attribute.Component<'partials.media-mix-item', true> &
-      Schema.Attribute.SetMinMax<
-        {
-          max: 2;
-          min: 2;
-        },
-        number
-      >;
+    listItem: Schema.Attribute.Component<'partials.list-item', true>;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -203,6 +197,20 @@ export interface BlocksTable extends Struct.ComponentSchema {
     caption: Schema.Attribute.Text;
     tableHeader: Schema.Attribute.Component<'partials.table-header', true>;
     tableRow: Schema.Attribute.Component<'partials.table-row', true>;
+  };
+}
+
+export interface BlocksTextAndImage extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_text_and_images';
+  info: {
+    description: '';
+    displayName: 'textAndImage';
+  };
+  attributes: {
+    alignImage: Schema.Attribute.Enumeration<['left', 'right']> &
+      Schema.Attribute.DefaultTo<'right'>;
+    content: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -418,19 +426,14 @@ export interface PartialsLink extends Struct.ComponentSchema {
   };
 }
 
-export interface PartialsMediaMixItem extends Struct.ComponentSchema {
-  collectionName: 'components_partials_media_mix_items';
+export interface PartialsListItem extends Struct.ComponentSchema {
+  collectionName: 'components_partials_list_items';
   info: {
     description: '';
-    displayName: 'mediaMixItem';
+    displayName: 'ListItem';
   };
   attributes: {
-    image: Schema.Attribute.Media<'images'>;
-    markdown: Schema.Attribute.RichText;
-    type: Schema.Attribute.Enumeration<['markdown', 'image', 'video']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'markdown'>;
-    video: Schema.Attribute.String;
+    content: Schema.Attribute.Text;
   };
 }
 
@@ -633,10 +636,11 @@ declare module '@strapi/strapi' {
       'blocks.hero': BlocksHero;
       'blocks.image-block': BlocksImageBlock;
       'blocks.image-gallery': BlocksImageGallery;
-      'blocks.media-mix': BlocksMediaMix;
+      'blocks.notes': BlocksNotes;
       'blocks.quote': BlocksQuote;
       'blocks.services': BlocksServices;
       'blocks.table': BlocksTable;
+      'blocks.text-and-image': BlocksTextAndImage;
       'blocks.text-area': BlocksTextArea;
       'blocks.video-embed': BlocksVideoEmbed;
       'form-inputs.checkbox-field': FormInputsCheckboxField;
@@ -650,7 +654,7 @@ declare module '@strapi/strapi' {
       'partials.button': PartialsButton;
       'partials.card': PartialsCard;
       'partials.link': PartialsLink;
-      'partials.media-mix-item': PartialsMediaMixItem;
+      'partials.list-item': PartialsListItem;
       'partials.table-cell': PartialsTableCell;
       'partials.table-header': PartialsTableHeader;
       'partials.table-row': PartialsTableRow;

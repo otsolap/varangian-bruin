@@ -1,0 +1,75 @@
+.textAndImage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-single);
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: var(--spacing-single);
+}
+
+.imageContainer {
+  position: relative;
+  height: 300px;
+  width: 300px;
+}
+
+.image {
+  border-radius: var(--spacing-single-quarter);
+  width: inherit;
+  height: inherit;
+  box-shadow: var(--spacing-half) var(--spacing-half) 0px 0px var(--color-secondary);
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+
+/* iPad  Styles */
+@media (width >= 768px) {
+    
+    .wrapper {
+        flex-direction: row;
+    }
+
+    .reverseWrapper {
+        flex-direction: row-reverse;
+    }
+
+    .column {
+        flex: 0 0 50%;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .imageContainer {
+        height: 400px;
+        width: 400px;
+    }
+
+    .image {
+        box-shadow: var(--spacing-single) var(--spacing-single) 0px 0px var(--color-secondary);
+    }
+}
+
+/* Desktop Styles */
+@media (width >= 1440px) {
+
+    .imageContainer {
+        height: 500px;
+        width: 668px;
+    }
+
+    .image {
+        box-shadow: 24px 24px 0px 0px var(--color-secondary);
+    }
+}
